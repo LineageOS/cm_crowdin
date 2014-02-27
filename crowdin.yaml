@@ -1,0 +1,68 @@
+project_identifier: cyanogenmod
+api_key: api_key
+base_path: path/to/base
+preserve_hierarchy: true
+
+files:
+  # Default for AOSP projects with CM additions
+  -
+    source:      '/packages/apps/Settings/res/values/cm_*.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: &anchor
+      android_code:
+        af: af
+        am: am
+        ar: ar
+        az: az
+        be: be
+        bg: bg
+        ca: ca
+        cs: cs
+        da: da
+        de: de
+        el: el
+        es-ES: es
+        fa: fa
+        fi: fi
+        fr: fr
+        he: iw
+        hi: hi
+        hr: hr
+        hu: hu
+        hy: hy
+        id: in
+        it: it
+        ja: ja
+        ka: ka
+        km: km
+        ko: ko
+        ku: ku
+        lo: lo
+        lt: lt
+        lv: lv
+        ml: ml
+        mn: mn
+        ms: ms
+        nb: nb
+        ne: ne
+        nl: nl
+        pa: pa
+        pl: pl
+        rm: rm
+        ro: ro
+        ru: ru
+        si: si
+        sk: sk
+        sl: sl
+        sr: sr
+        sv-SE: sv
+        sw: sw
+        ta: ta
+        th: th
+        tl: tl
+        tr: tr
+        uk: uk
+        vi: vi
+        zu: zu
+    ignore:
+        - /**/cm_dimens.xml
