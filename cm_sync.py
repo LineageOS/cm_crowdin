@@ -1,21 +1,6 @@
 #!/usr/bin/python2
 
 from xml.dom import minidom
-from subprocess import check_output
-
-#print('Welcome to the CyanogenMod Crowdin synchronization script')
-#print('---------------------------------------------------------\n')
-
-# Execute normal Crowdin sync
-#print('---------------------------------------------------------')
-#print('Executing normal Crowdin synchronization.................')
-#print(check_output(["java", "-jar", "crowdin-cli.jar", "upload", "sources"]))
-#print('Normal Crowdin synchronization complete..................')
-#print('---------------------------------------------------------\n')
-
-# Execute CAF search
-#print('---------------------------------------------------------')
-#print('Executing CAF search.....................................')
 
 def create_cm_caf_xml(strings_base, strings_cm, path):
     # Load AOSP file and resources
@@ -71,7 +56,6 @@ def create_cm_caf_xml(strings_base, strings_cm, path):
                 f.write('<?xml version="1.0" encoding="utf-8"?>\n')
                 f.write('<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">\n')
                 t = 4
-            print('found string: ' + z)
             f.write(list_cm_string[names_cm_string.index(z)].toxml() + '\n')
     for z in names_cm_string_array:
         if not z in names_base_string_array:
@@ -80,7 +64,6 @@ def create_cm_caf_xml(strings_base, strings_cm, path):
                 f.write('<?xml version="1.0" encoding="utf-8"?>\n')
                 f.write('<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">\n')
                 t = 4
-            print('found string array: ' + z)
             f.write(list_cm_string_array[names_cm_string_array.index(z)].toxml() + '\n')
     for z in names_cm_plurals:
         if not z in names_base_plurals:
@@ -89,28 +72,8 @@ def create_cm_caf_xml(strings_base, strings_cm, path):
                 f.write('<?xml version="1.0" encoding="utf-8"?>\n')
                 f.write('<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">\n')
                 t = 4
-            print('found plurals: ' + z)
             f.write(list_cm_plurals[names_cm_plurals.index(z)].toxml() + '\n')
 
     if t == 4:
         f.write('</resources>')
         f.close()
-
-#print('Executing CAF search.....................................')
-#print('CAF search complete......................................')
-#print('---------------------------------------------------------\n')
-
-# Cleanup
-#print('---------------------------------------------------------')
-#print('Executing cleanup........................................')
-#print('Cleanup complete.........................................')
-#print('---------------------------------------------------------\n')
-
-# Committing
-#print('---------------------------------------------------------')
-#print('Executing commit.........................................')
-#print('Commit complete..........................................')
-#print('---------------------------------------------------------\n')
-
-# Done
-#print('Script is done. Goodbye!')
