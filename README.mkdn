@@ -32,4 +32,5 @@ Executing
 
 Bugs
 ----
- - cm_caf.xml can only be generated once.
+ - When committing fails, the reason of it cannot be determined. Often this is just when there
+   are no new translations, so the script will not exit when this happens.
