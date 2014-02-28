@@ -1,0 +1,26 @@
+cm_crowdin_sync.py
+==================
+
+Introduction
+------------
+This script is used to synchronize CyanogenMod's translations with Crowdin's. It automatically creates cm_caf.xml files, containing
+CAF additions that cannot be seperated in CM source, based on the AOSP base file, and removes them after the push. Also, it can handle
+automatic commiting to Git and pushing/downloading to/from Crowdin.
+
+create_cm_caf_xml.py
+--------------------
+This script is used to create the cm_caf.xml files based on CM's and AOSP's resources XML files.
+
+Prerequisites
+-------------
+The Ruby variant of crowdin-cli is required for this to work.
+    \curl -sSL https://get.rvm.io | bash -s stable --ruby
+    source /home/therbom/.rvm/scripts/rvm # Add this to your .bashrc file!
+    rvm all do gem install crowdin-cli
+python-git is used for Git integration.
+    sudo apt-get install python-git
+The script is currently only python2 supported.
+
+Executing
+---------
+    ./cm_crowdin_sync.py
