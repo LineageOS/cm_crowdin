@@ -14,13 +14,18 @@ This script is used to create the cm_caf.xml files based on CM's and AOSP's reso
 Prerequisites
 -------------
 The Ruby variant of crowdin-cli is required for this to work.
+
     \curl -sSL https://get.rvm.io | bash -s stable --ruby
     source /home/therbom/.rvm/scripts/rvm # Add this to your .bashrc file!
     rvm all do gem install crowdin-cli
+
 python-git is used for Git integration.
+
     sudo apt-get install python-git
+
 The script is currently only python2 supported.
 
 Executing
 ---------
+    Go to root of your local copy of CyanogenMod's source code
     ./cm_crowdin_sync.py
