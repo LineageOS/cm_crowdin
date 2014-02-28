@@ -7,10 +7,6 @@ This script is used to synchronize CyanogenMod's translations with Crowdin's. It
 CAF additions that cannot be seperated in CM source, based on the AOSP base file, and removes them after the push. Also, it can handle
 automatic commiting to Git and pushing/downloading to/from Crowdin.
 
-create_cm_caf_xml.py
---------------------
-This script is used to create the cm_caf.xml files based on CM's and AOSP's resources XML files.
-
 Prerequisites
 -------------
 The Ruby variant of crowdin-cli is required for this to work.
