@@ -18,6 +18,7 @@ from xml.dom import minidom
 
 print('Welcome to the CM Crowdin sync script!\n')
 
+
 print('STEP 0: Checking dependencies\n')
 if subprocess.check_output(['rvm', 'all', 'do', 'gem', 'list', 'crowdin-cli', '-i']) == 'true':
     sys.exit('You have not installed crowdin-cli. Terminating.')
@@ -81,7 +82,7 @@ for source in iter(proc.stdout.readline,''):
     path = path.rstrip()
     all_projects = []
     if os.path.isfile(path):
-        m = re.search('/(.*)/res/values.*', source)
+        m = re.search('/(.*CMFileManager)/themes/res/values.*|/(device/.*/.*)/.*/res/values.*|/(hardware/.*/.*)/.*/res/values.*|/(.*)/res/values.*', source)
         path_this = m.group(1)
         if not path_this in all_projects:
             all_projects.append(path_this)
