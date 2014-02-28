@@ -8,6 +8,7 @@
 import create_cm_caf_xml
 import git
 import mmap
+import os
 import os.path
 import re
 import shutil
@@ -17,7 +18,6 @@ from urllib import urlretrieve
 from xml.dom import minidom
 
 print('Welcome to the CM Crowdin sync script!\n')
-
 
 print('STEP 0: Checking dependencies\n')
 if subprocess.check_output(['rvm', 'all', 'do', 'gem', 'list', 'crowdin-cli', '-i']) == 'true':
@@ -49,54 +49,47 @@ for item in items:
 print('\nSTEP 2: Upload Crowdin source translations')
 print(subprocess.check_output(['crowdin-cli', 'upload', 'sources']))
 
-#print('STEP 3: Download Crowdin translations')
-#print(subprocess.check_output(['crowdin-cli', "download"]))
+print('STEP 3: Download Crowdin translations')
+print(subprocess.check_output(['crowdin-cli', "download"]))
 
-print('STEP 4A: Clean up of empty translations')
-# Search for all XML files
+print('STEP 4A: Clean up of source cm_caf.xmls')
+for cm_caf_file in cm_caf:
+    print ('Removing ' + cm_caf_file)
+    os.remove(cm_caf_file)
+
+print('\nSTEP 4B: Clean up of temp dir')
+shutil.rmtree(os.getcwd() + '/tmp')
+
+print('STEP 4C: Clean up of empty translations')
 result = [os.path.join(dp, f) for dp, dn, filenames in os.walk(os.getcwd()) for f in filenames if os.path.splitext(f)[1] == '.xml']
 for xml_file in result:
     if '<resources/>' in open(xml_file).read():
         print ('Removing ' + xml_file)
         os.remove(xml_file)
-    if '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>' in open(xml_file).read():
+    elif '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>' in open(xml_file).read():
         print ('Removing ' + xml_file)
         os.remove(xml_file)    
 
-print('\nSTEP 4B: Clean up of source cm_caf.xmls')
-for cm_caf_file in cm_caf:
-    print ('Removing ' + cm_caf_file)
-    os.remove(cm_caf_file)
-
-print('\nSTEP 4C: Clean up of temp dir')
-for cm_caf_file in cm_caf:
-    print ('Removing ' + cm_caf_file)
-    shutil.rmtree(os.getcwd() + '/tmp')
-
 print('\nSTEP 5: Push translations to Git')
-
 proc = subprocess.Popen(['crowdin-cli', 'list', 'sources'],stdout=subprocess.PIPE)
-
-for source in iter(proc.stdout.readline,''):
-    path = os.getcwd() + source
-    path = path.rstrip()
-    all_projects = []
-    if os.path.isfile(path):
-        m = re.search('/(.*CMFileManager)/themes/res/values.*|/(device/.*/.*)/.*/res/values.*|/(hardware/.*/.*)/.*/res/values.*|/(.*)/res/values.*', source)
-        path_this = m.group(1)
-        if not path_this in all_projects:
-            all_projects.append(path_this)
-
 xml = minidom.parse('default.xml')
 items = xml.getElementsByTagName('project')
+all_projects = []
 
-for project in all_projects:
-    path_repo = os.getcwd() + '/' + project
-    repo = git.Repo(path_repo)
-    print repo.git.add(path_repo)
-    print repo.git.commit(m='Automatic translations import')
-    for project_item in items:
-        if project_item.attributes["path"].value == project:
-            print repo.git.push('ssh://cobjeM@review.cyanogenmod.org:29418/' + project_item.attributes['name'].value, 'HEAD:refs/for/cm-11.0')
+for path in iter(proc.stdout.readline,''):
+    path = path.rstrip()
+    m = re.search('/(.*Superuser)/Superuser.*|/(.*LatinIME).*|/(frameworks/base).*|/(.*CMFileManager).*|/(device/.*/.*)/.*/res/values.*|/(hardware/.*/.*)/.*/res/values.*|/(.*)/res/values.*', path)
+    for good_path in m.groups():
+        if good_path is not None and not good_path in all_projects:
+            all_projects.append(good_path)
+            working = 'false'
+            for project_item in items:
+                if project_item.attributes["path"].value == good_path:
+                    working = 'true'
+                    create_cm_caf_xml.push_as_commit(good_path, project_item.attributes['name'].value)
+                    print 'WORKING: ' + project_item.attributes['name'].value
+            if working == 'false':
+                create_cm_caf_xml.push_as_commit(good_path, 'CyanogenMod/android_' + good_path.replace('/', '_'))
+                print 'WORKAROUND: ' + good_path
 
 print('STEP 6: Done!')

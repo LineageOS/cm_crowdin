@@ -5,6 +5,8 @@
 # Generates cm_caf.xml based on the strings that were added to
 # CM's *.xml compared to AOSP's *.xml
 
+import git
+import os
 from xml.dom import minidom
 
 def create_cm_caf_xml(strings_base, strings_cm, path):
@@ -82,3 +84,14 @@ def create_cm_caf_xml(strings_base, strings_cm, path):
     if t == 4:
         f.write('</resources>')
         f.close()
+
+def push_as_commit(path, name):
+    path = os.getcwd() + '/' + path
+    repo = git.Repo(path)
+    repo.git.add(path)
+    try:
+        repo.git.commit(m='Crowdin translation import')
+        repo.git.push('ssh://cobjeM@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/cm-11.0')
+        print 'Succesfully pushed commit for' + name
+    except:
+        print 'No commit pushed (probably empty?) for ' + name

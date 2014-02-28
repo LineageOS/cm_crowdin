@@ -32,7 +32,4 @@ Executing
 
 Bugs
 ----
- - The script only commits for projects in caf.xml. We need to have a unified project.xml that contains AOSP base
-   files (when necessary) and all projects on Crowdin.
  - cm_caf.xml can only be generated once.
- - When there are no translation updates, the connector will simply fail.

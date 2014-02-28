@@ -1,12 +1,12 @@
 project_identifier: cyanogenmod
-api_key: api_key
-base_path: path/to/base
+api_key: your_api_key
+base_path: your/path
 preserve_hierarchy: true
 
 files:
   # Default for AOSP projects with CM additions
   -
-    source:      '/packages/apps/Settings/res/values/cm_*.xml'
+    source:      '/**/values/cm_*.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: &anchor
       android_code:
@@ -65,4 +65,161 @@ files:
         vi: vi
         zu: zu
     ignore:
-        - /**/cm_dimens.xml
+      - /**/cm_extra.xml
+      - /**/cm_colors.xml
+      - /**/cm_dimens.xml
+      - /**/Launcher3/**/*.xml
+
+  # Default for device apps
+  -
+    source:      '/device/**/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /device/google/**/*.xml
+      - /device/sample/**/*.xml
+      - /device/**/overlay/**/*.xml
+  -
+    source:      '/device/**/values/plurals.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /device/google/**/*.xml
+      - /device/sample/**/*.xml
+      - /device/**/overlay/**/*.xml
+  -
+    source:      '/device/**/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /device/google/**/*.xml
+      - /device/sample/**/*.xml
+      - /device/**/overlay/**/*.xml
+  # Default for CM apps (CMAccount, CMFM etc.)
+  -
+    source:      '/packages/apps/CM*/**/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /packages/apps/CM*/tests/**/*.xml
+  -
+    source:      '/packages/apps/CM*/**/values/plurals.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /packages/apps/CM*/tests/**/*.xml
+  -
+    source:      '/packages/apps/CM*/**/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /packages/apps/CM*/tests/**/*.xml
+
+  # Other projects
+  # Apollo
+  -
+    source:      '/packages/apps/Apollo/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/apps/Apollo/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/apps/Apollo/res/values/plurals.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # BluetoothExt
+  -
+    source:      '/packages/apps/BluetoothExt/res/values/strings*.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Camera2 (qcomstrings.xml)
+  -
+    source:      '/packages/apps/Camera2/res/values/qcomstrings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # DSPManager
+  -
+    source:      '/packages/apps/DSPManager/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/apps/DSPManager/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # LockClock
+  -
+    source:      '/packages/apps/LockClock/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/apps/LockClock/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Torch
+  -
+    source:      '/packages/apps/Torch/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # VoicePlus
+  -
+    source:      '/packages/apps/VoicePlus/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # ThemeChooser
+  -
+    source:      '/vendor/tmobile/**/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Superuser
+  -
+    source:      '/external/koush/Superuser/Superuser/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # TextSecure
+  -
+    source:      '/external/whispersystems/**/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /**/library/**/*.xml
+  -
+    source:      '/external/whispersystems/**/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /**/library/**/*.xml
+
+# Device specific packages
+
+  # fmapp2
+  -
+    source:      '/hardware/qcom/fm/fmapp2/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/hardware/qcom/fm/fmapp2/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # FMRecord
+  -
+    source:      '/hardware/qcom/fm/FMRecord/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # SamsungServiceMode
+  -
+    source:      '/packages/apps/SamsungServiceMode/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
