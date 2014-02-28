@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- Extra packages not included in the main manifest
+       WARNING: Cid is not working yet for these repositories. -->
+  <project path="hardware/qcom/fm" name="CyanogenMod/android_hardware_qcom_fm" />
+  <project path="packages/apps/SamsungServiceMode" name="CyanogenMod/android_packages_apps_SamsungServiceMode" />
+
+  <!-- Device repositories that can be translated -->
+  <project path="device/amazon/otter-common" name="CyanogenMod/android_device_amazon_otter-common" />
+  <project path="device/asus/tf300t" name="CyanogenMod/android_device_asus_tf300t" />
+  <project path="device/asus/tf700t" name="CyanogenMod/android_device_asus_tf700t" />
+  <project path="device/bn/acclaim" name="CyanogenMod/android_device_bn_acclaim" />
+  <project path="device/bn/common" name="CyanogenMod/android_device_bn_common" />
+  <project path="device/motorola/moto_msm8960" name="CyanogenMod/android_device_motorola_moto_msm8960" />
+  <project path="device/oppo/apq8064-common" name="CyanogenMod/android_device_oppo_apq8064-common" />
+  <project path="device/samsung/apexqtmo" name="CyanogenMod/android_device_samsung_apexqtmo" />
+  <project path="device/samsung/aries-common" name="CyanogenMod/android_device_samsung_aries-common" />
+  <project path="device/samsung/galaxys2-common" name="CyanogenMod/android_device_samsung_galaxys2-common" />
+  <project path="device/samsung/p1-common" name="CyanogenMod/android_device_samsung_p1-common" />
+</manifest>
