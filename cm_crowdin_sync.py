@@ -89,6 +89,78 @@ def get_caf_additions(strings_base, strings_cm):
     # Done :-)
     return caf_additions
 
+def sync_js_translations(sync_type, path, lang=''):
+    # lang is necessary in download mode
+    if sync_type == 'download' and lang == '':
+        sys.exit('Invalid syntax. Language code is required in download mode.')
+
+    # Read source en.js file. This is necessary for both upload and download modes
+    with open(path + 'en.js') as f:
+        content = f.readlines()
+
+    if sync_type == 'upload':
+        # Prepare XML file structure
+        doc = xml.dom.minidom.Document()
+        header = doc.createElement('resources')
+        file_write = open(path + 'en.xml', 'w')
+    else:
+        # Open translation files
+        file_write = open(path + lang + '.js', 'w')
+        xml_base = xml.dom.minidom.parse(path + lang + '.xml')
+        tags = xml_base.getElementsByTagName('string')
+
+    # Read each line of en.js
+    for a_line in content:
+        # Regex to determine string id
+        m = re.search(' (.*): [\'|\"]', a_line)
+        if m is not None:
+            for string_id in m.groups():
+                if string_id is not None:
+                    # Find string id
+                    string_id = string_id.replace(' ', '')
+                    m2 = re.search('\'(.*)\'|"(.*)"', a_line)
+                    # Find string contents
+                    for string_content in m2.groups():
+                        if string_content is not None:
+                            break
+                    if sync_type == 'upload':
+                        # In upload mode, create the appropriate string element.
+                        contents = doc.createElement('string')
+                        contents.attributes['name'] = string_id
+                        contents.appendChild(doc.createTextNode(string_content))
+                        header.appendChild(contents)
+                    else:
+                        # In download mode, check if string_id matches a name attribute in the translation XML file.
+                        # If it does, replace English text with the translation.
+                        # If it does not, English text will remain and will be added to the file to retain the file structure.
+                        for string in tags:
+                            if string.attributes['name'].value == string_id:
+                                a_line = a_line.replace(string_content.rstrip(), string.firstChild.nodeValue)
+                                break
+                    break
+        # In download mode do not write comments
+        if sync_type == 'download' and not '//' in a_line:
+            # Add language identifier (1)
+            if 'cmaccount.l10n.en' in a_line:
+                a_line = a_line.replace('l10n.en', 'l10n.' + lang)
+            # Add language identifier (2)
+            if 'l10n.add(\'en\'' in a_line:
+                a_line = a_line.replace('l10n.add(\'en\'', 'l10n.add(\'' + lang + '\'')
+            # Now write the line
+            file_write.write(a_line)
+                        
+
+    # Create XML file structure
+    if sync_type == 'upload':
+        header.appendChild(contents)
+        contents = header.toxml().replace('<string', '\n    <string').replace('</resources>', '\n</resources>')
+        file_write.write('<?xml version="1.0" encoding="utf-8"?>\n')
+        file_write.write('<!-- .JS CONVERTED TO .XML - DO NOT MERGE THIS FILE -->\n')
+        file_write.write(contents)
+
+    # Close file
+    file_write.close()
+
 def push_as_commit(path, name):
     # Get path
     path = os.getcwd() + '/' + path
@@ -109,21 +181,30 @@ def push_as_commit(path, name):
 print('Welcome to the CM Crowdin sync script!')
 
 print('\nSTEP 0: Checking dependencies')
+# Check for Ruby version of crowdin-cli
 if subprocess.check_output(['rvm', 'all', 'do', 'gem', 'list', 'crowdin-cli', '-i']) == 'true':
     sys.exit('You have not installed crowdin-cli. Terminating.')
 else:
     print('Found: crowdin-cli')
+# Check for caf.xml
 if not os.path.isfile('caf.xml'):
     sys.exit('You have no caf.xml. Terminating.')
 else:
     print('Found: caf.xml')
+# Check for default.xml
 if not os.path.isfile('default.xml'):
     sys.exit('You have no default.xml. Terminating.')
 else:
     print('Found: default.xml')
+# Check for repo
+try:
+    subprocess.check_output(['which', 'repo'])
+except:
+    sys.exit('You have not installed repo. Terminating.')
 
 print('\nSTEP 1: Create cm_caf.xml')
 # Load caf.xml
+print('Loading caf.xml')
 xml = minidom.parse('caf.xml')
 items = xml.getElementsByTagName('item')
 
