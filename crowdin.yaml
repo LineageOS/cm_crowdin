@@ -133,7 +133,8 @@ files:
     ignore:
       - /packages/apps/CM*/tests/**/*.xml
 
-  # Other projects
+# Other projects
+
   # Apollo
   -
     source:      '/packages/apps/Apollo/res/values/strings.xml'
@@ -210,19 +211,11 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # TextSecure
+  # WhisperPush
   -
-    source:      '/external/whispersystems/**/res/values/strings.xml'
+    source:      '/external/whispersystems/WhisperPush/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
-    ignore:
-      - /**/library/**/*.xml
-  -
-    source:      '/external/whispersystems/**/res/values/arrays.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-    ignore:
-      - /**/library/**/*.xml
 
 # Device specific packages
 
