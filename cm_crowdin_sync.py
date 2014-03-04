@@ -96,17 +96,17 @@ def sync_js_translations(sync_type, path, lang=''):
         sys.exit('Invalid syntax. Language code is required in download mode.')
 
     # Read source en.js file. This is necessary for both upload and download modes
-    with open(path + 'en.js') as f:
+    with codecs.open(path + 'en.js', 'r', 'utf-8') as f:
         content = f.readlines()
 
     if sync_type == 'upload':
         # Prepare XML file structure
         doc = xml.dom.minidom.Document()
         header = doc.createElement('resources')
-        file_write = open(path + 'en.xml', 'w')
+        file_write = codecs.open(path + 'en.xml', 'w', 'utf-8')
     else:
         # Open translation files
-        file_write = open(path + lang + '.js', 'w')
+        file_write = codecs.open(path + lang + '.js', 'w', 'utf-8')
         xml_base = xml.dom.minidom.parse(path + lang + '.xml')
         tags = xml_base.getElementsByTagName('string')
 
