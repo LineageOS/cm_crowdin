@@ -1,5 +1,5 @@
 #!/usr/bin/python2
-#
+# -*- coding: utf-8 -*-
 # cm_crowdin_sync.py
 #
 # Updates Crowdin source translations and pulls translations
@@ -19,6 +19,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import codecs
 import git
 import mmap
 import os
@@ -217,7 +218,7 @@ for item in items:
     path_to_values = item.attributes["path"].value
     subprocess.call(['mkdir', '-p', 'tmp/' + path_to_values])
     # Create cm_caf.xml - header
-    f = open(path_to_values + '/cm_caf.xml','w')
+    f = codecs.open(path_to_values + '/cm_caf.xml', 'w', 'utf-8')
     f.write('<?xml version="1.0" encoding="utf-8"?>\n')
     f.write('<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">\n')
     # Create cm_caf.xml - contents
