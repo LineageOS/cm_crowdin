@@ -18,6 +18,9 @@
     <item path="frameworks/base/core/res/res/values">
         <aosp file="strings.xml">http://androidxref.com/4.4.2_r1/raw/frameworks/base/core/res/res/values/strings.xml</aosp>
     </item>
+    <item path="frameworks/base/packages/Keyguard/res/values">
+        <aosp file="strings.xml">http://androidxref.com/4.4.2_r1/raw/frameworks/base/packages/Keyguard/res/values/strings.xml</aosp>
+    </item>
     <item path="packages/apps/Dialer/res/values">
         <aosp file="strings.xml">http://androidxref.com/4.4.2_r1/raw/packages/apps/Dialer/res/values/strings.xml</aosp>
     </item>
