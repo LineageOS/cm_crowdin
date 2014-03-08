@@ -76,22 +76,31 @@ def get_caf_additions(strings_base, strings_cm):
     # Store all differences in this list
     caf_additions = []
 
+    # Store all found strings/arrays/plurals.
+    # Prevent duplicates with product attribute
+    found_string = []
+    found_string_array = []
+    found_plurals = []
+
     # Add all CAF additions to the list 'caf_additions'
     for z in names_cm_string:
-        if z not in names_base_string:
+        if z not in names_base_string and z not in found_string:
             for string_item in list_cm_string:
                 if string_item.attributes['name'].value == z:
                     caf_additions.append('    ' + string_item.toxml())
+            found_string.append(z)
     for y in names_cm_string_array:
-        if y not in names_base_string_array:
+        if y not in names_base_string_array and y not in found_string_array:
             for string_array_item in list_cm_string_array:
                 if string_array_item.attributes['name'].value == y:
                     caf_additions.append('    ' + string_array_item.toxml())
+            found_string_array.append(y)
     for x in names_cm_plurals:
-        if x not in names_base_plurals:
+        if x not in names_base_plurals and x not in found_plurals:
             for plurals_item in list_cm_plurals:
                 if plurals_item.attributes['name'].value == x:
                     caf_additions.append('    ' + plurals_item.toxml())
+            found_plurals.append(x)
 
     # Done :-)
     return caf_additions
