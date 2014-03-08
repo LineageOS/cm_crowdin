@@ -78,14 +78,23 @@ def get_caf_additions(strings_base, strings_cm):
 
     # Add all CAF additions to the list 'caf_additions'
     for z in names_cm_string:
-        if not z in names_base_string:
-            caf_additions.append('    ' + list_cm_string[names_cm_string.index(z)].toxml())
-    for z in names_cm_string_array:
-        if not z in names_base_string_array:
-            caf_additions.append('    ' + list_cm_string_array[names_cm_string_array.index(z)].toxml())
-    for z in names_cm_plurals:
-        if not z in names_base_plurals:
-            caf_additions.append('    ' + list_cm_plurals[names_cm_plurals.index(z)].toxml())
+        if z not in names_base_string:
+            for string_item in list_cm_string:
+                if string_item.attributes['name'].value == z:
+                    caf_additions.append('    ' + string_item.toxml())
+                    break
+    for y in names_cm_string_array:
+        if y not in names_base_string_array:
+            for string_array_item in list_cm_string_array:
+                if string_array_item.attributes['name'].value == y:
+                    caf_additions.append('    ' + string_array_item.toxml())
+                    break
+    for x in names_cm_plurals:
+        if x not in names_base_plurals:
+            for plurals_item in list_cm_plurals:
+                if plurals_item.attributes['name'].value == x:
+                    caf_additions.append('    ' + plurals_item.toxml())
+                    break
 
     # Done :-)
     return caf_additions
@@ -203,42 +212,42 @@ try:
 except:
     sys.exit('You have not installed repo. Terminating.')
 
-#print('\nSTEP 1: Create cm_caf.xml')
+print('\nSTEP 1: Create cm_caf.xml')
 # Load caf.xml
-#print('Loading caf.xml')
-#xml = minidom.parse('caf.xml')
-#items = xml.getElementsByTagName('item')
+print('Loading caf.xml')
+xml = minidom.parse('caf.xml')
+items = xml.getElementsByTagName('item')
 
 # Store all created cm_caf.xml files in here.
 # Easier to remove them afterwards, as they cannot be committed
-#cm_caf = []
+cm_caf = []
 
-#for item in items:
-#    # Create tmp dir for download of AOSP base file
-#    path_to_values = item.attributes["path"].value
-#    subprocess.call(['mkdir', '-p', 'tmp/' + path_to_values])
-#    # Create cm_caf.xml - header
-#    f = codecs.open(path_to_values + '/cm_caf.xml', 'w', 'utf-8')
-#    f.write('<?xml version="1.0" encoding="utf-8"?>\n')
-#    f.write('<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">\n')
-#    # Create cm_caf.xml - contents
-#    # This means we also support multiple base files (e.g. checking if strings.xml and arrays.xml are changed)
-#    contents = []
-#    item_aosp = item.getElementsByTagName('aosp')
-#    for aosp_item in item_aosp:
-#        url = aosp_item.firstChild.nodeValue
-#        xml_file = aosp_item.attributes["file"].value
-#        path_to_base = 'tmp/' + path_to_values + '/' + xml_file
-#        path_to_cm = path_to_values + '/' + xml_file
-#        urlretrieve(url, path_to_base)
-#        contents = contents + get_caf_additions(path_to_base, path_to_cm)
-#    for addition in contents:
-#        f.write(addition + '\n')
-#    # Create cm_caf.xml - the end
-#    f.write('</resources>')
-#    f.close()
-#    cm_caf.append(path_to_values + '/cm_caf.xml')
-#    print('Created ' + path_to_values + '/cm_caf.xml')
+for item in items:
+    # Create tmp dir for download of AOSP base file
+    path_to_values = item.attributes["path"].value
+    subprocess.call(['mkdir', '-p', 'tmp/' + path_to_values])
+    # Create cm_caf.xml - header
+    f = codecs.open(path_to_values + '/cm_caf.xml', 'w', 'utf-8')
+    f.write('<?xml version="1.0" encoding="utf-8"?>\n')
+    f.write('<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">\n')
+    # Create cm_caf.xml - contents
+    # This means we also support multiple base files (e.g. checking if strings.xml and arrays.xml are changed)
+    contents = []
+    item_aosp = item.getElementsByTagName('aosp')
+    for aosp_item in item_aosp:
+        url = aosp_item.firstChild.nodeValue
+        xml_file = aosp_item.attributes["file"].value
+        path_to_base = 'tmp/' + path_to_values + '/' + xml_file
+        path_to_cm = path_to_values + '/' + xml_file
+        urlretrieve(url, path_to_base)
+        contents = contents + get_caf_additions(path_to_base, path_to_cm)
+    for addition in contents:
+        f.write(addition + '\n')
+    # Create cm_caf.xml - the end
+    f.write('</resources>')
+    f.close()
+    cm_caf.append(path_to_values + '/cm_caf.xml')
+    print('Created ' + path_to_values + '/cm_caf.xml')
 
 print('\nSTEP 2: Upload Crowdin source translations')
 # Execute 'crowdin-cli upload sources' and show output
@@ -248,15 +257,15 @@ print('STEP 3: Download Crowdin translations')
 # Execute 'crowdin-cli download' and show output
 print(subprocess.check_output(['crowdin-cli', "download"]))
 
-#print('STEP 4A: Clean up of source cm_caf.xmls')
-## Remove all cm_caf.xml files, which you can find in the list 'cm_caf'
-#for cm_caf_file in cm_caf:
-#    print ('Removing ' + cm_caf_file)
-#    os.remove(cm_caf_file)
+print('STEP 4A: Clean up of source cm_caf.xmls')
+# Remove all cm_caf.xml files, which you can find in the list 'cm_caf'
+for cm_caf_file in cm_caf:
+    print ('Removing ' + cm_caf_file)
+    os.remove(cm_caf_file)
 
-#print('\nSTEP 4B: Clean up of temp dir')
-## We are done with cm_caf.xml files, so remove tmp/
-#shutil.rmtree(os.getcwd() + '/tmp')
+print('\nSTEP 4B: Clean up of temp dir')
+# We are done with cm_caf.xml files, so remove tmp/
+shutil.rmtree(os.getcwd() + '/tmp')
 
 print('\nSTEP 4C: Clean up of empty translations')
 # Some line of code that I found to find all XML files
