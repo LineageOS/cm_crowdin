@@ -82,19 +82,16 @@ def get_caf_additions(strings_base, strings_cm):
             for string_item in list_cm_string:
                 if string_item.attributes['name'].value == z:
                     caf_additions.append('    ' + string_item.toxml())
-                    break
     for y in names_cm_string_array:
         if y not in names_base_string_array:
             for string_array_item in list_cm_string_array:
                 if string_array_item.attributes['name'].value == y:
                     caf_additions.append('    ' + string_array_item.toxml())
-                    break
     for x in names_cm_plurals:
         if x not in names_base_plurals:
             for plurals_item in list_cm_plurals:
                 if plurals_item.attributes['name'].value == x:
                     caf_additions.append('    ' + plurals_item.toxml())
-                    break
 
     # Done :-)
     return caf_additions
