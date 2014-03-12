@@ -6,7 +6,6 @@
   <project path="packages/apps/SamsungServiceMode" name="CyanogenMod/android_packages_apps_SamsungServiceMode" />
 
   <!-- Device repositories that can be translated -->
-  <project path="device/amazon/otter-common" name="CyanogenMod/android_device_amazon_otter-common" />
   <project path="device/asus/tf300t" name="CyanogenMod/android_device_asus_tf300t" />
   <project path="device/asus/tf700t" name="CyanogenMod/android_device_asus_tf700t" />
   <project path="device/bn/acclaim" name="CyanogenMod/android_device_bn_acclaim" />
