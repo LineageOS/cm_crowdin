@@ -41,6 +41,7 @@ files:
         de: de
         el: el
         es-ES: es
+        et: et
         fa: fa
         fi: fi
         fr: fr
@@ -48,7 +49,7 @@ files:
         hi: hi
         hr: hr
         hu: hu
-        hy: hy
+        hy-AM: hy
         id: in
         it: it
         ja: ja
@@ -59,18 +60,18 @@ files:
         lo: lo
         lt: lt
         lv: lv
-        ml: ml
+        ml-IN: ml
         mn: mn
         ms: ms
         nb: nb
-        ne: ne
+        ne-NP: ne
         nl: nl
-        pa: pa
+        pa-IN: pa
         pl: pl
-        rm: rm
+        rm-CH: rm
         ro: ro
         ru: ru
-        si: si
+        si-LK: si
         sk: sk
         sl: sl
         sr: sr
@@ -80,6 +81,7 @@ files:
         th: th
         tl: tl
         tr: tr
+        ug: ug
         uk: uk
         vi: vi
         zu: zu
