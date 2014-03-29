@@ -89,7 +89,15 @@ files:
       - /**/cm_extra.xml
       - /**/cm_colors.xml
       - /**/cm_dimens.xml
-      - /**/Launcher3/**/*.xml
+      - /frameworks/base/core/res/**/cm_arrays.xml
+      - /frameworks/base/packages/SystemUI/**/cm_arrays.xml
+      - /packages/apps/Browser/**/cm_arrays.xml
+      - /packages/apps/Calendar/**/cm_arrays.xml
+      - /packages/apps/Camera2/**/cm_arrays.xml
+      - /packages/apps/DeskClock/**/cm_arrays.xml
+      - /packages/services/Telephony/**/cm_arrays.xml
+      - /packages/apps/Launcher3/**/*.xml
+      - /device/**/overlay/**/*.xml
 
   # Default for device apps
   -
@@ -123,6 +131,8 @@ files:
     languages_mapping: *anchor
     ignore:
       - /packages/apps/CM*/tests/**/*.xml
+      - /packages/apps/CMFileManager/**/arrays.xml
+      - /packages/apps/CMUpdater/**/arrays.xml
   -
     source:      '/packages/apps/CM*/**/values/plurals.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
@@ -141,10 +151,6 @@ files:
   # Apollo
   -
     source:      '/packages/apps/Apollo/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Apollo/res/values/arrays.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
   -
@@ -177,10 +183,6 @@ files:
   # LockClock
   -
     source:      '/packages/apps/LockClock/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/LockClock/res/values/arrays.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
