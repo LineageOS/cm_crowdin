@@ -192,7 +192,7 @@ def push_as_commit(path, name):
         # If git commit fails, it's probably because of no changes.
         # Just continue.
         print 'No commit pushed (probably empty?) for ' + name
-        print 'WARNING: If the repository name was not obtained from default.xml, the name might be wrong!'
+        print 'WARNING: If the repository name was not obtained from android/default.xml, the name might be wrong!'
 
 print('Welcome to the CM Crowdin sync script!')
 
@@ -207,11 +207,11 @@ if not os.path.isfile('caf.xml'):
     sys.exit('You have no caf.xml. Terminating.')
 else:
     print('Found: caf.xml')
-# Check for default.xml
-if not os.path.isfile('default.xml'):
-    sys.exit('You have no default.xml. Terminating.')
+# Check for android/default.xml
+if not os.path.isfile('android/default.xml'):
+    sys.exit('You have no android/default.xml. Terminating.')
 else:
-    print('Found: default.xml')
+    print('Found: android/default.xml')
 # Check for repo
 try:
     subprocess.check_output(['which', 'repo'])
@@ -304,7 +304,7 @@ for xml_file in result:
 print('\nSTEP 5: Push translations to Git')
 # Get all files that Crowdin pushed
 proc = subprocess.Popen(['crowdin-cli', 'list', 'sources'],stdout=subprocess.PIPE)
-xml = minidom.parse('default.xml')
+xml = minidom.parse('android/default.xml')
 items = xml.getElementsByTagName('project')
 all_projects = []
 
@@ -322,11 +322,11 @@ for path in iter(proc.stdout.readline,''):
             working = 'false'
             for project_item in items:
                 # We need to have the Github repository for the git push url. Obtain them from
-                # default.xml based on the project root dir.
+                # android/default.xml based on the project root dir.
                 if project_item.attributes["path"].value == good_path:
                     working = 'true'
                     push_as_commit(good_path, project_item.attributes['name'].value)
-                    print 'Committing ' + project_item.attributes['name'].value + ' (based on default.xml)'
+                    print 'Committing ' + project_item.attributes['name'].value + ' (based on android/default.xml)'
             # We also translate repositories that are not downloaded by default (e.g. device parts).
             # This is just a fallback.
             # WARNING: If the name is wrong, this will not stop the script.
