@@ -274,11 +274,11 @@ print('\nSTEP 2: Upload Crowdin source translations')
 # Execute 'crowdin-cli upload sources' and show output
 print(subprocess.check_output(['crowdin-cli', 'upload', 'sources']))
 
-print('STEP 3: Download Crowdin translations')
+print('\nSTEP 3: Download Crowdin translations')
 # Execute 'crowdin-cli download' and show output
 print(subprocess.check_output(['crowdin-cli', "download"]))
 
-print('STEP 4A: Clean up of source cm_caf.xmls')
+print('\nSTEP 4A: Clean up of source cm_caf.xmls')
 # Remove all cm_caf.xml files, which you can find in the list 'cm_caf'
 for cm_caf_file in cm_caf:
     print ('Removing ' + cm_caf_file)
