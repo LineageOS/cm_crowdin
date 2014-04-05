@@ -187,6 +187,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # OneClickAndroid
+  -
+    source:      '/packages/apps/OneClickAndroid/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Torch
   -
     source:      '/packages/apps/Torch/res/values/strings.xml'
