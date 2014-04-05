@@ -4,6 +4,8 @@
        WARNING: Cid is not working yet for these repositories. -->
   <project path="hardware/qcom/fm" name="CyanogenMod/android_hardware_qcom_fm" />
   <project path="packages/apps/SamsungServiceMode" name="CyanogenMod/android_packages_apps_SamsungServiceMode" />
+  <project path="packages/apps/CMFota" name="cyngn/android_packages_apps_FOTA-resources" />
+  <project path="packages/apps/OneClickAndroid" name="cyngn/OneClickAndroid" />
 
   <!-- Device repositories that can be translated -->
   <project path="device/asus/tf300t" name="CyanogenMod/android_device_asus_tf300t" />
