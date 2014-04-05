@@ -23,10 +23,22 @@ The script is currently only python2 supported.
 
 Executing
 ---------
-    Go to root of your local copy of CyanogenMod's source code
+Go to root of your local copy of CyanogenMod's source code and execute:
+
     ./cm_crowdin_sync.py
 
 Bugs
 ----
  - When committing fails, the reason of it cannot be determined. Often this is just when there
    are no new translations, so the script will not exit when this happens.
+
+Submitting changes
+------------------
+This repository is preconfigured to use the git-review plugin. More information can be found at:
+https://pypi.python.org/pypi/git-review
+
+You can upload your change to gerrit with commands like these:
+
+    git add *
+    git commit
+    git review
