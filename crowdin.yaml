@@ -149,6 +149,12 @@ files:
 
 # Other projects
 
+  # WallpaperCropper
+  -
+    source:      '/frameworks/base/packages/WallpaperCropper/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Apollo
   -
     source:      '/packages/apps/Apollo/res/values/strings.xml'
