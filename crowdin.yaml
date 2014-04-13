@@ -211,6 +211,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # UserDictionaryProvider
+  -
+    source:      '/packages/providers/UserDictionaryProvider/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Galaxy4
   -
     source:      '/packages/wallpapers/Galaxy4/res/values/strings.xml'
