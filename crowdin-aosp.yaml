@@ -1,0 +1,136 @@
+# crowdin-aosp.yaml
+#
+# Crowdin configuration file for CyanogenMod's
+# additional languages not supported by AOSP
+#
+# Copyright (C) 2014 The CyanogenMod Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+project_identifier: cyanogenmod-aosp
+api_key: your_api_key
+base_path: your/path
+preserve_hierarchy: true
+
+files:
+  # Framework packages
+  -
+    source:      '/frameworks/base/core/res/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: &anchor
+      android_code:
+        ast: es-rXA
+        ku: ku
+        lb: lb
+        ml-IN: ml
+        pa-IN: pa
+        ta: ta
+        ug: ug
+
+  -
+    source:      '/frameworks/base/packages/**/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /frameworks/base/packages/services
+      - /frameworks/base/packages/WallpaperCropper
+      - /frameworks/base/packages/Keyguard/test
+
+  # Apps
+  -
+    source:      '/packages/apps/**/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /packages/apps/**/tests
+      - /packages/apps/Apollo
+      - /packages/apps/BluetoothExt
+      - /packages/apps/CM*
+      - /packages/apps/DSPManager
+      - /packages/apps/Email/emailcommon
+      - /packages/apps/LockClock
+      - /packages/apps/Mms/apptests
+      - /packages/apps/OneClickAndroid
+      - /packages/apps/SamsungServiceMode
+      - /packages/apps/SpeechRecorder
+      - /packages/apps/Torch
+      - /packages/apps/Trebuchet
+      - /packages/apps/VoicePlus
+
+  -
+    source:      '/packages/apps/Bluetooth/res/values/strings_pbap.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  -
+    source:      '/packages/apps/Calendar/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  -
+    source:      '/packages/apps/DeskClock/res/values/array.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  -
+    source:      '/packages/apps/Gallery2/res/values/filtershow_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  -
+    source:      '/packages/apps/Mms/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  -
+    source:      '/packages/apps/Settings/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Input methods
+  -
+    source:      '/packages/inputmethods/LatinIME/java/res/values/strings*.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Providers
+  -
+    source:      '/packages/providers/**/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /packages/providers/**/tests
+      - /packages/providers/PartnerBookmarksProvider
+      - /packages/providers/UserDictionaryProvider
+
+  # Screensavers
+  -
+    source:      '/packages/screensavers/**/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Services
+  -
+    source:      '/packages/services/**/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /packages/services/**/tests
+
+  # Wallpapers
+  -
+    source:      '/packages/wallpapers/**/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /packages/wallpapers/Galaxy4
