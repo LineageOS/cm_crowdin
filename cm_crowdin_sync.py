@@ -178,6 +178,9 @@ def sync_js_translations(sync_type, path, lang=''):
     file_write.close()
 
 def push_as_commit(path, name):
+    # CM gerrit nickname
+    username = 'your_nickname'
+
     # Get path
     path = os.getcwd() + '/' + path
 
@@ -185,8 +188,8 @@ def push_as_commit(path, name):
     repo = git.Repo(path)
     repo.git.add(path)
     try:
-        repo.git.commit(m='DO NOT MERGE: Automatic translation import test commit')
-#        repo.git.push('ssh://cobjeM@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/cm-11.0')
+        repo.git.commit(m='Automatic translation import')
+        repo.git.push('ssh://' + username + '@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/cm-11.0')
         print 'Succesfully pushed commit for ' + name
     except:
         # If git commit fails, it's probably because of no changes.
