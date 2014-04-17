@@ -177,7 +177,7 @@ def sync_js_translations(sync_type, path, lang=''):
     # Close file
     file_write.close()
 
-def push_as_commit(path, name):
+def push_as_commit(path, name, branch):
     # CM gerrit nickname
     username = 'your_nickname'
 
@@ -189,7 +189,7 @@ def push_as_commit(path, name):
     repo.git.add(path)
     try:
         repo.git.commit(m='Automatic translation import')
-        repo.git.push('ssh://' + username + '@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/cm-11.0')
+        repo.git.push('ssh://' + username + '@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/' + branch)
         print 'Succesfully pushed commit for ' + name
     except:
         # If git commit fails, it's probably because of no changes.
@@ -335,13 +335,17 @@ for path in iter(proc.stdout.readline,''):
                 # Obtain them from android/default.xml or extra_packages.xml.
                 if project_item.attributes["path"].value == good_path:
                     working = 'true'
-                    print 'Committing ' + project_item.attributes['name'].value + ' (based on android/default.xml or extra_packages.xml)'
-                    push_as_commit(good_path, project_item.attributes['name'].value)
+                    if project_item.hasAttribute('revision'):
+                        branch = project_item.attributes['revision'].value
+                    else:
+                        branch = 'cm-11.0'
+                    print 'Committing ' + project_item.attributes['name'].value + ' on branch ' + branch + ' (based on android/default.xml or extra_packages.xml)'
+                    push_as_commit(good_path, project_item.attributes['name'].value, branch)
             # We also translate repositories that are not downloaded by default (e.g. device parts).
             # This is just a fallback.
             # WARNING: If the name is wrong, this will not stop the script.
             if working == 'false':
-                print 'Committing ' + project_item.attributes['name'].value + ' (workaround)'
-                push_as_commit(good_path, 'CyanogenMod/android_' + good_path.replace('/', '_'))
+                print 'Committing ' + project_item.attributes['name'].value + ' on branch ' + branch + ' (workaround)'
+                push_as_commit(good_path, 'CyanogenMod/android_' + good_path.replace('/', '_'), 'cm-11.0')
 
 print('\nSTEP 6: Done!')
