@@ -99,6 +99,7 @@ files:
       - /packages/services/Telephony/**/cm_arrays.xml
       - /packages/apps/Launcher3/**/*.xml
       - /device/**/overlay/**/*.xml
+      - /development/**/*.xml
 
   # Default for device apps
   -
