@@ -177,7 +177,7 @@ def sync_js_translations(sync_type, path, lang=''):
     # Close file
     file_write.close()
 
-def push_as_commit(path, name):
+def push_as_commit(path, name, branch):
     # Get path
     path = os.getcwd() + '/' + path
 
@@ -186,7 +186,7 @@ def push_as_commit(path, name):
     repo.git.add(path)
     try:
         repo.git.commit(m='DO NOT MERGE: Automatic translation import test commit')
-#        repo.git.push('ssh://cobjeM@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/cm-11.0')
+#        repo.git.push('ssh://cobjeM@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/' + branch)
         print 'Succesfully pushed commit for ' + name
     except:
         # If git commit fails, it's probably because of no changes.
@@ -326,13 +326,14 @@ for path in iter(proc.stdout.readline,''):
                 # Obtain them from android/default.xml.
                 if project_item.attributes["path"].value == good_path:
                     default_manifest = 'true'
-                    push_as_commit(good_path, project_item.attributes['name'].value)
+                    push_as_commit(good_path, project_item.attributes['name'].value, 'cm-11.0')
                     print 'Committing ' + project_item.attributes['name'].value + ' (based on android/default.xml)'
             # We also translate repositories that are not downloaded by default (e.g. device parts).
             # Obtain them from extra_packages.xml.
             if default_manifest == 'false':
                 for project_item in items_extra:
-                    push_as_commit(good_path, project_item.attributes['name'].value)
+                    # TODO: Use branch defined in extra_packages.xml
+                    push_as_commit(good_path, project_item.attributes['name'].value, 'cm-11.0')
                     print 'Committing ' + project_item.attributes['name'].value + ' (based on extra_packages.xml)'
 
 print('STEP 6: Done!')
