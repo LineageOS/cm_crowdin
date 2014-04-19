@@ -195,7 +195,7 @@ def push_as_commit(path, name):
         # If git commit fails, it's probably because of no changes.
         # Just continue.
         print 'No commit pushed (probably empty?) for ' + name
-        print 'WARNING: If the repository name was not obtained from android/default.xml, the name might be wrong!'
+        print 'WARNING: If the repository name was not obtained from android/default.xml or extra_packages.xml, the name might be wrong!'
 
 print('Welcome to the CM Crowdin sync script!')
 
@@ -215,6 +215,11 @@ if not os.path.isfile('android/default.xml'):
     sys.exit('You have no android/default.xml. Terminating.')
 else:
     print('Found: android/default.xml')
+# Check for extra_packages.xml
+if not os.path.isfile('extra_packages.xml'):
+    sys.exit('You have no extra_packages.xml. Terminating.')
+else:
+    print('Found: extra_packages.xml')
 # Check for repo
 try:
     subprocess.check_output(['which', 'repo'])
@@ -308,7 +313,9 @@ print('\nSTEP 5: Push translations to Git')
 # Get all files that Crowdin pushed
 proc = subprocess.Popen(['crowdin-cli', 'list', 'sources'],stdout=subprocess.PIPE)
 xml = minidom.parse('android/default.xml')
+xml_extra = minidom.parse('extra_packages.xml')
 items = xml.getElementsByTagName('project')
+items += xml_extra.getElementsByTagName('project')
 all_projects = []
 
 for path in iter(proc.stdout.readline,''):
@@ -324,17 +331,17 @@ for path in iter(proc.stdout.readline,''):
             all_projects.append(good_path)
             working = 'false'
             for project_item in items:
-                # We need to have the Github repository for the git push url. Obtain them from
-                # android/default.xml based on the project root dir.
+                # We need to have the Github repository for the git push url.
+                # Obtain them from android/default.xml or extra_packages.xml.
                 if project_item.attributes["path"].value == good_path:
                     working = 'true'
+                    print 'Committing ' + project_item.attributes['name'].value + ' (based on android/default.xml or extra_packages.xml)'
                     push_as_commit(good_path, project_item.attributes['name'].value)
-                    print 'Committing ' + project_item.attributes['name'].value + ' (based on android/default.xml)'
             # We also translate repositories that are not downloaded by default (e.g. device parts).
             # This is just a fallback.
             # WARNING: If the name is wrong, this will not stop the script.
             if working == 'false':
-                push_as_commit(good_path, 'CyanogenMod/android_' + good_path.replace('/', '_'))
                 print 'Committing ' + project_item.attributes['name'].value + ' (workaround)'
+                push_as_commit(good_path, 'CyanogenMod/android_' + good_path.replace('/', '_'))
 
-print('STEP 6: Done!')
+print('\nSTEP 6: Done!')
