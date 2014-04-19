@@ -195,7 +195,6 @@ def push_as_commit(path, name, branch):
         # If git commit fails, it's probably because of no changes.
         # Just continue.
         print 'No commit pushed (probably empty?) for ' + name
-        print 'WARNING: If the repository name was not obtained from android/default.xml or extra_packages.xml, the name might be wrong!'
 
 print('Welcome to the CM Crowdin sync script!')
 
@@ -329,23 +328,15 @@ for path in iter(proc.stdout.readline,''):
         # and check if it's already in there.
         if good_path is not None and not good_path in all_projects:
             all_projects.append(good_path)
-            working = 'false'
             for project_item in items:
                 # We need to have the Github repository for the git push url.
                 # Obtain them from android/default.xml or extra_packages.xml.
                 if project_item.attributes["path"].value == good_path:
-                    working = 'true'
                     if project_item.hasAttribute('revision'):
                         branch = project_item.attributes['revision'].value
                     else:
                         branch = 'cm-11.0'
                     print 'Committing ' + project_item.attributes['name'].value + ' on branch ' + branch + ' (based on android/default.xml or extra_packages.xml)'
                     push_as_commit(good_path, project_item.attributes['name'].value, branch)
-            # We also translate repositories that are not downloaded by default (e.g. device parts).
-            # This is just a fallback.
-            # WARNING: If the name is wrong, this will not stop the script.
-            if working == 'false':
-                print 'Committing ' + project_item.attributes['name'].value + ' on branch cm-11.0 (workaround)'
-                push_as_commit(good_path, 'CyanogenMod/android_' + good_path.replace('/', '_'), 'cm-11.0')
 
 print('\nSTEP 6: Done!')
