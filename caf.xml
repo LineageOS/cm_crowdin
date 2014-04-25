@@ -37,7 +37,6 @@
         <aosp file="strings.xml">http://androidxref.com/4.4.2_r2/raw/packages/apps/Mms/res/values/strings.xml</aosp>
     </item>
     <item path="packages/apps/Settings/res/values">
-        <aosp file="arrays.xml">http://androidxref.com/4.4.2_r2/raw/packages/apps/Settings/res/values/arrays.xml</aosp>
         <aosp file="strings.xml">http://androidxref.com/4.4.2_r2/raw/packages/apps/Settings/res/values/strings.xml</aosp>
     </item>
     <item path="packages/apps/SoundRecorder/res/values">
