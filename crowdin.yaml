@@ -201,6 +201,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # ThemeChooser
+  -
+    source:      '/packages/apps/ThemeChooser/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Torch
   -
     source:      '/packages/apps/Torch/res/values/strings.xml'
@@ -213,6 +219,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # ThemesProvider
+  -
+    source:      '/packages/providers/ThemesProvider/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # UserDictionaryProvider
   -
     source:      '/packages/providers/UserDictionaryProvider/res/values/strings.xml'
@@ -222,12 +234,6 @@ files:
   # Galaxy4
   -
     source:      '/packages/wallpapers/Galaxy4/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # ThemeChooser
-  -
-    source:      '/vendor/tmobile/**/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
