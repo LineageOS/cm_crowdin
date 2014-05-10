@@ -189,6 +189,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # GalleryNext
+  -
+    source:      '/packages/apps/GalleryNext/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # LockClock
   -
     source:      '/packages/apps/LockClock/res/values/strings.xml'
@@ -204,6 +210,12 @@ files:
   # ThemeChooser
   -
     source:      '/packages/apps/ThemeChooser/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # ThemeStore
+  -
+    source:      '/packages/apps/ThemeStore/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
