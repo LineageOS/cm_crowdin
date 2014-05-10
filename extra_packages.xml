@@ -4,7 +4,12 @@
        WARNING: Cid is not working yet for these repositories. -->
   <project path="hardware/qcom/fm" name="CyanogenMod/android_hardware_qcom_fm" />
   <project path="packages/apps/SamsungServiceMode" name="CyanogenMod/android_packages_apps_SamsungServiceMode" />
+
+  <project path="packages/apps/CameraNext" name="cyngn/android_packages_apps_Camera2-resources" />
   <project path="packages/apps/CMFota" name="cyngn/android_packages_apps_FOTA-resources" revision="master" />
+  <project path="packages/apps/GalleryNext" name="cyngn/android_packages_apps_GalleryNext-resources" />
+  <project path="packages/apps/ThemeStore" name="cyngn/android_packages_apps_ThemeStore-resources" />
+
   <project path="packages/apps/OneClickAndroid" name="cyngn/OneClickAndroid" revision="master" />
 
   <!-- Device repositories that can be translated -->
