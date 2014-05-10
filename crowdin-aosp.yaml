@@ -55,15 +55,18 @@ files:
       - /packages/apps/**/tests
       - /packages/apps/Apollo
       - /packages/apps/BluetoothExt
+      - /packages/apps/CameraNext
       - /packages/apps/CM*
       - /packages/apps/DSPManager
       - /packages/apps/Email/emailcommon
+      - /packages/apps/GalleryNext
       - /packages/apps/LockClock
       - /packages/apps/Mms/apptests
       - /packages/apps/OneClickAndroid
       - /packages/apps/SamsungServiceMode
       - /packages/apps/SpeechRecorder
       - /packages/apps/ThemeChooser
+      - /packages/apps/ThemeStore
       - /packages/apps/Torch
       - /packages/apps/Trebuchet
       - /packages/apps/VoicePlus
