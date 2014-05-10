@@ -63,6 +63,7 @@ files:
       - /packages/apps/OneClickAndroid
       - /packages/apps/SamsungServiceMode
       - /packages/apps/SpeechRecorder
+      - /packages/apps/ThemeChooser
       - /packages/apps/Torch
       - /packages/apps/Trebuchet
       - /packages/apps/VoicePlus
@@ -111,6 +112,7 @@ files:
     ignore:
       - /packages/providers/**/tests
       - /packages/providers/PartnerBookmarksProvider
+      - /packages/providers/ThemesProvider
       - /packages/providers/UserDictionaryProvider
 
   # Screensavers
