@@ -148,6 +148,7 @@ files:
     languages_mapping: *anchor
     ignore:
       - /packages/apps/CM*/tests/**/*.xml
+      - /packages/apps/CMKeyguard/**/strings.xml
 
 # Other projects
 
@@ -207,6 +208,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # Screencast
+  -
+    source:      '/packages/apps/Screencast/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # ThemeChooser
   -
     source:      '/packages/apps/ThemeChooser/res/values/strings.xml'
@@ -228,6 +235,12 @@ files:
   # VoicePlus
   -
     source:      '/packages/apps/VoicePlus/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # VoiceWakeup
+  -
+    source:      '/packages/apps/VoiceWakeup/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
