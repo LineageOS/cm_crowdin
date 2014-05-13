@@ -54,6 +54,7 @@ files:
     ignore:
       - /packages/apps/**/tests
       - /packages/apps/Apollo
+      - /packages/apps/AudioFX
       - /packages/apps/BluetoothExt
       - /packages/apps/CameraNext
       - /packages/apps/CM*
@@ -70,6 +71,7 @@ files:
       - /packages/apps/Torch
       - /packages/apps/Trebuchet
       - /packages/apps/VoicePlus
+      - /packages/apps/VoiceWakeup
 
   -
     source:      '/packages/apps/Bluetooth/res/values/strings_pbap.xml'
