@@ -164,7 +164,6 @@ def sync_js_translations(sync_type, path, lang=''):
                 a_line = a_line.replace('l10n.add(\'en\'', 'l10n.add(\'' + lang + '\'')
             # Now write the line
             file_write.write(a_line)
-                        
 
     # Create XML file structure
     if sync_type == 'upload':
@@ -306,7 +305,10 @@ for xml_file in result:
         os.remove(xml_file)
     elif '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>' in open(xml_file).read():
         print ('Removing ' + xml_file)
-        os.remove(xml_file)    
+        os.remove(xml_file)
+    elif '<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>' in open(xml_file).read():
+        print ('Removing ' + xml_file)
+        os.remove(xml_file)
 
 print('\nSTEP 5: Push translations to Git')
 # Get all files that Crowdin pushed

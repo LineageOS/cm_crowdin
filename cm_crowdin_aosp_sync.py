@@ -242,6 +242,9 @@ for xml_file in result:
     elif '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>' in open(xml_file).read():
         print ('Removing ' + xml_file)
         os.remove(xml_file)
+    elif '<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>' in open(xml_file).read():
+        print ('Removing ' + xml_file)
+        os.remove(xml_file)
 
 print('\nSTEP 5: Push translations to Git')
 # Get all files that Crowdin pushed
