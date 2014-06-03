@@ -9,6 +9,7 @@
   <project path="packages/apps/CameraNext" name="cyngn/android_packages_apps_Camera2-resources" />
   <project path="packages/apps/CMFota" name="cyngn/android_packages_apps_FOTA-resources" revision="master" />
   <project path="packages/apps/CMKeyguard" name="cyngn/android_packages_apps_CMKeyguard-resources" />
+  <project path="packages/apps/CMLogger" name="cyngn/android_packages_apps_CMLogger-resources" />
   <project path="packages/apps/GalleryNext" name="cyngn/android_packages_apps_GalleryNext-resources" />
   <project path="packages/apps/Screencast" name="cyngn/android_packages_apps_Screencast-resources" />
   <project path="packages/apps/ThemeStore" name="cyngn/android_packages_apps_ThemeStore-resources" />
