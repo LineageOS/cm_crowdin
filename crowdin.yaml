@@ -94,6 +94,7 @@ files:
       - /**/cm_extra.xml
       - /**/cm_colors.xml
       - /**/cm_dimens.xml
+      - /**/cm_integers.xml
       - /frameworks/base/core/res/**/cm_arrays.xml
       - /frameworks/base/packages/SystemUI/**/cm_arrays.xml
       - /packages/apps/Browser/**/cm_arrays.xml
@@ -151,6 +152,7 @@ files:
     languages_mapping: *anchor
     ignore:
       - /packages/apps/CM*/tests/**/*.xml
+      - /packages/apps/CMHome/**/strings.xml
       - /packages/apps/CMKeyguard/**/strings.xml
 
 # Other projects
