@@ -265,6 +265,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # PhotoPhase
+  -
+    source:      '/packages/wallpapers/PhotoPhase/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Superuser
   -
     source:      '/external/koush/Superuser/Superuser/res/values/strings.xml'

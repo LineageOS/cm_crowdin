@@ -145,3 +145,4 @@ files:
     languages_mapping: *anchor
     ignore:
       - /packages/wallpapers/Galaxy4
+      - /packages/wallpapers/PhotoPhase
