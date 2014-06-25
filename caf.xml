@@ -21,6 +21,9 @@
     <item path="frameworks/base/packages/Keyguard/res/values">
         <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/frameworks/base/packages/Keyguard/res/values/strings.xml</aosp>
     </item>
+    <item path="packages/apps/Bluetooth/res/values">
+        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/apps/Bluetooth/res/values/strings.xml</aosp>
+    </item>
     <item path="packages/apps/Camera2/res/values">
         <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/apps/Camera2/res/values/strings.xml</aosp>
     </item>
