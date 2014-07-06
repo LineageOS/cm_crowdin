@@ -289,17 +289,11 @@ print('\nSTEP 3: Download Crowdin translations')
 # Execute 'crowdin-cli download' and show output
 print(subprocess.check_output(['crowdin-cli', "download"]))
 
-print('\nSTEP 4A: Clean up of source cm_caf.xmls')
-# Remove all cm_caf.xml files, which you can find in the list 'cm_caf'
-for cm_caf_file in cm_caf:
-    print('Removing ' + cm_caf_file)
-    os.remove(cm_caf_file)
-
-print('\nSTEP 4B: Clean up of temp dir')
+print('\nSTEP 4A: Clean up of temp dir')
 # We are done with cm_caf.xml files, so remove tmp/
 shutil.rmtree(os.getcwd() + '/tmp')
 
-print('\nSTEP 4C: Clean up of empty translations')
+print('\nSTEP 4B: Clean up of empty translations')
 # Some line of code that I found to find all XML files
 result = [os.path.join(dp, f) for dp, dn, filenames in os.walk(os.getcwd()) for f in filenames if os.path.splitext(f)[1] == '.xml']
 for xml_file in result:
@@ -315,9 +309,17 @@ for xml_file in result:
         print('Removing ' + xml_file)
         os.remove(xml_file)
 
-print('\nSTEP 5: Push translations to Git')
+print('\nSTEP 5A: Create a list of available translations')
 # Get all files that Crowdin pushed
 proc = subprocess.Popen(['crowdin-cli', 'list', 'sources'],stdout=subprocess.PIPE)
+
+print('\nSTEP 5B: Clean up of source cm_caf.xmls')
+# Remove all cm_caf.xml files, which you can find in the list 'cm_caf'
+for cm_caf_file in cm_caf:
+    print('Removing ' + cm_caf_file)
+    os.remove(cm_caf_file)
+
+print('\nSTEP 5C: Push translations to Git')
 xml = minidom.parse('android/default.xml')
 xml_extra = minidom.parse('extra_packages.xml')
 items = xml.getElementsByTagName('project')
