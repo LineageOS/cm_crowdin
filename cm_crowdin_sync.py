@@ -194,11 +194,11 @@ def push_as_commit(path, name, branch):
     try:
         repo.git.commit(m='Automatic translation import')
         repo.git.push('ssh://' + username + '@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/' + branch)
-        print 'Succesfully pushed commit for ' + name
+        print('Succesfully pushed commit for ' + name)
     except:
         # If git commit fails, it's probably because of no changes.
         # Just continue.
-        print 'No commit pushed (probably empty?) for ' + name
+        print('No commit pushed (probably empty?) for ' + name)
 
 print('Welcome to the CM Crowdin sync script!')
 
@@ -292,7 +292,7 @@ print(subprocess.check_output(['crowdin-cli', "download"]))
 print('\nSTEP 4A: Clean up of source cm_caf.xmls')
 # Remove all cm_caf.xml files, which you can find in the list 'cm_caf'
 for cm_caf_file in cm_caf:
-    print ('Removing ' + cm_caf_file)
+    print('Removing ' + cm_caf_file)
     os.remove(cm_caf_file)
 
 print('\nSTEP 4B: Clean up of temp dir')
@@ -306,13 +306,13 @@ for xml_file in result:
     # We hate empty, useless files. Crowdin exports them with <resources/> (sometimes with xliff).
     # That means: easy to find
     if '<resources/>' in open(xml_file).read():
-        print ('Removing ' + xml_file)
+        print('Removing ' + xml_file)
         os.remove(xml_file)
     elif '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>' in open(xml_file).read():
-        print ('Removing ' + xml_file)
+        print('Removing ' + xml_file)
         os.remove(xml_file)
     elif '<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>' in open(xml_file).read():
-        print ('Removing ' + xml_file)
+        print('Removing ' + xml_file)
         os.remove(xml_file)
 
 print('\nSTEP 5: Push translations to Git')
@@ -343,7 +343,7 @@ for path in iter(proc.stdout.readline,''):
                         branch = project_item.attributes['revision'].value
                     else:
                         branch = 'cm-11.0'
-                    print 'Committing ' + project_item.attributes['name'].value + ' on branch ' + branch + ' (based on android/default.xml or extra_packages.xml)'
+                    print('Committing ' + project_item.attributes['name'].value + ' on branch ' + branch + ' (based on android/default.xml or extra_packages.xml)')
                     push_as_commit(good_path, project_item.attributes['name'].value, branch)
 
 print('\nSTEP 6: Done!')
