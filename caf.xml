@@ -18,6 +18,9 @@
     <item path="frameworks/base/core/res/res/values">
         <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/frameworks/base/core/res/res/values/strings.xml</aosp>
     </item>
+    <item path="frameworks/base/packages/InputDevices/res/values">
+        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/frameworks/base/packages/InputDevices/res/values/strings.xml</aosp>
+    </item>
     <item path="frameworks/base/packages/Keyguard/res/values">
         <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/frameworks/base/packages/Keyguard/res/values/strings.xml</aosp>
     </item>
@@ -48,6 +51,9 @@
     </item>
     <item path="packages/apps/Stk/res/values">
         <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/apps/Stk/res/values/strings.xml</aosp>
+    </item>
+    <item path="packages/apps/Trebuchet/res/values">
+        <aosp file="strings.xml">http://androidxref.com/4.4.2_r2/raw/packages/apps/Launcher3/res/values/strings.xml</aosp>
     </item>
     <item path="packages/services/Telephony/res/values">
         <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/services/Telephony/res/values/strings.xml</aosp>
