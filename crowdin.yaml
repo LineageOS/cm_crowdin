@@ -100,6 +100,7 @@ files:
       - /packages/apps/Calendar/**/cm_arrays.xml
       - /packages/apps/Camera2/**/cm_arrays.xml
       - /packages/apps/DeskClock/**/cm_arrays.xml
+      - /packages/apps/Email/**/cm_arrays.xml
       - /packages/services/Telephony/**/cm_arrays.xml
       - /device/**/overlay/**/*.xml
       - /development/**/*.xml
