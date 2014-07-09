@@ -149,20 +149,19 @@ def push_as_commit(path, name, branch):
 
     # Create git commit
     repo = git.Repo(path)
-    repo.git.add(path)
     removed_files = repo.git.ls_files(d=True).split('\n')
     try:
         repo.git.rm(removed_files)
     except:
         pass
+    repo.git.add('-A')
     try:
         repo.git.commit(m='Automatic translation import')
-        repo.git.push('ssh://' + username + '@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/' + branch)
-        print('Succesfully pushed commit for ' + name)
     except:
-        # If git commit fails, it's probably because of no changes.
-        # Just continue.
-        print('No commit pushed (probably empty?) for ' + name)
+        print('Failed to create commit for ' + name + ', probably empty: skipping')
+        return
+    repo.git.push('ssh://' + username + '@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/' + branch)
+    print('Succesfully pushed commit for ' + name)
 
 print('Welcome to the CM Crowdin sync script!')
 
