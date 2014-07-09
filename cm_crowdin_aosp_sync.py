@@ -149,14 +149,13 @@ def push_as_commit(path, name, branch):
 
     # Create git commit
     repo = git.Repo(path)
-    repo.git.add(path)
     removed_files = repo.git.ls_files(d=True).split('\n')
     try:
         repo.git.rm(removed_files)
     except:
         pass
     try:
-        repo.git.commit(m='Automatic translation import')
+        repo.git.commit('-a', m='Automatic translation import')
         repo.git.push('ssh://' + username + '@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/' + branch)
         print('Succesfully pushed commit for ' + name)
     except:
