@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba0121b8_46b75039",
+        "filename": "caf.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-07-09T00:37:45Z",
+      "side": 1,
+      "message": "To anyone who is wondering, check against 4.4.2_r2 is intentional",
+      "revId": "00f55296dedf3cca770ea29d51d48f5965bd11b4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
