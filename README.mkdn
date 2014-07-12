@@ -1,21 +1,23 @@
-cm_crowdin_sync.py
-==================
+CM Crowdin sync scripts
+=======================
 
 Introduction
 ------------
-This script is used to synchronize CyanogenMod's translations with Crowdin's. It automatically creates cm_caf.xml files, containing
-CAF additions that cannot be seperated in CM source, based on the AOSP base file, and removes them after the push. Also, it can handle
-automatic commiting to Git and pushing/downloading to/from Crowdin.
+Both scripts in this repository are used to synchronize the available translations of CyanogenMod with Crowdin. CAF translations, which need
+to reside in a `cm_caf.xml` file for non-default translations, are created automatically before the sync and removed before the commit creation
+(it would otherwise cause trouble since the translations would be defined twice). When the non-AOSP languages are being synchronized, they are
+actually removed since the AOSP source translations are uploaded, but the `cm_caf.xml` files also exist.
+The push to Gerrit is done automatically.
 
 Prerequisites
 -------------
-The Ruby variant of crowdin-cli is required for this to work.
+The Ruby variant of `crowdin-cli` is required for this to work.
 
     \curl -sSL https://get.rvm.io | bash -s stable --ruby
     source /home/therbom/.rvm/scripts/rvm # Add this to your .bashrc file!
     rvm all do gem install crowdin-cli
 
-python-git is used for Git integration.
+[GitPython](https://pythonhosted.org/GitPython/0.3.1/intro.html) is used for Git integration.
 
     sudo apt-get install python-git
 
@@ -23,14 +25,20 @@ The script is currently only python2 supported.
 
 Executing
 ---------
-Go to root of your local copy of CyanogenMod's source code and execute:
+The files in this repository need to be placed in the root of your local copy of CyanogenMod's source code. Execute:
 
     ./cm_crowdin_sync.py
 
-Bugs
+TODO
 ----
- - When committing fails, the reason of it cannot be determined. Often this is just when there
-   are no new translations, so the script will not exit when this happens.
+ - JS translations (website translations) are not supported yet
+ - When committing fails (mostly because there are no new translations), the script just continues without actually finding out the true
+   reason behind the failure
+ - Scripts will need to be combined
+ - The code structure needs optimizations
+ - Add command line parameters instead of hardcoding it in the files (API key, Gerrit username etc.)
+ - Move to Python 3
+ - Determine default branch by using `android/default.xml` instead of hardcoding `cm-11.0` (in this case)
 
 Submitting changes
 ------------------
