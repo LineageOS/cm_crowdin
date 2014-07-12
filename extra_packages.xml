@@ -28,4 +28,8 @@
   <project path="device/samsung/aries-common" name="CyanogenMod/android_device_samsung_aries-common" />
   <project path="device/samsung/galaxys2-common" name="CyanogenMod/android_device_samsung_galaxys2-common" />
   <project path="device/samsung/p1-common" name="CyanogenMod/android_device_samsung_p1-common" />
+
+  <!-- Website translations -->
+  <project path="website/getcm-translations" name="CyanogenMod/getcm-translations" revision="master" />
+  <project path="website/CMAccountWebsite" name="CyanogenMod/CMAccountWebsite" revision="master" />
 </manifest>
