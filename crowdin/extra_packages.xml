@@ -22,7 +22,7 @@
   <project path="device/asus/tf700t" name="CyanogenMod/android_device_asus_tf700t" />
   <project path="device/bn/acclaim" name="CyanogenMod/android_device_bn_acclaim" />
   <project path="device/bn/common" name="CyanogenMod/android_device_bn_common" />
-  <project path="device/motorola/moto_msm8960" name="CyanogenMod/android_device_motorola_moto_msm8960" />
+  <project path="device/motorola/xt897" name="CyanogenMod/android_device_motorola_xt897" />
   <project path="device/oppo/common" name="CyanogenMod/android_device_oppo_common" />
   <project path="device/samsung/apexqtmo" name="CyanogenMod/android_device_samsung_apexqtmo" />
   <project path="device/samsung/aries-common" name="CyanogenMod/android_device_samsung_aries-common" />
