@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a061dce_4caf9be3",
+        "filename": "cm_crowdin_sync_all.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2014-07-15T03:31:39Z",
+      "side": 1,
+      "message": "In alphabetical order? So this one up",
+      "revId": "6630f7b5281d2318559e9fa7bfd6af796514488b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_2cace7ec",
+        "filename": "cm_crowdin_sync_all.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2014-07-15T03:31:39Z",
+      "side": 1,
+      "message": "crowdin/crowdin_cm.yaml and crowdin/crowdin_aosp.yaml",
+      "revId": "6630f7b5281d2318559e9fa7bfd6af796514488b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_8cb9b331",
+        "filename": "cm_crowdin_sync_all.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2014-07-15T03:31:39Z",
+      "side": 1,
+      "message": "I added this warning (\u0027based on...\u0027) in the beginning, because at that time there were two ways to determine the repository name: by guessing and by using the xmls. Because now we are only using the xmls, I think this can be removed.",
+      "revId": "6630f7b5281d2318559e9fa7bfd6af796514488b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
