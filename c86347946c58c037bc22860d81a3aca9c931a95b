@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a061dce_ac863763",
+        "filename": "cm_crowdin_sync_all.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2014-07-15T04:01:48Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem to be used.",
+      "revId": "c86347946c58c037bc22860d81a3aca9c931a95b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
