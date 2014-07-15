@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a061dce_2c37c7e4",
+        "filename": "cm_crowdin_sync_all.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-07-15T01:46:47Z",
+      "side": 1,
+      "message": "cm_crowdin_sync_all.py",
+      "revId": "1f75fe16a083250b3782c04f7f436af78498209d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_0c576303",
+        "filename": "cm_crowdin_sync_all.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-07-15T01:46:47Z",
+      "side": 1,
+      "message": "should be crowdin_cm.yaml",
+      "revId": "1f75fe16a083250b3782c04f7f436af78498209d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_ec5b0f2d",
+        "filename": "cm_crowdin_sync_all.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-07-15T01:46:47Z",
+      "side": 1,
+      "message": "crowdin_cm.yaml",
+      "revId": "1f75fe16a083250b3782c04f7f436af78498209d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_4c415b39",
+        "filename": "cm_crowdin_sync_all.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-07-15T01:46:47Z",
+      "side": 1,
+      "message": "crowdin_aosp.yaml",
+      "revId": "1f75fe16a083250b3782c04f7f436af78498209d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
