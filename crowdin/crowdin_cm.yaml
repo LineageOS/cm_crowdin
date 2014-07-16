@@ -151,7 +151,6 @@ files:
     languages_mapping: *anchor
     ignore:
       - /packages/apps/CM*/tests/**/*.xml
-      - /packages/apps/CMHome/**/strings.xml
       - /packages/apps/CMKeyguard/**/strings.xml
 
 # Other projects
