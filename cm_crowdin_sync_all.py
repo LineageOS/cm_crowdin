@@ -213,32 +213,40 @@ def purge_caf_additions(strings_base, strings_cm):
         file_this.write(addition + '\n')
     file_this.close()
 
-def push_as_commit(path, name, branch):
-    # CM gerrit nickname
-    username = 'your_nickname'
+def push_as_commit(path, name, branch, username):
+    print('Committing ' + name + ' on branch ' + branch)
 
     # Get path
     path = os.getcwd() + '/' + path
 
-    # Create git commit
+    # Create repo object
     repo = git.Repo(path)
+
+    # Remove previously deleted files from Git
     removed_files = repo.git.ls_files(d=True).split('\n')
     try:
         repo.git.rm(removed_files)
     except:
         pass
+
+    # Add all files to commit
     repo.git.add('-A')
+
+    # Create commit; if it fails, probably empty so skipping
     try:
         repo.git.commit(m='Automatic translation import')
     except:
         print('Failed to create commit for ' + name + ', probably empty: skipping')
         return
+
+    # Push commit
     repo.git.push('ssh://' + username + '@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/' + branch)
+ 
     print('Succesfully pushed commit for ' + name)
 
 print('Welcome to the CM Crowdin sync script!')
 
-print('\nSTEP 0: Checking dependencies')
+print('\nSTEP 0A: Checking dependencies')
 # Check for Ruby version of crowdin-cli
 if subprocess.check_output(['rvm', 'all', 'do', 'gem', 'list', 'crowdin-cli', '-i']) == 'true':
     sys.exit('You have not installed crowdin-cli. Terminating.')
@@ -281,12 +289,29 @@ if not os.path.isfile('crowdin/extra_packages.xml'):
 else:
     print('Found: crowdin/extra_packages.xml')
 
-print('\nSTEP 1: Remove CAF additions (non-AOSP supported languages)')
-# Load crowdin/caf.xml
-print('Loading crowdin/caf.xml')
+print('\nSTEP 0B: Define shared variables')
+
+# Variables regarding crowdin/caf.xml
+print('Loading: crowdin/caf.xml')
 xml = minidom.parse('crowdin/caf.xml')
 items = xml.getElementsByTagName('item')
 
+# Gerrit user name
+username = 'your_nickname'
+print('Gerrit username: ' + username)
+
+print('\nSTEP 0C: Download AOSP base files')
+for item in items:
+    path_to_values = item.attributes["path"].value
+    subprocess.call(['mkdir', '-p', 'tmp/' + path_to_values])
+    for aosp_item in item.getElementsByTagName('aosp'):
+        url = aosp_item.firstChild.nodeValue
+        xml_file = aosp_item.attributes["file"].value
+        path_to_base = 'tmp/' + path_to_values + '/' + xml_file
+        urlretrieve(url, path_to_base)
+        print('Downloaded: ' + path_to_base)
+
+print('\nSTEP 1: Remove CAF additions (non-AOSP supported languages)')
 # Store all created cm_caf.xml files in here.
 # Easier to remove them afterwards, as they cannot be committed
 cm_caf_add = []
@@ -294,13 +319,10 @@ cm_caf_add = []
 for item in items:
     # Create tmp dir for download of AOSP base file
     path_to_values = item.attributes["path"].value
-    subprocess.call(['mkdir', '-p', 'tmp/' + path_to_values])
     for aosp_item in item.getElementsByTagName('aosp'):
-        url = aosp_item.firstChild.nodeValue
         xml_file = aosp_item.attributes["file"].value
         path_to_base = 'tmp/' + path_to_values + '/' + xml_file
         path_to_cm = path_to_values + '/' + xml_file
-        urlretrieve(url, path_to_base)
         purge_caf_additions(path_to_base, path_to_cm)
         cm_caf_add.append(path_to_cm)
         print('Purged ' + path_to_cm + ' from CAF additions')
@@ -316,11 +338,6 @@ for purged_file in cm_caf_add:
     print('Reverted purged file ' + purged_file)
 
 print('\nSTEP 4: Create source cm_caf.xmls (AOSP supported languages)')
-# Load crowdin/caf.xml
-print('Loading crowdin/caf.xml')
-xml = minidom.parse('crowdin/caf.xml')
-items = xml.getElementsByTagName('item')
-
 # Store all created cm_caf.xml files in here.
 # Easier to remove them afterwards, as they cannot be committed
 cm_caf = []
@@ -328,7 +345,6 @@ cm_caf = []
 for item in items:
     # Create tmp dir for download of AOSP base file
     path_to_values = item.attributes["path"].value
-    subprocess.call(['mkdir', '-p', 'tmp/' + path_to_values])
     # Create cm_caf.xml - header
     f = codecs.open(path_to_values + '/cm_caf.xml', 'w', 'utf-8')
     f.write('<?xml version="1.0" encoding="utf-8"?>\n')
@@ -353,11 +369,9 @@ for item in items:
     contents = []
     item_aosp = item.getElementsByTagName('aosp')
     for aosp_item in item_aosp:
-        url = aosp_item.firstChild.nodeValue
         xml_file = aosp_item.attributes["file"].value
         path_to_base = 'tmp/' + path_to_values + '/' + xml_file
         path_to_cm = path_to_values + '/' + xml_file
-        urlretrieve(url, path_to_base)
         contents = contents + get_caf_additions(path_to_base, path_to_cm)
     for addition in contents:
         f.write(addition + '\n')
@@ -423,20 +437,27 @@ for path in iter(proc.stdout.readline,''):
     # Get project root dir from Crowdin's output
     m = re.search('/(.*Superuser)/Superuser.*|/(.*LatinIME).*|/(frameworks/base).*|/(.*CMFileManager).*|/(device/.*/.*)/.*/res/values.*|/(hardware/.*/.*)/.*/res/values.*|/(.*)/res/values.*', path)
     for good_path in m.groups():
+        if good_path is None:
+            # No good match found, go to next possible match
+            continue
+        if good_path in all_projects:
+            # Already committed for this project, go to next project
+            break
         # When a project has multiple translatable files, Crowdin will give duplicates.
         # We don't want that (useless empty commits), so we save each project in all_projects
         # and check if it's already in there.
-        if good_path is not None and not good_path in all_projects:
-            all_projects.append(good_path)
-            for project_item in items:
-                # We need to have the Github repository for the git push url.
-                # Obtain them from android/default.xml or crowdin/extra_packages.xml.
-                if project_item.attributes['path'].value == good_path:
-                    if project_item.hasAttribute('revision'):
-                        branch = project_item.attributes['revision'].value
-                    else:
-                        branch = 'cm-11.0'
-                    print('Committing ' + project_item.attributes['name'].value + ' on branch ' + branch)
-                    push_as_commit(good_path, project_item.attributes['name'].value, branch)
+        all_projects.append(good_path)
+
+        # Search in android/default.xml or crowdin/extra_packages.xml for the project's name
+        for project_item in items:
+            if project_item.attributes['path'].value != good_path:
+                # No match found, go to next item
+                continue
+            # Define branch (custom branch if defined in xml file, otherwise 'cm-11.0'
+            if project_item.hasAttribute('revision'):
+                branch = project_item.attributes['revision'].value
+            else:
+                branch = 'cm-11.0'
+            push_as_commit(good_path, project_item.attributes['name'].value, branch, username)
 
 print('\nDone!')
