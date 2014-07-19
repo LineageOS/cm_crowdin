@@ -238,7 +238,7 @@ def push_as_commit(path, name, branch):
 
 print('Welcome to the CM Crowdin sync script!')
 
-print('\nSTEP 0: Checking dependencies')
+print('\nSTEP 0A: Checking dependencies')
 # Check for Ruby version of crowdin-cli
 if subprocess.check_output(['rvm', 'all', 'do', 'gem', 'list', 'crowdin-cli', '-i']) == 'true':
     sys.exit('You have not installed crowdin-cli. Terminating.')
@@ -281,12 +281,25 @@ if not os.path.isfile('crowdin/extra_packages.xml'):
 else:
     print('Found: crowdin/extra_packages.xml')
 
-print('\nSTEP 1: Remove CAF additions (non-AOSP supported languages)')
-# Load crowdin/caf.xml
-print('Loading crowdin/caf.xml')
+print('\nSTEP 0B: Define shared variables')
+
+# Variables regarding crowdin/caf.xml
+print('Loading: crowdin/caf.xml')
 xml = minidom.parse('crowdin/caf.xml')
 items = xml.getElementsByTagName('item')
 
+print('\nSTEP 0C: Download AOSP base files')
+for item in items:
+    path_to_values = item.attributes["path"].value
+    subprocess.call(['mkdir', '-p', 'tmp/' + path_to_values])
+    for aosp_item in item.getElementsByTagName('aosp'):
+        url = aosp_item.firstChild.nodeValue
+        xml_file = aosp_item.attributes["file"].value
+        path_to_base = 'tmp/' + path_to_values + '/' + xml_file
+        urlretrieve(url, path_to_base)
+        print('Downloaded: ' + path_to_base)
+
+print('\nSTEP 1: Remove CAF additions (non-AOSP supported languages)')
 # Store all created cm_caf.xml files in here.
 # Easier to remove them afterwards, as they cannot be committed
 cm_caf_add = []
@@ -294,13 +307,10 @@ cm_caf_add = []
 for item in items:
     # Create tmp dir for download of AOSP base file
     path_to_values = item.attributes["path"].value
-    subprocess.call(['mkdir', '-p', 'tmp/' + path_to_values])
     for aosp_item in item.getElementsByTagName('aosp'):
-        url = aosp_item.firstChild.nodeValue
         xml_file = aosp_item.attributes["file"].value
         path_to_base = 'tmp/' + path_to_values + '/' + xml_file
         path_to_cm = path_to_values + '/' + xml_file
-        urlretrieve(url, path_to_base)
         purge_caf_additions(path_to_base, path_to_cm)
         cm_caf_add.append(path_to_cm)
         print('Purged ' + path_to_cm + ' from CAF additions')
@@ -316,11 +326,6 @@ for purged_file in cm_caf_add:
     print('Reverted purged file ' + purged_file)
 
 print('\nSTEP 4: Create source cm_caf.xmls (AOSP supported languages)')
-# Load crowdin/caf.xml
-print('Loading crowdin/caf.xml')
-xml = minidom.parse('crowdin/caf.xml')
-items = xml.getElementsByTagName('item')
-
 # Store all created cm_caf.xml files in here.
 # Easier to remove them afterwards, as they cannot be committed
 cm_caf = []
@@ -328,7 +333,6 @@ cm_caf = []
 for item in items:
     # Create tmp dir for download of AOSP base file
     path_to_values = item.attributes["path"].value
-    subprocess.call(['mkdir', '-p', 'tmp/' + path_to_values])
     # Create cm_caf.xml - header
     f = codecs.open(path_to_values + '/cm_caf.xml', 'w', 'utf-8')
     f.write('<?xml version="1.0" encoding="utf-8"?>\n')
@@ -353,11 +357,9 @@ for item in items:
     contents = []
     item_aosp = item.getElementsByTagName('aosp')
     for aosp_item in item_aosp:
-        url = aosp_item.firstChild.nodeValue
         xml_file = aosp_item.attributes["file"].value
         path_to_base = 'tmp/' + path_to_values + '/' + xml_file
         path_to_cm = path_to_values + '/' + xml_file
-        urlretrieve(url, path_to_base)
         contents = contents + get_caf_additions(path_to_base, path_to_cm)
     for addition in contents:
         f.write(addition + '\n')
