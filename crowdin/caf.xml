@@ -16,46 +16,46 @@
 -->
 <files>
     <item path="frameworks/base/core/res/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/frameworks/base/core/res/res/values/strings.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/frameworks/base/core/res/res/values/strings.xml</aosp>
     </item>
     <item path="frameworks/base/packages/InputDevices/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/frameworks/base/packages/InputDevices/res/values/strings.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/frameworks/base/packages/InputDevices/res/values/strings.xml</aosp>
     </item>
     <item path="frameworks/base/packages/Keyguard/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/frameworks/base/packages/Keyguard/res/values/strings.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/frameworks/base/packages/Keyguard/res/values/strings.xml</aosp>
     </item>
     <item path="packages/apps/Bluetooth/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/apps/Bluetooth/res/values/strings.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/Bluetooth/res/values/strings.xml</aosp>
     </item>
     <item path="packages/apps/Camera2/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/apps/Camera2/res/values/strings.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/Camera2/res/values/strings.xml</aosp>
     </item>
     <item path="packages/apps/Dialer/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/apps/Dialer/res/values/strings.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/Dialer/res/values/strings.xml</aosp>
     </item>
     <item path="packages/apps/Gallery2/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/apps/Gallery2/res/values/strings.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/Gallery2/res/values/strings.xml</aosp>
     </item>
     <item path="packages/apps/InCallUI/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/apps/InCallUI/res/values/strings.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/InCallUI/res/values/strings.xml</aosp>
     </item>
     <item path="packages/apps/Mms/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/apps/Mms/res/values/strings.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/Mms/res/values/strings.xml</aosp>
     </item>
     <item path="packages/apps/Settings/res/values">
-        <aosp file="arrays.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/apps/Settings/res/values/arrays.xml</aosp>
-        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/apps/Settings/res/values/strings.xml</aosp>
+        <aosp file="arrays.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/Settings/res/values/arrays.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/Settings/res/values/strings.xml</aosp>
     </item>
     <item path="packages/apps/SoundRecorder/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/apps/SoundRecorder/res/values/strings.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/SoundRecorder/res/values/strings.xml</aosp>
     </item>
     <item path="packages/apps/Stk/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/apps/Stk/res/values/strings.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/Stk/res/values/strings.xml</aosp>
     </item>
     <item path="packages/apps/Trebuchet/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.2_r2/raw/packages/apps/Launcher3/res/values/strings.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/Launcher3/res/values/strings.xml</aosp>
     </item>
     <item path="packages/services/Telephony/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.3_r1.1/raw/packages/services/Telephony/res/values/strings.xml</aosp>
+        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/services/Telephony/res/values/strings.xml</aosp>
     </item>
 </files>
