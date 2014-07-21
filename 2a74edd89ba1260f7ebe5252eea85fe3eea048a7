@@ -16,6 +16,24 @@
       "revId": "2a74edd89ba1260f7ebe5252eea85fe3eea048a7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_0a5f3e73",
+        "filename": "crowdin/caf.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2014-07-21T07:05:55Z",
+      "side": 1,
+      "message": "It should stay at 4.4.2_r2",
+      "parentUuid": "9a061dce_8f7400fe",
+      "revId": "2a74edd89ba1260f7ebe5252eea85fe3eea048a7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
