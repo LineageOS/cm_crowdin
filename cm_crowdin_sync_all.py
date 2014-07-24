@@ -305,7 +305,7 @@ for item in items:
         cm_caf_add.append(path_to_cm)
         print('Purged ' + path_to_cm + ' from CAF additions')
 
-print('\nSTEP 2: Upload Crowdin source translations (non-AOSP supported languages')
+print('\nSTEP 2: Upload Crowdin source translations (non-AOSP supported languages)')
 # Execute 'crowdin-cli upload sources' and show output
 print(subprocess.check_output(['crowdin-cli', '-c', 'crowdin/crowdin_aosp.yaml', 'upload', 'sources']))
 
