@@ -142,7 +142,7 @@ def purge_caf_additions(strings_base, strings_cm):
             content2 = []
             for i in content:
                 if true == 0:
-                    test = re.search('(<string name=\"' + name + ')', i)
+                    test = re.search('(<string name=\"' + name + '\")', i)
                     if test is not None:
                         test2 = re.search('(</string>)', i)
                         if test2:
@@ -166,7 +166,7 @@ def purge_caf_additions(strings_base, strings_cm):
             content2 = []
             for i in content:
                 if true == 0:
-                    test = re.search('(<string-array name=\"' + name + ')', i)
+                    test = re.search('(<string-array name=\"' + name + '\")', i)
                     if test is not None:
                         test2 = re.search('(</string-array>)', i)
                         if test2:
@@ -190,7 +190,7 @@ def purge_caf_additions(strings_base, strings_cm):
             content2 = []
             for i in content:
                 if true == 0:
-                    test = re.search('(<plurals name=\"' + name + ')', i)
+                    test = re.search('(<plurals name=\"' + name + '\")', i)
                     if test is not None:
                         test2 = re.search('(</plurals>)', i)
                         if test2:
