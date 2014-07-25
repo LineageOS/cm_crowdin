@@ -30,6 +30,7 @@ files:
     languages_mapping: &anchor
       android_code:
         ast: es-rXA
+        be: be
         bn: bn
         eu: eu
         is: is
