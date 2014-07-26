@@ -307,7 +307,7 @@ for item in items:
 
 print('\nSTEP 2: Upload Crowdin source translations (non-AOSP supported languages)')
 # Execute 'crowdin-cli upload sources' and show output
-print(subprocess.check_output(['crowdin-cli', '-c', 'crowdin/crowdin_aosp.yaml', 'upload', 'sources']))
+print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'upload', 'sources']))
 
 print('\nSTEP 3: Revert removal of CAF additions (non-AOSP supported languages)')
 for purged_file in cm_caf_add:
@@ -369,15 +369,15 @@ for item in items:
 
 print('\nSTEP 5: Upload Crowdin source translations (AOSP supported languages)')
 # Execute 'crowdin-cli upload sources' and show output
-print(subprocess.check_output(['crowdin-cli', '-c', 'crowdin/crowdin_cm.yaml', 'upload', 'sources']))
+print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'upload', 'sources']))
 
 print('\nSTEP 6A: Download Crowdin translations (AOSP supported languages)')
 # Execute 'crowdin-cli download' and show output
-print(subprocess.check_output(['crowdin-cli', '-c', 'crowdin/crowdin_cm.yaml', 'download']))
+print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'download']))
 
 print('\nSTEP 6B: Download Crowdin translations (non-AOSP supported languages)')
 # Execute 'crowdin-cli download' and show output
-print(subprocess.check_output(['crowdin-cli', '-c', 'crowdin/crowdin_aosp.yaml', 'download']))
+print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'download']))
 
 print('\nSTEP 7: Remove temp dir')
 # We are done with cm_caf.xml files, so remove tmp/
@@ -404,7 +404,7 @@ for xml_file in result:
 
 print('\nSTEP 9: Create a list of pushable translations')
 # Get all files that Crowdin pushed
-proc = subprocess.Popen(['crowdin-cli -c crowdin/crowdin_cm.yaml list sources && crowdin-cli -c crowdin/crowdin_aosp.yaml list sources'], stdout=subprocess.PIPE, shell=True)
+proc = subprocess.Popen(['crowdin-cli --config=crowdin/crowdin_cm.yaml --identity=crowdin/config_cm.yaml list sources && crowdin-cli --config=crowdin/crowdin_aosp.yaml --identity=crowdin/config_aosp.yaml list sources'], stdout=subprocess.PIPE, shell=True)
 proc.wait() # Wait for the above to finish
 
 print('\nSTEP 10: Remove unwanted source cm_caf.xmls (AOSP supported languages)')
