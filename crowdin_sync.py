@@ -413,7 +413,7 @@ for item in items:
 
 print('\nSTEP 2: Upload Crowdin source translations (non-AOSP supported languages)')
 # Execute 'crowdin-cli upload sources' and show output
-print(subprocess.check_output(['crowdin-cli', '-c', 'crowdin/crowdin_aosp.yaml', 'upload', 'sources']))
+print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'upload', 'sources']))
 
 ############################################## STEP 3 ##############################################
 
@@ -486,16 +486,16 @@ for item in items_js:
 ############################################## STEP 6 ##############################################
 print('\nSTEP 6: Upload Crowdin source translations (AOSP supported languages)')
 # Execute 'crowdin-cli upload sources' and show output
-print(subprocess.check_output(['crowdin-cli', '-c', 'crowdin/crowdin_cm.yaml', 'upload', 'sources']))
+print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'upload', 'sources']))
 
 ############################################## STEP 7 ##############################################
 print('\nSTEP 7A: Download Crowdin translations (AOSP supported languages)')
 # Execute 'crowdin-cli download' and show output
-print(subprocess.check_output(['crowdin-cli', '-c', 'crowdin/crowdin_cm.yaml', 'download']))
+print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'download']))
 
 print('\nSTEP 7B: Download Crowdin translations (non-AOSP supported languages)')
 # Execute 'crowdin-cli download' and show output
-print(subprocess.check_output(['crowdin-cli', '-c', 'crowdin/crowdin_aosp.yaml', 'download']))
+print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'download']))
 
 ############################################## STEP 8 ##############################################
 print('\nSTEP 8: Remove temp dir')
@@ -520,7 +520,7 @@ for js_file in js_files:
 ############################################## STEP 10 #############################################
 print('\nSTEP 10: Create a list of pushable translations')
 # Get all files that Crowdin pushed
-proc = subprocess.Popen(['crowdin-cli -c crowdin/crowdin_cm.yaml list sources && crowdin-cli -c crowdin/crowdin_aosp.yaml list sources'], stdout=subprocess.PIPE, shell=True)
+proc = subprocess.Popen(['crowdin-cli --config=crowdin/crowdin_cm.yaml --identity=crowdin/config_cm.yaml list sources && crowdin-cli --config=crowdin/crowdin_aosp.yaml --identity=crowdin/config_aosp.yaml list sources'], stdout=subprocess.PIPE, shell=True)
 proc.wait() # Wait for the above to finish
 
 ############################################## STEP 11 #############################################
