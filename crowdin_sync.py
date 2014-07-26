@@ -336,6 +336,18 @@ if not os.path.isfile('crowdin/caf.xml'):
 else:
     print('Found: crowdin/caf.xml')
 
+# Check for crowdin/config_aosp.yaml
+if not os.path.isfile('crowdin/config_aosp.yaml'):
+    sys.exit('You have no crowdin/config_aosp.yaml. Terminating.')
+else:
+    print('Found: crowdin/config_aosp.yaml')
+
+# Check for crowdin/config_cm.yaml
+if not os.path.isfile('crowdin/config_cm.yaml'):
+    sys.exit('You have no crowdin/config_cm.yaml. Terminating.')
+else:
+    print('Found: crowdin/config_cm.yaml')
+
 # Check for crowdin/crowdin_aosp.yaml
 if not os.path.isfile('crowdin/crowdin_aosp.yaml'):
     sys.exit('You have no crowdin/crowdin_aosp.yaml. Terminating.')
@@ -585,7 +597,7 @@ for path in iter(proc.stdout.readline,''):
             # No match found, go to next item
             continue
 
-        # Define branch (custom branch if defined in xml file, otherwise 'cm-11.0'
+        # Define branch (custom branch if defined in xml file, otherwise the default one)
         if project_item.hasAttribute('revision'):
             branch = project_item.attributes['revision'].value
         else:
