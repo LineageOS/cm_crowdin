@@ -1,4 +1,4 @@
-# crowdin-aosp.yaml
+# crowdin_aosp.yaml
 #
 # Crowdin configuration file for CyanogenMod's
 # additional languages not supported by AOSP
@@ -18,8 +18,6 @@
 # limitations under the License.
 
 project_identifier: cyanogenmod-aosp
-api_key: your_api_key
-base_path: your/path
 preserve_hierarchy: true
 
 files:

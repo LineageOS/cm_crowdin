@@ -1,4 +1,4 @@
-# crowdin.yaml
+# crowdin_cm.yaml
 #
 # Crowdin configuration file for CyanogenMod
 #
@@ -17,8 +17,6 @@
 # limitations under the License.
 
 project_identifier: cyanogenmod
-api_key: your_api_key
-base_path: your/path
 preserve_hierarchy: true
 
 files:
