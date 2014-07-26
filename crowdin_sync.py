@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 # -*- coding: utf-8 -*-
-# cm_crowdin_sync_all.py
+# crowdin_sync.py
 #
 # Updates Crowdin source translations and pushes translations
 # directly to CyanogenMod's Gerrit.
