@@ -424,7 +424,7 @@ for path in iter(proc.stdout.readline,''):
     # Remove the \n at the end of each line
     path = path.rstrip()
     # Get project root dir from Crowdin's output
-    m = re.search('/(.*Superuser)/Superuser.*|/(.*LatinIME).*|/(frameworks/base).*|/(.*CMFileManager).*|/(device/.*/.*)/.*/res/values.*|/(hardware/.*/.*)/.*/res/values.*|/(.*)/res/values.*', path)
+    m = re.search('/(.*Superuser)/Superuser.*|/(.*LatinIME).*|/(frameworks/base).*|/(.*CMFileManager).*|/(.*CMHome).*|/(device/.*/.*)/.*/res/values.*|/(hardware/.*/.*)/.*/res/values.*|/(.*)/res/values.*', path)
     for good_path in m.groups():
         # When a project has multiple translatable files, Crowdin will give duplicates.
         # We don't want that (useless empty commits), so we save each project in all_projects
