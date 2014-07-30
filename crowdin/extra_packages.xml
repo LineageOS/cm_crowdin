@@ -24,10 +24,8 @@
   <project path="device/bn/common" name="CyanogenMod/android_device_bn_common" />
   <project path="device/motorola/xt897" name="CyanogenMod/android_device_motorola_xt897" />
   <project path="device/oppo/common" name="CyanogenMod/android_device_oppo_common" />
-  <project path="device/samsung/apexqtmo" name="CyanogenMod/android_device_samsung_apexqtmo" />
   <project path="device/samsung/aries-common" name="CyanogenMod/android_device_samsung_aries-common" />
   <project path="device/samsung/galaxys2-common" name="CyanogenMod/android_device_samsung_galaxys2-common" />
-  <project path="device/samsung/p1-common" name="CyanogenMod/android_device_samsung_p1-common" />
 
   <!-- Website translations -->
   <project path="website/getcm-translations" name="CyanogenMod/getcm-translations" revision="master" />
