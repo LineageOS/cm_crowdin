@@ -221,7 +221,7 @@ def push_as_commit(path, name, branch, username):
         return
 
     # Push commit
-    repo.git.push('ssh://' + username + '@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/' + branch)
+    repo.git.push('ssh://' + username + '@review.cyanogenmod.org:29418/' + name, 'HEAD:refs/for/' + branch + '%topic=translation')
 
     print('Succesfully pushed commit for ' + name)
 
