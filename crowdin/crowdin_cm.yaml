@@ -308,3 +308,8 @@ files:
     source:      '/packages/apps/SamsungServiceMode/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
+
+# Website
+  -
+    source:      '/website/**/en.xml'
+    translation: '/%original_path%/%two_letters_code%.xml'
