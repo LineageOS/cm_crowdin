@@ -482,25 +482,28 @@ for item in items:
     print('Created ' + path_to_values + '/cm_caf.xml')
 
 ############################################## STEP 5 ##############################################
+
 # JS files cannot be translated easily on Crowdin. That's why they are uploaded as Android XML
 # files. At this time, the (English) JS source file is converted to an XML file, so Crowdin knows it
 # needs to download for it.
-print('\nSTEP 5: Convert .js source translations to .xml')
-
-js_files = []
-
-for item in items_js:
-    path = item.attributes['path'].value + '/'
-    sync_js_translations('upload', path)
-    print('Converted: ' + path + 'en.js to en.xml')
-    js_files.append(path + 'en.js')
+#print('\nSTEP 5: Convert .js source translations to .xml')
+#
+#js_files = []
+#
+#for item in items_js:
+#    path = item.attributes['path'].value + '/'
+#    sync_js_translations('upload', path)
+#    print('Converted: ' + path + 'en.js to en.xml')
+#    js_files.append(path + 'en.js')
 
 ############################################## STEP 6 ##############################################
+
 print('\nSTEP 6: Upload Crowdin source translations (AOSP supported languages)')
 # Execute 'crowdin-cli upload sources' and show output
 print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'upload', 'sources']))
 
 ############################################## STEP 7 ##############################################
+
 print('\nSTEP 7A: Download Crowdin translations (AOSP supported languages)')
 # Execute 'crowdin-cli download' and show output
 print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'download']))
@@ -510,11 +513,13 @@ print('\nSTEP 7B: Download Crowdin translations (non-AOSP supported languages)')
 print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'download']))
 
 ############################################## STEP 8 ##############################################
+
 print('\nSTEP 8: Remove temp dir')
 # We are done with cm_caf.xml files, so remove tmp/
 shutil.rmtree(os.getcwd() + '/tmp')
 
 ############################################## STEP 9 ##############################################
+
 print('\nSTEP 9: Remove useless empty translations')
 # Some line of code that I found to find all XML files
 result = [os.path.join(dp, f) for dp, dn, filenames in os.walk(os.getcwd()) for f in filenames if os.path.splitext(f)[1] == '.xml']
@@ -526,16 +531,19 @@ for xml_file in result:
             os.remove(xml_file)
             break
 
-for js_file in js_files:
-    print('Removing ' + js_file)
-    os.remove(js_file)
+#for js_file in js_files:
+#    print('Removing ' + js_file)
+#    os.remove(js_file)
+
 ############################################## STEP 10 #############################################
+
 print('\nSTEP 10: Create a list of pushable translations')
 # Get all files that Crowdin pushed
 proc = subprocess.Popen(['crowdin-cli --config=crowdin/crowdin_cm.yaml --identity=crowdin/config_cm.yaml list sources && crowdin-cli --config=crowdin/crowdin_aosp.yaml --identity=crowdin/config_aosp.yaml list sources'], stdout=subprocess.PIPE, shell=True)
 proc.wait() # Wait for the above to finish
 
 ############################################## STEP 11 #############################################
+
 print('\nSTEP 11: Remove unwanted source cm_caf.xmls (AOSP supported languages)')
 # Remove all cm_caf.xml files, which you can find in the list 'cm_caf'
 for cm_caf_file in cm_caf:
@@ -543,6 +551,7 @@ for cm_caf_file in cm_caf:
     os.remove(cm_caf_file)
 
 ############################################## STEP 12 #############################################
+
 #print('\nSTEP 12: Convert JS-XML translations to their JS format')
 #
 #for item in items_js:
@@ -554,7 +563,9 @@ for cm_caf_file in cm_caf:
 #        os.remove(xml_file)
 #    os.remove(path + '/' + item.attributes['source'].value)
 #
+
 ############################################## STEP 13 #############################################
+
 print('\nSTEP 13: Commit to Gerrit')
 xml_extra = minidom.parse('crowdin/extra_packages.xml')
 items = xml_android.getElementsByTagName('project')
@@ -606,4 +617,5 @@ for path in iter(proc.stdout.readline,''):
         push_as_commit(result, project_item.attributes['name'].value, branch, username)
 
 ############################################### DONE ###############################################
+
 print('\nDone!')
