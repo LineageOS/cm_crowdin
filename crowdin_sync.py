@@ -277,7 +277,7 @@ def sync_js_translations(sync_type, path, lang=''):
         # In download mode do not write comments
         if sync_type == 'download' and not '//' in a_line:
             # Add language identifier (1)
-            if 'cmaccount.l10n.en' in a_line:
+            if 'cmaccount.l10n.en' or 'getcm.l10n.en' in a_line:
                 a_line = a_line.replace('l10n.en', 'l10n.' + lang)
             # Add language identifier (2)
             if 'l10n.add(\'en\'' in a_line:
@@ -486,15 +486,15 @@ for item in items:
 # JS files cannot be translated easily on Crowdin. That's why they are uploaded as Android XML
 # files. At this time, the (English) JS source file is converted to an XML file, so Crowdin knows it
 # needs to download for it.
-#print('\nSTEP 5: Convert .js source translations to .xml')
-#
-#js_files = []
-#
-#for item in items_js:
-#    path = item.attributes['path'].value + '/'
-#    sync_js_translations('upload', path)
-#    print('Converted: ' + path + 'en.js to en.xml')
-#    js_files.append(path + 'en.js')
+print('\nSTEP 5: Convert .js source translations to .xml')
+
+js_files = []
+
+for item in items_js:
+    path = item.attributes['path'].value + '/'
+    sync_js_translations('upload', path)
+    print('Converted: ' + path + 'en.js to en.xml')
+    js_files.append(path + 'en.js')
 
 ############################################## STEP 6 ##############################################
 
@@ -531,9 +531,9 @@ for xml_file in result:
             os.remove(xml_file)
             break
 
-#for js_file in js_files:
-#    print('Removing ' + js_file)
-#    os.remove(js_file)
+for js_file in js_files:
+    print('Removing ' + js_file)
+    os.remove(js_file)
 
 ############################################## STEP 10 #############################################
 
@@ -552,17 +552,16 @@ for cm_caf_file in cm_caf:
 
 ############################################## STEP 12 #############################################
 
-#print('\nSTEP 12: Convert JS-XML translations to their JS format')
-#
-#for item in items_js:
-#    path = item.attributes['path'].value
-#    all_xml_files = [os.path.join(dp, f) for dp, dn, filenames in os.walk(os.getcwd() + '/' + path) for f in filenames if os.path.splitext(f)[1] == '.xml']
-#    for xml_file in all_xml_files:
-#        lang_code = os.path.splitext(xml_file)[0]
-#        sync_js_translations('download', path, lang_code)
-#        os.remove(xml_file)
-#    os.remove(path + '/' + item.attributes['source'].value)
-#
+print('\nSTEP 12: Convert JS-XML translations to their JS format')
+
+for item in items_js:
+    path = item.attributes['path'].value
+    all_xml_files = [os.path.join(dp, f) for dp, dn, filenames in os.walk(os.getcwd() + '/' + path) for f in filenames if os.path.splitext(f)[1] == '.xml']
+    for xml_file in all_xml_files:
+        lang_code = os.path.splitext(xml_file)[0]
+        sync_js_translations('download', path, lang_code)
+        os.remove(xml_file)
+    os.remove(path + '/' + item.attributes['source'].value)
 
 ############################################## STEP 13 #############################################
 

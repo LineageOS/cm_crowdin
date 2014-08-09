@@ -16,4 +16,5 @@
 -->
 <js>
     <project path="website/CMAccountWebsite/app/js/translations" source="en.js" />
+    <project path="website/getcm-translations/src" source="en.js" />
 </js>
