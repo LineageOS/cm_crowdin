@@ -99,6 +99,7 @@ files:
       - /packages/apps/Camera2/**/cm_arrays.xml
       - /packages/apps/DeskClock/**/cm_arrays.xml
       - /packages/apps/Email/**/cm_arrays.xml
+      - /packages/providers/TelephonyProvider/**/cm_strings.xml
       - /packages/services/Telephony/**/cm_arrays.xml
       - /device/**/overlay/**/*.xml
       - /development/**/*.xml
@@ -188,6 +189,12 @@ files:
     languages_mapping: *anchor
   -
     source:      '/packages/apps/DSPManager/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Gallery2 (codeaurora_strings.xml)
+  -
+    source:      '/packages/apps/GalleryNext/res/values/codeaurora_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
