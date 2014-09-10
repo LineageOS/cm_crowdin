@@ -94,6 +94,7 @@ files:
       - /**/cm_dimens.xml
       - /**/cm_integers.xml
       - /frameworks/base/core/res/**/cm_arrays.xml
+      - /frameworks/base/core/res/**/cm_public.xml
       - /packages/apps/Browser/**/cm_arrays.xml
       - /packages/apps/Calendar/**/cm_arrays.xml
       - /packages/apps/Camera2/**/cm_arrays.xml
