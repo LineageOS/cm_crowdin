@@ -27,9 +27,6 @@
     <item path="packages/apps/Bluetooth/res/values">
         <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/Bluetooth/res/values/strings.xml</aosp>
     </item>
-    <item path="packages/apps/Dialer/res/values">
-        <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/Dialer/res/values/strings.xml</aosp>
-    </item>
     <item path="packages/apps/InCallUI/res/values">
         <aosp file="strings.xml">http://androidxref.com/4.4.4_r1/raw/packages/apps/InCallUI/res/values/strings.xml</aosp>
     </item>
