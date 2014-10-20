@@ -71,77 +71,6 @@ def push_as_commit(path, name, branch, username):
 
     print('Succesfully pushed commit for ' + name)
 
-def sync_js_translations(sync_type, path, lang=''):
-    # lang is necessary in download mode
-    if sync_type == 'download' and lang == '':
-        sys.exit('Invalid syntax. Language code is required in download mode.')
-
-    # Read source en.js file. This is necessary for both upload and download modes
-    with codecs.open(path + 'en.js', 'r', 'utf-8') as f:
-        content = f.readlines()
-
-    if sync_type == 'upload':
-        # Prepare XML file structure
-        doc = minidom.Document()
-        header = doc.createElement('resources')
-        file_write = codecs.open(path + 'en.xml', 'w', 'utf-8')
-    else:
-        # Open translation files
-        file_write = codecs.open(path + lang + '.js', 'w', 'utf-8')
-        xml_base = minidom.parse(path + lang + '.xml')
-        tags = xml_base.getElementsByTagName('string')
-
-    # Read each line of en.js
-    for a_line in content:
-        # Regex to determine string id
-        m = re.search(' (.*): [\'|\"]', a_line)
-        if m is not None:
-            for string_id in m.groups():
-                if string_id is not None:
-                    # Find string id
-                    string_id = string_id.replace(' ', '')
-                    m2 = re.search('\'(.*)\'|"(.*)"', a_line)
-                    # Find string contents
-                    for string_content in m2.groups():
-                        if string_content is not None:
-                            break
-                    if sync_type == 'upload':
-                        # In upload mode, create the appropriate string element.
-                        contents = doc.createElement('string')
-                        contents.attributes['name'] = string_id
-                        contents.appendChild(doc.createTextNode(string_content))
-                        header.appendChild(contents)
-                    else:
-                        # In download mode, check if string_id matches a name attribute in the translation XML file.
-                        # If it does, replace English text with the translation.
-                        # If it does not, English text will remain and will be added to the file to retain the file structure.
-                        for string in tags:
-                            if string.attributes['name'].value == string_id:
-                                a_line = a_line.replace(string_content.rstrip(), string.firstChild.nodeValue)
-                                break
-                    break
-        # In download mode do not write comments
-        if sync_type == 'download' and not '//' in a_line:
-            # Add language identifier (1)
-            if 'cmaccount.l10n.en' in a_line:
-                a_line = a_line.replace('l10n.en', 'l10n.' + lang)
-            # Add language identifier (2)
-            if 'l10n.add(\'en\'' in a_line:
-                a_line = a_line.replace('l10n.add(\'en\'', 'l10n.add(\'' + lang + '\'')
-            # Now write the line
-            file_write.write(a_line)
-
-    # Create XML file structure
-    if sync_type == 'upload':
-        header.appendChild(contents)
-        contents = header.toxml().replace('<string', '\n    <string').replace('</resources>', '\n</resources>')
-        file_write.write('<?xml version="1.0" encoding="utf-8"?>\n')
-        file_write.write('<!-- .JS CONVERTED TO .XML - DO NOT MERGE THIS FILE -->\n')
-        file_write.write(contents)
-
-    # Close file
-    file_write.close()
-
 ###################################################################################################
 
 print('Welcome to the CM Crowdin sync script!')
@@ -206,22 +135,11 @@ if not os.path.isfile('crowdin/extra_packages.xml'):
 else:
     print('Found: crowdin/extra_packages.xml')
 
-# Check for crowdin/js.xml
-if not os.path.isfile('crowdin/js.xml'):
-    sys.exit('You have no crowdin/js.xml. Terminating.')
-else:
-    print('Found: crowdin/js.xml')
-
 print('\nSTEP 0B: Define shared variables')
 
 # Variables regarding android/default.xml
 print('Loading: android/default.xml')
 xml_android = minidom.parse('android/default.xml')
-
-# Variables regarding crowdin/js.xml
-print('Loading: crowdin/js.xml')
-xml_js = minidom.parse('crowdin/js.xml')
-items_js = xml_js.getElementsByTagName('project')
 
 # Default branch
 default_branch = get_default_branch(xml_android)
@@ -229,44 +147,27 @@ print('Default branch: ' + default_branch)
 
 ############################################## STEP 1 ##############################################
 
-print('\nSTEP 1: Upload Crowdin source translations (non-AOSP supported languages)')
+print('\nSTEP 1A: Upload Crowdin source translations (non-AOSP supported languages)')
 # Execute 'crowdin-cli upload sources' and show output
 print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'upload', 'sources']))
 
-############################################## STEP 2 ##############################################
-
-# JS files cannot be translated easily on Crowdin. That's why they are uploaded as Android XML
-# files. At this time, the (English) JS source file is converted to an XML file, so Crowdin knows it
-# needs to download for it.
-#print('\nSTEP 2: Convert .js source translations to .xml')
-#
-#js_files = []
-#
-#for item in items_js:
-#    path = item.attributes['path'].value + '/'
-#    sync_js_translations('upload', path)
-#    print('Converted: ' + path + 'en.js to en.xml')
-#    js_files.append(path + 'en.js')
-
-############################################## STEP 3 ##############################################
-
-print('\nSTEP 3: Upload Crowdin source translations (AOSP supported languages)')
+print('\nSTEP 1B: Upload Crowdin source translations (AOSP supported languages)')
 # Execute 'crowdin-cli upload sources' and show output
 print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'upload', 'sources']))
 
-############################################## STEP 4 ##############################################
+############################################## STEP 2 ##############################################
 
-print('\nSTEP 4A: Download Crowdin translations (AOSP supported languages)')
+print('\nSTEP 2A: Download Crowdin translations (AOSP supported languages)')
 # Execute 'crowdin-cli download' and show output
 print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'download']))
 
-print('\nSTEP 4B: Download Crowdin translations (non-AOSP supported languages)')
+print('\nSTEP 2B: Download Crowdin translations (non-AOSP supported languages)')
 # Execute 'crowdin-cli download' and show output
 print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'download']))
 
-############################################## STEP 5 ##############################################
+############################################## STEP 3 ##############################################
 
-print('\nSTEP 5: Remove useless empty translations')
+print('\nSTEP 3: Remove useless empty translations')
 # Some line of code that I found to find all XML files
 result = [os.path.join(dp, f) for dp, dn, filenames in os.walk(os.getcwd()) for f in filenames if os.path.splitext(f)[1] == '.xml']
 empty_contents = {'<resources/>', '<resources xmlns:android="http://schemas.android.com/apk/res/android"/>', '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>', '<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>'}
@@ -277,34 +178,16 @@ for xml_file in result:
             os.remove(xml_file)
             break
 
-#for js_file in js_files:
-#    print('Removing ' + js_file)
-#    os.remove(js_file)
+############################################## STEP 4 ##############################################
 
-############################################## STEP 6 ##############################################
-
-print('\nSTEP 6: Create a list of pushable translations')
+print('\nSTEP 4: Create a list of pushable translations')
 # Get all files that Crowdin pushed
 proc = subprocess.Popen(['crowdin-cli --config=crowdin/crowdin_cm.yaml --identity=crowdin/config_cm.yaml list sources && crowdin-cli --config=crowdin/crowdin_aosp.yaml --identity=crowdin/config_aosp.yaml list sources'], stdout=subprocess.PIPE, shell=True)
 proc.wait() # Wait for the above to finish
 
-############################################## STEP 7 ##############################################
+############################################## STEP 5 ##############################################
 
-#print('\nSTEP 7: Convert JS-XML translations to their JS format')
-#
-#for item in items_js:
-#    path = item.attributes['path'].value
-#    all_xml_files = [os.path.join(dp, f) for dp, dn, filenames in os.walk(os.getcwd() + '/' + path) for f in filenames if os.path.splitext(f)[1] == '.xml']
-#    for xml_file in all_xml_files:
-#        lang_code = os.path.splitext(xml_file)[0]
-#        sync_js_translations('download', path, lang_code)
-#        os.remove(xml_file)
-#    os.remove(path + '/' + item.attributes['source'].value)
-#
-
-############################################## STEP 8 ##############################################
-
-print('\nSTEP 8: Commit to Gerrit')
+print('\nSTEP 5: Commit to Gerrit')
 xml_extra = minidom.parse('crowdin/extra_packages.xml')
 items = xml_android.getElementsByTagName('project')
 items += xml_extra.getElementsByTagName('project')
