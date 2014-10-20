@@ -71,20 +71,23 @@ def push_as_commit(path, name, branch, username):
 
     print('Succesfully pushed commit for ' + name)
 
-###################################################################################################
+####################################################################################################
 
 print('Welcome to the CM Crowdin sync script!')
 
-###################################################################################################
+####################################################################################################
 
 parser = argparse.ArgumentParser(description='Synchronising CyanogenMod\'s translations with Crowdin')
-parser.add_argument('--username', help='Gerrit username', required=True)
-#parser.add_argument('--upload-only', help='Only upload CM source translations to Crowdin', required=False)
-args = vars(parser.parse_args())
+sync = parser.add_mutually_exclusive_group()
+parser.add_argument('-u', '--username', help='Gerrit username', required=True)
+sync.add_argument('--no-upload', action='store_true', help='Only download CM translations from Crowdin')
+sync.add_argument('--no-download', action='store_true', help='Only upload CM source translations to Crowdin')
+args = parser.parse_args()
+argsdict = vars(args)
 
-username = args['username']
+username = argsdict['username']
 
-############################################## STEP 0 ##############################################
+############################################# PREPARE ##############################################
 
 print('\nSTEP 0A: Checking dependencies')
 # Check for Ruby version of crowdin-cli
@@ -145,97 +148,97 @@ xml_android = minidom.parse('android/default.xml')
 default_branch = get_default_branch(xml_android)
 print('Default branch: ' + default_branch)
 
-############################################## STEP 1 ##############################################
+############################################### MAIN ###############################################
 
-print('\nSTEP 1A: Upload Crowdin source translations (non-AOSP supported languages)')
-# Execute 'crowdin-cli upload sources' and show output
-print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'upload', 'sources']))
+if not args.no_upload:
+    print('\nSTEP 1: Upload Crowdin source translations')
+    print('Uploading Crowdin source translations (non-AOSP supported languages)')
+    # Execute 'crowdin-cli upload sources' and show output
+    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'upload', 'sources']))
 
-print('\nSTEP 1B: Upload Crowdin source translations (AOSP supported languages)')
-# Execute 'crowdin-cli upload sources' and show output
-print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'upload', 'sources']))
+    print('Uploading Crowdin source translations (AOSP supported languages)')
+    # Execute 'crowdin-cli upload sources' and show output
+    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'upload', 'sources']))
+else:
+    print('\nSkipping source translations upload')
 
-############################################## STEP 2 ##############################################
+if not args.no_download:
+    print('\nSTEP 2: Download Crowdin translations')
+    print('Downloading Crowdin translations (AOSP supported languages)')
+    # Execute 'crowdin-cli download' and show output
+    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'download']))
 
-print('\nSTEP 2A: Download Crowdin translations (AOSP supported languages)')
-# Execute 'crowdin-cli download' and show output
-print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'download']))
+    print('Downloading Crowdin translations (non-AOSP supported languages)')
+    # Execute 'crowdin-cli download' and show output
+    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'download']))
 
-print('\nSTEP 2B: Download Crowdin translations (non-AOSP supported languages)')
-# Execute 'crowdin-cli download' and show output
-print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'download']))
+    print('\nSTEP 3: Remove useless empty translations')
+    # Some line of code that I found to find all XML files
+    result = [os.path.join(dp, f) for dp, dn, filenames in os.walk(os.getcwd()) for f in filenames if os.path.splitext(f)[1] == '.xml']
+    empty_contents = {'<resources/>', '<resources xmlns:android="http://schemas.android.com/apk/res/android"/>', '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>', '<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>'}
+    for xml_file in result:
+        for line in empty_contents:
+            if line in open(xml_file).read():
+                print('Removing ' + xml_file)
+                os.remove(xml_file)
+                break
 
-############################################## STEP 3 ##############################################
+    print('\nSTEP 4: Create a list of pushable translations')
+    # Get all files that Crowdin pushed
+    proc = subprocess.Popen(['crowdin-cli --config=crowdin/crowdin_cm.yaml --identity=crowdin/config_cm.yaml list sources && crowdin-cli --config=crowdin/crowdin_aosp.yaml --identity=crowdin/config_aosp.yaml list sources'], stdout=subprocess.PIPE, shell=True)
+    proc.wait() # Wait for the above to finish
 
-print('\nSTEP 3: Remove useless empty translations')
-# Some line of code that I found to find all XML files
-result = [os.path.join(dp, f) for dp, dn, filenames in os.walk(os.getcwd()) for f in filenames if os.path.splitext(f)[1] == '.xml']
-empty_contents = {'<resources/>', '<resources xmlns:android="http://schemas.android.com/apk/res/android"/>', '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>', '<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>'}
-for xml_file in result:
-    for line in empty_contents:
-        if line in open(xml_file).read():
-            print('Removing ' + xml_file)
-            os.remove(xml_file)
+    print('\nSTEP 5: Upload to Gerrit')
+    xml_extra = minidom.parse('crowdin/extra_packages.xml')
+    items = xml_android.getElementsByTagName('project')
+    items += xml_extra.getElementsByTagName('project')
+    all_projects = []
+
+    for path in iter(proc.stdout.readline,''):
+        # Remove the \n at the end of each line
+        path = path.rstrip()
+
+        if not path:
+            continue
+
+        # Get project root dir from Crowdin's output by regex
+        m = re.search('/(.*Superuser)/Superuser.*|/(.*LatinIME).*|/(frameworks/base).*|/(.*CMFileManager).*|/(.*CMHome).*|/(device/.*/.*)/.*/res/values.*|/(hardware/.*/.*)/.*/res/values.*|/(.*)/res/values.*', path)
+
+        if not m.groups():
+            # Regex result is empty, warn the user
+            print('WARNING: Cannot determine project root dir of [' + path + '], skipping')
+            continue
+
+        for i in m.groups():
+            if not i:
+                continue
+            result = i
             break
 
-############################################## STEP 4 ##############################################
-
-print('\nSTEP 4: Create a list of pushable translations')
-# Get all files that Crowdin pushed
-proc = subprocess.Popen(['crowdin-cli --config=crowdin/crowdin_cm.yaml --identity=crowdin/config_cm.yaml list sources && crowdin-cli --config=crowdin/crowdin_aosp.yaml --identity=crowdin/config_aosp.yaml list sources'], stdout=subprocess.PIPE, shell=True)
-proc.wait() # Wait for the above to finish
-
-############################################## STEP 5 ##############################################
-
-print('\nSTEP 5: Commit to Gerrit')
-xml_extra = minidom.parse('crowdin/extra_packages.xml')
-items = xml_android.getElementsByTagName('project')
-items += xml_extra.getElementsByTagName('project')
-all_projects = []
-
-for path in iter(proc.stdout.readline,''):
-    # Remove the \n at the end of each line
-    path = path.rstrip()
-
-    if not path:
-        continue
-
-    # Get project root dir from Crowdin's output by regex
-    m = re.search('/(.*Superuser)/Superuser.*|/(.*LatinIME).*|/(frameworks/base).*|/(.*CMFileManager).*|/(.*CMHome).*|/(device/.*/.*)/.*/res/values.*|/(hardware/.*/.*)/.*/res/values.*|/(.*)/res/values.*', path)
-
-    if not m.groups():
-        # Regex result is empty, warn the user
-        print('WARNING: Cannot determine project root dir of [' + path + '], skipping')
-        continue
-
-    for i in m.groups():
-        if not i:
-            continue
-        result = i
-        break
-
-    if result in all_projects:
-        # Already committed for this project, go to next project
-        continue
-
-    # When a project has multiple translatable files, Crowdin will give duplicates.
-    # We don't want that (useless empty commits), so we save each project in all_projects
-    # and check if it's already in there.
-    all_projects.append(result)
-
-    # Search in android/default.xml or crowdin/extra_packages.xml for the project's name
-    for project_item in items:
-        if project_item.attributes['path'].value != result:
-            # No match found, go to next item
+        if result in all_projects:
+            # Already committed for this project, go to next project
             continue
 
-        # Define branch (custom branch if defined in xml file, otherwise the default one)
-        if project_item.hasAttribute('revision'):
-            branch = project_item.attributes['revision'].value
-        else:
-            branch = default_branch
+        # When a project has multiple translatable files, Crowdin will give duplicates.
+        # We don't want that (useless empty commits), so we save each project in all_projects
+        # and check if it's already in there.
+        all_projects.append(result)
 
-        push_as_commit(result, project_item.attributes['name'].value, branch, username)
+        # Search in android/default.xml or crowdin/extra_packages.xml for the project's name
+        for project_item in items:
+            if project_item.attributes['path'].value != result:
+                # No match found, go to next item
+                continue
+
+            # Define branch (custom branch if defined in xml file, otherwise the default one)
+            if project_item.hasAttribute('revision'):
+                branch = project_item.attributes['revision'].value
+            else:
+                branch = default_branch
+
+            push_as_commit(result, project_item.attributes['name'].value, branch, username)
+else:
+    print('\nSkipping translations download')
 
 ############################################### DONE ###############################################
 
