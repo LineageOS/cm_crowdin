@@ -113,6 +113,8 @@ files:
     ignore:
       - /device/google/**/*.xml
       - /device/sample/**/*.xml
+      - /device/samsung/p1-common/**/*.xml
+      - /device/sony/**/*.xml
       - /device/**/overlay/**/*.xml
   -
     source:      '/device/**/values/plurals.xml'
@@ -121,6 +123,7 @@ files:
     ignore:
       - /device/google/**/*.xml
       - /device/sample/**/*.xml
+      - /device/sony/**/*.xml
       - /device/**/overlay/**/*.xml
   -
     source:      '/device/**/values/strings.xml'
@@ -129,6 +132,7 @@ files:
     ignore:
       - /device/google/**/*.xml
       - /device/sample/**/*.xml
+      - /device/sony/**/*.xml
       - /device/**/overlay/**/*.xml
   # Default for CM apps (CMAccount, CMFM etc.)
   -
