@@ -60,6 +60,7 @@ files:
       - /packages/apps/CameraNext
       - /packages/apps/CM*
       - /packages/apps/DSPManager
+      - /packages/apps/Eleven
       - /packages/apps/Email/emailcommon
       - /packages/apps/GalleryNext
       - /packages/apps/LockClock
