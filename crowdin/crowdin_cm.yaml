@@ -187,6 +187,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # CameraNext (qcomstrings.xml)
+  -
+    source:      '/packages/apps/CameraNext/res/values/qcomstrings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # DSPManager
   -
     source:      '/packages/apps/DSPManager/res/values/strings.xml'
