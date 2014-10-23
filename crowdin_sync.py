@@ -91,7 +91,7 @@ username = argsdict['username']
 
 ############################################# PREPARE ##############################################
 
-print('\nSTEP 0A: Checking dependencies')
+print('\nSTEP 0: Checking dependencies & define shared variables')
 # Check for Ruby version of crowdin-cli
 if subprocess.check_output(['rvm', 'all', 'do', 'gem', 'list', 'crowdin-cli', '-i']) == 'true':
     sys.exit('You have not installed crowdin-cli. Terminating.')
@@ -110,37 +110,11 @@ if not os.path.isfile('android/default.xml'):
 else:
     print('Found: android/default.xml')
 
-# Check for crowdin/config_aosp.yaml
-if not os.path.isfile('crowdin/config_aosp.yaml'):
-    sys.exit('You have no crowdin/config_aosp.yaml. Terminating.')
-else:
-    print('Found: crowdin/config_aosp.yaml')
-
-# Check for crowdin/config_cm.yaml
-if not os.path.isfile('crowdin/config_cm.yaml'):
-    sys.exit('You have no crowdin/config_cm.yaml. Terminating.')
-else:
-    print('Found: crowdin/config_cm.yaml')
-
-# Check for crowdin/crowdin_aosp.yaml
-if not os.path.isfile('crowdin/crowdin_aosp.yaml'):
-    sys.exit('You have no crowdin/crowdin_aosp.yaml. Terminating.')
-else:
-    print('Found: crowdin/crowdin_aosp.yaml')
-
-# Check for crowdin/crowdin_cm.yaml
-if not os.path.isfile('crowdin/crowdin_cm.yaml'):
-    sys.exit('You have no crowdin/crowdin_cm.yaml. Terminating.')
-else:
-    print('Found: crowdin/crowdin_cm.yaml')
-
 # Check for crowdin/extra_packages.xml
 if not os.path.isfile('crowdin/extra_packages.xml'):
     sys.exit('You have no crowdin/extra_packages.xml. Terminating.')
 else:
     print('Found: crowdin/extra_packages.xml')
-
-print('\nSTEP 0B: Define shared variables')
 
 # Variables regarding android/default.xml
 print('Loading: android/default.xml')
@@ -150,17 +124,47 @@ xml_android = minidom.parse('android/default.xml')
 default_branch = get_default_branch(xml_android)
 print('Default branch: ' + default_branch)
 
+# Check for crowdin/extra_packages_' + default_branch + '.xml
+if not os.path.isfile('crowdin/extra_packages_' + default_branch + '.xml'):
+    sys.exit('You have no crowdin/extra_packages_' + default_branch + '.xml. Terminating.')
+else:
+    print('Found: crowdin/extra_packages_' + default_branch + '.xml')
+
+# Check for crowdin/config.yaml
+if not os.path.isfile('crowdin/config.yaml'):
+    sys.exit('You have no crowdin/config.yaml. Terminating.')
+else:
+    print('Found: crowdin/config.yaml')
+
+# Check for crowdin/config_aosp.yaml
+if not os.path.isfile('crowdin/config_aosp.yaml'):
+    sys.exit('You have no crowdin/config_aosp.yaml. Terminating.')
+else:
+    print('Found: crowdin/config_aosp.yaml')
+
+# Check for crowdin/crowdin_' + default_branch + '.yaml
+if not os.path.isfile('crowdin/crowdin_' + default_branch + '.yaml'):
+    sys.exit('You have no crowdin/crowdin_' + default_branch + '.yaml. Terminating.')
+else:
+    print('Found: crowdin/crowdin_' + default_branch + '.yaml')
+
+# Check for crowdin/crowdin_' + default_branch + '_aosp.yaml
+if not os.path.isfile('crowdin/crowdin_' + default_branch + '_aosp.yaml'):
+    sys.exit('You have no crowdin/crowdin_' + default_branch + '_aosp.yaml. Terminating.')
+else:
+    print('Found: crowdin/crowdin_' + default_branch + '_aosp.yaml')
+
 ############################################### MAIN ###############################################
 
 if not args.no_upload:
     print('\nSTEP 1: Upload Crowdin source translations')
-    print('Uploading Crowdin source translations (non-AOSP supported languages)')
-    # Execute 'crowdin-cli upload sources' and show output
-    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'upload', 'sources']))
-
     print('Uploading Crowdin source translations (AOSP supported languages)')
     # Execute 'crowdin-cli upload sources' and show output
-    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'upload', 'sources']))
+    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '.yaml', '--identity=crowdin/config.yaml', 'upload', 'sources']))
+
+    print('Uploading Crowdin source translations (non-AOSP supported languages)')
+    # Execute 'crowdin-cli upload sources' and show output
+    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'upload', 'sources']))
 else:
     print('\nSkipping source translations upload')
 
@@ -168,11 +172,11 @@ if not args.no_download:
     print('\nSTEP 2: Download Crowdin translations')
     print('Downloading Crowdin translations (AOSP supported languages)')
     # Execute 'crowdin-cli download' and show output
-    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_cm.yaml', '--identity=crowdin/config_cm.yaml', 'download']))
+    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '.yaml', '--identity=crowdin/config.yaml', 'download']))
 
     print('Downloading Crowdin translations (non-AOSP supported languages)')
     # Execute 'crowdin-cli download' and show output
-    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'download']))
+    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'download']))
 
     print('\nSTEP 3: Remove useless empty translations')
     # Some line of code that I found to find all XML files
@@ -187,11 +191,11 @@ if not args.no_download:
 
     print('\nSTEP 4: Create a list of pushable translations')
     # Get all files that Crowdin pushed
-    proc = subprocess.Popen(['crowdin-cli --config=crowdin/crowdin_cm.yaml --identity=crowdin/config_cm.yaml list sources && crowdin-cli --config=crowdin/crowdin_aosp.yaml --identity=crowdin/config_aosp.yaml list sources'], stdout=subprocess.PIPE, shell=True)
+    proc = subprocess.Popen(['crowdin-cli --config=crowdin/crowdin_' + default_branch + '.yaml --identity=crowdin/config.yaml list sources | grep "' + default_branch + '" | sed "s#/' + default_branch + '##g" && crowdin-cli --config=crowdin/crowdin_' + default_branch + '_aosp.yaml --identity=crowdin/config_aosp.yaml list sources | grep "' + default_branch + '" | sed "s#/' + default_branch + '##g"'], stdout=subprocess.PIPE, shell=True)
     proc.wait() # Wait for the above to finish
 
     print('\nSTEP 5: Upload to Gerrit')
-    xml_extra = minidom.parse('crowdin/extra_packages.xml')
+    xml_extra = minidom.parse('crowdin/extra_packages_' + default_branch + '.xml')
     items = xml_android.getElementsByTagName('project')
     items += xml_extra.getElementsByTagName('project')
     all_projects = []
@@ -226,7 +230,7 @@ if not args.no_download:
         # and check if it's already in there.
         all_projects.append(result)
 
-        # Search in android/default.xml or crowdin/extra_packages.xml for the project's name
+        # Search in android/default.xml or crowdin/extra_packages_' + default_branch + '.xml for the project's name
         for project_item in items:
             if project_item.attributes['path'].value != result:
                 # No match found, go to next item
