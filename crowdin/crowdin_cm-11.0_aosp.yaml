@@ -1,4 +1,4 @@
-# crowdin_aosp.yaml
+# crowdin_cm-11.0_aosp.yaml
 #
 # Crowdin configuration file for CyanogenMod's
 # additional languages not supported by AOSP
@@ -23,7 +23,7 @@ preserve_hierarchy: true
 files:
   # Framework packages
   -
-    source:      '/frameworks/base/core/res/res/values/strings.xml'
+    source:      '/cm-11.0/frameworks/base/core/res/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: &anchor
       android_code:
@@ -40,109 +40,109 @@ files:
         ug: ug
 
   -
-    source:      '/frameworks/base/packages/**/values/strings.xml'
+    source:      '/cm-11.0/frameworks/base/packages/**/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
     ignore:
-      - /frameworks/base/packages/services
-      - /frameworks/base/packages/WallpaperCropper
-      - /frameworks/base/packages/Keyguard/test
+      - /cm-11.0/frameworks/base/packages/services
+      - /cm-11.0/frameworks/base/packages/WallpaperCropper
+      - /cm-11.0/frameworks/base/packages/Keyguard/test
 
   # Apps
   -
-    source:      '/packages/apps/**/values/strings.xml'
+    source:      '/cm-11.0/packages/apps/**/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
     ignore:
-      - /packages/apps/**/tests
-      - /packages/apps/Apollo
-      - /packages/apps/AudioFX
-      - /packages/apps/BluetoothExt
-      - /packages/apps/CameraNext
-      - /packages/apps/CM*
-      - /packages/apps/DSPManager
-      - /packages/apps/Eleven
-      - /packages/apps/Email/emailcommon
-      - /packages/apps/GalleryNext
-      - /packages/apps/LockClock
-      - /packages/apps/Mms/apptests
-      - /packages/apps/OneClickAndroid
-      - /packages/apps/SamsungServiceMode
-      - /packages/apps/Screencast
-      - /packages/apps/SpeechRecorder
-      - /packages/apps/ThemeChooser
-      - /packages/apps/ThemeStore
-      - /packages/apps/Torch
-      - /packages/apps/Trebuchet
-      - /packages/apps/VoicePlus
-      - /packages/apps/VoiceWakeup
+      - /cm-11.0/packages/apps/**/tests
+      - /cm-11.0/packages/apps/Apollo
+      - /cm-11.0/packages/apps/AudioFX
+      - /cm-11.0/packages/apps/BluetoothExt
+      - /cm-11.0/packages/apps/CameraNext
+      - /cm-11.0/packages/apps/CM*
+      - /cm-11.0/packages/apps/DSPManager
+      - /cm-11.0/packages/apps/Eleven
+      - /cm-11.0/packages/apps/Email/emailcommon
+      - /cm-11.0/packages/apps/GalleryNext
+      - /cm-11.0/packages/apps/LockClock
+      - /cm-11.0/packages/apps/Mms/apptests
+      - /cm-11.0/packages/apps/OneClickAndroid
+      - /cm-11.0/packages/apps/SamsungServiceMode
+      - /cm-11.0/packages/apps/Screencast
+      - /cm-11.0/packages/apps/SpeechRecorder
+      - /cm-11.0/packages/apps/ThemeChooser
+      - /cm-11.0/packages/apps/ThemeStore
+      - /cm-11.0/packages/apps/Torch
+      - /cm-11.0/packages/apps/Trebuchet
+      - /cm-11.0/packages/apps/VoicePlus
+      - /cm-11.0/packages/apps/VoiceWakeup
 
   -
-    source:      '/packages/apps/Bluetooth/res/values/strings_pbap.xml'
+    source:      '/cm-11.0/packages/apps/Bluetooth/res/values/strings_pbap.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
   -
-    source:      '/packages/apps/Calendar/res/values/arrays.xml'
+    source:      '/cm-11.0/packages/apps/Calendar/res/values/arrays.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
   -
-    source:      '/packages/apps/DeskClock/res/values/array.xml'
+    source:      '/cm-11.0/packages/apps/DeskClock/res/values/array.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
   -
-    source:      '/packages/apps/Gallery2/res/values/filtershow_strings.xml'
+    source:      '/cm-11.0/packages/apps/Gallery2/res/values/filtershow_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
   -
-    source:      '/packages/apps/Mms/res/values/arrays.xml'
+    source:      '/cm-11.0/packages/apps/Mms/res/values/arrays.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
   -
-    source:      '/packages/apps/Settings/res/values/arrays.xml'
+    source:      '/cm-11.0/packages/apps/Settings/res/values/arrays.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
   # Input methods
   -
-    source:      '/packages/inputmethods/LatinIME/java/res/values/strings*.xml'
+    source:      '/cm-11.0/packages/inputmethods/LatinIME/java/res/values/strings*.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
   # Providers
   -
-    source:      '/packages/providers/**/values/strings.xml'
+    source:      '/cm-11.0/packages/providers/**/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
     ignore:
-      - /packages/providers/**/tests
-      - /packages/providers/PartnerBookmarksProvider
-      - /packages/providers/ThemesProvider
-      - /packages/providers/UserDictionaryProvider
+      - /cm-11.0/packages/providers/**/tests
+      - /cm-11.0/packages/providers/PartnerBookmarksProvider
+      - /cm-11.0/packages/providers/ThemesProvider
+      - /cm-11.0/packages/providers/UserDictionaryProvider
 
   # Screensavers
   -
-    source:      '/packages/screensavers/**/values/strings.xml'
+    source:      '/cm-11.0/packages/screensavers/**/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
   # Services
   -
-    source:      '/packages/services/**/values/strings.xml'
+    source:      '/cm-11.0/packages/services/**/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
     ignore:
-      - /packages/services/**/tests
+      - /cm-11.0/packages/services/**/tests
 
   # Wallpapers
   -
-    source:      '/packages/wallpapers/**/values/strings.xml'
+    source:      '/cm-11.0/packages/wallpapers/**/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
     ignore:
-      - /packages/wallpapers/Galaxy4
-      - /packages/wallpapers/PhotoPhase
+      - /cm-11.0/packages/wallpapers/Galaxy4
+      - /cm-11.0/packages/wallpapers/PhotoPhase
