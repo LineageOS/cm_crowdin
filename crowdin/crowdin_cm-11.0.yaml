@@ -92,6 +92,7 @@ files:
     ignore:
       - /cm-11.0/**/cm_extra.xml
       - /cm-11.0/**/cm_colors.xml
+      - /cm-11.0/**/cm_config.xml
       - /cm-11.0/**/cm_dimens.xml
       - /cm-11.0/**/cm_integers.xml
       - /cm-11.0/frameworks/base/core/res/**/cm_arrays.xml
