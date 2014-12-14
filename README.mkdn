@@ -3,8 +3,7 @@ crowdin_sync.py
 
 Introduction
 ------------
-This script is used to synchronize CyanogenMod's translations with Crowdin's. It automatically creates cm_caf.xml files, containing
-CAF additions that cannot be seperated in CM source, based on the AOSP base file, and removes them after the push. Also, it can handle
+This script is used to synchronize CyanogenMod's translations with Crowdin's. Also, it can handle
 automatic commiting to Gerrit and pushing/downloading to/from Crowdin.
 
 Prerequisites
@@ -27,7 +26,7 @@ Copy all files to the root of your local copy of CyanogenMod's source code.
 Edit crowdin/config_cm.yaml to set the api key & your current CyanogenMod path.
 Execute:
 
-    ./crowdin_sync.py --username your_gerrit_username
+    ./crowdin_sync.py --username your_gerrit_username [--no-download|--no-upload]
 
 Bugs
 ----
