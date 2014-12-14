@@ -205,16 +205,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # Eleven
-  -
-    source:      '/cm-11.0/packages/apps/Eleven/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/cm-11.0/packages/apps/Eleven/res/values/plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # Gallery2 (codeaurora_strings.xml)
   -
     source:      '/cm-11.0/packages/apps/Gallery2/res/values/codeaurora_strings.xml'

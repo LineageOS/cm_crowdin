@@ -61,7 +61,6 @@ files:
       - /cm-11.0/packages/apps/CameraNext
       - /cm-11.0/packages/apps/CM*
       - /cm-11.0/packages/apps/DSPManager
-      - /cm-11.0/packages/apps/Eleven
       - /cm-11.0/packages/apps/Email/emailcommon
       - /cm-11.0/packages/apps/GalleryNext
       - /cm-11.0/packages/apps/LockClock
