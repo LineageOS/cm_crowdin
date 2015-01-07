@@ -72,6 +72,7 @@ files:
       - /cm-11.0/packages/apps/ThemeChooser
       - /cm-11.0/packages/apps/ThemeStore
       - /cm-11.0/packages/apps/Torch
+      - /cm-11.0/packages/apps/Trebuchet/WallpaperPicker
       - /cm-11.0/packages/apps/VoicePlus
       - /cm-11.0/packages/apps/VoiceWakeup
 
