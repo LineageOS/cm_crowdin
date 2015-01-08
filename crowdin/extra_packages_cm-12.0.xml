@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- Extra packages not included in the main manifest
+       WARNING: Cid is not working yet for these repositories. -->
+  <project path="hardware/qcom/fm" name="CyanogenMod/android_hardware_qcom_fm" />
+  <project path="packages/apps/SamsungServiceMode" name="CyanogenMod/android_packages_apps_SamsungServiceMode" />
+</manifest>
