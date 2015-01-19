@@ -56,9 +56,7 @@ files:
     ignore:
       - /cm-11.0/packages/apps/**/tests
       - /cm-11.0/packages/apps/Apollo
-      - /cm-11.0/packages/apps/AudioFX
       - /cm-11.0/packages/apps/BluetoothExt
-      - /cm-11.0/packages/apps/CameraNext
       - /cm-11.0/packages/apps/CM*
       - /cm-11.0/packages/apps/DSPManager
       - /cm-11.0/packages/apps/Email/emailcommon
