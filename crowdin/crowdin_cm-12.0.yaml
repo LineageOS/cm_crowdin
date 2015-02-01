@@ -116,11 +116,39 @@ files:
       - /cm-12.0/packages/apps/Camera2/**/cm_arrays.xml
       - /cm-12.0/packages/apps/DeskClock/**/cm_arrays.xml
       - /cm-12.0/packages/apps/Email/**/cm_arrays.xml
+      - /cm-12.0/packages/apps/Mms/**/cm_arrays.xml
+      - /cm-12.0/packages/apps/Settings/**/cm_arrays.xml
       - /cm-12.0/packages/providers/ContactsProvider/**/cm_strings.xml
       - /cm-12.0/packages/providers/TelephonyProvider/**/cm_strings.xml
       - /cm-12.0/packages/services/Telephony/**/cm_arrays.xml
       - /cm-12.0/device/**/overlay/**/*.xml
       - /cm-12.0/development/**/*.xml
+
+  # Default for device apps
+  -
+    source:      '/cm-12.0/device/**/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /cm-12.0/device/google/**/*.xml
+      - /cm-12.0/device/sample/**/*.xml
+      - /cm-12.0/device/**/overlay/**/*.xml
+  -
+    source:      '/cm-12.0/device/**/values/plurals.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /cm-12.0/device/google/**/*.xml
+      - /cm-12.0/device/sample/**/*.xml
+      - /cm-12.0/device/**/overlay/**/*.xml
+  -
+    source:      '/cm-12.0/device/**/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    ignore:
+      - /cm-12.0/device/google/**/*.xml
+      - /cm-12.0/device/sample/**/*.xml
+      - /cm-12.0/device/**/overlay/**/*.xml
 
   # Default for CM apps (CMAccount, CMFM etc.)
   -
@@ -187,6 +215,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # SetupWizard
+  -
+    source:      '/cm-12.0/packages/apps/SetupWizard/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Screencast
   -
     source:      '/cm-12.0/packages/apps/Screencast/res/values/strings.xml'
@@ -240,6 +274,12 @@ files:
     languages_mapping: *anchor
   -
     source:      '/cm-12.0/packages/wallpapers/PhotoPhase/res/values/plurals.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # WhisperPush
+  -
+    source:      '/cm-12.0/external/whispersystems/WhisperPush/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 

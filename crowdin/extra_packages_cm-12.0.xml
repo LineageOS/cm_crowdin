@@ -11,4 +11,9 @@
   <project path="packages/apps/Screencast" name="cyngn/android_packages_apps_Screencast-resources" />
   <project path="packages/apps/ThemeStore" name="cyngn/android_packages_apps_ThemeStore-resources" />
   <project path="packages/apps/VoiceWakeup" name="cyngn/android_packages_apps_VoiceWakeup-resources" />
+
+  <!-- Device repositories that can be translated -->
+  <project path="device/asus/tf300t" name="CyanogenMod/android_device_asus_tf300t" />
+  <project path="device/asus/tf700t" name="CyanogenMod/android_device_asus_tf700t" />
+  <project path="device/oppo/common" name="CyanogenMod/android_device_oppo_common" />
 </manifest>

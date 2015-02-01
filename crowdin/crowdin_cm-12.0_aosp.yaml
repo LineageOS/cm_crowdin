@@ -55,14 +55,19 @@ files:
       - /cm-12.0/packages/apps/CM*
       - /cm-12.0/packages/apps/Eleven
       - /cm-12.0/packages/apps/Email/emailcommon
+      - /cm-12.0/packages/apps/GalleryNext
       - /cm-12.0/packages/apps/LockClock
       - /cm-12.0/packages/apps/Mms/apptests
       - /cm-12.0/packages/apps/SamsungServiceMode
+      - /cm-12.0/packages/apps/Screencast
+      - /cm-12.0/packages/apps/SetupWizard
       - /cm-12.0/packages/apps/SpeechRecorder
       - /cm-12.0/packages/apps/Terminal
       - /cm-12.0/packages/apps/ThemeChooser
+      - /cm-12.0/packages/apps/ThemeStore
       - /cm-12.0/packages/apps/Trebuchet/WallpaperPicker
       - /cm-12.0/packages/apps/TvSettings
+      - /cm-12.0/packages/apps/VoiceWakeup
 
   -
     source:      '/cm-12.0/packages/apps/Bluetooth/res/values/strings_pbap.xml'
