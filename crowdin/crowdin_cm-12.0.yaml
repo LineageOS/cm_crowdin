@@ -116,6 +116,8 @@ files:
       - /cm-12.0/packages/apps/Camera2/**/cm_arrays.xml
       - /cm-12.0/packages/apps/DeskClock/**/cm_arrays.xml
       - /cm-12.0/packages/apps/Email/**/cm_arrays.xml
+      - /cm-12.0/packages/apps/Mms/**/cm_arrays.xml
+      - /cm-12.0/packages/apps/Settings/**/cm_arrays.xml
       - /cm-12.0/packages/providers/ContactsProvider/**/cm_strings.xml
       - /cm-12.0/packages/providers/TelephonyProvider/**/cm_strings.xml
       - /cm-12.0/packages/services/Telephony/**/cm_arrays.xml
@@ -184,6 +186,12 @@ files:
   # LockClock
   -
     source:      '/cm-12.0/packages/apps/LockClock/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # SetupWizard
+  -
+    source:      '/cm-12.0/packages/apps/SetupWizard/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
