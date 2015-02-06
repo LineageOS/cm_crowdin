@@ -26,7 +26,7 @@ Copy all files to the root of your local copy of CyanogenMod's source code.
 Edit crowdin/config_cm.yaml to set the api key & your current CyanogenMod path.
 Execute:
 
-    ./crowdin_sync.py --username your_gerrit_username [--no-download|--no-upload]
+    ./crowdin_sync.py --username your_gerrit_username --branch cm_version [--no-download|--no-upload]
 
 Bugs
 ----

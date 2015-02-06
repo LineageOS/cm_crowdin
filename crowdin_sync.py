@@ -35,11 +35,6 @@ from xml.dom import minidom
 
 ############################################ FUNCTIONS #############################################
 
-def get_default_branch(xml):
-    xml_default = xml.getElementsByTagName('default')[0]
-    xml_default_revision = xml_default.attributes['revision'].value
-    return re.search('refs/heads/(.*)', xml_default_revision).groups()[0]
-
 def push_as_commit(path, name, branch, username):
     print('Committing ' + name + ' on branch ' + branch)
 
@@ -82,12 +77,14 @@ print('Welcome to the CM Crowdin sync script!')
 parser = argparse.ArgumentParser(description='Synchronising CyanogenMod\'s translations with Crowdin')
 sync = parser.add_mutually_exclusive_group()
 parser.add_argument('-u', '--username', help='Gerrit username', required=True)
+parser.add_argument('-b', '--branch', help='CyanogenMod branch', required=True)
 sync.add_argument('--no-upload', action='store_true', help='Only download CM translations from Crowdin')
 sync.add_argument('--no-download', action='store_true', help='Only upload CM source translations to Crowdin')
 args = parser.parse_args()
 argsdict = vars(args)
 
 username = argsdict['username']
+default_branch = argsdict['branch']
 
 ############################################# PREPARE ##############################################
 
@@ -113,10 +110,6 @@ else:
 # Variables regarding android/default.xml
 print('Loading: android/default.xml')
 xml_android = minidom.parse('android/default.xml')
-
-# Default branch
-default_branch = get_default_branch(xml_android)
-print('Default branch: ' + default_branch)
 
 # Check for crowdin/extra_packages_' + default_branch + '.xml
 if not os.path.isfile('crowdin/extra_packages_' + default_branch + '.xml'):
