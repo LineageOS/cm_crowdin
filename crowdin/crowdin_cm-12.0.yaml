@@ -20,9 +20,11 @@ project_identifier: cyanogenmod
 preserve_hierarchy: true
 
 files:
-  # Default for AOSP projects with CM additions
+# Frameworks
+
+  # framework-res
   -
-    source:      '/cm-12.0/**/values/cm_*.xml'
+    source:      '/cm-12.0/frameworks/base/core/res/res/values/cm_plurals.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: &anchor
       android_code:
@@ -110,102 +112,200 @@ files:
         zh-HK: zh-rHK
         zh-TW: zh-rTW
         zu: zu
-    ignore:
-      - /cm-12.0/**/cm_extra.xml
-      - /cm-12.0/**/cm_colors.xml
-      - /cm-12.0/**/cm_config.xml
-      - /cm-12.0/**/cm_dimens.xml
-      - /cm-12.0/**/cm_integers.xml
-      - /cm-12.0/**/cm_symbols.xml
-      - /cm-12.0/frameworks/base/core/res/**/cm_arrays.xml
-      - /cm-12.0/frameworks/base/core/res/**/cm_public.xml
-      - /cm-12.0/packages/apps/Browser/**/cm_arrays.xml
-      - /cm-12.0/packages/apps/Calendar/**/cm_arrays.xml
-      - /cm-12.0/packages/apps/Camera2/**/cm_arrays.xml
-      - /cm-12.0/packages/apps/DeskClock/**/cm_arrays.xml
-      - /cm-12.0/packages/apps/Email/**/cm_arrays.xml
-      - /cm-12.0/packages/apps/Mms/**/cm_arrays.xml
-      - /cm-12.0/packages/apps/Settings/**/cm_arrays.xml
-      - /cm-12.0/packages/providers/ContactsProvider/**/cm_strings.xml
-      - /cm-12.0/packages/providers/TelephonyProvider/**/cm_strings.xml
-      - /cm-12.0/packages/services/Telephony/**/cm_arrays.xml
-      - /cm-12.0/device/**/overlay/**/*.xml
-      - /cm-12.0/development/**/*.xml
+  -
+    source:      '/cm-12.0/frameworks/base/core/res/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
 
-  # Default for device apps
+  # Keyguard
   -
-    source:      '/cm-12.0/device/**/values/arrays.xml'
+    source:      '/cm-12.0/frameworks/base/packages/Keyguard/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
-    ignore:
-      - /cm-12.0/device/google/**/*.xml
-      - /cm-12.0/device/sample/**/*.xml
-      - /cm-12.0/device/**/overlay/**/*.xml
-  -
-    source:      '/cm-12.0/device/**/values/plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-    ignore:
-      - /cm-12.0/device/google/**/*.xml
-      - /cm-12.0/device/sample/**/*.xml
-      - /cm-12.0/device/**/overlay/**/*.xml
-  -
-    source:      '/cm-12.0/device/**/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-    ignore:
-      - /cm-12.0/device/google/**/*.xml
-      - /cm-12.0/device/sample/**/*.xml
-      - /cm-12.0/device/**/overlay/**/*.xml
 
-  # Default for CM apps (CMAccount, CMFM etc.)
+  # SystemUI
   -
-    source:      '/cm-12.0/packages/apps/CM*/**/values/arrays.xml'
+    source:      '/cm-12.0/frameworks/base/packages/SystemUI/res/values/cm_arrays.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
-    ignore:
-      - /cm-12.0/packages/apps/CM*/tests/**/*.xml
-      - /cm-12.0/packages/apps/CMFileManager/**/arrays.xml
-      - /cm-12.0/packages/apps/CMUpdater/**/arrays.xml
   -
-    source:      '/cm-12.0/packages/apps/CM*/**/values/plurals.xml'
+    source:      '/cm-12.0/frameworks/base/packages/SystemUI/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
-    ignore:
-      - /cm-12.0/packages/apps/CM*/tests/**/*.xml
-  -
-    source:      '/cm-12.0/packages/apps/CM*/**/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-    ignore:
-      - /cm-12.0/packages/apps/CM*/tests/**/*.xml
-      - /cm-12.0/packages/apps/CMKeyguard/**/strings.xml
 
-# Other projects
+# Packages
+
+  # AudioFX
+  -
+    source:      '/cm-12.0/packages/apps/AudioFX/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Bluetooth
+  -
+    source:      '/cm-12.0/packages/apps/Bluetooth/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
 
   # BluetoothExt
   -
-    source:      '/cm-12.0/packages/apps/BluetoothExt/res/values/strings*.xml'
+    source:      '/cm-12.0/packages/apps/BluetoothExt/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/BluetoothExt/res/values/strings_dun.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/BluetoothExt/res/values/strings_ftp.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/BluetoothExt/res/values/strings_map.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/BluetoothExt/res/values/strings_sap.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # CameraNext (qcomstrings.xml)
+  # Calculator
+  -
+    source:      '/cm-12.0/packages/apps/Calculator/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Calendar
+  -
+    source:      '/cm-12.0/packages/apps/Calendar/res/values/cm_plurals.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/Calendar/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Camera2
+  -
+    source:      '/cm-12.0/packages/apps/Camera2/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CameraNext
+  -
+    source:      '/cm-12.0/packages/apps/CameraNext/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
   -
     source:      '/cm-12.0/packages/apps/CameraNext/res/values/qcomstrings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # Eleven
+  # CellBroadcastReceiver
   -
-    source:      '/cm-12.0/packages/apps/Eleven/res/values/strings.xml'
+    source:      '/cm-12.0/packages/apps/CellBroadcastReceiver/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
+
+  # CMAccount
+  -
+    source:      '/cm-12.0/packages/apps/CMAccount/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CMBugReport
+  -
+    source:      '/cm-12.0/packages/apps/CMBugReport/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CMFileManager
+  -
+    source:      '/cm-12.0/packages/apps/CMFileManager/res/values/plurals.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/CMFileManager/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/CMFileManager/themes/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CMLogger
+  -
+    source:      '/cm-12.0/packages/apps/CMLogger/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CMUpdater
+  -
+    source:      '/cm-12.0/packages/apps/CMUpdater/res/values/plurals.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/CMUpdater/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CMWallpapers
+  -
+    source:      '/cm-12.0/packages/apps/CMWallpapers/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Contacts
+  -
+    source:      '/cm-12.0/packages/apps/Contacts/res/values/cm_plurals.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/Contacts/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # ContactsCommon
+  -
+    source:      '/cm-12.0/packages/apps/ContactsCommon/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # DeskClock
+  -
+    source:      '/cm-12.0/packages/apps/DeskClock/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Dialer
+  -
+    source:      '/cm-12.0/packages/apps/Dialer/res/values/cm_arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/Dialer/res/values/cm_plurals.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/Dialer/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Eleven
   -
     source:      '/cm-12.0/packages/apps/Eleven/res/values/plurals.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/Eleven/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
 
-  # Gallery2 (codeaurora_strings.xml)
+  # Gallery2
+  -
+    source:      '/cm-12.0/packages/apps/Gallery2/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
   -
     source:      '/cm-12.0/packages/apps/Gallery2/res/values/codeaurora_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
@@ -217,15 +317,35 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # InCallUI
+  -
+    source:      '/cm-12.0/packages/apps/InCallUI/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/InCallUI/res_cm/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # LockClock
   -
     source:      '/cm-12.0/packages/apps/LockClock/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # SetupWizard
+  # Mms
   -
-    source:      '/cm-12.0/packages/apps/SetupWizard/res/values/strings.xml'
+    source:      '/cm-12.0/packages/apps/Mms/res/values/cm_plurals.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/Mms/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # PhoneCommon
+  -
+    source:      '/cm-12.0/packages/apps/PhoneCommon/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -235,13 +355,41 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # Terminal
+  # Settings
   -
-    source:      '/cm-12.0/packages/apps/Terminal/res/values/strings.xml'
+    source:      '/cm-12.0/packages/apps/Settings/res/values/cm_plurals.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
   -
+    source:      '/cm-12.0/packages/apps/Settings/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # SetupWizard
+  -
+    source:      '/cm-12.0/packages/apps/SetupWizard/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # SoundRecorder
+  -
+    source:      '/cm-12.0/packages/apps/SoundRecorder/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Stk
+  -
+    source:      '/cm-12.0/packages/apps/Stk/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Terminal
+  -
     source:      '/cm-12.0/packages/apps/Terminal/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/Terminal/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -257,9 +405,31 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # Trebuchet
+  -
+    source:      '/cm-12.0/packages/apps/Trebuchet/res/values/cm_arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/apps/Trebuchet/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # VoiceWakeup
   -
     source:      '/cm-12.0/packages/apps/VoiceWakeup/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+# Providers
+
+  # DownloadProvider
+  -
+    source:      '/cm-12.0/packages/providers/DownloadProvider/res/values/cm_plurals.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/providers/DownloadProvider/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -269,21 +439,51 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+# Services
+
+  # Mms
+  -
+    source:      '/cm-12.0/packages/services/Mms/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Telecomm
+  -
+    source:      '/cm-12.0/packages/services/Telecomm/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Telephony
+  -
+    source:      '/cm-12.0/packages/services/Telephony/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+# Wallpapers
+
   # Galaxy4
   -
     source:      '/cm-12.0/packages/wallpapers/Galaxy4/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # PhotoPhase
+  # PhaseBeam
   -
-    source:      '/cm-12.0/packages/wallpapers/PhotoPhase/res/values/strings.xml'
+    source:      '/cm-12.0/packages/wallpapers/PhaseBeam/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
+
+  # PhotoPhase
   -
     source:      '/cm-12.0/packages/wallpapers/PhotoPhase/res/values/plurals.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/wallpapers/PhotoPhase/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+# External
 
   # WhisperPush
   -
@@ -291,15 +491,15 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-# Device specific packages
+# Device specific
 
   # fmapp2
   -
-    source:      '/cm-12.0/hardware/qcom/fm/fmapp2/res/values/strings.xml'
+    source:      '/cm-12.0/hardware/qcom/fm/fmapp2/res/values/arrays.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
   -
-    source:      '/cm-12.0/hardware/qcom/fm/fmapp2/res/values/arrays.xml'
+    source:      '/cm-12.0/hardware/qcom/fm/fmapp2/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -312,5 +512,29 @@ files:
   # SamsungServiceMode
   -
     source:      '/cm-12.0/packages/apps/SamsungServiceMode/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # tf300t AutoParts
+  -
+    source:      '/cm-12.0/device/asus/tf300t/AutoParts/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # tf700t AutoParts
+  -
+    source:      '/cm-12.0/device/asus/tf700t/AutoParts/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # acclaim TFF
+  -
+    source:      '/cm-12.0/device/bn/acclaim/TFF/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # oppo configpanel
+  -
+    source:      '/cm-12.0/device/oppo/common/configpanel/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
