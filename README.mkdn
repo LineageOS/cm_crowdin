@@ -18,8 +18,6 @@ python-git is used for Git integration.
 
     sudo apt-get install python-git
 
-The script is currently only python2 supported.
-
 Executing
 ---------
 Copy all files to the root of your local copy of CyanogenMod's source code.
