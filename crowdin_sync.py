@@ -156,7 +156,7 @@ if not args.no_upload:
     # Execute 'crowdin-cli upload sources' and show output
     run_command(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '.yaml', '--identity=crowdin/config.yaml', 'upload', 'sources'])
 
-    print('Uploading Crowdin source translations (non-AOSP supported languages)')
+    print('\nUploading Crowdin source translations (non-AOSP supported languages)')
     # Execute 'crowdin-cli upload sources' and show output
     run_command(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'upload', 'sources'])
 else:
@@ -168,7 +168,7 @@ if not args.no_download:
     # Execute 'crowdin-cli download' and show output
     run_command(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '.yaml', '--identity=crowdin/config.yaml', 'download'])
 
-    print('Downloading Crowdin translations (non-AOSP supported languages)')
+    print('\nDownloading Crowdin translations (non-AOSP supported languages)')
     # Execute 'crowdin-cli download' and show output
     run_command(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'download'])
 
