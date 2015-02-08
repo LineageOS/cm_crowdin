@@ -191,16 +191,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # CameraNext
-  -
-    source:      '/cm-12.0/packages/apps/CameraNext/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/cm-12.0/packages/apps/CameraNext/res/values/qcomstrings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # CellBroadcastReceiver
   -
     source:      '/cm-12.0/packages/apps/CellBroadcastReceiver/res/values/cm_strings.xml'
@@ -230,12 +220,6 @@ files:
     languages_mapping: *anchor
   -
     source:      '/cm-12.0/packages/apps/CMFileManager/themes/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CMLogger
-  -
-    source:      '/cm-12.0/packages/apps/CMLogger/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -311,12 +295,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # GalleryNext
-  -
-    source:      '/cm-12.0/packages/apps/GalleryNext/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # InCallUI
   -
     source:      '/cm-12.0/packages/apps/InCallUI/res/values/cm_strings.xml'
@@ -346,12 +324,6 @@ files:
   # PhoneCommon
   -
     source:      '/cm-12.0/packages/apps/PhoneCommon/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Screencast
-  -
-    source:      '/cm-12.0/packages/apps/Screencast/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -399,12 +371,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # ThemeStore
-  -
-    source:      '/cm-12.0/packages/apps/ThemeStore/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # Trebuchet
   -
     source:      '/cm-12.0/packages/apps/Trebuchet/res/values/cm_arrays.xml'
@@ -415,9 +381,45 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+# Cyngn packages
+
+  # CameraNext
+  -
+    source:      '/cm-12.0/packages/cyngn/CameraNext/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.0/packages/cyngn/CameraNext/res/values/qcomstrings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CMLogger
+  -
+    source:      '/cm-12.0/packages/cyngn/CMLogger/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # GalleryNext
+  -
+    source:      '/cm-12.0/packages/cyngn/GalleryNext/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Screencast
+  -
+    source:      '/cm-12.0/packages/cyngn/Screencast/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # ThemeStore
+  -
+    source:      '/cm-12.0/packages/cyngn/ThemeStore/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # VoiceWakeup
   -
-    source:      '/cm-12.0/packages/apps/VoiceWakeup/res/values/strings.xml'
+    source:      '/cm-12.0/packages/cyngn/VoiceWakeup/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 

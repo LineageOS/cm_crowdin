@@ -125,12 +125,6 @@ files:
 
 # Packages
 
-  # AudioFX
-  -
-    source:      '/cm-12.0/packages/apps/AudioFX/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # BasicSmsReceiver
   -
     source:      '/cm-12.0/packages/apps/BasicSmsReceiver/res/values/strings.xml'
@@ -176,12 +170,6 @@ files:
     languages_mapping: *anchor
   -
     source:      '/cm-12.0/packages/apps/Camera2/res_p/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CameraNext
-  -
-    source:      '/cm-12.0/packages/apps/CameraNext/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -330,6 +318,20 @@ files:
   # UnifiedEmail
   -
     source:      '/cm-12.0/packages/apps/UnifiedEmail/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+# Cyngn packages
+
+  # AudioFX
+  -
+    source:      '/cm-12.0/packages/apps/AudioFX/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CameraNext
+  -
+    source:      '/cm-12.0/packages/apps/CameraNext/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 

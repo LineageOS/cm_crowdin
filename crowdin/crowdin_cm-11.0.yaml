@@ -154,12 +154,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # AudioFX
-  -
-    source:      '/cm-11.0/packages/apps/AudioFX/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # Bluetooth
   -
     source:      '/cm-11.0/packages/apps/Bluetooth/res/values/cm_strings.xml'
@@ -220,16 +214,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # CameraNext
-  -
-    source:      '/cm-11.0/packages/apps/CameraNext/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/cm-11.0/packages/apps/CameraNext/res/values/qcomstrings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # CellBroadcastReceiver
   -
     source:      '/cm-11.0/packages/apps/CellBroadcastReceiver/res/values/cm_strings.xml'
@@ -262,27 +246,9 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # CMFota
-  -
-    source:      '/cm-11.0/packages/apps/CMFota/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # CMHome
   -
     source:      '/cm-11.0/packages/apps/CMHome/src/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CMKeyguard
-  -
-    source:      '/cm-11.0/packages/apps/CMKeyguard/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CMLogger
-  -
-    source:      '/cm-11.0/packages/apps/CMLogger/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -360,12 +326,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # GalleryNext
-  -
-    source:      '/cm-11.0/packages/apps/GalleryNext/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # InCallUI
   -
     source:      '/cm-11.0/packages/apps/InCallUI/res/values/cm_strings.xml'
@@ -389,18 +349,6 @@ files:
     languages_mapping: *anchor
   -
     source:      '/cm-11.0/packages/apps/Mms/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # OneClickAndroid
-  -
-    source:      '/cm-11.0/packages/apps/OneClickAndroid/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Screencast
-  -
-    source:      '/cm-11.0/packages/apps/Screencast/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -436,12 +384,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # ThemeStore
-  -
-    source:      '/cm-11.0/packages/apps/ThemeStore/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # Torch
   -
     source:      '/cm-11.0/packages/apps/Torch/res/values/strings.xml'
@@ -470,9 +412,69 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+# Cyngn packages
+
+  # AudioFX
+  -
+    source:      '/cm-11.0/packages/cyngn/AudioFX/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CameraNext
+  -
+    source:      '/cm-11.0/packages/cyngn/CameraNext/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-11.0/packages/cyngn/CameraNext/res/values/qcomstrings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CMFota
+  -
+    source:      '/cm-11.0/packages/cyngn/CMFota/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CMKeyguard
+  -
+    source:      '/cm-11.0/packages/cyngn/CMKeyguard/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CMLogger
+  -
+    source:      '/cm-11.0/packages/cyngn/CMLogger/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # GalleryNext
+  -
+    source:      '/cm-11.0/packages/cyngn/GalleryNext/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # OneClickAndroid
+  -
+    source:      '/cm-11.0/packages/cyngn/OneClickAndroid/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Screencast
+  -
+    source:      '/cm-11.0/packages/cyngn/Screencast/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # ThemeStore
+  -
+    source:      '/cm-11.0/packages/cyngn/ThemeStore/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # VoiceWakeup
   -
-    source:      '/cm-11.0/packages/apps/VoiceWakeup/res/values/strings.xml'
+    source:      '/cm-11.0/packages/cyngn/VoiceWakeup/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
