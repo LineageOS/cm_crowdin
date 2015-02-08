@@ -14,12 +14,6 @@ The Ruby variant of crowdin-cli is required for this to work.
     source /home/your_username/.rvm/scripts/rvm # Add this to your .bashrc file!
     rvm all do gem install crowdin-cli
 
-python-git is used for Git integration.
-
-    sudo apt-get install python-git
-
-The script is currently only python2 supported.
-
 Executing
 ---------
 Copy all files to the root of your local copy of CyanogenMod's source code.
