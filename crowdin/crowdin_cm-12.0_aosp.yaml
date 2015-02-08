@@ -28,12 +28,13 @@ files:
     languages_mapping: &anchor
       android_code:
         ast: ast-rES
+        be: be
         cy: cy
         eo: eo
-        fy-NL: fy-NL
+        fy-NL: fy-rNL
         ku: ku
         lb: lb
-        pa-IN: pa
+        pa-IN: pa-rIN
         ug: ug
 
   -
