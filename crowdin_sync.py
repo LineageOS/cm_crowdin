@@ -5,7 +5,7 @@
 # Updates Crowdin source translations and pushes translations
 # directly to CyanogenMod's Gerrit.
 #
-# Copyright (C) 2014 The CyanogenMod Project
+# Copyright (C) 2014-2015 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -34,6 +34,17 @@ from urllib import urlretrieve
 from xml.dom import minidom
 
 ############################################ FUNCTIONS #############################################
+
+def run_command(command):
+    proc = subprocess.Popen(command, stdout=subprocess.PIPE)
+    # Grab stdout line by line as it becomes available.
+    # This will loop until p terminates.
+    while proc.poll() is None:
+        line = proc.stdout.readline() # This blocks until it receives a newline.
+        print line
+    # When the subprocess terminates there might be unconsumed output
+    # that still needs to be processed.
+    print proc.stdout.read()
 
 def push_as_commit(path, name, branch, username):
     print('Committing ' + name + ' on branch ' + branch)
@@ -147,11 +158,11 @@ if not args.no_upload:
     print('\nSTEP 1: Upload Crowdin source translations')
     print('Uploading Crowdin source translations (AOSP supported languages)')
     # Execute 'crowdin-cli upload sources' and show output
-    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '.yaml', '--identity=crowdin/config.yaml', 'upload', 'sources']))
+    run_command(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '.yaml', '--identity=crowdin/config.yaml', 'upload', 'sources'])
 
     print('Uploading Crowdin source translations (non-AOSP supported languages)')
     # Execute 'crowdin-cli upload sources' and show output
-    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'upload', 'sources']))
+    run_command(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'upload', 'sources'])
 else:
     print('\nSkipping source translations upload')
 
@@ -159,11 +170,11 @@ if not args.no_download:
     print('\nSTEP 2: Download Crowdin translations')
     print('Downloading Crowdin translations (AOSP supported languages)')
     # Execute 'crowdin-cli download' and show output
-    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '.yaml', '--identity=crowdin/config.yaml', 'download']))
+    run_command(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '.yaml', '--identity=crowdin/config.yaml', 'download'])
 
     print('Downloading Crowdin translations (non-AOSP supported languages)')
     # Execute 'crowdin-cli download' and show output
-    print(subprocess.check_output(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'download']))
+    run_command(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'download'])
 
     print('\nSTEP 3: Remove useless empty translations')
     # Some line of code that I found to find all XML files
