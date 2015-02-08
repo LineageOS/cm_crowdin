@@ -28,6 +28,7 @@ files:
     languages_mapping: &anchor
       android_code:
         ast: ast-rES
+        be: be
         cy: cy
         eo: eo
         fy-NL: fy-NL
