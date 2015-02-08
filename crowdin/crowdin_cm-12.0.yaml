@@ -41,6 +41,8 @@ files:
         de: de
         el: el
         en-AU: en-rAU
+        en-GB: en-rGB
+        en-IN: en-rIN
         eo: eo
         es-ES: es
         es-US: es-rUS
@@ -49,6 +51,7 @@ files:
         fa: fa
         fi: fi
         fr: fr
+        fr-CA: fr-rCA
         fy-NL: fy-rNL
         gl: gl-rES
         he: iw
@@ -80,8 +83,10 @@ files:
         nb: nb
         ne-NP: ne-rNP
         nl: nl
-        pa-IN: pa
+        pa-IN: pa-rIN
         pl: pl
+        pt-PT: pt
+        pt-BR: pt-rBR
         rm-CH: rm
         ro: ro
         ru: ru
@@ -101,6 +106,9 @@ files:
         ur-PK: ur-rPK
         uz: uz-rUZ
         vi: vi
+        zh-CN: zh-rCN
+        zh-HK: zh-rHK
+        zh-TW: zh-rTW
         zu: zu
     ignore:
       - /cm-12.0/**/cm_extra.xml
