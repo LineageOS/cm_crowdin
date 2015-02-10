@@ -24,7 +24,7 @@ files:
 
   # framework-res
   -
-    source:      '/cm-12.0/frameworks/base/core/res/res/values/cm_plurals.xml'
+    source:      '/cm-12.0/frameworks/base/core/res/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: &anchor
       android_code:
@@ -112,10 +112,6 @@ files:
         zh-HK: zh-rHK
         zh-TW: zh-rTW
         zu: zu
-  -
-    source:      '/cm-12.0/frameworks/base/core/res/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
 
   # Keyguard
   -
