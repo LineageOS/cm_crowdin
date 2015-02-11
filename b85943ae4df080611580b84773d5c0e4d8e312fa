@@ -16,6 +16,41 @@
       "revId": "b85943ae4df080611580b84773d5c0e4d8e312fa",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bacf61ea_49cb0f73",
+        "filename": "crowdin_sync.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 9690
+      },
+      "writtenOn": "2015-02-11T10:59:03Z",
+      "side": 1,
+      "message": "Yep. Derpage there",
+      "parentUuid": "bacf61ea_09e2b703",
+      "revId": "b85943ae4df080611580b84773d5c0e4d8e312fa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bacf61ea_69ced384",
+        "filename": "crowdin_sync.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9690
+      },
+      "writtenOn": "2015-02-11T10:59:03Z",
+      "side": 1,
+      "message": "and not silent:",
+      "revId": "b85943ae4df080611580b84773d5c0e4d8e312fa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
