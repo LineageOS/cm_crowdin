@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bacf61ea_14aacad4",
+        "filename": "crowdin_sync.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 4615
+      },
+      "writtenOn": "2015-02-11T12:51:59Z",
+      "side": 1,
+      "message": "bug in git means you can\u0027t use --git-dir with ls-files --deleted. It checks cwd against the index, rather than the actual git work tree.\n\n\ncwd \u003d os.getcwd()\n\nos.chdir(path)\n\ncmd \u003d [\u0027git\u0027, \u0027ls-files\u0027, \u0027--deleted\u0027]\n\nfiles \u003d str(run_subprocess(cmd)[0][0]).strip().splitlines()\n\nos.chdir(cwd)",
+      "revId": "9baef06c2666d20e94d789ac30733e6757a28bdf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bacf61ea_74afc6e3",
+        "filename": "crowdin_sync.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 4615
+      },
+      "writtenOn": "2015-02-11T12:51:59Z",
+      "side": 1,
+      "message": "cmd \u003d [\u0027git\u0027, \u0027--git-dir\u003d%s\u0027 % path, \u0027rm\u0027]\n\ncmd.extend(files)",
+      "revId": "9baef06c2666d20e94d789ac30733e6757a28bdf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
