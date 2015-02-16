@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bacf61ea_868969cd",
+        "filename": "crowdin_sync.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9690
+      },
+      "writtenOn": "2015-02-16T01:48:26Z",
+      "side": 1,
+      "message": "os.chdir(os.path.dirname(path))",
+      "revId": "5c4aca2a82468185925c78671c9a85f67082c114",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
