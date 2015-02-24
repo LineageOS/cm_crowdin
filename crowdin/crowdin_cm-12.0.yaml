@@ -531,6 +531,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # xt897 AsantiKeypad
+  -
+    source:      '/cm-12.0/device/motorola/xt897/AsantiKeypad/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # oppo configpanel
   -
     source:      '/cm-12.0/device/oppo/common/configpanel/res/values/strings.xml'
