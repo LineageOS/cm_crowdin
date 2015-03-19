@@ -214,10 +214,6 @@ files:
     source:      '/cm-12.0/packages/apps/CMFileManager/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
-  -
-    source:      '/cm-12.0/packages/apps/CMFileManager/themes/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
 
   # CMUpdater
   -
