@@ -7,6 +7,7 @@
 
   <project path="packages/cyngn/CameraNext" name="cyngn/android_packages_apps_Camera2-resources" />
   <project path="packages/cyngn/CMLogger" name="cyngn/android_packages_apps_CMLogger-resources" />
+  <project path="packages/cyngn/CyanogenAccount" name="cyngn/android_packages_apps_CyanogenAccount-resources" />
   <project path="packages/cyngn/EmailNext" name="cyngn/android_packages_apps_EmailNext-resources" />
   <project path="packages/cyngn/ExchangeNext" name="cyngn/android_packages_apps_ExchangeNext-resources" />
   <project path="packages/cyngn/GalleryNext" name="cyngn/android_packages_apps_GalleryNext-resources" />
