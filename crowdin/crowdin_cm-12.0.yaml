@@ -399,6 +399,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # CyanogenAccount
+  -
+    source:      '/cm-12.0/packages/cyngn/CyanogenAccount/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # EmailNext
   -
     source:      '/cm-12.0/packages/cyngn/EmailNext/res/values/cm_strings.xml'
