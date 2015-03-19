@@ -166,11 +166,11 @@ if not args.no_download:
     print('\nSTEP 2: Download Crowdin translations')
     print('Downloading Crowdin translations (AOSP supported languages)')
     # Execute 'crowdin-cli download' and show output
-    run_command(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '.yaml', '--identity=crowdin/config.yaml', 'download'])
+    run_command(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '.yaml', '--identity=crowdin/config.yaml', 'download', '--ignore-match'])
 
     print('\nDownloading Crowdin translations (non-AOSP supported languages)')
     # Execute 'crowdin-cli download' and show output
-    run_command(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'download'])
+    run_command(['crowdin-cli', '--config=crowdin/crowdin_' + default_branch + '_aosp.yaml', '--identity=crowdin/config_aosp.yaml', 'download', '--ignore-match'])
 
     print('\nSTEP 3: Remove useless empty translations')
     # Some line of code that I found to find all XML files
