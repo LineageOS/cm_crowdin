@@ -125,6 +125,12 @@ files:
 
 # Packages
 
+  # AudioFX
+  -
+    source:      '/cm-12.0/packages/apps/AudioFX/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # BasicSmsReceiver
   -
     source:      '/cm-12.0/packages/apps/BasicSmsReceiver/res/values/strings.xml'
@@ -325,13 +331,7 @@ files:
 
   # AudioFX
   -
-    source:      '/cm-12.0/packages/apps/AudioFX/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CameraNext
-  -
-    source:      '/cm-12.0/packages/apps/CameraNext/res/values/strings.xml'
+    source:      '/cm-12.0/packages/cyngn/AudioFX/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
