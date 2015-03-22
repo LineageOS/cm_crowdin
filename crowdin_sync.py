@@ -175,7 +175,7 @@ if not args.no_download:
     print('\nSTEP 3: Remove useless empty translations')
     # Some line of code that I found to find all XML files
     result = [os.path.join(dp, f) for dp, dn, filenames in os.walk(os.getcwd()) for f in filenames if os.path.splitext(f)[1] == '.xml']
-    empty_contents = {'<resources/>', '<resources xmlns:android="http://schemas.android.com/apk/res/android"/>', '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>', '<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>'}
+    empty_contents = {'<resources/>', '<resources xmlns:android="http://schemas.android.com/apk/res/android"/>', '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>', '<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>', '<resources xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>'}
     for xml_file in result:
         for line in empty_contents:
             if line in open(xml_file).read():
