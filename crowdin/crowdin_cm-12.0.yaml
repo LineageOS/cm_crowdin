@@ -277,6 +277,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # Email
+  -
+    source:      '/cm-12.0/packages/apps/Email/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Gallery2
   -
     source:      '/cm-12.0/packages/apps/Gallery2/res/values/cm_strings.xml'
@@ -370,6 +376,12 @@ files:
     languages_mapping: *anchor
   -
     source:      '/cm-12.0/packages/apps/Trebuchet/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # UnifiedEmail
+  -
+    source:      '/cm-12.0/packages/apps/UnifiedEmail/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
