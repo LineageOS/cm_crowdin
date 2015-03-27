@@ -403,7 +403,7 @@ files:
 
   # CMFota
   -
-    source:      '/cm-11.0/packages/cyngn/CMFota/res/values/strings.xml'
+    source:      '/cm-12.0/packages/cyngn/CMFota/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
