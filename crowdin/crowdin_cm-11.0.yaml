@@ -448,12 +448,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # CyanogenAccount
-  -
-    source:      '/cm-11.0/packages/cyngn/CyanogenAccount/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # GalleryNext
   -
     source:      '/cm-11.0/packages/cyngn/GalleryNext/res/values/strings.xml'

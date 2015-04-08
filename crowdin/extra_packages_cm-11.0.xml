@@ -10,7 +10,6 @@
   <project path="packages/cyngn/CMFota" name="cyngn/android_packages_apps_FOTA-resources" />
   <project path="packages/cyngn/CMKeyguard" name="cyngn/android_packages_apps_CMKeyguard-resources" />
   <project path="packages/cyngn/CMLogger" name="cyngn/android_packages_apps_CMLogger-resources" />
-  <project path="packages/cyngn/CyanogenAccount" name="cyngn/android_packages_apps_CyanogenAccount-resources" />
   <project path="packages/cyngn/GalleryNext" name="cyngn/android_packages_apps_GalleryNext-resources" />
   <project path="packages/cyngn/Screencast" name="cyngn/android_packages_apps_Screencast-resources" />
   <project path="packages/cyngn/ThemeStore" name="cyngn/android_packages_apps_ThemeStore-resources" />
