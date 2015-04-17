@@ -17,6 +17,8 @@
   <project path="packages/cyngn/ThemeStore" name="cyngn/android_packages_apps_ThemeStore-resources" />
   <project path="packages/cyngn/UnifiedEmailNext" name="cyngn/android_packages_apps_UnifiedEmailNext-resources" />
   <project path="packages/cyngn/VoiceWakeup" name="cyngn/android_packages_apps_VoiceWakeup-resources" />
+  <project path="packages/cyngn/DialerNext" name="cyngn/android_packages_apps_DialerNext-resources" />
+  <project path="packages/cyngn/InCallUINext" name="cyngn/android_packages_apps_InCallUINext-resources" />
 
   <!-- Device repositories that can be translated -->
   <project path="device/asus/tf300t" name="CyanogenMod/android_device_asus_tf300t" />
