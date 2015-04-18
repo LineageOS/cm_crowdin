@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa7ab95a_363ff026",
+        "filename": "crowdin/extra_packages_cm-12.0.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2015-04-18T07:12:48Z",
+      "side": 1,
+      "message": "Should be in alphabetical order",
+      "revId": "905c08c857dae8913591e2d27444ca3193676044",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
