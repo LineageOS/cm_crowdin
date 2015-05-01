@@ -147,9 +147,7 @@ def load_xml(x='android/default.xml'):
 
 
 def check_files(branch):
-    files = ['crowdin/config.yaml',
-             'crowdin/extra_packages_%s.xml' % branch,
-             'crowdin/config_aosp.yaml',
+    files = ['crowdin/extra_packages_%s.xml' % branch,
              'crowdin/crowdin_%s.yaml' % branch,
              'crowdin/crowdin_%s_aosp.yaml' % branch
              ]
@@ -171,17 +169,13 @@ def upload_crowdin(branch, no_upload=False):
     print('\nUploading Crowdin source translations (AOSP supported languages)')
 
     # Execute 'crowdin-cli upload sources' and show output
-    check_run(['crowdin-cli',
-               '--config=crowdin/crowdin_%s.yaml' % branch,
-               '--identity=crowdin/config.yaml',
+    check_run(['crowdin-cli', '--config=crowdin/crowdin_%s.yaml' % branch,
                'upload', 'sources'])
 
     print('\nUploading Crowdin source translations '
           '(non-AOSP supported languages)')
     # Execute 'crowdin-cli upload sources' and show output
-    check_run(['crowdin-cli',
-               '--config=crowdin/crowdin_%s_aosp.yaml' % branch,
-               '--identity=crowdin/config_aosp.yaml',
+    check_run(['crowdin-cli', '--config=crowdin/crowdin_%s_aosp.yaml' % branch,
                'upload', 'sources'])
 
 
@@ -193,16 +187,12 @@ def download_crowdin(branch, xml, username, no_download=False):
 
     print('\nDownloading Crowdin translations (AOSP supported languages)')
     # Execute 'crowdin-cli download' and show output
-    check_run(['crowdin-cli',
-               '--config=crowdin/crowdin_%s.yaml' % branch,
-               '--identity=crowdin/config.yaml',
+    check_run(['crowdin-cli', '--config=crowdin/crowdin_%s.yaml' % branch,
                'download', '--ignore-match'])
 
     print('\nDownloading Crowdin translations (non-AOSP supported languages)')
     # Execute 'crowdin-cli download' and show output
-    check_run(['crowdin-cli',
-               '--config=crowdin/crowdin_%s_aosp.yaml' % branch,
-               '--identity=crowdin/config_aosp.yaml',
+    check_run(['crowdin-cli', '--config=crowdin/crowdin_%s_aosp.yaml' % branch,
                'download', '--ignore-match'])
 
     print('\nSTEP 3: Remove useless empty translations')
@@ -234,8 +224,7 @@ def download_crowdin(branch, xml, username, no_download=False):
         ('crowdin/crowdin_%s_aosp.yaml' % branch, 'crowdin/config_aosp.yaml')
     ]
     for c, i in files:
-        cmd = ['crowdin-cli', '--config=%s' % c, '--identity=%s' % i,
-               'list', 'sources']
+        cmd = ['crowdin-cli', '--config=%s' % c, 'list', 'sources']
         comm, ret = run_subprocess(cmd)
         if ret != 0:
             sys.exit(ret)
