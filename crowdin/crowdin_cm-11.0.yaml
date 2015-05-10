@@ -594,33 +594,15 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # tf300t AutoParts
-  -
-    source:      '/cm-11.0/device/asus/tf300t/AutoParts/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # tf700t AutoParts
   -
     source:      '/cm-11.0/device/asus/tf700t/AutoParts/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # acclaim TFF
-  -
-    source:      '/cm-11.0/device/bn/acclaim/TFF/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # bn USBHostSwitcher
   -
     source:      '/cm-11.0/device/bn/common/USBHostSwitcher/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # moto_msm8960_jbbl AsantiKeypad
-  -
-    source:      '/cm-11.0/device/motorola/moto_msm8960_jbbl/AsantiKeypad/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
