@@ -323,6 +323,16 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # TvSettings
+  -
+    source:      '/cm-12.1/packages/apps/TvSettings/Settings/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.1/packages/apps/TvSettings/Settings/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # UnifiedEmail
   -
     source:      '/cm-12.1/packages/apps/UnifiedEmail/res/values/strings.xml'
