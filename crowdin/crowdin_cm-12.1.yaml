@@ -507,6 +507,24 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # motorola qcom-common doze
+  -
+    source:      '/cm-12.1/device/motorola/qcom-common/doze/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # quark cmactions
+  -
+    source:      '/cm-12.1/device/motorola/quark/cmactions/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # victara cmactions
+  -
+    source:      '/cm-12.1/device/motorola/victara/cmactions/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # xt897 AsantiKeypad
   -
     source:      '/cm-12.1/device/motorola/xt897/AsantiKeypad/res/values/strings.xml'
@@ -516,5 +534,11 @@ files:
   # oppo configpanel
   -
     source:      '/cm-12.1/device/oppo/common/configpanel/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # samsung qcom-common doze
+  -
+    source:      '/cm-12.1/device/samsung/qcom-common/doze/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
