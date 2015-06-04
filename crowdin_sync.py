@@ -49,11 +49,11 @@ def run_subprocess(cmd, silent=False):
     return comm, exit_code
 
 
-def push_as_commit(path, name, branch, username):
+def push_as_commit(base_path, path, name, branch, username):
     print('Committing %s on branch %s' % (name, branch))
 
     # Get path
-    path = os.path.join(os.getcwd(), path)
+    path = os.path.join(base_path, branch, path)
     if not path.endswith('.git'):
         path = os.path.join(path, '.git')
 
@@ -93,8 +93,8 @@ def check_run(cmd):
         sys.exit(ret)
 
 
-def find_xml():
-    for dp, dn, file_names in os.walk(os.getcwd()):
+def find_xml(base_path, branch):
+    for dp, dn, file_names in os.walk(os.path.join(base_path, branch)):
         for f in file_names:
             if os.path.splitext(f)[1] == '.xml':
                 yield os.path.join(dp, f)
@@ -128,9 +128,7 @@ def check_dependencies():
     return True
 
 
-def load_xml(x='android/default.xml'):
-    # Variables regarding android/default.xml
-    print('Loading: %s' % x)
+def load_xml(x):
     try:
         return minidom.parse(x)
     except IOError:
@@ -142,10 +140,10 @@ def load_xml(x='android/default.xml'):
         return None
 
 
-def check_files(branch):
-    files = ['crowdin/extra_packages_%s.xml' % branch,
-             'crowdin/crowdin_%s.yaml' % branch,
-             'crowdin/crowdin_%s_aosp.yaml' % branch
+def check_files(cwd, branch):
+    files = ['%s/crowdin/extra_packages_%s.xml' % (cwd, branch),
+             '%s/crowdin/crowdin_%s.yaml' % (cwd, branch),
+             '%s/crowdin/crowdin_%s_aosp.yaml' % (cwd, branch)
              ]
     for f in files:
         if not os.path.isfile(f):
@@ -156,36 +154,36 @@ def check_files(branch):
 # ################################### MAIN ################################### #
 
 
-def upload_crowdin(branch, no_upload=False):
+def upload_crowdin(cwd, branch, no_upload=False):
     if no_upload:
         print('Skipping source translations upload')
         return
 
     print('\nUploading Crowdin source translations (AOSP supported languages)')
-    # Execute 'crowdin-cli upload sources' and show output
-    check_run(['crowdin-cli', '--config=crowdin/crowdin_%s.yaml' % branch,
+    check_run(['crowdin-cli',
+               '--config=%s/crowdin/crowdin_%s.yaml' % (cwd, branch),
                'upload', 'sources'])
 
     print('\nUploading Crowdin source translations '
           '(non-AOSP supported languages)')
-    # Execute 'crowdin-cli upload sources' and show output
-    check_run(['crowdin-cli', '--config=crowdin/crowdin_%s_aosp.yaml' % branch,
+    check_run(['crowdin-cli',
+               '--config=%s/crowdin/crowdin_%s_aosp.yaml' % (cwd, branch),
                'upload', 'sources'])
 
 
-def download_crowdin(branch, xml, username, no_download=False):
+def download_crowdin(base_path, cwd, branch, xml, username, no_download=False):
     if no_download:
         print('Skipping translations download')
         return
 
     print('\nDownloading Crowdin translations (AOSP supported languages)')
-    # Execute 'crowdin-cli download' and show output
-    check_run(['crowdin-cli', '--config=crowdin/crowdin_%s.yaml' % branch,
+    check_run(['crowdin-cli',
+               '--config=%s/crowdin/crowdin_%s.yaml' % (cwd, branch),
                'download', '--ignore-match'])
 
     print('\nDownloading Crowdin translations (non-AOSP supported languages)')
-    # Execute 'crowdin-cli download' and show output
-    check_run(['crowdin-cli', '--config=crowdin/crowdin_%s_aosp.yaml' % branch,
+    check_run(['crowdin-cli',
+               '--config=%s/crowdin/crowdin_%s_aosp.yaml' % (cwd, branch),
                'download', '--ignore-match'])
 
     print('\nRemoving useless empty translation files')
@@ -200,7 +198,7 @@ def download_crowdin(branch, xml, username, no_download=False):
          ' xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>')
     }
     xf = None
-    for xml_file in find_xml():
+    for xml_file in find_xml(base_path, branch):
         xf = open(xml_file).read()
         for line in empty_contents:
             if line in xf:
@@ -213,8 +211,8 @@ def download_crowdin(branch, xml, username, no_download=False):
     # Get all files that Crowdin pushed
     paths = []
     files = [
-        ('crowdin/crowdin_%s.yaml' % branch),
-        ('crowdin/crowdin_%s_aosp.yaml' % branch)
+        ('%s/crowdin/crowdin_%s.yaml' % (cwd, branch)),
+        ('%s/crowdin/crowdin_%s_aosp.yaml' % (cwd, branch))
     ]
     for c in files:
         cmd = ['crowdin-cli', '--config=%s' % c, 'list', 'sources']
@@ -266,30 +264,39 @@ def download_crowdin(branch, xml, username, no_download=False):
 
             br = project.getAttribute('revision') or branch
 
-            push_as_commit(result, project.getAttribute('name'), br, username)
+            push_as_commit(base_path, result,
+                           project.getAttribute('name'), br, username)
             break
 
 
 def main():
     args = parse_args()
     default_branch = args.branch
+    cwd = os.getcwd()
+
+    base_path = os.getenv('CM_CROWDIN_BASE_PATH')
+    if base_path is None:
+        print('You have not set CM_CROWDIN_BASE_PATH.', file=sys.stderr)
+        sys.exit(1)
 
     if not check_dependencies():
         sys.exit(1)
 
-    xml_android = load_xml()
+    xml_android = load_xml(x='%s/%s/android/default.xml'
+                             % (base_path, default_branch))
     if xml_android is None:
         sys.exit(1)
 
-    xml_extra = load_xml(x='crowdin/extra_packages_%s.xml' % default_branch)
+    xml_extra = load_xml(x='%s/crowdin/extra_packages_%s.xml'
+                           % (cwd, default_branch))
     if xml_extra is None:
         sys.exit(1)
 
-    if not check_files(default_branch):
+    if not check_files(cwd, default_branch):
         sys.exit(1)
 
-    upload_crowdin(default_branch, args.no_upload)
-    download_crowdin(default_branch, (xml_android, xml_extra),
+    upload_crowdin(cwd, default_branch, args.no_upload)
+    download_crowdin(base_path, cwd, default_branch, (xml_android, xml_extra),
                      args.username, args.no_download)
     print('\nDone!')
 
