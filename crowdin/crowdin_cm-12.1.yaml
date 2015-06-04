@@ -507,6 +507,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # motorola omap4-common doze
+  -
+    source:      '/cm-12.1/device/motorola/omap4-common/doze/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # motorola qcom-common doze
   -
     source:      '/cm-12.1/device/motorola/qcom-common/doze/res/values/strings.xml'
