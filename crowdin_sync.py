@@ -120,15 +120,11 @@ def parse_args():
 
 
 def check_dependencies():
-    print('\nSTEP 0: Checking dependencies & define shared variables')
-
     # Check for Ruby version of crowdin-cli
     cmd = ['gem', 'list', 'crowdin-cli', '-i']
     if run_subprocess(cmd, silent=True)[1] != 0:
         print('You have not installed crowdin-cli.', file=sys.stderr)
         return False
-    print('Found: crowdin-cli')
-
     return True
 
 
@@ -155,19 +151,17 @@ def check_files(branch):
         if not os.path.isfile(f):
             print('You have no %s.' % f, file=sys.stderr)
             return False
-        print('Found: %s' % f)
     return True
 
 # ################################### MAIN ################################### #
 
 
 def upload_crowdin(branch, no_upload=False):
-    print('\nSTEP 1: Upload Crowdin source translations')
     if no_upload:
         print('Skipping source translations upload')
         return
-    print('\nUploading Crowdin source translations (AOSP supported languages)')
 
+    print('\nUploading Crowdin source translations (AOSP supported languages)')
     # Execute 'crowdin-cli upload sources' and show output
     check_run(['crowdin-cli', '--config=crowdin/crowdin_%s.yaml' % branch,
                'upload', 'sources'])
@@ -180,7 +174,6 @@ def upload_crowdin(branch, no_upload=False):
 
 
 def download_crowdin(branch, xml, username, no_download=False):
-    print('\nSTEP 2: Download Crowdin translations')
     if no_download:
         print('Skipping translations download')
         return
@@ -195,7 +188,7 @@ def download_crowdin(branch, xml, username, no_download=False):
     check_run(['crowdin-cli', '--config=crowdin/crowdin_%s_aosp.yaml' % branch,
                'download', '--ignore-match'])
 
-    print('\nSTEP 3: Remove useless empty translations')
+    print('\nRemoving useless empty translation files')
     empty_contents = {
         '<resources/>',
         '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>',
@@ -216,7 +209,7 @@ def download_crowdin(branch, xml, username, no_download=False):
                 break
     del xf
 
-    print('\nSTEP 4: Create a list of pushable translations')
+    print('\nCreating a list of pushable translations')
     # Get all files that Crowdin pushed
     paths = []
     files = [
@@ -231,7 +224,7 @@ def download_crowdin(branch, xml, username, no_download=False):
         for p in str(comm[0]).split("\n"):
             paths.append(p.replace('/%s' % branch, ''))
 
-    print('\nSTEP 5: Upload to Gerrit')
+    print('\nUploading translations to Gerrit')
     items = [x for sub in xml for x in sub.getElementsByTagName('project')]
     all_projects = []
 
@@ -278,13 +271,11 @@ def download_crowdin(branch, xml, username, no_download=False):
 
 
 def main():
-    if not check_dependencies():
-        sys.exit(1)
-
     args = parse_args()
     default_branch = args.branch
 
-    print('Welcome to the CM Crowdin sync script!')
+    if not check_dependencies():
+        sys.exit(1)
 
     xml_android = load_xml()
     if xml_android is None:
