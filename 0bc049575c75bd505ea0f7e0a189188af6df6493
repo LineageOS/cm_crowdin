@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a8ec9b2_0f048713",
+        "filename": "crowdin_sync.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 9690
+      },
+      "writtenOn": "2015-06-05T08:41:38Z",
+      "side": 1,
+      "message": "cwd \u003d os.getcwd()\nbase_path \u003d os.getenv(\u0027CM_CROWDIN_BASE_PATH\u0027, cwd)\n\nbehave normally if the path is not set",
+      "range": {
+        "startLine": 275,
+        "startChar": 4,
+        "endLine": 275,
+        "endChar": 49
+      },
+      "revId": "0bc049575c75bd505ea0f7e0a189188af6df6493",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
