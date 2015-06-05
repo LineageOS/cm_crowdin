@@ -22,6 +22,52 @@
       "revId": "0bc049575c75bd505ea0f7e0a189188af6df6493",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8ec9b2_4f0e8f35",
+        "filename": "crowdin_sync.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 9690
+      },
+      "writtenOn": "2015-06-05T08:44:58Z",
+      "side": 1,
+      "message": "align to the quote mark, not the brace",
+      "range": {
+        "startLine": 282,
+        "startChar": 27,
+        "endLine": 282,
+        "endChar": 28
+      },
+      "revId": "0bc049575c75bd505ea0f7e0a189188af6df6493",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8ec9b2_6f134b5d",
+        "filename": "crowdin_sync.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 9690
+      },
+      "writtenOn": "2015-06-05T08:44:58Z",
+      "side": 1,
+      "message": "align to the quote mark, not the brace",
+      "range": {
+        "startLine": 287,
+        "startChar": 25,
+        "endLine": 287,
+        "endChar": 26
+      },
+      "revId": "0bc049575c75bd505ea0f7e0a189188af6df6493",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
