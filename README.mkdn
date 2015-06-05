@@ -20,8 +20,13 @@ python-git is used for Git integration.
 
 Executing
 ---------
-Copy all files to the root of your local copy of CyanogenMod's source code.
-Edit crowdin/config_cm.yaml to set the api key & your current CyanogenMod path.
+Export the following environment variables to set the API keys and the base path.
+Base path should contain all CM trees in subfolders, named after CM branches:
+
+    export CM_CROWDIN_API_KEY=your_api_key
+    export CM_AOSP_CROWDIN_API_KEY=your_aosp_api_key
+    export CM_CROWDIN_BASE_PATH=your_base_path
+
 Execute:
 
     ./crowdin_sync.py --username your_gerrit_username --branch cm_version [--no-download|--no-upload]
