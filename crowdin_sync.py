@@ -31,6 +31,10 @@ import sys
 
 from xml.dom import minidom
 
+# ################################# GLOBALS ################################## #
+
+_DIR = os.path.dirname(os.path.realpath(__file__))
+
 # ################################ FUNCTIONS ################################# #
 
 
@@ -140,10 +144,10 @@ def load_xml(x):
         return None
 
 
-def check_files(cwd, branch):
-    files = ['%s/crowdin/extra_packages_%s.xml' % (cwd, branch),
-             '%s/crowdin/crowdin_%s.yaml' % (cwd, branch),
-             '%s/crowdin/crowdin_%s_aosp.yaml' % (cwd, branch)
+def check_files(branch):
+    files = ['%s/crowdin/extra_packages_%s.xml' % (_DIR, branch),
+             '%s/crowdin/crowdin_%s.yaml' % (_DIR, branch),
+             '%s/crowdin/crowdin_%s_aosp.yaml' % (_DIR, branch)
              ]
     for f in files:
         if not os.path.isfile(f):
@@ -154,36 +158,36 @@ def check_files(cwd, branch):
 # ################################### MAIN ################################### #
 
 
-def upload_crowdin(cwd, branch, no_upload=False):
+def upload_crowdin(branch, no_upload=False):
     if no_upload:
         print('Skipping source translations upload')
         return
 
     print('\nUploading Crowdin source translations (AOSP supported languages)')
     check_run(['crowdin-cli',
-               '--config=%s/crowdin/crowdin_%s.yaml' % (cwd, branch),
+               '--config=%s/crowdin/crowdin_%s.yaml' % (_DIR, branch),
                'upload', 'sources'])
 
     print('\nUploading Crowdin source translations '
           '(non-AOSP supported languages)')
     check_run(['crowdin-cli',
-               '--config=%s/crowdin/crowdin_%s_aosp.yaml' % (cwd, branch),
+               '--config=%s/crowdin/crowdin_%s_aosp.yaml' % (_DIR, branch),
                'upload', 'sources'])
 
 
-def download_crowdin(base_path, cwd, branch, xml, username, no_download=False):
+def download_crowdin(base_path, branch, xml, username, no_download=False):
     if no_download:
         print('Skipping translations download')
         return
 
     print('\nDownloading Crowdin translations (AOSP supported languages)')
     check_run(['crowdin-cli',
-               '--config=%s/crowdin/crowdin_%s.yaml' % (cwd, branch),
+               '--config=%s/crowdin/crowdin_%s.yaml' % (_DIR, branch),
                'download', '--ignore-match'])
 
     print('\nDownloading Crowdin translations (non-AOSP supported languages)')
     check_run(['crowdin-cli',
-               '--config=%s/crowdin/crowdin_%s_aosp.yaml' % (cwd, branch),
+               '--config=%s/crowdin/crowdin_%s_aosp.yaml' % (_DIR, branch),
                'download', '--ignore-match'])
 
     print('\nRemoving useless empty translation files')
@@ -211,8 +215,8 @@ def download_crowdin(base_path, cwd, branch, xml, username, no_download=False):
     # Get all files that Crowdin pushed
     paths = []
     files = [
-        ('%s/crowdin/crowdin_%s.yaml' % (cwd, branch)),
-        ('%s/crowdin/crowdin_%s_aosp.yaml' % (cwd, branch))
+        ('%s/crowdin/crowdin_%s.yaml' % (_DIR, branch)),
+        ('%s/crowdin/crowdin_%s_aosp.yaml' % (_DIR, branch))
     ]
     for c in files:
         cmd = ['crowdin-cli', '--config=%s' % c, 'list', 'sources']
@@ -272,10 +276,10 @@ def download_crowdin(base_path, cwd, branch, xml, username, no_download=False):
 def main():
     args = parse_args()
     default_branch = args.branch
-    cwd = os.getcwd()
 
     base_path = os.getenv('CM_CROWDIN_BASE_PATH')
     if base_path is None:
+        cwd = os.getcwd()
         print('You have not set CM_CROWDIN_BASE_PATH. Defaulting to %s' % cwd)
         base_path = cwd
     else:
@@ -293,15 +297,15 @@ def main():
         sys.exit(1)
 
     xml_extra = load_xml(x='%s/crowdin/extra_packages_%s.xml'
-                           % (cwd, default_branch))
+                           % (_DIR, default_branch))
     if xml_extra is None:
         sys.exit(1)
 
-    if not check_files(cwd, default_branch):
+    if not check_files(default_branch):
         sys.exit(1)
 
-    upload_crowdin(cwd, default_branch, args.no_upload)
-    download_crowdin(base_path, cwd, default_branch, (xml_android, xml_extra),
+    upload_crowdin(default_branch, args.no_upload)
+    download_crowdin(base_path, default_branch, (xml_android, xml_extra),
                      args.username, args.no_download)
     print('\nDone!')
 
