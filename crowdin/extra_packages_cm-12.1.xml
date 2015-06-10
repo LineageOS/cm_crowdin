@@ -8,6 +8,7 @@
   <!-- Device repositories that can be translated -->
   <project path="device/asus/tf300t" name="CyanogenMod/android_device_asus_tf300t" />
   <project path="device/bn/acclaim" name="CyanogenMod/android_device_bn_acclaim" />
+  <project path="device/motorola/msm8226-common" name="CyanogenMod/android_device_motorola_msm8226-common" />
   <project path="device/motorola/omap4-common" name="CyanogenMod/android_device_motorola_omap4-common" />
   <project path="device/motorola/qcom-common" name="CyanogenMod/android_device_motorola_qcom-common" />
   <project path="device/motorola/quark" name="CyanogenMod/android_device_motorola_quark" />
