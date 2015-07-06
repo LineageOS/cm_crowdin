@@ -5,6 +5,8 @@
   <project path="packages/apps/FMRadio" name="CyanogenMod/android_packages_apps_FMRadio" />
   <project path="packages/apps/SamsungServiceMode" name="CyanogenMod/android_packages_apps_SamsungServiceMode" />
 
+  <project path="packages/cyngn/CalendarNext" name="cyngn/android_packages_apps_CalendarNext-resources" />
+
   <!-- Device repositories that can be translated -->
   <project path="device/asus/tf300t" name="CyanogenMod/android_device_asus_tf300t" />
   <project path="device/bn/acclaim" name="CyanogenMod/android_device_bn_acclaim" />
@@ -16,4 +18,6 @@
   <project path="device/motorola/xt897" name="CyanogenMod/android_device_motorola_xt897" />
   <project path="device/oppo/common" name="CyanogenMod/android_device_oppo_common" />
   <project path="device/samsung/qcom-common" name="CyanogenMod/android_device_samsung_qcom-common" />
+
+  <project path="device/yu/common" name="cyngn/android_device_yu_common-resources" />
 </manifest>
