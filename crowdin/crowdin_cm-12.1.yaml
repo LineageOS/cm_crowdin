@@ -393,6 +393,18 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+# Cyngn packages
+
+  # CalendarNext
+  -
+    source:      '/cm-12.1/packages/cyngn/CalendarNext/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.1/packages/cyngn/CalendarNext/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
 # Input methods
 
   # LatinIME
@@ -560,5 +572,13 @@ files:
   # samsung qcom-common doze
   -
     source:      '/cm-12.1/device/samsung/qcom-common/doze/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+# Cyngn Device specific
+
+  # yu configpanel
+  -
+    source:      '/cm-12.1/device/yu/common/configpanel/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
