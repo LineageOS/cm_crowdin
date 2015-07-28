@@ -515,15 +515,21 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # tf300t AutoParts
+  # asus tf300t AutoParts
   -
     source:      '/cm-12.1/device/asus/tf300t/AutoParts/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # acclaim TFF
+  # bn acclaim TFF
   -
     source:      '/cm-12.1/device/bn/acclaim/TFF/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # motorola condor doze
+  -
+    source:      '/cm-12.1/device/motorola/condor/doze/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -545,27 +551,37 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # quark cmactions
+  # motorola quark cmactions
   -
     source:      '/cm-12.1/device/motorola/quark/cmactions/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # victara cmactions
+  # motorola victara cmactions
   -
     source:      '/cm-12.1/device/motorola/victara/cmactions/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # xt897 AsantiKeypad
+  # motorola xt897 AsantiKeypad
   -
     source:      '/cm-12.1/device/motorola/xt897/AsantiKeypad/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # oppo configpanel
+  # oppo common configpanel
   -
     source:      '/cm-12.1/device/oppo/common/configpanel/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # samsung galaxys2-common AdvancedDisplay
+  -
+    source:      '/cm-12.1/device/samsung/galaxys2-common/AdvancedDisplay/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.1/device/samsung/galaxys2-common/AdvancedDisplay/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -577,7 +593,7 @@ files:
 
 # Cyngn Device specific
 
-  # yu configpanel
+  # yu common configpanel
   -
     source:      '/cm-12.1/device/yu/common/configpanel/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
