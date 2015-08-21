@@ -395,6 +395,12 @@ files:
 
 # Cyngn packages
 
+  # AudioFX
+  -
+    source:      '/cm-12.1/packages/cyngn/AudioFX/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # CalendarNext
   -
     source:      '/cm-12.1/packages/cyngn/CalendarNext/res/values/cm_strings.xml'
@@ -402,6 +408,20 @@ files:
     languages_mapping: *anchor
   -
     source:      '/cm-12.1/packages/cyngn/CalendarNext/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CameraNext
+  -
+    source:      '/cm-12.1/packages/cyngn/CameraNext/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.1/packages/cyngn/CameraNext/res/values/qcomstrings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.1/packages/cyngn/CameraNext/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 

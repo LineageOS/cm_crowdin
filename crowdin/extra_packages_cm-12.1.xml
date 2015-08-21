@@ -5,7 +5,9 @@
   <project path="packages/apps/FMRadio" name="CyanogenMod/android_packages_apps_FMRadio" />
   <project path="packages/apps/SamsungServiceMode" name="CyanogenMod/android_packages_apps_SamsungServiceMode" />
 
+  <project path="packages/cyngn/AudioFX" name="cyngn/android_packages_apps_AudioFX-resources" />
   <project path="packages/cyngn/CalendarNext" name="cyngn/android_packages_apps_CalendarNext-resources" />
+  <project path="packages/cyngn/CameraNext" name="cyngn/android_packages_apps_Camera2-resources" />
   <project path="packages/cyngn/DialerNext" name="cyngn/android_packages_apps_DialerNext-resources" />
   <project path="packages/cyngn/InCallUINext" name="cyngn/android_packages_apps_InCallUINext-resources" />
 
