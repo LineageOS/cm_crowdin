@@ -425,15 +425,94 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # CMFota
+  -
+    source:      '/cm-12.1/packages/cyngn/CMFota/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CMLogger
+  -
+    source:      '/cm-12.1/packages/cyngn/CMLogger/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CyanogenAccount
+  -
+    source:      '/cm-12.1/packages/cyngn/CyanogenAccount/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # DialerNext
   -
     source:      '/cm-12.1/packages/cyngn/DialerNext/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # EmailNext
+  -
+    source:      '/cm-12.1/packages/cyngn/EmailNext/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.1/packages/cyngn/EmailNext/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # ExchangeNext
+  -
+    source:      '/cm-12.1/packages/cyngn/ExchangeNext/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.1/packages/cyngn/ExchangeNext/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # GalleryNext
+  -
+    source:      '/cm-12.1/packages/cyngn/GalleryNext/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+
   # InCallUINext
   -
     source:      '/cm-12.1/packages/cyngn/InCallUINext/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Screencast
+  -
+    source:      '/cm-12.1/packages/cyngn/Screencast/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # ThemeChooser
+  -
+    source:      '/cm-12.1/packages/cyngn/ThemeChooser/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # ThemeStore
+  -
+    source:      '/cm-12.1/packages/cyngn/ThemeStore/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # UnifiedEmailNext
+  -
+    source:      '/cm-12.1/packages/cyngn/UnifiedEmailNext/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/cm-12.1/packages/cyngn/UnifiedEmailNext/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # VoiceWakeup
+  -
+    source:      '/cm-12.1/packages/cyngn/VoiceWakeup/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 

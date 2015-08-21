@@ -8,8 +8,19 @@
   <project path="packages/cyngn/AudioFX" name="cyngn/android_packages_apps_AudioFX-resources" />
   <project path="packages/cyngn/CalendarNext" name="cyngn/android_packages_apps_CalendarNext-resources" />
   <project path="packages/cyngn/CameraNext" name="cyngn/android_packages_apps_Camera2-resources" />
+  <project path="packages/cyngn/CMFota" name="cyngn/android_packages_apps_FOTA-resources" />
+  <project path="packages/cyngn/CMLogger" name="cyngn/android_packages_apps_CMLogger-resources" />
+  <project path="packages/cyngn/CyanogenAccount" name="cyngn/android_packages_apps_CyanogenAccount-resources" />
   <project path="packages/cyngn/DialerNext" name="cyngn/android_packages_apps_DialerNext-resources" />
+  <project path="packages/cyngn/EmailNext" name="cyngn/android_packages_apps_EmailNext-resources" />
+  <project path="packages/cyngn/ExchangeNext" name="cyngn/android_packages_apps_ExchangeNext-resources" />
+  <project path="packages/cyngn/GalleryNext" name="cyngn/android_packages_apps_GalleryNext-resources" />
   <project path="packages/cyngn/InCallUINext" name="cyngn/android_packages_apps_InCallUINext-resources" />
+  <project path="packages/cyngn/Screencast" name="cyngn/android_packages_apps_Screencast-resources" />
+  <project path="packages/cyngn/ThemeChooser" name="cyngn/android_packages_apps_ThemeChooser-resources" />
+  <project path="packages/cyngn/ThemeStore" name="cyngn/android_packages_apps_ThemeStore-resources" />
+  <project path="packages/cyngn/UnifiedEmailNext" name="cyngn/android_packages_apps_UnifiedEmailNext-resources" />
+  <project path="packages/cyngn/VoiceWakeup" name="cyngn/android_packages_apps_VoiceWakeup-resources" />
 
   <!-- Device repositories that can be translated -->
   <project path="device/asus/tf300t" name="CyanogenMod/android_device_asus_tf300t" />
