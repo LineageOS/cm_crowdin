@@ -6,7 +6,7 @@
   <project path="packages/apps/SamsungServiceMode" name="CyanogenMod/android_packages_apps_SamsungServiceMode" />
 
   <project path="packages/cyngn/CalendarNext" name="cyngn/android_packages_apps_CalendarNext-resources" />
-
+  <project path="packages/cyngn/DialerNext" name="cyngn/android_packages_apps_DialerNext-resources" />
   <!-- Device repositories that can be translated -->
   <project path="device/asus/tf300t" name="CyanogenMod/android_device_asus_tf300t" />
   <project path="device/bn/acclaim" name="CyanogenMod/android_device_bn_acclaim" />
