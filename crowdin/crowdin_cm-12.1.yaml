@@ -546,6 +546,10 @@ files:
 
   # Mms
   -
+    source:      '/cm-12.1/packages/services/Mms/res/values/cm_arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
     source:      '/cm-12.1/packages/services/Mms/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
