@@ -115,6 +115,12 @@ files:
         zh-TW: zh-rTW
         zu: zu
 
+  # DocumentsUI
+  -
+    source:      '/cm-12.1/frameworks/base/packages/DocumentsUI/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Keyguard
   -
     source:      '/cm-12.1/frameworks/base/packages/Keyguard/res/values/cm_strings.xml'
@@ -603,12 +609,6 @@ files:
   # CM SDK
   -
     source:      '/cm-12.1/vendor/cmsdk/cm/res/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CMResolver
-  -
-    source:      '/cm-12.1/vendor/cmsdk/packages/CMResolver/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
