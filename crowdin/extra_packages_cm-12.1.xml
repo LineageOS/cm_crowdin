@@ -10,6 +10,7 @@
   <project path="packages/cyngn/CameraNext" name="cyngn/android_packages_apps_Camera2-resources" />
   <project path="packages/cyngn/CMFota" name="cyngn/android_packages_apps_FOTA-resources" />
   <project path="packages/cyngn/CMLogger" name="cyngn/android_packages_apps_CMLogger-resources" />
+  <project path="packages/cyngn/CMResolver" name="cyngn/android_packages_cyanogen_CMResolver-resources" />
   <project path="packages/cyngn/CyanogenAccount" name="cyngn/android_packages_apps_CyanogenAccount-resources" />
   <project path="packages/cyngn/DialerNext" name="cyngn/android_packages_apps_DialerNext-resources" />
   <project path="packages/cyngn/EmailNext" name="cyngn/android_packages_apps_EmailNext-resources" />
