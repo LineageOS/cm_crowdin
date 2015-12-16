@@ -340,6 +340,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # Profiles
+  -
+    source:      '/cm-12.1/packages/apps/Profiles/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Settings
   -
     source:      '/cm-12.1/packages/apps/Settings/res/values/cm_plurals.xml'
