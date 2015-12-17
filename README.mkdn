@@ -8,7 +8,7 @@ automatic commiting to Gerrit and pushing/downloading to/from Crowdin.
 
 Prerequisites
 -------------
-The Ruby variant of crowdin-cli is required for this to work.
+The Ruby variant of crowdin-cli >= 0.5.1 is required for this to work.
 
     \curl -sSL https://get.rvm.io | bash -s stable --ruby
     source /home/your_username/.rvm/scripts/rvm # Add this to your .bashrc file!
