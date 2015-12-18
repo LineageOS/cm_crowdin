@@ -109,16 +109,16 @@ def find_xml(base_path):
 def parse_args():
     parser = argparse.ArgumentParser(
         description="Synchronising CyanogenMod's translations with Crowdin")
-    sync = parser.add_mutually_exclusive_group()
-    parser.add_argument('-u', '--username', help='Gerrit username',
-                        required=True)
+    parser.add_argument('-u', '--username', help='Gerrit username')
     parser.add_argument('-b', '--branch', help='CyanogenMod branch',
                         required=True)
     parser.add_argument('-c', '--config', help='Custom yaml config')
-    sync.add_argument('--no-upload', action='store_true',
-                      help='Only download CM translations from Crowdin')
-    sync.add_argument('--no-download', action='store_true',
-                      help='Only upload CM source translations to Crowdin')
+    parser.add_argument('--upload-sources', action='store_true',
+                        help='Upload sources to Crowdin')
+    parser.add_argument('--upload-translations', action='store_true',
+                        help='Upload translations to Crowdin')
+    parser.add_argument('--download', action='store_true',
+                        help='Download translations from Crowdin')
     return parser.parse_args()
 
 # ################################# PREPARE ################################## #
@@ -155,48 +155,60 @@ def check_files(files):
 # ################################### MAIN ################################### #
 
 
-def upload_crowdin(branch, config, no_upload=False):
-    if no_upload:
-        print('Skipping source translations upload')
-        return
-
+def upload_sources_crowdin(branch, config):
     if config:
-        print('\nUploading Crowdin source translations (custom config)')
+        print('\nUploading sources to Crowdin (custom config)')
         check_run(['crowdin-cli',
                    '--config=%s/crowdin/%s' % (_DIR, config),
                    'upload', 'sources', '--branch=%s' % branch])
     else:
-        print('\nUploading Crowdin source translations '
-              '(AOSP supported languages)')
+        print('\nUploading sources to Crowdin (AOSP supported languages)')
         check_run(['crowdin-cli',
                    '--config=%s/crowdin/crowdin_%s.yaml' % (_DIR, branch),
                    'upload', 'sources', '--branch=%s' % branch])
 
-        print('\nUploading Crowdin source translations '
-              '(non-AOSP supported languages)')
+        print('\nUploading sources to Crowdin (non-AOSP supported languages)')
         check_run(['crowdin-cli',
                    '--config=%s/crowdin/crowdin_%s_aosp.yaml' % (_DIR, branch),
                    'upload', 'sources', '--branch=%s' % branch])
 
-
-def download_crowdin(base_path, branch, xml, username, config,
-                     no_download=False):
-    if no_download:
-        print('Skipping translations download')
-        return
-
+def upload_translations_crowdin(branch, config):
     if config:
-        print('\nDownloading Crowdin translations (custom config)')
+        print('\nUploading translations to Crowdin (custom config)')
+        check_run(['crowdin-cli',
+                   '--config=%s/crowdin/%s' % (_DIR, config),
+                   'upload', 'translations', '--branch=%s' % branch,
+                   '--no-import-duplicates', '--import-eq-suggestions'])
+    else:
+        print('\nUploading translations to Crowdin '
+              '(AOSP supported languages)')
+        check_run(['crowdin-cli',
+                   '--config=%s/crowdin/crowdin_%s.yaml' % (_DIR, branch),
+                   'upload', 'translations', '--branch=%s' % branch,
+                   '--no-import-duplicates', '--import-eq-suggestions'])
+
+        print('\nUploading translations to Crowdin '
+              '(non-AOSP supported languages)')
+        check_run(['crowdin-cli',
+                   '--config=%s/crowdin/crowdin_%s_aosp.yaml' % (_DIR, branch),
+                   'upload', 'translations', '--branch=%s' % branch,
+                   '--no-import-duplicates', '--import-eq-suggestions'])
+
+
+def download_crowdin(base_path, branch, xml, username, config):
+    if config:
+        print('\nDownloading translations from Crowdin (custom config)')
         check_run(['crowdin-cli',
                    '--config=%s/crowdin/%s' % (_DIR, config),
                    'download', '--branch=%s' % branch])
     else:
-        print('\nDownloading Crowdin translations (AOSP supported languages)')
+        print('\nDownloading translations from Crowdin '
+              '(AOSP supported languages)')
         check_run(['crowdin-cli',
                    '--config=%s/crowdin/crowdin_%s.yaml' % (_DIR, branch),
                    'download', '--branch=%s' % branch])
 
-        print('\nDownloading Crowdin translations '
+        print('\nDownloading translations from Crowdin '
               '(non-AOSP supported languages)')
         check_run(['crowdin-cli',
                    '--config=%s/crowdin/crowdin_%s_aosp.yaml' % (_DIR, branch),
@@ -323,9 +335,17 @@ def main():
     if not check_files(files):
         sys.exit(1)
 
-    upload_crowdin(default_branch, args.config, args.no_upload)
-    download_crowdin(base_path, default_branch, (xml_android, xml_extra),
-                     args.username, args.config, args.no_download)
+    if args.download and args.username is None:
+        print('Argument -u/--username is required for translations download')
+        sys.exit(1)
+
+    if args.upload_sources:
+        upload_sources_crowdin(default_branch, args.config)
+    if args.upload_translations:
+        upload_translations_crowdin(default_branch, args.config)
+    if args.download:
+        download_crowdin(base_path, default_branch, (xml_android, xml_extra),
+                         args.username, args.config)
     print('\nDone!')
 
 if __name__ == '__main__':

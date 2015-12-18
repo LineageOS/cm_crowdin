@@ -29,7 +29,7 @@ Base path should contain all CM trees in subfolders, named after CM branches:
 
 Execute:
 
-    ./crowdin_sync.py --username your_gerrit_username --branch cm_version [--no-download|--no-upload]
+    ./crowdin_sync.py --username your_gerrit_username --branch cm_version [--upload-sources] [--download]
 
 Bugs
 ----
