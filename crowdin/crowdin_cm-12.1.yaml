@@ -155,6 +155,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # Browser
+  -
+    source:      '/packages/apps/Browser/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # BluetoothExt
   -
     source:      '/packages/apps/BluetoothExt/res/values/strings.xml'
