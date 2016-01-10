@@ -125,6 +125,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # SettingsLib
+  -
+    source:      '/frameworks/base/packages/SettingsLib/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # SystemUI
   -
     source:      '/frameworks/base/packages/SystemUI/res/values/cm_arrays.xml'
@@ -246,10 +252,10 @@ files:
     languages_mapping: *anchor
 
   # DeskClock
-  #-
-  #  source:      '/packages/apps/DeskClock/res/values/cm_strings.xml'
-  #  translation: '/%original_path%-%android_code%/%original_file_name%'
-  #  languages_mapping: *anchor
+  -
+    source:      '/packages/apps/DeskClock/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
 
   # Dialer
   -
@@ -330,6 +336,20 @@ files:
   # SetupWizard
   -
     source:      '/packages/apps/SetupWizard/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Snap
+  -
+    source:      '/packages/apps/Snap/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/apps/Snap/res/values/qcomstrings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/apps/Snap/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
