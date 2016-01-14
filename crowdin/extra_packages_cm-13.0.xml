@@ -18,6 +18,7 @@
   <project path="packages/cyngn/ThemeChooser" name="cyngn/android_packages_apps_ThemeChooser-resources" />
   <project path="packages/cyngn/ThemeStore" name="cyngn/android_packages_apps_ThemeStore-resources" />
   <project path="packages/cyngn/UnifiedEmailNext" name="cyngn/android_packages_apps_UnifiedEmailNext-resources" />
+  <project path="packages/cyngn/Updater" name="cyngn/android_packages_apps_Updater-resources" />
   <project path="packages/cyngn/VoiceWakeup" name="cyngn/android_packages_apps_VoiceWakeup-resources" />
 
   <!-- Device repositories that can be translated -->
