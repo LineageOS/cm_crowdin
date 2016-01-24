@@ -313,6 +313,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # Messaging
+  -
+    source:      '/packages/apps/Messaging/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # PhoneCommon
   -
     source:      '/packages/apps/PhoneCommon/res/values/cm_strings.xml'
@@ -562,6 +568,14 @@ files:
   # ThemesProvider
   -
     source:      '/packages/providers/ThemesProvider/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+# Screensavers
+
+  # PhotoTable
+  -
+    source:      '/packages/screensavers/PhotoTable/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
