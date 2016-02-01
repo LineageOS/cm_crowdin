@@ -618,14 +618,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-# External
-
-  # WhisperPush
-  -
-    source:      '/external/whispersystems/WhisperPush/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
 # Vendor
 
   # CM SDK
