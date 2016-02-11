@@ -179,24 +179,24 @@ def upload_translations_crowdin(branch, config):
         check_run(['crowdin-cli',
                    '--config=%s/crowdin/%s' % (_DIR, config),
                    'upload', 'translations', '--branch=%s' % branch,
-                   '--no-import-duplicates', '--import-eq-suggestions',
-                   '--auto-approve-imported'])
+                   '--import-eq-suggestions',
+                   '--language=es-MX'])
     else:
         print('\nUploading translations to Crowdin '
               '(AOSP supported languages)')
         check_run(['crowdin-cli',
                    '--config=%s/crowdin/crowdin_%s.yaml' % (_DIR, branch),
                    'upload', 'translations', '--branch=%s' % branch,
-                   '--no-import-duplicates', '--import-eq-suggestions',
-                   '--auto-approve-imported'])
+                   '--import-eq-suggestions',
+                   '--language=es-MX'])
 
         print('\nUploading translations to Crowdin '
               '(non-AOSP supported languages)')
         check_run(['crowdin-cli',
                    '--config=%s/crowdin/crowdin_%s_aosp.yaml' % (_DIR, branch),
                    'upload', 'translations', '--branch=%s' % branch,
-                   '--no-import-duplicates', '--import-eq-suggestions',
-                   '--auto-approve-imported'])
+                   '--import-eq-suggestions',
+                   '--language=es-MX'])
 
 
 def download_crowdin(base_path, branch, xml, username, config):
