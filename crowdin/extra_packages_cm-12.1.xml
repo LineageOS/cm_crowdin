@@ -35,6 +35,5 @@
   <project path="device/oppo/common" name="CyanogenMod/android_device_oppo_common" />
   <project path="device/samsung/galaxys2-common" name="CyanogenMod/android_device_samsung_galaxys2-common" />
   <project path="device/samsung/qcom-common" name="CyanogenMod/android_device_samsung_qcom-common" />
-
-  <project path="device/yu/common" name="cyngn/android_device_yu_common-resources" />
+  <project path="device/yu/sambar" name="CyanogenMod/android_device_yu_sambar" />
 </manifest>

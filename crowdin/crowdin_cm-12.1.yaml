@@ -721,10 +721,8 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-# Cyngn Device specific
-
-  # yu common configpanel
+  # yu sambar configpanel
   -
-    source:      '/device/yu/common/configpanel/res/values/strings.xml'
+    source:      '/device/yu/sambar/configpanel/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
