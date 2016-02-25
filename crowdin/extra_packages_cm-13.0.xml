@@ -24,6 +24,7 @@
 
   <!-- Device repositories that can be translated -->
   <project path="device/asus/mofd-common" name="CyanogenMod/android_device_asus_mofd-common" />
+  <project path="device/asus/msm8916-common" name="CyanogenMod/android_device_asus_msm8916-common" />
   <project path="device/asus/tf300t" name="CyanogenMod/android_device_asus_tf300t" />
   <project path="device/bn/acclaim" name="CyanogenMod/android_device_bn_acclaim" />
   <project path="device/motorola/condor" name="CyanogenMod/android_device_motorola_condor" />
