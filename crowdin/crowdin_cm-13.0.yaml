@@ -656,6 +656,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # asus msm8916-common cmactions
+  -
+    source:      '/device/asus/msm8916-common/cmactions/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # asus tf300t AutoParts
   -
     source:      '/device/asus/tf300t/AutoParts/res/values/strings.xml'
