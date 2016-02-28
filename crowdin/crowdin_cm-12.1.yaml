@@ -721,6 +721,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # samsung klimtwifi DisplayModes
+  -
+    source:      '/device/samsung/klimtwifi/overlay/packages/apps/Settings/res/values/cm_arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # yu sambar configpanel
   -
     source:      '/device/yu/sambar/configpanel/res/values/strings.xml'
