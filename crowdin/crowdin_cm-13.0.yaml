@@ -486,6 +486,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # Discovery
+  -
+    source:      '/packages/cyngn/Discovery/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # EmailNext
   -
     source:      '/packages/cyngn/EmailNext/res/values/cm_strings.xml'
@@ -515,6 +521,16 @@ files:
   # InCallUINext
   -
     source:      '/packages/cyngn/InCallUINext/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # RemoteFolders
+  -
+    source:      '/packages/apps/RemoteFolders/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/apps/RemoteFolders/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
