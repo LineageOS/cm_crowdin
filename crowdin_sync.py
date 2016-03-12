@@ -284,7 +284,7 @@ def download_crowdin(base_path, branch, xml, username, config):
         # project in all_projects and check if it's already in there.
         all_projects.append(result)
 
-        # Search android/default.xml or config/extra_packages_%(branch).xml
+        # Search android/default.xml or config/%(branch)_extra_packages.xml
         # for the project's name
         for project in items:
             path = project.attributes['path'].value
@@ -326,7 +326,7 @@ def main():
     if xml_android is None:
         sys.exit(1)
 
-    xml_extra = load_xml(x='%s/config/extra_packages_%s.xml'
+    xml_extra = load_xml(x='%s/config/%s_extra_packages.xml'
                            % (_DIR, default_branch))
     if xml_extra is None:
         sys.exit(1)

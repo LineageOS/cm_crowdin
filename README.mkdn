@@ -18,6 +18,9 @@ python-git is used for Git integration.
 
     sudo apt-get install python-git
 
+Copy <cm_version>_extra_packages.xml to .repo/local_manifests of each <cm_version> tree
+to make sure you sync all the extra packages not included in the main manifest.
+
 Executing
 ---------
 Export the following environment variables to set the API keys and the base path.
