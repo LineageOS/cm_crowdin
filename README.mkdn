@@ -24,11 +24,20 @@ to make sure you sync all the extra packages not included in the main manifest.
 Executing
 ---------
 Export the following environment variables to set the API keys and the base path.
-Base path should contain all CM trees in subfolders, named after CM branches:
+Base path should contain all CM trees in subfolders, named after CM branches.
+Syncing stable trees requires an additional environment variable plus a 'stable'
+subfolder under the base path, due to crowdin API limitations:
 
     export CM_CROWDIN_API_KEY=your_api_key
     export CM_AOSP_CROWDIN_API_KEY=your_aosp_api_key
     export CM_CROWDIN_BASE_PATH=your_base_path
+    export CM_CROWDIN_STABLE_BASE_PATH=your_stable_base_path
+
+Example:
+    export CM_CROWDIN_API_KEY=1234567890
+    export CM_AOSP_CROWDIN_API_KEY=0987654321
+    export CM_CROWDIN_BASE_PATH=/mnt/android/cm
+    export CM_CROWDIN_STABLE_BASE_PATH=/mnt/android/cm/stable
 
 Execute:
 
