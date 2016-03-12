@@ -666,6 +666,22 @@ files:
 
 # Device specific
 
+  # fmapp2
+  -
+    source:      '/hardware/qcom/fm/fmapp2/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/hardware/qcom/fm/fmapp2/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # FMRecord
+  -
+    source:      '/hardware/qcom/fm/FMRecord/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # SamsungServiceMode
   -
     source:      '/packages/apps/SamsungServiceMode/res/values/strings.xml'
