@@ -53,7 +53,7 @@ def run_subprocess(cmd, silent=False):
     return comm, exit_code
 
 
-def push_as_commit(base_path, path, name, branch, username):
+def push_as_commit(base_path, path, name, branch, username, ticket):
     print('Committing %s on branch %s' % (name, branch))
 
     # Get path
@@ -73,8 +73,15 @@ def push_as_commit(base_path, path, name, branch, username):
     repo.git.add('-A')
 
     # Create commit; if it fails, probably empty so skipping
+    if ticket:
+        message = '''Automatic translation import
+
+Ticket: %s''' % ticket
+    else:
+        message = 'Automatic translation import'
+
     try:
-        repo.git.commit(m='Automatic translation import')
+        repo.git.commit(m=message)
     except:
         print('Failed to create commit for %s, probably empty: skipping'
               % name, file=sys.stderr)
@@ -113,6 +120,7 @@ def parse_args():
     parser.add_argument('-b', '--branch', help='CyanogenMod branch',
                         required=True)
     parser.add_argument('-c', '--config', help='Custom yaml config')
+    parser.add_argument('-t', '--ticket', help='JIRA ticket')
     parser.add_argument('--upload-sources', action='store_true',
                         help='Upload sources to Crowdin')
     parser.add_argument('--upload-translations', action='store_true',
@@ -199,7 +207,7 @@ def upload_translations_crowdin(branch, config):
                    '--auto-approve-imported'])
 
 
-def download_crowdin(base_path, branch, xml, username, config):
+def download_crowdin(base_path, branch, xml, username, config, ticket):
     if config:
         print('\nDownloading translations from Crowdin (custom config)')
         check_run(['crowdin-cli',
@@ -299,7 +307,7 @@ def download_crowdin(base_path, branch, xml, username, config):
             br = project.getAttribute('revision') or branch
 
             push_as_commit(base_path, result,
-                           project.getAttribute('name'), br, username)
+                           project.getAttribute('name'), br, username, ticket)
             break
 
 
@@ -349,7 +357,7 @@ def main():
         upload_translations_crowdin(default_branch, args.config)
     if args.download:
         download_crowdin(base_path, default_branch, (xml_android, xml_extra),
-                         args.username, args.config)
+                         args.username, args.config, args.ticket)
     print('\nDone!')
 
 if __name__ == '__main__':
