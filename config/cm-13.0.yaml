@@ -1,4 +1,4 @@
-# crowdin_cm-12.1.yaml
+# cm-13.0.yaml
 #
 # Crowdin configuration file for CyanogenMod
 #
@@ -120,15 +120,15 @@ files:
         zh-TW: zh-rTW
         zu: zu
 
-  # DocumentsUI
-  -
-    source:      '/frameworks/base/packages/DocumentsUI/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # Keyguard
   -
     source:      '/frameworks/base/packages/Keyguard/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # SettingsLib
+  -
+    source:      '/frameworks/base/packages/SettingsLib/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -206,12 +206,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # CellBroadcastReceiver
-  -
-    source:      '/packages/apps/CellBroadcastReceiver/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # CMBugReport
   -
     source:      '/packages/apps/CMBugReport/res/values/strings.xml'
@@ -255,6 +249,10 @@ files:
     languages_mapping: *anchor
 
   # ContactsCommon
+  -
+    source:      '/packages/apps/ContactsCommon/res/values/cm_plurals.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
   -
     source:      '/packages/apps/ContactsCommon/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
@@ -312,7 +310,7 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
   -
-    source:      '/packages/apps/InCallUI/res_cm/values/cm_strings.xml'
+    source:      '/packages/apps/InCallUI/res/values/qtistrings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -322,17 +320,9 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # Mms
+  # Messaging
   -
-    source:      '/packages/apps/Mms/res/values/cm_arrays.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Mms/res/values/cm_plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Mms/res/values/cm_strings.xml'
+    source:      '/packages/apps/Messaging/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -345,6 +335,12 @@ files:
   # Profiles
   -
     source:      '/packages/apps/Profiles/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Screencast
+  -
+    source:      '/packages/apps/Screencast/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -361,6 +357,20 @@ files:
   # SetupWizard
   -
     source:      '/packages/apps/SetupWizard/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Snap
+  -
+    source:      '/packages/apps/Snap/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/apps/Snap/res/values/qcomstrings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/apps/Snap/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -476,6 +486,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # Discovery
+  -
+    source:      '/packages/cyngn/Discovery/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # EmailNext
   -
     source:      '/packages/cyngn/EmailNext/res/values/cm_strings.xml'
@@ -502,16 +518,19 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-
   # InCallUINext
   -
     source:      '/packages/cyngn/InCallUINext/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # Screencast
+  # RemoteFolders
   -
-    source:      '/packages/cyngn/Screencast/res/values/strings.xml'
+    source:      '/packages/cyngn/RemoteFolders/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/cyngn/RemoteFolders/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -534,6 +553,12 @@ files:
     languages_mapping: *anchor
   -
     source:      '/packages/cyngn/UnifiedEmailNext/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Updater
+  -
+    source:      '/packages/cyngn/Updater/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -569,6 +594,14 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+# Screensavers
+
+  # PhotoTable
+  -
+    source:      '/packages/screensavers/PhotoTable/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
 # Services
 
   # Mms
@@ -586,6 +619,10 @@ files:
   # Telephony
   -
     source:      '/packages/services/Telephony/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/services/Telephony/res/values/qtistrings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -629,25 +666,21 @@ files:
 
 # Device specific
 
-  # fmapp2
-  -
-    source:      '/hardware/qcom/fm/fmapp2/res/values/arrays.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/hardware/qcom/fm/fmapp2/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # FMRecord
-  -
-    source:      '/hardware/qcom/fm/FMRecord/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # SamsungServiceMode
   -
     source:      '/packages/apps/SamsungServiceMode/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # asus mofd-common cmactions
+  -
+    source:      '/device/asus/mofd-common/cmactions/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # asus msm8916-common cmactions
+  -
+    source:      '/device/asus/msm8916-common/cmactions/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 

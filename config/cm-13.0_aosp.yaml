@@ -1,4 +1,4 @@
-# crowdin_cm-12.1_aosp.yaml
+# cm-13.0_aosp.yaml
 #
 # Crowdin configuration file for CyanogenMod's
 # additional languages not supported by AOSP
@@ -97,6 +97,16 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # SettingsLib
+  -
+    source:      '/frameworks/base/packages/SettingsLib/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/frameworks/base/packages/SettingsLib/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # SettingsProvider
   -
     source:      '/frameworks/base/packages/SettingsProvider/res/values/strings.xml'
@@ -106,6 +116,12 @@ files:
   # Shell
   -
     source:      '/frameworks/base/packages/Shell/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # StatementService
+  -
+    source:      '/frameworks/base/packages/StatementService/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -148,6 +164,10 @@ files:
     languages_mapping: *anchor
   -
     source:      '/packages/apps/Bluetooth/res/values/strings_pbap.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/apps/Bluetooth/res/values/strings_sap.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -229,6 +249,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # ExactCalculator
+  -
+    source:      '/packages/apps/ExactCalculator/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Exchange
   -
     source:      '/packages/apps/Exchange/res/values/strings.xml'
@@ -269,13 +295,19 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # Mms
+  # ManagedProvisioning
   -
-    source:      '/packages/apps/Mms/res/values/arrays.xml'
+    source:      '/packages/apps/ManagedProvisioning/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Messaging
+  -
+    source:      '/packages/apps/Messaging/res/values/arrays.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
   -
-    source:      '/packages/apps/Mms/res/values/strings.xml'
+    source:      '/packages/apps/Messaging/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -381,9 +413,21 @@ files:
 
 # Providers
 
+  # BookmarkProvider
+  -
+    source:      '/packages/providers/BookmarkProvider/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # CalendarProvider
   -
     source:      '/packages/providers/CalendarProvider/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # CallLogProvider
+  -
+    source:      '/packages/providers/CallLogProvider/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -476,12 +520,6 @@ files:
   # MagicSmoke
   -
     source:      '/packages/wallpapers/MagicSmoke/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # MusicVisualization
-  -
-    source:      '/packages/wallpapers/MusicVisualization/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
