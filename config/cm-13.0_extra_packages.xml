@@ -36,7 +36,7 @@
   <project path="device/motorola/victara" name="CyanogenMod/android_device_motorola_victara" />
   <project path="device/motorola/xt897" name="CyanogenMod/android_device_motorola_xt897" />
   <project path="device/oppo/common" name="CyanogenMod/android_device_oppo_common" />
-  <project path="device/samsung/galaxys2-common" name="CyanogenMod/android_device_samsung_galaxys2-common" />
+  <project path="hardware/samsung" name="CyanogenMod/android_hardware_samsung" />
   <project path="device/samsung/qcom-common" name="CyanogenMod/android_device_samsung_qcom-common" />
   <project path="device/yu/sambar" name="CyanogenMod/android_device_yu_sambar" />
 </manifest>
