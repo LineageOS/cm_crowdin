@@ -764,6 +764,16 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # samsung smdk4412-common AdvancedDisplay
+  -
+    source:       '/device/samsung/smdk4412-common/AdvancedDisplay/res/values/arrays.xml'
+    translation:  '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:       '/device/samsung/smdk4412-common/AdvancedDisplay/res/values/strings.xml'
+    translation:  '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # samsung qcom-common doze
   -
     source:      '/device/samsung/qcom-common/doze/res/values/strings.xml'
