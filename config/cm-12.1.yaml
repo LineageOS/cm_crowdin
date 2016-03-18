@@ -34,6 +34,7 @@ files:
         af: af
         am: am
         ar: ar
+        as: as-rIN
         ast: ast-rES
         az: az-rAZ
         be: be
@@ -91,6 +92,7 @@ files:
         nb: nb
         ne-NP: ne-rNP
         nl: nl
+        or: or-rIN
         pa-IN: pa-rIN
         pl: pl
         pt-PT: pt-rPT
