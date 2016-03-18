@@ -756,16 +756,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # samsung galaxys2-common AdvancedDisplay
-  -
-    source:      '/device/samsung/galaxys2-common/AdvancedDisplay/res/values/arrays.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/device/samsung/galaxys2-common/AdvancedDisplay/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # samsung qcom-common doze
   -
     source:      '/device/samsung/qcom-common/doze/res/values/strings.xml'
@@ -775,5 +765,15 @@ files:
   # yu sambar configpanel
   -
     source:      '/device/yu/sambar/configpanel/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # samsung exynos4 AdvancedDisplay
+  -
+    source:      '/hardware/samsung/exynos4/AdvancedDisplay/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/hardware/samsung/exynos4/AdvancedDisplay/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
