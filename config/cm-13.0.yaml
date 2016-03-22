@@ -768,12 +768,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # samsung exynos4 AdvancedDisplay
+  # samsung AdvancedDisplay
   -
-    source:      '/hardware/samsung/exynos4/AdvancedDisplay/res/values/arrays.xml'
+    source:      '/hardware/samsung/AdvancedDisplay/res/values/arrays.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
   -
-    source:      '/hardware/samsung/exynos4/AdvancedDisplay/res/values/strings.xml'
+    source:      '/hardware/samsung/AdvancedDisplay/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
