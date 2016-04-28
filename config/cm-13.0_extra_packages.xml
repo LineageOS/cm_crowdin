@@ -15,6 +15,7 @@
   <project path="packages/cyngn/EmailNext" name="cyngn/android_packages_apps_EmailNext-resources" />
   <project path="packages/cyngn/ExchangeNext" name="cyngn/android_packages_apps_ExchangeNext-resources" />
   <project path="packages/cyngn/GalleryNext" name="cyngn/android_packages_apps_GalleryNext-resources" />
+  <project path="packages/cyngn/Hyperlapse" name="cyngn/android_packages_apps_Hyperlapse-resources" />
   <project path="packages/cyngn/ModLockSettings" name="cyngn/android_packages_apps_ModLockSettings-resources" />
   <project path="packages/cyngn/RemoteFolders" name="cyngn/android_packages_apps_RemoteFolders-resources" />
   <project path="packages/cyngn/ThemeChooser" name="cyngn/android_packages_apps_ThemeChooser-resources" />
