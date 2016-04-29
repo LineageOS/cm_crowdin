@@ -3,6 +3,7 @@
   <!-- Extra packages not included in the main manifest -->
   <project path="packages/apps/Calculator" name="CyanogenMod/android_packages_apps_Calculator" />
   <project path="packages/apps/SamsungServiceMode" name="CyanogenMod/android_packages_apps_SamsungServiceMode" />
+  <project path="packages/apps/Gello" name="CyanogenMod/android_packages_apps_Gello" />
 
   <project path="packages/cyngn/AudioFX" name="cyngn/android_packages_apps_AudioFX-resources" />
   <project path="packages/cyngn/CalendarNext" name="cyngn/android_packages_apps_CalendarNext-resources" />
