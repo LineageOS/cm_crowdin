@@ -308,6 +308,10 @@ files:
 
   # Gello
   -
+    source:      '/packages/apps/Gello/res/raw/incognito_mode_start_page.html'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
     source:      '/packages/apps/Gello/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
