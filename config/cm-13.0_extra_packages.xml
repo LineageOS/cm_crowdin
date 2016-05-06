@@ -33,6 +33,7 @@
   <project path="device/motorola/msm8226-common" name="CyanogenMod/android_device_motorola_msm8226-common" />
   <project path="device/motorola/msm8916-common" name="CyanogenMod/android_device_motorola_msm8916-common" />
   <project path="device/motorola/omap4-common" name="CyanogenMod/android_device_motorola_omap4-common" />
+  <project path="device/motorola/otus" name="CyanogenMod/android_device_motorola_otus" />
   <project path="device/motorola/qcom-common" name="CyanogenMod/android_device_motorola_qcom-common" />
   <project path="device/motorola/quark" name="CyanogenMod/android_device_motorola_quark" />
   <project path="device/motorola/victara" name="CyanogenMod/android_device_motorola_victara" />

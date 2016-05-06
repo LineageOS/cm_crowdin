@@ -772,6 +772,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # motorola otus cmactions
+  -
+    source:      '/device/motorola/otus/cmactions/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # motorola qcom-common doze
   -
     source:      '/device/motorola/qcom-common/doze/res/values/strings.xml'
