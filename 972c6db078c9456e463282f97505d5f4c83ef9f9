@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_db03ad41",
+        "filename": "cm-13.0-ZNH2K.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2016-05-11T16:30:05Z",
+      "side": 1,
+      "message": "CM_CROWDIN_STABLE_BASE_PATH",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "972c6db078c9456e463282f97505d5f4c83ef9f9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_3bed218b",
+        "filename": "cm-13.0-ZNH2K_aosp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2016-05-11T16:30:05Z",
+      "side": 1,
+      "message": "CM_CROWDIN_STABLE_BASE_PATH",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 35
+      },
+      "revId": "972c6db078c9456e463282f97505d5f4c83ef9f9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
