@@ -358,10 +358,6 @@ files:
 
   # Settings
   -
-    source:      '/packages/apps/Settings/res/values/cm_arrays.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
     source:      '/packages/apps/Settings/res/values/cm_plurals.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
