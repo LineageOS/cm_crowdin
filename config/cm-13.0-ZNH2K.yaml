@@ -446,6 +446,12 @@ files:
 
 # Providers
 
+  # DataUsageProvider
+  -
+    source:      '/packages/providers/DataUsageProvider/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # DownloadProvider
   -
     source:      '/packages/providers/DownloadProvider/res/values/cm_plurals.xml'
