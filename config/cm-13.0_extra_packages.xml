@@ -4,7 +4,7 @@
   <project path="packages/apps/Calculator" name="CyanogenMod/android_packages_apps_Calculator" />
   <project path="packages/apps/SamsungServiceMode" name="CyanogenMod/android_packages_apps_SamsungServiceMode" />
 
-  <project path="packages/cyngn/AmbientSDK" name="cyngn/android_packages_apps_AmbientSDK-resources" />
+  <project path="packages/cyngn/AmbientSDK" name="cyngn/android_packages_cyanogen_AmbientSDK-resources" />
   <project path="packages/cyngn/AudioFX" name="cyngn/android_packages_apps_AudioFX-resources" />
   <project path="packages/cyngn/CalendarNext" name="cyngn/android_packages_apps_CalendarNext-resources" />
   <project path="packages/cyngn/CameraNext" name="cyngn/android_packages_apps_Camera2-resources" />
