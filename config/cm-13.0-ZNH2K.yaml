@@ -208,6 +208,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # CellBroadcastReceiver
+  -
+    source:      '/packages/apps/CellBroadcastReceiver/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # CMBugReport
   -
     source:      '/packages/apps/CMBugReport/res/values/strings.xml'
