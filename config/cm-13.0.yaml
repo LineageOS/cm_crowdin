@@ -570,6 +570,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # TwitterLockscreen
+  -
+    source:      '/packages/cyngn/TwitterLockscreen/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # UnifiedEmailNext
   -
     source:      '/packages/cyngn/UnifiedEmailNext/res/values/cm_strings.xml'
