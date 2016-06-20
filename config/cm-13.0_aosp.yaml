@@ -381,6 +381,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # WallpaperPicker
+  -
+    source:      '/packages/apps/WallpaperPicker/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
 # Input methods
 
   # LatinIME
