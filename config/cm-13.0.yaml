@@ -832,6 +832,18 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # oneplus oneplus2 doze
+  -
+    source:      '/device/oneplus/oneplus2/doze/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # oneplus oneplus3 doze
+  -
+    source:      '/device/oneplus/oneplus3/doze/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # oppo common configpanel
   -
     source:      '/device/oppo/common/configpanel/res/values/strings.xml'
