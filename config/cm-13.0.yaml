@@ -576,16 +576,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # UnifiedEmailNext
-  -
-    source:      '/packages/cyngn/UnifiedEmailNext/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/cyngn/UnifiedEmailNext/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # Updater
   -
     source:      '/packages/cyngn/Updater/res/values/strings.xml'
