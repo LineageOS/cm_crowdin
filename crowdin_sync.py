@@ -34,6 +34,7 @@ from xml.dom import minidom
 # ################################# GLOBALS ################################## #
 
 _DIR = os.path.dirname(os.path.realpath(__file__))
+_COMMITS_CREATED = False
 
 # ################################ FUNCTIONS ################################# #
 
@@ -97,6 +98,8 @@ Ticket: %s''' % ticket
         print('Successfully pushed commit for %s' % name)
     except:
         print('Failed to push commit for %s' % name, file=sys.stderr)
+
+    _COMMITS_CREATED = True
 
 
 def check_run(cmd):
@@ -367,7 +370,13 @@ def main():
     if args.download:
         download_crowdin(base_path, default_branch, (xml_android, xml_extra),
                          args.username, args.config, args.ticket)
-    print('\nDone!')
+
+    if _COMMITS_CREATED:
+        print('\nDone!')
+        sys.exit(0)
+    else
+        print('\nNothing to commit')
+        sys.exit(-1)
 
 if __name__ == '__main__':
     main()
