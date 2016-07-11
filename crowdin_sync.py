@@ -374,7 +374,7 @@ def main():
     if _COMMITS_CREATED:
         print('\nDone!')
         sys.exit(0)
-    else
+    else:
         print('\nNothing to commit')
         sys.exit(-1)
 
