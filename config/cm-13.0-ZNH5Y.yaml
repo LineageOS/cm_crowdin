@@ -524,6 +524,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # ThemeManagerService
+  -
+    source:      '/packages/services/ThemeManagerService/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
 # Wallpapers
 
   # Galaxy4
