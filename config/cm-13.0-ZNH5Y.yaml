@@ -490,6 +490,12 @@ files:
 
 # Services
 
+  # CMAudioService
+  -
+    source:      '/packages/services/CMAudioService/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # LiveLockScreenService
   -
     source:      '/packages/services/LiveLockScreenService/res/values/strings.xml'
