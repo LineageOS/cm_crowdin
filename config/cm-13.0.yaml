@@ -682,6 +682,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # WeatherService
+  -
+    source:      '/packages/services/WeatherService/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
 # Wallpapers
 
   # Galaxy4
