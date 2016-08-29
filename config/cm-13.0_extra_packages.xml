@@ -5,7 +5,6 @@
   <project path="packages/apps/SamsungServiceMode" name="CyanogenMod/android_packages_apps_SamsungServiceMode" />
 
   <project path="packages/cyngn/AmbientSDK" name="cyngn/android_packages_cyanogen_AmbientSDK-resources" />
-  <project path="packages/cyngn/AudioFX" name="cyngn/android_packages_apps_AudioFX-resources" />
   <project path="packages/cyngn/CalendarNext" name="cyngn/android_packages_apps_CalendarNext-resources" />
   <project path="packages/cyngn/CameraNext" name="cyngn/android_packages_apps_Camera2-resources" />
   <project path="packages/cyngn/CMFota" name="cyngn/android_packages_apps_FOTA-resources" />
@@ -20,7 +19,6 @@
   <project path="packages/cyngn/Hyperlapse" name="cyngn/android_packages_apps_Hyperlapse-resources" />
   <project path="packages/cyngn/ModLockSettings" name="cyngn/android_packages_apps_ModLockSettings-resources" />
   <project path="packages/cyngn/RemoteFolders" name="cyngn/android_packages_apps_RemoteFolders-resources" />
-  <project path="packages/cyngn/ThemeChooser" name="cyngn/android_packages_apps_ThemeChooser-resources" />
   <project path="packages/cyngn/ThemeStore" name="cyngn/android_packages_apps_ThemeStore-resources" />
   <project path="packages/cyngn/TwitterLockscreen" name="cyngn/android_packages_apps_TwitterLockscreen-resources" />
   <project path="packages/cyngn/Updater" name="cyngn/android_packages_apps_Updater-resources" />

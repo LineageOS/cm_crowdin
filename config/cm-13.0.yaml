@@ -450,12 +450,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # AudioFX
-  -
-    source:      '/packages/cyngn/AudioFX/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # CalendarNext
   -
     source:      '/packages/cyngn/CalendarNext/res/values/cm_strings.xml'
@@ -561,12 +555,6 @@ files:
     languages_mapping: *anchor
   -
     source:      '/packages/cyngn/RemoteFolders/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # ThemeChooser
-  -
-    source:      '/packages/cyngn/ThemeChooser/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
