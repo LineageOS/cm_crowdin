@@ -542,6 +542,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # ModGuide
+  -
+    source:      '/packages/cyngn/ModGuide/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # ModLockSettings
   -
     source:      '/packages/cyngn/ModLockSettings/res/values/strings.xml'
