@@ -542,6 +542,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # ModGuide
+  -
+    source:      '/packages/cyngn/ModGuide/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # ModLockSettings
   -
     source:      '/packages/cyngn/ModLockSettings/res/values/strings.xml'
@@ -555,6 +561,20 @@ files:
     languages_mapping: *anchor
   -
     source:      '/packages/cyngn/RemoteFolders/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Ridesharing
+  -
+    source:      '/packages/cyngn/Ridesharing/res/values/strings_coreproxy.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/cyngn/Ridesharing/res/values/strings_lockscreen.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/cyngn/Ridesharing/res/values/strings_plugin.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 

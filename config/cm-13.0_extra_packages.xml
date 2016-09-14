@@ -17,6 +17,8 @@
   <project path="packages/cyngn/ExchangeNext" name="cyngn/android_packages_apps_ExchangeNext-resources" />
   <project path="packages/cyngn/GalleryNext" name="cyngn/android_packages_apps_GalleryNext-resources" />
   <project path="packages/cyngn/Hyperlapse" name="cyngn/android_packages_apps_Hyperlapse-resources" />
+  <project path="packages/cyngn/ModGuide" name="cyngn/android_packages_apps_ModGuide-resources" />
+  <project path="packages/cyngn/Ridesharing" name="cyngn/android_packages_cyanogen_UberRidesharingPlugin-resources" />
   <project path="packages/cyngn/ModLockSettings" name="cyngn/android_packages_apps_ModLockSettings-resources" />
   <project path="packages/cyngn/RemoteFolders" name="cyngn/android_packages_apps_RemoteFolders-resources" />
   <project path="packages/cyngn/ThemeStore" name="cyngn/android_packages_apps_ThemeStore-resources" />
