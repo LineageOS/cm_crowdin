@@ -252,6 +252,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # EmergencyInfo
+  -
+    source:      '/packages/apps/EmergencyInfo/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # ExactCalculator
   -
     source:      '/packages/apps/ExactCalculator/res/values/strings.xml'
@@ -329,6 +335,12 @@ files:
   # PhoneCommon
   -
     source:      '/packages/apps/PhoneCommon/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # SafetyRegulatoryInfo
+  -
+    source:      '/packages/apps/SafetyRegulatoryInfo/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
