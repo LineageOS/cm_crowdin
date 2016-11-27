@@ -2,24 +2,12 @@
 <manifest>
   <!-- Extra packages not included in the main manifest -->
   <project path="packages/apps/SamsungServiceMode" name="CyanogenMod/android_packages_apps_SamsungServiceMode" />
+  <project path="packages/resources/devicesettings" name="CyanogenMod/android_packages_resources_devicesettings" />
 
   <!-- Device repositories that can be translated -->
-  <project path="device/asus/mofd-common" name="CyanogenMod/android_device_asus_mofd-common" />
-  <project path="device/asus/msm8916-common" name="CyanogenMod/android_device_asus_msm8916-common" />
   <project path="device/bn/acclaim" name="CyanogenMod/android_device_bn_acclaim" />
-  <project path="device/lge/hammerheadcaf" name="CyanogenMod/android_device_lge_hammerheadcaf" />
-  <project path="device/motorola/condor" name="CyanogenMod/android_device_motorola_condor" />
-  <project path="device/motorola/msm8226-common" name="CyanogenMod/android_device_motorola_msm8226-common" />
-  <project path="device/motorola/msm8916-common" name="CyanogenMod/android_device_motorola_msm8916-common" />
-  <project path="device/motorola/omap4-common" name="CyanogenMod/android_device_motorola_omap4-common" />
-  <project path="device/motorola/otus" name="CyanogenMod/android_device_motorola_otus" />
-  <project path="device/oneplus/oneplus2" name="CyanogenMod/android_device_oneplus_oneplus2" />
-  <project path="device/oneplus/oneplus3" name="CyanogenMod/android_device_oneplus_oneplus3" />
   <project path="device/oppo/common" name="CyanogenMod/android_device_oppo_common" />
   <project path="device/oppo/r5" name="CyanogenMod/android_device_oppo_r5" />
-  <project path="device/samsung/qcom-common" name="CyanogenMod/android_device_samsung_qcom-common" />
-  <project path="device/sony/huashan" name="CyanogenMod/android_device_sony_huashan" />
-  <project path="device/yu/tomato" name="CyanogenMod/android_device_yu_tomato" />
 
   <project path="hardware/samsung" name="CyanogenMod/android_hardware_samsung" />
 </manifest>

@@ -500,76 +500,9 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # asus mofd-common cmactions
-  -
-    source:      '/device/asus/mofd-common/cmactions/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # asus msm8916-common cmactions
-  -
-    source:      '/device/asus/msm8916-common/cmactions/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # bn acclaim TFF
   -
     source:      '/device/bn/acclaim/TFF/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # lge hammerheadcaf doze
-  -
-    source:      '/device/lge/hammerheadcaf/doze/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # motorola condor doze
-  -
-    source:      '/device/motorola/condor/doze/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # motorola msm8226-common CMActions
-  -
-    source:      '/device/motorola/msm8226-common/CMActions/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # motorola msm8916-common cmactions
-  -
-    source:      '/device/motorola/msm8916-common/cmactions/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # motorola omap4-common doze
-  -
-    source:      '/device/motorola/omap4-common/doze/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # motorola otus cmactions
-  -
-    source:      '/device/motorola/otus/cmactions/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-
-  # motorola victara cmactions
-  -
-    source:      '/device/motorola/victara/cmactions/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # oneplus oneplus2 doze
-  -
-    source:      '/device/oneplus/oneplus2/doze/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # oneplus oneplus3 doze
-  -
-    source:      '/device/oneplus/oneplus3/doze/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -585,12 +518,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # samsung qcom-common doze
-  -
-    source:      '/device/samsung/qcom-common/doze/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # samsung AdvancedDisplay
   -
     source:      '/hardware/samsung/AdvancedDisplay/res/values/arrays.xml'
@@ -601,14 +528,8 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # sony huashan devicesettings
+  # resources devicesettings
   -
-    source:      '/device/sony/huashan/devicesettings/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # yu tomato configpanel
-  -
-    source:      '/device/yu/tomato/configpanel/res/values/strings.xml'
+    source:      '/packages/resources/devicesettings/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
