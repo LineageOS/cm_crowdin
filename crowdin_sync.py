@@ -346,10 +346,21 @@ def main():
     if xml_android is None:
         sys.exit(1)
 
+    xml_cm = load_xml(x='%s/android/snippets/cm.xml' % base_path)
+    if xml_cm is None:
+        xml_cm = load_xml(x='%s/android/snippets/hal_cm_all.xml' % base_path)
+        if xml_cm is None:
+            print('CM snippet is missing, branch is probably <= cm-12.1')
+
     xml_extra = load_xml(x='%s/config/%s_extra_packages.xml'
                            % (_DIR, default_branch))
     if xml_extra is None:
         sys.exit(1)
+
+    if xml_cm is not None:
+        xml_files = (xml_android, xml_cm, xml_extra)
+    else
+        xml_files = (xml_android, xml_extra)
 
     if args.config:
         files = ['%s/config/%s' % (_DIR, args.config)]
@@ -368,7 +379,7 @@ def main():
     if args.upload_translations:
         upload_translations_crowdin(default_branch, args.config)
     if args.download:
-        download_crowdin(base_path, default_branch, (xml_android, xml_extra),
+        download_crowdin(base_path, default_branch, xml_files,
                          args.username, args.config, args.ticket)
 
     if _COMMITS_CREATED:
