@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<manifest>
-  <!-- Extra packages not included in the main manifest -->
-  <project path="hardware/qcom/fm" name="CyanogenMod/android_hardware_qcom_fm" />
-</manifest>
