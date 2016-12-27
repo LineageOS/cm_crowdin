@@ -1,6 +1,6 @@
 # cm-14.1_aosp.yaml
 #
-# Crowdin configuration file for CyanogenMod's
+# Crowdin configuration file for LineageOS'
 # additional languages not supported by AOSP
 #
 # Copyright (C) 2014-2016 The CyanogenMod Project
@@ -20,7 +20,7 @@
 api_key_env: CM_AOSP_CROWDIN_API_KEY
 base_path_env: CM_CROWDIN_BASE_PATH
 base_path_contains_branch_subfolders: true
-project_identifier: cyanogenmod-aosp
+project_identifier: lineageos-aosp
 preserve_hierarchy: true
 
 files:

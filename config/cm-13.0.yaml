@@ -1,6 +1,6 @@
 # cm-13.0.yaml
 #
-# Crowdin configuration file for CyanogenMod
+# Crowdin configuration file for LineageOS
 #
 # Copyright (C) 2014-2015 The CyanogenMod Project
 #
@@ -19,7 +19,7 @@
 api_key_env: CM_CROWDIN_API_KEY
 base_path_env: CM_CROWDIN_BASE_PATH
 base_path_contains_branch_subfolders: true
-project_identifier: cyanogenmod
+project_identifier: lineageos
 preserve_hierarchy: true
 
 files:
@@ -439,166 +439,6 @@ files:
   # UnifiedEmail
   -
     source:      '/packages/apps/UnifiedEmail/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-# Cyngn packages
-
-  # AmbientSDK
-  -
-    source:      '/packages/cyngn/AmbientSDK/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CalendarNext
-  -
-    source:      '/packages/cyngn/CalendarNext/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/cyngn/CalendarNext/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CameraNext
-  -
-    source:      '/packages/cyngn/CameraNext/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/cyngn/CameraNext/res/values/qcomstrings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/cyngn/CameraNext/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CMFota
-  -
-    source:      '/packages/cyngn/CMFota/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CMLogger
-  -
-    source:      '/packages/cyngn/CMLogger/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CMResolver
-  -
-    source:      '/packages/cyngn/CMResolver/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CyanogenAccount
-  -
-    source:      '/packages/cyngn/CyanogenAccount/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # DeviceManager
-  -
-    source:      '/packages/cyngn/DeviceManager/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Discovery
-  -
-    source:      '/packages/cyngn/Discovery/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # EmailNext
-  -
-    source:      '/packages/cyngn/EmailNext/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/cyngn/EmailNext/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # ExchangeNext
-  -
-    source:      '/packages/cyngn/ExchangeNext/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/cyngn/ExchangeNext/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # GalleryNext
-  -
-    source:      '/packages/cyngn/GalleryNext/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Hyperlapse
-  -
-    source:      '/packages/cyngn/Hyperlapse/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # ModGuide
-  -
-    source:      '/packages/cyngn/ModGuide/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # ModLockSettings
-  -
-    source:      '/packages/cyngn/ModLockSettings/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # RemoteFolders
-  -
-    source:      '/packages/cyngn/RemoteFolders/res/values/arrays.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/cyngn/RemoteFolders/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Ridesharing
-  -
-    source:      '/packages/cyngn/Ridesharing/res/values/strings_coreproxy.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/cyngn/Ridesharing/res/values/strings_lockscreen.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/cyngn/Ridesharing/res/values/strings_plugin.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # ThemeStore
-  -
-    source:      '/packages/cyngn/ThemeStore/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # TwitterLockscreen
-  -
-    source:      '/packages/cyngn/TwitterLockscreen/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Updater
-  -
-    source:      '/packages/cyngn/Updater/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # VoiceWakeup
-  -
-    source:      '/packages/cyngn/VoiceWakeup/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 

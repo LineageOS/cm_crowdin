@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <!-- Extra packages not included in the main manifest -->
-  <project path="packages/apps/SamsungServiceMode" name="CyanogenMod/android_packages_apps_SamsungServiceMode" />
-  <project path="packages/resources/devicesettings" name="CyanogenMod/android_packages_resources_devicesettings" />
+  <project path="packages/apps/SamsungServiceMode" name="LineageOS/android_packages_apps_SamsungServiceMode" />
+  <project path="packages/resources/devicesettings" name="LineageOS/android_packages_resources_devicesettings" />
 
   <!-- Device repositories that can be translated -->
-  <project path="device/bn/acclaim" name="CyanogenMod/android_device_bn_acclaim" />
-  <project path="device/oppo/common" name="CyanogenMod/android_device_oppo_common" />
-  <project path="device/oppo/r5" name="CyanogenMod/android_device_oppo_r5" />
+  <project path="device/bn/acclaim" name="LineageOS/android_device_bn_acclaim" />
+  <project path="device/oppo/common" name="LineageOS/android_device_oppo_common" />
+  <project path="device/oppo/r5" name="LineageOS/android_device_oppo_r5" />
 
-  <project path="hardware/samsung" name="CyanogenMod/android_hardware_samsung" />
+  <project path="hardware/samsung" name="LineageOS/android_hardware_samsung" />
 </manifest>

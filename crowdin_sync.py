@@ -3,7 +3,7 @@
 # crowdin_sync.py
 #
 # Updates Crowdin source translations and pushes translations
-# directly to CyanogenMod's Gerrit.
+# directly to LineageOS' Gerrit.
 #
 # Copyright (C) 2014-2015 The CyanogenMod Project
 #
@@ -93,7 +93,7 @@ Ticket: %s''' % ticket
 
     # Push commit
     try:
-        repo.git.push('ssh://%s@review.cyanogenmod.org:29418/%s' % (username, name),
+        repo.git.push('ssh://%s@review.lineageos.org:29418/%s' % (username, name),
                       'HEAD:refs/for/%s%%topic=translation' % branch)
         print('Successfully pushed commit for %s' % name)
     except:
@@ -121,9 +121,9 @@ def find_xml(base_path):
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Synchronising CyanogenMod's translations with Crowdin")
+        description="Synchronising LineageOS' translations with Crowdin")
     parser.add_argument('-u', '--username', help='Gerrit username')
-    parser.add_argument('-b', '--branch', help='CyanogenMod branch',
+    parser.add_argument('-b', '--branch', help='LineageOS branch',
                         required=True)
     parser.add_argument('-c', '--config', help='Custom yaml config')
     parser.add_argument('-t', '--ticket', help='JIRA ticket')
