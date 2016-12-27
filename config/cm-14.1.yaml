@@ -1,6 +1,6 @@
 # cm-14.1.yaml
 #
-# Crowdin configuration file for CyanogenMod
+# Crowdin configuration file for LineageOS
 #
 # Copyright (C) 2014-2016 The CyanogenMod Project
 #
@@ -19,7 +19,7 @@
 api_key_env: CM_CROWDIN_API_KEY
 base_path_env: CM_CROWDIN_BASE_PATH
 base_path_contains_branch_subfolders: true
-project_identifier: cyanogenmod
+project_identifier: lineageos
 preserve_hierarchy: true
 
 files:
