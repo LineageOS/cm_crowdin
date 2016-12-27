@@ -3,7 +3,7 @@ crowdin_sync.py
 
 Introduction
 ------------
-This script is used to synchronize CyanogenMod's translations with Crowdin's. Also, it can handle
+This script is used to synchronize LineageOS' translations with Crowdin's. Also, it can handle
 automatic commiting to Gerrit and pushing/downloading to/from Crowdin.
 
 Prerequisites
@@ -24,7 +24,7 @@ to make sure you sync all the extra packages not included in the main manifest.
 Executing
 ---------
 Export the following environment variables to set the API keys and the base path.
-Base path should contain all CM trees in subfolders, named after CM branches.
+Base path should contain all LineageOS trees in subfolders, named after LineageOS branches.
 Syncing stable trees requires an additional environment variable plus a 'stable'
 subfolder under the base path, due to crowdin API limitations:
 
@@ -37,8 +37,8 @@ Example:
 
     export CM_CROWDIN_API_KEY=1234567890
     export CM_AOSP_CROWDIN_API_KEY=0987654321
-    export CM_CROWDIN_BASE_PATH=/mnt/android/cm
-    export CM_CROWDIN_STABLE_BASE_PATH=/mnt/android/cm/stable
+    export CM_CROWDIN_BASE_PATH=/mnt/android/lineageos
+    export CM_CROWDIN_STABLE_BASE_PATH=/mnt/android/lineageos/stable
 
 Execute:
 
