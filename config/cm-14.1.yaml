@@ -319,6 +319,10 @@ files:
 
   # Snap
   -
+    source:      '/packages/apps/Snap/res/values/camera2arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
     source:      '/packages/apps/Snap/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
