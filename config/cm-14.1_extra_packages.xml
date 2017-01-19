@@ -3,6 +3,7 @@
   <!-- Extra packages not included in the main manifest -->
   <project path="packages/apps/SamsungServiceMode" name="LineageOS/android_packages_apps_SamsungServiceMode" />
   <project path="packages/resources/devicesettings" name="LineageOS/android_packages_resources_devicesettings" />
+  <project path="packages/apps/FlipFlap" name="LineageOS/android_packages_apps_FlipFlap" />
 
   <!-- Device repositories that can be translated -->
   <project path="device/bn/acclaim" name="LineageOS/android_device_bn_acclaim" />
