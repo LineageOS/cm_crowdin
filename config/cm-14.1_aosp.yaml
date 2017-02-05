@@ -352,12 +352,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # SoundRecorder
-  -
-    source:      '/packages/apps/SoundRecorder/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # Stk
   -
     source:      '/packages/apps/Stk/res/values/strings.xml'

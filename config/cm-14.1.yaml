@@ -295,9 +295,9 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # Screencast
+  # Recorder
   -
-    source:      '/packages/apps/Screencast/res/values/strings.xml'
+    source:      '/packages/apps/Recorder/app/src/main/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -332,12 +332,6 @@ files:
     languages_mapping: *anchor
   -
     source:      '/packages/apps/Snap/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # SoundRecorder
-  -
-    source:      '/packages/apps/SoundRecorder/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
