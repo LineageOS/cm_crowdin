@@ -209,12 +209,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # CMWallpapers
-  -
-    source:      '/packages/apps/CMWallpapers/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # DeskClock
   -
     source:      '/packages/apps/DeskClock/res/values/cm_strings.xml'
