@@ -209,6 +209,18 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # Contacts
+  -
+    source:      '/packages/apps/Contacts/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # ContactsCommon
+  -
+    source:      '/packages/apps/ContactsCommon/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # DeskClock
   -
     source:      '/packages/apps/DeskClock/res/values/cm_strings.xml'
