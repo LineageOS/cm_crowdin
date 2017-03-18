@@ -183,16 +183,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # CMFileManager
-  -
-    source:      '/packages/apps/CMFileManager/res/values/plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/CMFileManager/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # CMParts
   -
     source:      '/packages/apps/CMParts/res/values/strings.xml'
