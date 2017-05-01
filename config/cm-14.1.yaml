@@ -149,12 +149,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # Browser
-  -
-    source:      '/packages/apps/Browser/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # Calendar
   -
     source:      '/packages/apps/Calendar/res/values/cm_plurals.xml'
@@ -274,6 +268,12 @@ files:
     languages_mapping: *anchor
   -
     source:      '/packages/apps/Gello/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Jelly
+  -
+    source:      '/packages/apps/Jelly/app/src/main/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
