@@ -23,7 +23,6 @@
   <project path="device/oppo/common" name="LineageOS/android_device_oppo_common" />
   <project path="device/oppo/r5" name="LineageOS/android_device_oppo_r5" />
   <project path="device/samsung/qcom-common" name="LineageOS/android_device_samsung_qcom-common" />
-  <project path="device/sony/huashan" name="LineageOS/android_device_sony_huashan" />
   <project path="device/yu/sambar" name="LineageOS/android_device_yu_sambar" />
   <project path="device/yu/tomato" name="LineageOS/android_device_yu_tomato" />
 
