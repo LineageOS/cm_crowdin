@@ -522,6 +522,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # sony huashan devicesettings
+  -
+    source:      '/device/sony/huashan/devicesettings/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # samsung AdvancedDisplay
   -
     source:      '/hardware/samsung/AdvancedDisplay/res/values/arrays.xml'
