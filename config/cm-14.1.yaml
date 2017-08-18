@@ -187,16 +187,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # CMUpdater
-  -
-    source:      '/packages/apps/CMUpdater/res/values/plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/CMUpdater/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # Contacts
   -
     source:      '/packages/apps/Contacts/res/values/cm_strings.xml'
@@ -370,6 +360,12 @@ files:
   # UnifiedEmail
   -
     source:      '/packages/apps/UnifiedEmail/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Updater
+  -
+    source:      '/packages/apps/Updater/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
