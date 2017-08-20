@@ -171,12 +171,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # CMBugReport
-  -
-    source:      '/packages/apps/CMBugReport/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # CMParts
   -
     source:      '/packages/apps/CMParts/res/values/plurals.xml'
@@ -335,12 +329,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # ThemeChooser
-  -
-    source:      '/packages/apps/ThemeChooser/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # Trebuchet
   -
     source:      '/packages/apps/Trebuchet/res/values/cm_arrays.xml'
@@ -383,12 +371,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # ThemesProvider
-  -
-    source:      '/packages/providers/ThemesProvider/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # WeatherProvider
   -
     source:      '/packages/providers/WeatherProvider/res/values/strings.xml'
@@ -416,12 +398,6 @@ files:
     languages_mapping: *anchor
   -
     source:      '/packages/services/Telephony/res/values/qtistrings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # ThemeManagerService
-  -
-    source:      '/packages/services/ThemeManagerService/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
