@@ -6,7 +6,6 @@
   <project path="packages/apps/FlipFlap" name="LineageOS/android_packages_apps_FlipFlap" />
 
   <!-- Device repositories that can be translated -->
-  <project path="device/bn/acclaim" name="LineageOS/android_device_bn_acclaim" />
   <project path="device/oppo/common" name="LineageOS/android_device_oppo_common" />
   <project path="device/oppo/r5" name="LineageOS/android_device_oppo_r5" />
   <project path="device/sony/huashan" name="LineageOS/android_device_sony_huashan" />

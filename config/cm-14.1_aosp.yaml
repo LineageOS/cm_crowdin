@@ -500,38 +500,8 @@ files:
 
 # Wallpapers
 
-  # Basic
-  -
-    source:      '/packages/wallpapers/Basic/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # HoloSpiral
-  -
-    source:      '/packages/wallpapers/HoloSpiral/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # LivePicker
   -
     source:      '/packages/wallpapers/LivePicker/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # MagicSmoke
-  -
-    source:      '/packages/wallpapers/MagicSmoke/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # NoiseField
-  -
-    source:      '/packages/wallpapers/NoiseField/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # PhaseBeam
-  -
-    source:      '/packages/wallpapers/PhaseBeam/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
