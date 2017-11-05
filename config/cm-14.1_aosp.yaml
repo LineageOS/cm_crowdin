@@ -4,6 +4,7 @@
 # additional languages not supported by AOSP
 #
 # Copyright (C) 2014-2016 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -39,6 +40,7 @@ files:
         es-MX: es-rMX
         eo: eo
         fy-NL: fy-rNL
+        kab: kab
         ku: ku
         lb: lb
         or: or-rIN
