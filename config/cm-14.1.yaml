@@ -319,6 +319,10 @@ files:
     source:      '/packages/apps/Snap/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
+  -
+    source:      '/packages/apps/Snap/quickReader/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
 
   # Terminal
   -
