@@ -351,11 +351,13 @@ def main():
     if xml_extra is None:
         sys.exit(1)
 
-    xml_cm = load_xml(x='%s/android/snippets/cm.xml' % base_path)
-    if xml_cm is None:
-        xml_cm = load_xml(x='%s/android/snippets/hal_cm_all.xml' % base_path)
-    if xml_cm is not None:
-        xml_files = (xml_android, xml_cm, xml_extra)
+    xml_snippet = load_xml(x='%s/android/snippets/lineage.xml' % base_path)
+    if xml_snippet is None:
+        xml_snippet = load_xml(x='%s/android/snippets/cm.xml' % base_path)
+    if xml_snippet is None:
+        xml_snippet = load_xml(x='%s/android/snippets/hal_cm_all.xml' % base_path)
+    if xml_snippet is not None:
+        xml_files = (xml_android, xml_snippet, xml_extra)
     else:
         xml_files = (xml_android, xml_extra)
 
