@@ -579,7 +579,7 @@ files:
 
   # OpenWeatherMapProvider
   -
-    source:      '/vendor/cmsdk/samples/weatherproviderservice/OpenWeatherMapProvider/res/values/strings.xml'
+    source:      '/vendor/cmsdk/samples/weatherproviderservice/OpenWeatherMapProvider/app/src/main/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
