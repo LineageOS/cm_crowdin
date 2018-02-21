@@ -95,6 +95,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # MtpDocumentsProvider
+  -
+    source:      '/frameworks/base/packages/MtpDocumentsProvider/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # PrintSpooler
   -
     source:      '/frameworks/base/packages/PrintSpooler/res/values/strings.xml'
@@ -166,12 +172,6 @@ files:
     languages_mapping: *anchor
   -
     source:      '/packages/apps/Bluetooth/res/values/strings_sap.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Calculator
-  -
-    source:      '/packages/apps/Calculator/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -347,6 +347,16 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # StorageManager
+  -
+    source:      '/packages/apps/StorageManager/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/packages/apps/StorageManager/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Tag
   -
     source:      '/packages/apps/Tag/res/values/strings.xml'
@@ -415,6 +425,12 @@ files:
 
 # Providers
 
+  # BlockedNumberProvider
+  -
+    source:      '/packages/providers/BlockedNumberProvider/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # BookmarkProvider
   -
     source:      '/packages/providers/BookmarkProvider/res/values/strings.xml'
@@ -458,6 +474,12 @@ files:
   # TelephonyProvider
   -
     source:      '/packages/providers/TelephonyProvider/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # TvProvider
+  -
+    source:      '/packages/providers/TvProvider/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
