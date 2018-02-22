@@ -240,6 +240,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # FMRadio
+  -
+    source:      '/packages/apps/FMRadio/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Gallery2
   -
     source:      '/packages/apps/Gallery2/res/values/cm_strings.xml'
