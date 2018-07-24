@@ -314,7 +314,11 @@ files:
     source:      '/packages/apps/Gallery2/res/values/codeaurora_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
-
+  -
+    source:      '/packages/apps/Gallery2/res/values/filtershow_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+    
   # Jelly
   -
     source:      '/packages/apps/Jelly/app/src/main/res/values/strings.xml'
