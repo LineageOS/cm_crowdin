@@ -483,12 +483,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # oppo r5 otgtoggle
-  -
-    source:      '/device/oppo/r5/otgtoggle/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # sony huashan devicesettings
   -
     source:      '/device/sony/huashan/devicesettings/res/values/strings.xml'

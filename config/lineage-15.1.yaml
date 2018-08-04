@@ -261,6 +261,18 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # Camera2
+  -
+    source:      '/packages/apps/Camera2/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Contacts
+  -
+    source:      '/packages/apps/Contacts/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # DeskClock
   -
     source:      '/packages/apps/DeskClock/res/values/cm_strings.xml'
@@ -312,6 +324,12 @@ files:
     languages_mapping: *anchor
   -
     source:      '/packages/apps/Eleven/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # Email
+  -
+    source:      '/packages/apps/Email/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
@@ -425,6 +443,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # UnifiedEmail
+  -
+    source:      '/packages/apps/UnifiedEmail/res/values/cm_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Updater
   -
     source:      '/packages/apps/Updater/res/values/strings.xml'
@@ -526,6 +550,22 @@ files:
   # oppo common configpanel
   -
     source:      '/device/oppo/common/configpanel/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # oppo r5 otgtoggle
+  -
+    source:      '/device/oppo/r5/otgtoggle/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # samsung AdvancedDisplay
+  -
+    source:      '/hardware/samsung/AdvancedDisplay/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/hardware/samsung/AdvancedDisplay/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
