@@ -55,9 +55,6 @@ def run_subprocess(cmd, silent=False):
 
 
 def push_as_commit(base_path, path, name, branch, username, ticket):
-    if 'stable/' in base_path:
-        branch = ''.join(('stable/', branch))
-
     print('Committing %s on branch %s' % (name, branch))
 
     # Get path
@@ -321,22 +318,16 @@ def main():
     args = parse_args()
     default_branch = args.branch
 
-    if 'stable/' in default_branch:
-        base_path_env = 'CM_CROWDIN_STABLE_BASE_PATH'
-        base_path = os.getenv(base_path_env)
-        default_branch = default_branch.replace('stable/', '')
-    else:
-        base_path_env = 'CM_CROWDIN_BASE_PATH'
-        base_path = os.getenv(base_path_env)
+    base_path = os.getenv('CM_CROWDIN_BASE_PATH')
     if base_path is None:
         cwd = os.getcwd()
-        print('You have not set %s. Defaulting to %s' % (base_path_env, cwd))
+        print('You have not set CM_CROWDIN_BASE_PATH. Defaulting to %s' % cwd)
         base_path = cwd
     else:
         base_path = os.path.join(os.path.realpath(base_path), default_branch)
     if not os.path.isdir(base_path):
-        print('%s + branch is not a real directory: %s'
-              % (base_path_env, base_path))
+        print('CM_CROWDIN_BASE_PATH + branch is not a real directory: %s'
+              % base_path)
         sys.exit(1)
 
     if not check_dependencies():
