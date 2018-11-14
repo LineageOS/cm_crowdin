@@ -221,27 +221,6 @@ def download_crowdin(base_path, branch, xml, username, config):
                    '--config=%s/config/%s_aosp.yaml' % (_DIR, branch),
                    'download', '--branch=%s' % branch])
 
-    print('\nRemoving useless empty translation files')
-    empty_contents = {
-        '<resources/>',
-        '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>',
-        ('<resources xmlns:android='
-         '"http://schemas.android.com/apk/res/android"/>'),
-        ('<resources xmlns:android="http://schemas.android.com/apk/res/android"'
-         ' xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>'),
-        ('<resources xmlns:tools="http://schemas.android.com/tools"'
-         ' xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>')
-    }
-    xf = None
-    for xml_file in find_xml(base_path):
-        xf = open(xml_file).read()
-        for line in empty_contents:
-            if line in xf:
-                print('Removing ' + xml_file)
-                os.remove(xml_file)
-                break
-    del xf
-
     print('\nCreating a list of pushable translations')
     # Get all files that Crowdin pushed
     paths = []
