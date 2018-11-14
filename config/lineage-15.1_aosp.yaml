@@ -18,9 +18,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-api_key_env: CM_AOSP_CROWDIN_API_KEY
-base_path_env: CM_CROWDIN_BASE_PATH
-base_path_contains_branch_subfolders: true
+api_key_env: LINEAGE_AOSP_CROWDIN_API_KEY
+base_path_env: LINEAGE_CROWDIN_BASE_PATH_LINEAGE_15_1
 project_identifier: lineageos-aosp
 preserve_hierarchy: true
 

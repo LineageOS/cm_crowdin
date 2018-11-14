@@ -5,7 +5,8 @@
 # Updates Crowdin source translations and pushes translations
 # directly to LineageOS' Gerrit.
 #
-# Copyright (C) 2014-2015 The CyanogenMod Project
+# Copyright (C) 2014-2016 The CyanogenMod Project
+# Copyright (C) 2017-2018 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -128,10 +129,10 @@ def parse_args():
 
 
 def check_dependencies():
-    # Check for Ruby version of crowdin-cli
-    cmd = ['gem', 'list', 'crowdin-cli', '-i']
+    # Check for Java version of crowdin
+    cmd = ['dpkg-query', '-W', 'crowdin']
     if run_subprocess(cmd, silent=True)[1] != 0:
-        print('You have not installed crowdin-cli.', file=sys.stderr)
+        print('You have not installed crowdin.', file=sys.stderr)
         return False
     return True
 
@@ -161,17 +162,17 @@ def check_files(files):
 def upload_sources_crowdin(branch, config):
     if config:
         print('\nUploading sources to Crowdin (custom config)')
-        check_run(['crowdin-cli',
+        check_run(['crowdin',
                    '--config=%s/config/%s' % (_DIR, config),
                    'upload', 'sources', '--branch=%s' % branch])
     else:
         print('\nUploading sources to Crowdin (AOSP supported languages)')
-        check_run(['crowdin-cli',
+        check_run(['crowdin',
                    '--config=%s/config/%s.yaml' % (_DIR, branch),
                    'upload', 'sources', '--branch=%s' % branch])
 
         print('\nUploading sources to Crowdin (non-AOSP supported languages)')
-        check_run(['crowdin-cli',
+        check_run(['crowdin',
                    '--config=%s/config/%s_aosp.yaml' % (_DIR, branch),
                    'upload', 'sources', '--branch=%s' % branch])
 
@@ -179,7 +180,7 @@ def upload_sources_crowdin(branch, config):
 def upload_translations_crowdin(branch, config):
     if config:
         print('\nUploading translations to Crowdin (custom config)')
-        check_run(['crowdin-cli',
+        check_run(['crowdin',
                    '--config=%s/config/%s' % (_DIR, config),
                    'upload', 'translations', '--branch=%s' % branch,
                    '--no-import-duplicates', '--import-eq-suggestions',
@@ -187,7 +188,7 @@ def upload_translations_crowdin(branch, config):
     else:
         print('\nUploading translations to Crowdin '
               '(AOSP supported languages)')
-        check_run(['crowdin-cli',
+        check_run(['crowdin',
                    '--config=%s/config/%s.yaml' % (_DIR, branch),
                    'upload', 'translations', '--branch=%s' % branch,
                    '--no-import-duplicates', '--import-eq-suggestions',
@@ -195,7 +196,7 @@ def upload_translations_crowdin(branch, config):
 
         print('\nUploading translations to Crowdin '
               '(non-AOSP supported languages)')
-        check_run(['crowdin-cli',
+        check_run(['crowdin',
                    '--config=%s/config/%s_aosp.yaml' % (_DIR, branch),
                    'upload', 'translations', '--branch=%s' % branch,
                    '--no-import-duplicates', '--import-eq-suggestions',
@@ -205,19 +206,19 @@ def upload_translations_crowdin(branch, config):
 def download_crowdin(base_path, branch, xml, username, config):
     if config:
         print('\nDownloading translations from Crowdin (custom config)')
-        check_run(['crowdin-cli',
+        check_run(['crowdin',
                    '--config=%s/config/%s' % (_DIR, config),
                    'download', '--branch=%s' % branch])
     else:
         print('\nDownloading translations from Crowdin '
               '(AOSP supported languages)')
-        check_run(['crowdin-cli',
+        check_run(['crowdin',
                    '--config=%s/config/%s.yaml' % (_DIR, branch),
                    'download', '--branch=%s' % branch])
 
         print('\nDownloading translations from Crowdin '
               '(non-AOSP supported languages)')
-        check_run(['crowdin-cli',
+        check_run(['crowdin',
                    '--config=%s/config/%s_aosp.yaml' % (_DIR, branch),
                    'download', '--branch=%s' % branch])
 
@@ -230,7 +231,7 @@ def download_crowdin(base_path, branch, xml, username, config):
         files = ['%s/config/%s.yaml' % (_DIR, branch),
                  '%s/config/%s_aosp.yaml' % (_DIR, branch)]
     for c in files:
-        cmd = ['crowdin-cli', '--config=%s' % c, 'list', 'project',
+        cmd = ['crowdin', '--config=%s' % c, 'list', 'project',
                '--branch=%s' % branch]
         comm, ret = run_subprocess(cmd)
         if ret != 0:
@@ -289,16 +290,15 @@ def main():
     args = parse_args()
     default_branch = args.branch
 
-    base_path = os.getenv('CM_CROWDIN_BASE_PATH')
+    base_path_branch_suffix = default_branch.replace('-', '_').replace('.', '_').upper()
+    base_path_env = 'LINEAGE_CROWDIN_BASE_PATH_%s' % base_path_branch_suffix
+    base_path = os.getenv(base_path_env)
     if base_path is None:
         cwd = os.getcwd()
-        print('You have not set CM_CROWDIN_BASE_PATH. Defaulting to %s' % cwd)
+        print('You have not set %s. Defaulting to %s' % (base_path_env, cwd))
         base_path = cwd
-    else:
-        base_path = os.path.join(os.path.realpath(base_path), default_branch)
     if not os.path.isdir(base_path):
-        print('CM_CROWDIN_BASE_PATH + branch is not a real directory: %s'
-              % base_path)
+        print('%s is not a real directory: %s' % (base_path_env, base_path))
         sys.exit(1)
 
     if not check_dependencies():
