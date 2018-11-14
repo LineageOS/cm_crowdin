@@ -38,7 +38,7 @@ Example:
 
 Execute:
 
-    ./crowdin_sync.py --username your_gerrit_username --branch cm_version --ticket jira_id [--upload-sources] [--upload-translations] [--download]
+    ./crowdin_sync.py --username your_gerrit_username --branch cm_version [--upload-sources] [--upload-translations] [--download]
 
 Bugs
 ----
