@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85e87ba7_87646501",
+        "filename": "config/lineage-16.0.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2019-01-07T20:15:53Z",
+      "side": 1,
+      "message": "16.0",
+      "range": {
+        "startLine": 1,
+        "startChar": 10,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "9bd40721a04e03d7a217f8d697a530b9c9cc6915",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7358363f_6db9ee35",
+        "filename": "config/lineage-16.0.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2019-01-07T20:15:53Z",
+      "side": 1,
+      "message": "2019",
+      "range": {
+        "startLine": 6,
+        "startChar": 21,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "9bd40721a04e03d7a217f8d697a530b9c9cc6915",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4af2e558_075406a9",
+        "filename": "config/lineage-16.0_aosp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2019-01-07T20:15:53Z",
+      "side": 1,
+      "message": "16.0",
+      "range": {
+        "startLine": 1,
+        "startChar": 10,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "9bd40721a04e03d7a217f8d697a530b9c9cc6915",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d534d2d0_180a495a",
+        "filename": "config/lineage-16.0_aosp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2019-01-07T20:15:53Z",
+      "side": 1,
+      "message": "2019",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "9bd40721a04e03d7a217f8d697a530b9c9cc6915",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26fb091e_150d4a60",
+        "filename": "config/lineage-16.0_aosp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2019-01-07T20:15:53Z",
+      "side": 1,
+      "message": "16_0",
+      "range": {
+        "startLine": 22,
+        "startChar": 49,
+        "endLine": 22,
+        "endChar": 53
+      },
+      "revId": "9bd40721a04e03d7a217f8d697a530b9c9cc6915",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
