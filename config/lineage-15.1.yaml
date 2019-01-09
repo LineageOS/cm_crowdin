@@ -304,11 +304,11 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
   -
-    source:      '/packages/apps/Dialer/java/com/android/dialer/contactgrid/res/values/cm_strings.xml'
+    source:      '/packages/apps/Dialer/java/com/android/dialer/lookup/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
   -
-    source:      '/packages/apps/Dialer/java/com/android/dialer/lookup/res/values/cm_strings.xml'
+    source:      '/packages/apps/Dialer/java/com/android/incallui/contactgrid/res/values/cm_strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
   -
@@ -448,12 +448,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # UnifiedEmail
-  -
-    source:      '/packages/apps/UnifiedEmail/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # Updater
   -
     source:      '/packages/apps/Updater/res/values/strings.xml'
@@ -523,18 +517,6 @@ files:
   # OpenWeatherMapProvider
   -
     source:      '/lineage-sdk/samples/weatherproviderservice/OpenWeatherMapProvider/app/src/main/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # WundergroundWeatherProvider
-  -
-    source:      '/lineage-sdk/samples/weatherproviderservice/WundergroundWeatherProvider/app/src/main/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # YahooWeatherProvider
-  -
-    source:      '/lineage-sdk/samples/weatherproviderservice/YahooWeatherProvider/app/src/main/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
