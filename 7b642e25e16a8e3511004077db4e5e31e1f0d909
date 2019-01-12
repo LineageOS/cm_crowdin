@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9daa9f8_4d38e12c",
+        "filename": "crowdin_sync.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2019-01-12T23:39:43Z",
+      "side": 1,
+      "message": "Merge open gerrit translation commits",
+      "range": {
+        "startLine": 171,
+        "startChar": 30,
+        "endLine": 171,
+        "endChar": 72
+      },
+      "revId": "7b642e25e16a8e3511004077db4e5e31e1f0d909",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfcdc942_e1894a75",
+        "filename": "crowdin_sync.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2019-01-12T23:39:43Z",
+      "side": 1,
+      "message": "These changes should be removed after PS2",
+      "revId": "7b642e25e16a8e3511004077db4e5e31e1f0d909",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "262650ec_41d2b7f5",
+        "filename": "crowdin_sync.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2019-01-12T23:39:43Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "7b642e25e16a8e3511004077db4e5e31e1f0d909",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
