@@ -93,6 +93,50 @@ def push_as_commit(base_path, path, name, branch, username):
     _COMMITS_CREATED = True
 
 
+def submit_gerrit(branch, username):
+    # Find all open translation changes
+    cmd = ['ssh', '-p', '29418',
+        '{}@review.lineageos.org'.format(username),
+        'gerrit', 'query',
+        'status:open',
+        'branch:{}'.format(branch),
+        'message:"Automatic translation import"',
+        'topic:translation',
+        '--current-patch-set']
+    commits = []
+    msg, code = run_subprocess(cmd)
+    if code != 0:
+        print('Failed: {0}'.format(msg[1]))
+        return
+
+    for line in msg[0].split('\n'):
+        if "revision:" not in line:
+            continue;
+        elements = line.split(': ');
+        if len(elements) != 2:
+            print('Unexpected line found: {0}'.format(line))
+        commits.append(elements[1])
+
+    if len(commits) == 0:
+        print("Nothing to submit!")
+        return
+
+    for commit in commits:
+        # Add Code-Review +2 and Verified+1 labels and submit
+        cmd = ['ssh', '-p', '29418',
+        '{}@review.lineageos.org'.format(username),
+        'gerrit', 'review',
+        '--verified +1',
+        '--code-review +2',
+        '--submit', commit]
+        msg, code = run_subprocess(cmd, True)
+        if code != 0:
+            errorText = msg[1].replace('\n\n', '; ').replace('\n', '')
+            print('Submitting commit {0} failed: {1}'.format(commit, errorText))
+        else:
+            print('Success when submitting commit {0}'.format(commit))
+
+
 def check_run(cmd):
     p = subprocess.Popen(cmd, stdout=sys.stdout, stderr=sys.stderr)
     ret = p.wait()
@@ -123,6 +167,8 @@ def parse_args():
                         help='Upload translations to Crowdin')
     parser.add_argument('--download', action='store_true',
                         help='Download translations from Crowdin')
+    parser.add_argument('-s', '--submit', action='store_true',
+                        help='Merge open translation commits')
     return parser.parse_args()
 
 # ################################# PREPARE ################################## #
@@ -289,6 +335,13 @@ def download_crowdin(base_path, branch, xml, username, config):
 def main():
     args = parse_args()
     default_branch = args.branch
+
+    if args.submit:
+        if args.username is None:
+            print('Argument -u/--username is required for submitting!')
+            sys.exit(1)
+        submit_gerrit(default_branch, args.username)
+        sys.exit(0)
 
     base_path_branch_suffix = default_branch.replace('-', '_').replace('.', '_').upper()
     base_path_env = 'LINEAGE_CROWDIN_BASE_PATH_%s' % base_path_branch_suffix
