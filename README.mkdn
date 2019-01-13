@@ -42,7 +42,7 @@ Example:
 
 Execute:
 
-    ./crowdin_sync.py --username your_gerrit_username --branch lineage_version [--upload-sources] [--upload-translations] [--download]
+    ./crowdin_sync.py --username your_gerrit_username --branch lineage_version [--upload-sources] [--upload-translations] [--download] [--submit]
 
 Bugs
 ----
