@@ -34,8 +34,6 @@ files:
       android_code:
         # Arpitan - LineageOS
         frp: frp
-        # Assamese - LineageOS
-        as: as-rIN
         # Asturian - LineageOS
         ast: ast-rES
         # Breton - LineageOS
@@ -58,8 +56,6 @@ files:
         lb: lb
         # Occitan - LineageOS
         oc: oc
-        # Oriya - LineageOS
-        or: or-rIN
         # Pirate English - LineageOS
         en-PT: en-rPT
         # Romansh - LineageOS

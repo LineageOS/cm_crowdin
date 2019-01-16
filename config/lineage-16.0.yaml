@@ -43,8 +43,8 @@ files:
         hy-AM: hy
         # Arpitan - LineageOS
         frp: frp
-        # Assamese - LineageOS
-        as: as-rIN
+        # Assamese
+        as: as
         # Asturian - LineageOS
         ast: ast-rES
         # Azerbaijani
@@ -167,8 +167,8 @@ files:
         nb: nb
         # Occitan - LineageOS
         oc: oc
-        # Oriya - LineageOS
-        or: or-rIN
+        # Oriya
+        or: or
         # Persian
         fa: fa
         # Pirate English - LineageOS
