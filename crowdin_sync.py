@@ -6,7 +6,7 @@
 # directly to LineageOS' Gerrit.
 #
 # Copyright (C) 2014-2016 The CyanogenMod Project
-# Copyright (C) 2017-2018 The LineageOS Project
+# Copyright (C) 2017-2019 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -30,6 +30,7 @@ import git
 import os
 import subprocess
 import sys
+import yaml
 
 from xml.dom import minidom
 
@@ -56,8 +57,71 @@ def run_subprocess(cmd, silent=False):
     return comm, exit_code
 
 
-def push_as_commit(base_path, path, name, branch, username):
+def add_target_paths(config_files, repo, project_path):
+    # Add or remove the files given in the config files to the commit
+    count = 0
+    file_paths = []
+    for f in config_files:
+        fh = open(f, "r")
+        try:
+            config = yaml.load(fh)
+            for tf in config['files']:
+                if project_path in tf['source']:
+                    target_path = tf['translation']
+                    lang_codes = tf['languages_mapping']['android_code']
+                    for l in lang_codes:
+                        lpath = get_target_path(tf['translation'], tf['source'],
+                            lang_codes[l], project_path)
+                        file_paths.append(lpath)
+        except yaml.YAMLError as e:
+            print(e, '\n Could not parse YAML.')
+            exit()
+        fh.close()
+
+    modified = repo.git.ls_files(m=True)
+    for m in modified.split('\n'):
+        if m in file_paths:
+            repo.git.add(m)
+            count += 1
+
+    deleted = repo.git.ls_files(d=True)
+    for d in deleted.split('\n'):
+        if d in file_paths:
+            repo.git.rm(d)
+            count += 1
+
+    return count
+
+
+def parse_path(path):
+    # Split the given string to path and filename
+    if '/' in path:
+        original_file_name = path[1:][path.rfind("/"):]
+        original_path = path[:path.rfind("/")]
+    else:
+        original_file_name = path
+        original_path = ''
+
+    return original_path, original_file_name
+
+
+def get_target_path(pattern, source, lang, project_path):
+    # Make strings like '/%original_path%-%android_code%/%original_file_name%' valid file paths
+    # based on the source string's path
+    original_path, original_file_name = parse_path(source)
+
+    target_path = pattern #.lstrip('/')
+    target_path = target_path.replace('%original_path%', original_path)
+    target_path = target_path.replace('%android_code%', lang)
+    target_path = target_path.replace('%original_file_name%', original_file_name)
+    target_path = target_path.replace(project_path, '')
+    target_path = target_path.lstrip('/')
+    return target_path
+
+
+def push_as_commit(config_files, base_path, path, name, branch, username):
     print('Committing %s on branch %s' % (name, branch))
+    project_path = path
 
     # Get path
     path = os.path.join(base_path, path)
@@ -67,13 +131,12 @@ def push_as_commit(base_path, path, name, branch, username):
     # Create repo object
     repo = git.Repo(path)
 
-    # Remove previously deleted files from Git
-    files = repo.git.ls_files(d=True).split('\n')
-    if files and files[0]:
-        repo.git.rm(files)
-
     # Add all files to commit
-    repo.git.add('-A')
+    count = add_target_paths(config_files, repo, project_path)
+
+    if count == 0:
+        print('Nothing to commit for %s' % name)
+        return
 
     # Create commit; if it fails, probably empty so skipping
     try:
@@ -251,7 +314,7 @@ def upload_translations_crowdin(branch, config):
 
 
 def download_crowdin(base_path, branch, xml, username, config):
-    if config:
+    '''if config:
         print('\nDownloading translations from Crowdin (custom config)')
         check_run(['crowdin',
                    '--config=%s/config/%s' % (_DIR, config),
@@ -268,7 +331,7 @@ def download_crowdin(base_path, branch, xml, username, config):
         check_run(['crowdin',
                    '--config=%s/config/%s_aosp.yaml' % (_DIR, branch),
                    'download', '--branch=%s' % branch])
-
+'''
     print('\nCreating a list of pushable translations')
     # Get all files that Crowdin pushed
     paths = []
@@ -328,7 +391,7 @@ def download_crowdin(base_path, branch, xml, username, config):
 
             br = project.getAttribute('revision') or branch
 
-            push_as_commit(base_path, result,
+            push_as_commit(files, base_path, result,
                            project.getAttribute('name'), br, username)
             break
 
