@@ -25,6 +25,7 @@
 from __future__ import print_function
 
 import argparse
+import json
 import git
 import os
 import subprocess
@@ -102,39 +103,39 @@ def submit_gerrit(branch, username):
         'branch:{}'.format(branch),
         'message:"Automatic translation import"',
         'topic:translation',
-        '--current-patch-set']
-    commits = []
+        '--current-patch-set',
+        '--format=JSON']
+    commits = 0
     msg, code = run_subprocess(cmd)
     if code != 0:
         print('Failed: {0}'.format(msg[1]))
         return
 
-    for line in msg[0].split('\n'):
-        if "revision:" not in line:
-            continue;
-        elements = line.split(': ');
-        if len(elements) != 2:
-            print('Unexpected line found: {0}'.format(line))
-        commits.append(elements[1])
-
-    if len(commits) == 0:
-        print("Nothing to submit!")
-        return
-
-    for commit in commits:
+    # Each line is one valid JSON object, except the last one, which is empty
+    for line in msg[0].strip('\n').split('\n'):
+        js = json.loads(line)
+        # We get valid JSON, but not every result line is one we want
+        if not 'currentPatchSet' in js or not 'revision' in js['currentPatchSet']:
+            continue
         # Add Code-Review +2 and Verified+1 labels and submit
         cmd = ['ssh', '-p', '29418',
         '{}@review.lineageos.org'.format(username),
         'gerrit', 'review',
         '--verified +1',
         '--code-review +2',
-        '--submit', commit]
+        '--submit', js['currentPatchSet']['revision']]
         msg, code = run_subprocess(cmd, True)
         if code != 0:
             errorText = msg[1].replace('\n\n', '; ').replace('\n', '')
-            print('Submitting commit {0} failed: {1}'.format(commit, errorText))
+            print('Submitting commit {0} failed: {1}'.format(js['url'], errorText))
         else:
-            print('Success when submitting commit {0}'.format(commit))
+            print('Success when submitting commit {0}'.format(js['url']))
+
+        commits += 1
+
+    if commits == 0:
+        print("Nothing to submit!")
+        return
 
 
 def check_run(cmd):
