@@ -73,7 +73,7 @@ def push_as_commit(base_path, path, name, branch, username):
         repo.git.rm(files)
 
     # Add all files to commit
-    repo.git.add('-A')
+    repo.git.add('-A \*/values-*/*.xml')
 
     # Create commit; if it fails, probably empty so skipping
     try:
