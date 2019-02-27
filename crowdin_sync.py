@@ -67,13 +67,8 @@ def push_as_commit(base_path, path, name, branch, username):
     # Create repo object
     repo = git.Repo(path)
 
-    # Remove previously deleted files from Git
-    files = repo.git.ls_files(d=True).split('\n')
-    if files and files[0]:
-        repo.git.rm(files)
-
-    # Add all files to commit
-    repo.git.add('-A')
+    # Add all modified files to commit which match the pattern
+    repo.git.add('*/values-*/*.xml')
 
     # Create commit; if it fails, probably empty so skipping
     try:
