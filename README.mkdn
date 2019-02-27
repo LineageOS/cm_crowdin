@@ -14,9 +14,9 @@ The Java variant of crowdin is required for this to work.
     echo 'deb https://artifacts.crowdin.com/repo/deb/ /' | sudo tee /etc/apt/sources.list.d/crowdin.list > /dev/null
     sudo apt-get update && sudo apt-get install crowdin
 
-python-git is used for Git integration.
+python-git is used for Git integration, python-yaml is used for parsing configuration files:
 
-    sudo apt-get install python-git
+    sudo apt-get install python-git python-yaml
 
 Copy <lineage_version>_extra_packages.xml to .repo/local_manifests of each <lineage_version> tree
 to make sure you sync all the extra packages not included in the main manifest.
