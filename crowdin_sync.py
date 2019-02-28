@@ -32,6 +32,7 @@ import subprocess
 import sys
 import yaml
 
+from lxml import etree
 from xml.dom import minidom
 
 # ################################# GLOBALS ################################## #
@@ -57,7 +58,7 @@ def run_subprocess(cmd, silent=False):
     return comm, exit_code
 
 
-def add_target_paths(config_files, repo, project_path):
+def add_target_paths(config_files, repo, base_path, project_path):
     # Add or remove the files given in the config files to the commit
     count = 0
     file_paths = []
@@ -78,7 +79,12 @@ def add_target_paths(config_files, repo, project_path):
             exit()
         fh.close()
 
-    modified = repo.git.ls_files(m=True)
+    # Strip all comments
+    for f in file_paths:
+        clean_file(base_path, project_path, f)
+
+    # Modified and untracked files
+    modified = repo.git.ls_files(m=True, o=True)
     for m in modified.split('\n'):
         if m in file_paths:
             repo.git.add(m)
@@ -119,6 +125,72 @@ def get_target_path(pattern, source, lang, project_path):
     return target_path
 
 
+def clean_file(base_path, project_path, filename):
+    path = base_path + '/' + project_path + '/' + filename
+
+    # We don't want to create every file, just work with those already existing
+    if not os.path.isfile(path):
+        return
+
+    try:
+        fh = open(path, 'r+')
+    except:
+        print('Something went wrong while opening file %s' % (path))
+        return
+
+    XML = fh.read()
+    tree = etree.fromstring(XML)
+
+    header = ''
+    comments = tree.xpath('//comment()')
+    for c in comments:
+        p = c.getparent()
+        if p is None:
+            # Keep all comments in header
+            header += str(c).replace('\\n', '\n').replace('\\t', '\t') + '\n'
+            continue
+        p.remove(c)
+
+    content = ''
+
+    # Take the original xml declaration and prepend it
+    declaration = XML.split('\n')[0]
+    if '<?' in declaration:
+        content = declaration + '\n'
+
+    content += etree.tostring(tree, pretty_print=True, encoding="utf-8", xml_declaration=False)
+
+    if header != '':
+        content = content.replace('?>\n', '?>\n' + header)
+
+    # Sometimes spaces are added, we don't want them
+    content = re.sub("[ ]*<\/resources>", "</resources>", content)
+
+    # Overwrite file with content stripped by all comments
+    fh.seek(0)
+    fh.write(content)
+    fh.truncate()
+    fh.close()
+
+    # Remove files which don't have any translated strings
+    empty_contents = {
+        '<resources/>',
+        '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>',
+        ('<resources xmlns:android='
+         '"http://schemas.android.com/apk/res/android"/>'),
+        ('<resources xmlns:android="http://schemas.android.com/apk/res/android"'
+         ' xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>'),
+        ('<resources xmlns:tools="http://schemas.android.com/tools"'
+         ' xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>'),
+        '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">\n</resources>',
+        '<resources>\n</resources>'
+    }
+    for line in empty_contents:
+        if line in content:
+            print('Removing ' + path)
+            os.remove(path)
+            break
+
 def push_as_commit(config_files, base_path, path, name, branch, username):
     print('Committing %s on branch %s' % (name, branch))
 
@@ -132,7 +204,7 @@ def push_as_commit(config_files, base_path, path, name, branch, username):
     repo = git.Repo(path)
 
     # Add all files to commit
-    count = add_target_paths(config_files, repo, project_path)
+    count = add_target_paths(config_files, repo, base_path, project_path)
 
     if count == 0:
         print('Nothing to commit')
