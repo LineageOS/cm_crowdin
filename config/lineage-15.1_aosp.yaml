@@ -115,12 +115,6 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
-  # Keyguard
-  -
-    source:      '/frameworks/base/packages/Keyguard/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
   # MtpDocumentsProvider
   -
     source:      '/frameworks/base/packages/MtpDocumentsProvider/res/values/strings.xml'
