@@ -28,6 +28,7 @@ import argparse
 import json
 import git
 import os
+import re
 import subprocess
 import sys
 import yaml
