@@ -435,7 +435,19 @@ def download_crowdin(base_path, branch, xml, username, config):
             print('WARNING: Cannot determine project root dir of '
                   '[%s], skipping.' % path)
             continue
-        result = path.split('/res')[0].strip('/')
+
+        # Usually the project root is everything before /res
+        # but there are special cases where /res is part of the repo name as well
+        parts = path.split("/res")
+        if len(parts) == 2:
+            result = parts[0]
+        elif len(parts) == 3:
+            result = parts[0] + '/res' + parts[1]
+        else:
+            print('WARNING: Splitting the path not successful for [%s], skipping' % path)
+            continue
+
+        result = result.strip('/')
         if result == path.strip('/'):
             print('WARNING: Cannot determine project root dir of '
                   '[%s], skipping.' % path)
