@@ -464,21 +464,33 @@ def download_crowdin(base_path, branch, xml, username, config):
 
         # Search android/default.xml or config/%(branch)_extra_packages.xml
         # for the project's name
+        resultPath = None
+        resultProject = None
         for project in items:
             path = project.attributes['path'].value
             if not (result + '/').startswith(path +'/'):
                 continue
-            if result != path:
-                if path in all_projects:
-                    break
-                result = path
-                all_projects.append(result)
+            # We want the longest match, so projects in subfolders of other projects are also
+            # taken into account
+            if resultPath is None or len(path) > len(resultPath):
+                resultPath = path
+                resultProject = project
 
-            br = project.getAttribute('revision') or branch
+        # Just in case no project was found
+        if resultPath is None:
+            continue
 
-            push_as_commit(files, base_path, result,
-                           project.getAttribute('name'), br, username)
-            break
+        if result != resultPath:
+            if resultPath in all_projects:
+                continue
+            result = resultPath
+            all_projects.append(result)
+
+        br = resultProject.getAttribute('revision') or branch
+
+        push_as_commit(files, base_path, result,
+                       resultProject.getAttribute('name'), br, username)
+        break
 
 
 def main():
