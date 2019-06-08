@@ -209,6 +209,8 @@ files:
         es-MX: es-rMX
         # Spanish, United States
         es-US: es-rUS
+        # Sundanese - LineageOS
+        su: su
         # Swahili
         sw: sw
         # Swedish

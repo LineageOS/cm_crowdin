@@ -68,6 +68,8 @@ files:
         es-CO: es-rCO
         # Spanish, Mexico - LineageOS
         es-MX: es-rMX
+        # Sundanese - LineageOS
+        su: su
         # Uyghur - LineageOS
         ug: ug
         # Venetian - LineageOS
