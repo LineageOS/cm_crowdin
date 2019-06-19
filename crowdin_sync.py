@@ -142,6 +142,30 @@ def clean_file(base_path, project_path, filename):
     XML = fh.read()
     tree = etree.fromstring(XML)
 
+    # Remove strings with 'product=*' attribute but no 'product=default'
+    # This will ensure aapt2 will not throw an error when building these
+    alreadySearched = []
+    removeStrings = []
+    productStrings = tree.xpath("//string[@product]")
+    for ps in productStrings:
+        stringName = ps.get('name')
+        parent = ps.getparent()
+        # We will hit each string multiple times (for each product= occurance),
+        # so if we already know it is an invalid one, remove it
+        if stringName in alreadySearched:
+            if stringName in removeStrings:
+                parent.remove(ps)
+            continue
+
+        alreadySearched.append(stringName)
+        productDefault = tree.xpath("//string[@name='{0}' and @product='default']"
+                                    .format(stringName))
+        if len(productDefault) == 0:
+            print("{0}: Found string '{1}' with missing 'product=default' attribute"
+                  .format(path, stringName))
+            removeStrings.append(ps)
+            parent.remove(ps)
+
     header = ''
     comments = tree.xpath('//comment()')
     for c in comments:
