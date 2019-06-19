@@ -199,23 +199,10 @@ def clean_file(base_path, project_path, filename):
     fh.close()
 
     # Remove files which don't have any translated strings
-    empty_contents = {
-        '<resources/>',
-        '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>',
-        ('<resources xmlns:android='
-         '"http://schemas.android.com/apk/res/android"/>'),
-        ('<resources xmlns:android="http://schemas.android.com/apk/res/android"'
-         ' xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>'),
-        ('<resources xmlns:tools="http://schemas.android.com/tools"'
-         ' xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>'),
-        '<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">\n</resources>',
-        '<resources>\n</resources>'
-    }
-    for line in empty_contents:
-        if line in content:
-            print('Removing ' + path)
-            os.remove(path)
-            break
+    contentList = list(tree)
+    if len(contentList) == 0:
+        print('Removing ' + path)
+        os.remove(path)
 
 def push_as_commit(config_files, base_path, path, name, branch, username):
     print('Committing %s on branch %s' % (name, branch))
