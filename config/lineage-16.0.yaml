@@ -524,6 +524,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # LeEco msm8996-common devicesettings
+  -
+    source:      '/device/leeco/msm8996-common/devicesettings/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # kuntao devicesettings
   -
     source:      '/device/lenovo/kuntao/devicesettings/res/values/strings.xml'
