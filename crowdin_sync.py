@@ -203,6 +203,12 @@ def clean_file(base_path, project_path, filename):
     if len(contentList) == 0:
         print('Removing ' + path)
         os.remove(path)
+    else:
+        try:
+            etree.parse(path)
+        except etree.XMLSyntaxError as err:
+            print('%s doesn\'t contain a properly formatted XML document: %s'
+                  % (path, err.error_log))
 
 def push_as_commit(config_files, base_path, path, name, branch, username):
     print('Committing %s on branch %s' % (name, branch))
