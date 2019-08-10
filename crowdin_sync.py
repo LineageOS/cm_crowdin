@@ -140,7 +140,11 @@ def clean_file(base_path, project_path, filename):
         return
 
     XML = fh.read()
-    tree = etree.fromstring(XML)
+    try:
+        tree = etree.fromstring(XML)
+    except:
+        print('Something went wrong with etree.fromstring(XML) on file %s' % (path))
+        return
 
     # Remove strings with 'product=*' attribute but no 'product=default'
     # This will ensure aapt2 will not throw an error when building these
