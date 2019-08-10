@@ -29,6 +29,7 @@ import json
 import git
 import os
 import re
+import shutil
 import subprocess
 import sys
 import yaml
@@ -82,7 +83,7 @@ def add_target_paths(config_files, repo, base_path, project_path):
 
     # Strip all comments
     for f in file_paths:
-        clean_file(base_path, project_path, f)
+        clean_xml_file(base_path, project_path, f, repo)
 
     # Modified and untracked files
     modified = repo.git.ls_files(m=True, o=True)
@@ -126,7 +127,7 @@ def get_target_path(pattern, source, lang, project_path):
     return target_path
 
 
-def clean_file(base_path, project_path, filename):
+def clean_xml_file(base_path, project_path, filename, repo):
     path = base_path + '/' + project_path + '/' + filename
 
     # We don't want to create every file, just work with those already existing
@@ -140,7 +141,14 @@ def clean_file(base_path, project_path, filename):
         return
 
     XML = fh.read()
-    tree = etree.fromstring(XML)
+    try:
+        tree = etree.fromstring(XML)
+    except etree.XMLSyntaxError as err:
+        print('%s: XML Error: %s' % (filename, err.error_log))
+        filename, ext = os.path.splitext(path)
+        if ext == '.xml':
+            reset_file(path, repo)
+        return
 
     # Remove strings with 'product=*' attribute but no 'product=default'
     # This will ensure aapt2 will not throw an error when building these
@@ -203,6 +211,35 @@ def clean_file(base_path, project_path, filename):
     if len(contentList) == 0:
         print('Removing ' + path)
         os.remove(path)
+
+
+# For files we can't process due to errors, create a backup
+# and checkout the file to get it back to the previous state
+def reset_file(filepath, repo):
+    backupFile = None
+    parts = filepath.split("/")
+    found = False
+    for s in parts:
+        curPart = s
+        if not found and s.startswith("res"):
+            curPart = s + "_backup"
+            found = True
+        if backupFile is None:
+            backupFile = curPart
+        else:
+            backupFile = backupFile + '/' + curPart
+
+    path, filename = os.path.split(backupFile)
+    if not os.path.exists(path):
+        os.makedirs(path)
+    if os.path.exists(backupFile):
+        i = 1
+        while os.path.exists(backupFile + str(i)):
+            i+=1
+        backupFile = backupFile + str(i)
+    shutil.copy(filepath, backupFile)
+    repo.git.checkout(filepath)
+
 
 def push_as_commit(config_files, base_path, path, name, branch, username):
     print('Committing %s on branch %s' % (name, branch))
