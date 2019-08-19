@@ -486,6 +486,12 @@ files:
 
 # Services
 
+  # BuiltInPrintService
+  -
+    source:      '/packages/services/BuiltInPrintService/res/values/lineage_strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Mms
   -
     source:      '/packages/services/Mms/res/values/cm_strings.xml'
@@ -521,6 +527,12 @@ files:
     languages_mapping: *anchor
   -
     source:      '/hardware/qcom/fm/fmapp2/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # I01WD CameraTile
+  -
+    source:      '/device/asus/I01WD/CameraTile/res/values/strings.xml'
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
