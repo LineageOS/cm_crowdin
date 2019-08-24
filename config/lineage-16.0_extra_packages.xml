@@ -7,6 +7,7 @@
   <!-- Device repositories that can be translated -->
   <project path="device/asus/I01WD" name="LineageOS/android_device_asus_I01WD" />
   <project path="device/lenovo/kuntao" name="LineageOS/android_device_lenovo_kuntao" />
+  <project path="device/oneplus/guacamole" name="LineageOS/android_device_oneplus_guacamole" />
   <project path="device/oppo/common" name="LineageOS/android_device_oppo_common" />
   <project path="device/oppo/r5" name="LineageOS/android_device_oppo_r5" />
 
