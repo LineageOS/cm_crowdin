@@ -35,6 +35,7 @@ import sys
 import yaml
 
 from lxml import etree
+from signal import signal, SIGINT
 from xml.dom import minidom
 
 # ################################# GLOBALS ################################## #
@@ -242,7 +243,7 @@ def reset_file(filepath, repo):
 
 
 def push_as_commit(config_files, base_path, path, name, branch, username):
-    print('Committing %s on branch %s' % (name, branch))
+    print('Committing %s on branch %s: ' % (name, branch), end='')
 
     # Get path
     project_path = path
@@ -264,17 +265,16 @@ def push_as_commit(config_files, base_path, path, name, branch, username):
     try:
         repo.git.commit(m='Automatic translation import')
     except:
-        print('Failed to create commit for %s, probably empty: skipping'
-              % name, file=sys.stderr)
+        print('Failed, probably empty: skipping', file=sys.stderr)
         return
 
     # Push commit
     try:
         repo.git.push('ssh://%s@review.lineageos.org:29418/%s' % (username, name),
                       'HEAD:refs/for/%s%%topic=translation' % branch)
-        print('Successfully pushed commit for %s' % name)
+        print('Success')
     except:
-        print('Failed to push commit for %s' % name, file=sys.stderr)
+        print('Failed', file=sys.stderr)
 
     _COMMITS_CREATED = True
 
@@ -310,11 +310,12 @@ def submit_gerrit(branch, username):
         '--code-review +2',
         '--submit', js['currentPatchSet']['revision']]
         msg, code = run_subprocess(cmd, True)
+        print('Submitting commit %s: ' % js[url], end='')
         if code != 0:
             errorText = msg[1].replace('\n\n', '; ').replace('\n', '')
-            print('Submitting commit {0} failed: {1}'.format(js['url'], errorText))
+            print('Failed: %s' % errorText)
         else:
-            print('Success when submitting commit {0}'.format(js['url']))
+            print('Success')
 
         commits += 1
 
@@ -541,7 +542,14 @@ def download_crowdin(base_path, branch, xml, username, config):
                        resultProject.getAttribute('name'), br, username)
 
 
+def sig_handler(signal_received, frame):
+    print('')
+    print('SIGINT or CTRL-C detected. Exiting gracefully')
+    exit(0)
+
+
 def main():
+    signal(SIGINT, sig_handler)
     args = parse_args()
     default_branch = args.branch
 
