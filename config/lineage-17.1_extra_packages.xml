@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <!-- Extra packages not included in the main manifest -->
-  <project path="packages/resources/devicesettings" name="LineageOS/android_packages_resources_devicesettings" />
-  <project path="packages/apps/FlipFlap" name="LineageOS/android_packages_apps_FlipFlap" />
 </manifest>
