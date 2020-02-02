@@ -6,7 +6,7 @@
 # directly to LineageOS' Gerrit.
 #
 # Copyright (C) 2014-2016 The CyanogenMod Project
-# Copyright (C) 2017-2019 The LineageOS Project
+# Copyright (C) 2017-2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -34,6 +34,7 @@ import subprocess
 import sys
 import yaml
 
+from itertools import islice
 from lxml import etree
 from signal import signal, SIGINT
 
@@ -341,6 +342,48 @@ def find_xml(base_path):
             if os.path.splitext(f)[1] == '.xml':
                 yield os.path.join(dp, f)
 
+
+def get_languages(configPath):
+    try:
+        fh = open(configPath, 'r+')
+        data = yaml.safe_load(fh);
+        fh.close();
+
+        languages = []
+        for elem in data['files'][0]['languages_mapping']['android_code']:
+            languages.append(elem);
+        return languages
+    except:
+        return []
+
+
+def available_cpu_count():
+    try:
+        import multiprocessing
+        return multiprocessing.cpu_count()
+    except (ImportError, NotImplementedError):
+        return 4; # Some probably safe default
+
+
+def run_parallel(commands):
+    processes = (subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=sys.stderr)
+        for cmd in commands)
+    # API allows a max. of 20 calls at the same time, but limit the amount by available cpus,
+    # otherwise the computer would lock up
+    slice_size = min(20, available_cpu_count())
+    running_processes = list(islice(processes, slice_size)) # split into slices and start processes
+    while running_processes:
+        for i, process in enumerate(running_processes):
+            # see if the process has finished
+            if process.poll() is not None:
+                out, err = process.communicate()
+                print(out);
+                # get and start next process
+                running_processes[i] = next(processes, None)
+                if running_processes[i] is None:
+                    del running_processes[i]
+                    break
+
 # ############################################################################ #
 
 
@@ -440,32 +483,30 @@ def upload_translations_crowdin(branch, config):
 
 def download_crowdin(base_path, branch, xml, username, config):
     if config:
-        print('\nDownloading translations from Crowdin (custom config)')
-        check_run(['crowdin',
-                   '--config=%s/config/%s' % (_DIR, config),
-                   'download', '--branch=%s' % branch])
+        headers = ['custom config']
+        config_files = ['%s/config/%s' % (_DIR, config)]
     else:
-        print('\nDownloading translations from Crowdin '
-              '(AOSP supported languages)')
-        check_run(['crowdin',
-                   '--config=%s/config/%s.yaml' % (_DIR, branch),
-                   'download', '--branch=%s' % branch])
+        headers = ['AOSP supported languages',
+                   'non-AOSP supported languages']
+        config_files = ['%s/config/%s.yaml' % (_DIR, branch),
+                        '%s/config/%s_aosp.yaml' % (_DIR, branch)]
 
-        print('\nDownloading translations from Crowdin '
-              '(non-AOSP supported languages)')
-        check_run(['crowdin',
-                   '--config=%s/config/%s_aosp.yaml' % (_DIR, branch),
-                   'download', '--branch=%s' % branch])
+    for i, config in enumerate(config_files):
+        print('\nDownloading translations from Crowdin ({0})'.format(headers[i]))
+        commands = []
+        languages = get_languages(config)
+        for lang in languages:
+            cmd = ['crowdin',
+                   '--config=%s' % config,
+                   'download', '--branch=%s' % branch,
+                   '-l=%s' % lang]
+            commands.append(cmd)
+        run_parallel(commands);
 
     print('\nCreating a list of pushable translations')
     # Get all files that Crowdin pushed
     paths = []
-    if config:
-        files = ['%s/config/%s' % (_DIR, config)]
-    else:
-        files = ['%s/config/%s.yaml' % (_DIR, branch),
-                 '%s/config/%s_aosp.yaml' % (_DIR, branch)]
-    for c in files:
+    for c in config_files:
         cmd = ['crowdin', '--config=%s' % c, 'list', 'project',
                '--branch=%s' % branch]
         comm, ret = run_subprocess(cmd)
@@ -540,7 +581,7 @@ def download_crowdin(base_path, branch, xml, username, config):
 
         br = resultProject.get('revision') or branch
 
-        push_as_commit(files, base_path, result,
+        push_as_commit(config_files, base_path, result,
                        resultProject.get('name'), br, username)
 
 
