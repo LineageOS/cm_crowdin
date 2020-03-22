@@ -37,7 +37,6 @@ import yaml
 from itertools import islice
 from lxml import etree
 from signal import signal, SIGINT
-from xml.dom import minidom
 
 # ################################# GLOBALS ################################## #
 
@@ -364,6 +363,8 @@ def available_cpu_count():
 def run_parallel(commands):
     processes = (subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=sys.stderr)
         for cmd in commands)
+    # API allows a max. of 20 calls at the same time, but limit the amount by available cpus,
+    # otherwise the computer would lock up
     slice_size = min(20, available_cpu_count())
     running_processes = list(islice(processes, slice_size)) # split into slices and start processes
     while running_processes:
@@ -412,13 +413,12 @@ def check_dependencies():
 
 def load_xml(x):
     try:
-        return minidom.parse(x)
-    except IOError:
-        print('You have no %s.' % x, file=sys.stderr)
+        return etree.parse(x)
+    except etree.XMLSyntaxError:
+        print('Malformed %s.' % x, file=sys.stderr)
         return None
     except Exception:
-        # TODO: minidom should not be used.
-        print('Malformed %s.' % x, file=sys.stderr)
+        print('You have no %s.' % x, file=sys.stderr)
         return None
 
 
@@ -528,7 +528,7 @@ def download_crowdin(base_path, branch, xml, username, config):
             paths.append(p.replace('/%s' % branch, ''))
 
     print('\nUploading translations to Gerrit')
-    items = [x for sub in xml for x in sub.getElementsByTagName('project')]
+    items = [x for xmlfile in xml for x in xmlfile.findall("//project")]
     all_projects = []
 
     for path in paths:
@@ -572,7 +572,7 @@ def download_crowdin(base_path, branch, xml, username, config):
         resultPath = None
         resultProject = None
         for project in items:
-            path = project.attributes['path'].value
+            path = project.get('path')
             if not (result + '/').startswith(path +'/'):
                 continue
             # We want the longest match, so projects in subfolders of other projects are also
@@ -591,10 +591,10 @@ def download_crowdin(base_path, branch, xml, username, config):
             result = resultPath
             all_projects.append(result)
 
-        br = resultProject.getAttribute('revision') or branch
+        br = resultProject.get('revision') or branch
 
         push_as_commit(files, base_path, result,
-                       resultProject.getAttribute('name'), br, username)
+                       resultProject.get('name'), br, username)
 
 
 def sig_handler(signal_received, frame):
