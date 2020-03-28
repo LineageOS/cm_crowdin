@@ -152,8 +152,12 @@ def clean_xml_file(base_path, project_path, filename, repo):
 
     # Remove strings with 'product=*' attribute but no 'product=default'
     # This will ensure aapt2 will not throw an error when building these
+    alreadyRemoved = []
     productStrings = tree.xpath("//string[@product]")
     for ps in productStrings:
+        # if we already removed the items, don't process them
+        if ps in alreadyRemoved:
+            continue
         stringName = ps.get('name')
         stringsWithSameName = tree.xpath("//string[@name='{0}']"
                                          .format(stringName))
@@ -173,7 +177,7 @@ def clean_xml_file(base_path, project_path, filename, repo):
                   .format(path, stringName))
             for string in stringsWithSameName:
                 tree.remove(string)
-                productStrings.remove(string)
+                alreadyRemoved.append(string)
 
     header = ''
     comments = tree.xpath('//comment()')
