@@ -137,7 +137,7 @@ def clean_xml_file(base_path, project_path, filename, repo):
     try:
         fh = open(path, 'r+')
     except:
-        print('Something went wrong while opening file %s' % (path))
+        print('\nSomething went wrong while opening file %s' % (path))
         return
 
     XML = fh.read()
@@ -173,8 +173,8 @@ def clean_xml_file(base_path, project_path, filename, repo):
         # Every occurance of the string has to be removed when no string with the same name and
         # 'product=default' (or no product attribute) was found
         if not hasProductDefault:
-            print("{0}: Found string '{1}' with missing 'product=default' attribute"
-                  .format(path, stringName))
+            print("\n{0}: Found string '{1}' with missing 'product=default' attribute"
+                  .format(path, stringName), end='')
             for string in stringsWithSameName:
                 tree.remove(string)
                 alreadyRemoved.append(string)
