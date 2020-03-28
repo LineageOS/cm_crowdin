@@ -137,7 +137,7 @@ def clean_xml_file(base_path, project_path, filename, repo):
     try:
         fh = open(path, 'r+')
     except:
-        print('Something went wrong while opening file %s' % (path))
+        print('\nSomething went wrong while opening file %s' % (path))
         return
 
     XML = fh.read()
@@ -173,8 +173,8 @@ def clean_xml_file(base_path, project_path, filename, repo):
         # Every occurance of the string has to be removed when no string with the same name and
         # 'product=default' (or no product attribute) was found
         if not hasProductDefault:
-            print("{0}: Found string '{1}' with missing 'product=default' attribute"
-                  .format(path, stringName))
+            print("\n{0}: Found string '{1}' with missing 'product=default' attribute"
+                  .format(path, stringName), end='')
             for string in stringsWithSameName:
                 tree.remove(string)
                 alreadyRemoved.append(string)
@@ -213,7 +213,7 @@ def clean_xml_file(base_path, project_path, filename, repo):
     # Remove files which don't have any translated strings
     contentList = list(tree)
     if len(contentList) == 0:
-        print('Removing ' + path)
+        print('\nRemoving ' + path)
         os.remove(path)
 
 
@@ -246,7 +246,7 @@ def reset_file(filepath, repo):
 
 
 def push_as_commit(config_files, base_path, path, name, branch, username):
-    print('Committing %s on branch %s: ' % (name, branch), end='')
+    print('\nCommitting %s on branch %s: ' % (name, branch), end='')
 
     # Get path
     project_path = path
