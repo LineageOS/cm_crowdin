@@ -262,6 +262,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # Backgrounds
+  -
+    source:      '/packages/apps/Backgrounds/app/src/main/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # Camera2
   -
     source:      '/packages/apps/Camera2/res/values/cm_strings.xml'
@@ -495,6 +501,40 @@ files:
     languages_mapping: *anchor
 
 # Device specific
+
+  # I01WD CameraTile
+  -
+    source:      '/device/asus/I01WD/CameraTile/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # kuntao devicesettings
+  -
+    source:      '/device/lenovo/kuntao/devicesettings/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # oneplus sm8150-common camera helper
+  -
+    source:      '/device/oneplus/sm8150-common/camera_helper/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # oppo common configpanel
+  -
+    source:      '/device/oppo/common/configpanel/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
+  # samsung AdvancedDisplay
+  -
+    source:      '/hardware/samsung/AdvancedDisplay/res/values/arrays.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+  -
+    source:      '/hardware/samsung/AdvancedDisplay/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
 
   # resources devicesettings
   -
