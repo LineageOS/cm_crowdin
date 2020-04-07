@@ -313,7 +313,7 @@ def submit_gerrit(branch, username):
         '--code-review +2',
         '--submit', js['currentPatchSet']['revision']]
         msg, code = run_subprocess(cmd, True)
-        print('Submitting commit %s: ' % js[url], end='')
+        print('Submitting commit %s: ' % js['url'], end='')
         if code != 0:
             errorText = msg[1].replace('\n\n', '; ').replace('\n', '')
             print('Failed: %s' % errorText)
