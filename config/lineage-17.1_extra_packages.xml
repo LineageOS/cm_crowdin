@@ -8,4 +8,5 @@
   <project path="device/oppo/common" name="LineageOS/android_device_oppo_common" />
 
   <project path="hardware/samsung" name="LineageOS/android_hardware_samsung" />
+  <project path="hardware/sony/SonyOpenTelephony" name="LineageOS/android_hardware_sony_SonyOpenTelephony" />
 </manifest>
