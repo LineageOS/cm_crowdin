@@ -16,7 +16,7 @@ The Java variant of crowdin is required for this to work.
 
 The following tools are also required to run the tool:
 
-    sudo apt-get install python-git python-yaml python-lxml
+    sudo apt-get install python3-git python3-yaml python3-lxml
 
 Copy <lineage_version>_extra_packages.xml to .repo/local_manifests of each <lineage_version> tree
 to make sure you sync all the extra packages not included in the main manifest.
@@ -32,6 +32,7 @@ Each LineageOS version requires a different environment variable set for the bas
     export LINEAGE_CROWDIN_BASE_PATH_CM_14_1=your_14.1_base_path
     export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_15_1=your_15.1_base_path
     export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_16_0=your_16.0_base_path
+    export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_17_1=your_17.1_base_path
 
 Example:
 
@@ -41,6 +42,7 @@ Example:
     export LINEAGE_CROWDIN_BASE_PATH_CM_14_1=/mnt/android/lineageos/cm-14.1
     export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_15_1=/mnt/android/lineageos/lineage-15.1
     export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_16_0=/mnt/android/lineageos/lineage-16.0
+    export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_17_1=/mnt/android/lineageos/lineage-17.1
 
 Execute:
 

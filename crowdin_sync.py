@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # crowdin_sync.py
 #
@@ -6,7 +6,7 @@
 # directly to LineageOS' Gerrit.
 #
 # Copyright (C) 2014-2016 The CyanogenMod Project
-# Copyright (C) 2017-2019 The LineageOS Project
+# Copyright (C) 2017-2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,8 +21,6 @@
 # limitations under the License.
 
 # ################################# IMPORTS ################################## #
-
-from __future__ import print_function
 
 import argparse
 import json
@@ -137,7 +135,7 @@ def clean_xml_file(base_path, project_path, filename, repo):
     try:
         fh = open(path, 'r+')
     except:
-        print('\nSomething went wrong while opening file %s' % (path))
+        print(f'\nSomething went wrong while opening file {path}')
         return
 
     XML = fh.read()
@@ -152,7 +150,7 @@ def clean_xml_file(base_path, project_path, filename, repo):
     try:
         tree = etree.fromstring(XML)
     except etree.XMLSyntaxError as err:
-        print('%s: XML Error: %s' % (filename, err.error_log))
+        print(f'{filename}: XML Error: {err.error_log}')
         filename, ext = os.path.splitext(path)
         if ext == '.xml':
             reset_file(path, repo)
@@ -181,8 +179,8 @@ def clean_xml_file(base_path, project_path, filename, repo):
         # Every occurance of the string has to be removed when no string with the same name and
         # 'product=default' (or no product attribute) was found
         if not hasProductDefault:
-            print("\n{0}: Found string '{1}' with missing 'product=default' attribute"
-                  .format(path, stringName), end='')
+            print(f"\n{path}: Found string '{stringName}' with missing 'product=default' attribute",
+                  end='')
             for string in stringsWithSameName:
                 tree.remove(string)
                 alreadyRemoved.append(string)
@@ -219,7 +217,7 @@ def clean_xml_file(base_path, project_path, filename, repo):
     # Remove files which don't have any translated strings
     contentList = list(tree)
     if len(contentList) == 0:
-        print('\nRemoving ' + path)
+        print(f'\nRemoving {path}')
         os.remove(path)
 
 
@@ -252,7 +250,7 @@ def reset_file(filepath, repo):
 
 
 def push_as_commit(config_files, base_path, path, name, branch, username):
-    print('\nCommitting %s on branch %s: ' % (name, branch), end='')
+    print(f'\nCommitting {name} on branch {branch}: ', end='')
 
     # Get path
     project_path = path
@@ -279,8 +277,8 @@ def push_as_commit(config_files, base_path, path, name, branch, username):
 
     # Push commit
     try:
-        repo.git.push('ssh://%s@review.lineageos.org:29418/%s' % (username, name),
-                      'HEAD:refs/for/%s%%topic=translation' % branch)
+        repo.git.push(f'ssh://{username}@review.lineageos.org:29418/{name}',
+                      f'HEAD:refs/for/{branch}%topic=translation')
         print('Success')
     except:
         print('Failed', file=sys.stderr)
@@ -291,10 +289,10 @@ def push_as_commit(config_files, base_path, path, name, branch, username):
 def submit_gerrit(branch, username):
     # Find all open translation changes
     cmd = ['ssh', '-p', '29418',
-        '{}@review.lineageos.org'.format(username),
+        f'{username}@review.lineageos.org',
         'gerrit', 'query',
         'status:open',
-        'branch:{}'.format(branch),
+        f'branch:{branch}',
         'message:"Automatic translation import"',
         'topic:translation',
         '--current-patch-set',
@@ -302,7 +300,7 @@ def submit_gerrit(branch, username):
     commits = 0
     msg, code = run_subprocess(cmd)
     if code != 0:
-        print('Failed: {0}'.format(msg[1]))
+        print(f'Failed: {msg[1]}')
         return
 
     # Each line is one valid JSON object, except the last one, which is empty
@@ -313,7 +311,7 @@ def submit_gerrit(branch, username):
             continue
         # Add Code-Review +2 and Verified+1 labels and submit
         cmd = ['ssh', '-p', '29418',
-        '{}@review.lineageos.org'.format(username),
+        f'{username}@review.lineageos.org',
         'gerrit', 'review',
         '--verified +1',
         '--code-review +2',
@@ -322,7 +320,7 @@ def submit_gerrit(branch, username):
         print('Submitting commit %s: ' % js['url'], end='')
         if code != 0:
             errorText = msg[1].replace('\n\n', '; ').replace('\n', '')
-            print('Failed: %s' % errorText)
+            print(f'Failed: {errorText}')
         else:
             print('Success')
 
@@ -337,7 +335,8 @@ def check_run(cmd):
     p = subprocess.Popen(cmd, stdout=sys.stdout, stderr=sys.stderr)
     ret = p.wait()
     if ret != 0:
-        print('Failed to run cmd: %s' % ' '.join(cmd), file=sys.stderr)
+        joined = ' '.join(cmd)
+        print(f'Failed to run cmd: {joined}', file=sys.stderr)
         sys.exit(ret)
 
 
@@ -383,17 +382,17 @@ def load_xml(x):
     try:
         return etree.parse(x)
     except etree.XMLSyntaxError:
-        print('Malformed %s.' % x, file=sys.stderr)
+        print(f'Malformed {x}', file=sys.stderr)
         return None
     except Exception:
-        print('You have no %s.' % x, file=sys.stderr)
+        print(f'You have no {x}', file=sys.stderr)
         return None
 
 
 def check_files(files):
     for f in files:
         if not os.path.isfile(f):
-            print('You have no %s.' % f, file=sys.stderr)
+            print(f'You have no {f}.', file=sys.stderr)
             return False
     return True
 
@@ -404,42 +403,42 @@ def upload_sources_crowdin(branch, config):
     if config:
         print('\nUploading sources to Crowdin (custom config)')
         check_run(['crowdin',
-                   '--config=%s/config/%s' % (_DIR, config),
-                   'upload', 'sources', '--branch=%s' % branch])
+                   f'--config={_DIR}/config/{config}',
+                   'upload', 'sources', f'--branch={branch}'])
     else:
         print('\nUploading sources to Crowdin (AOSP supported languages)')
         check_run(['crowdin',
-                   '--config=%s/config/%s.yaml' % (_DIR, branch),
-                   'upload', 'sources', '--branch=%s' % branch])
+                   f'--config={_DIR}/config/{branch}.yaml',
+                   'upload', 'sources', f'--branch={branch}'])
 
         print('\nUploading sources to Crowdin (non-AOSP supported languages)')
         check_run(['crowdin',
-                   '--config=%s/config/%s_aosp.yaml' % (_DIR, branch),
-                   'upload', 'sources', '--branch=%s' % branch])
+                   f'--config={_DIR}/config/{branch}_aosp.yaml',
+                   'upload', 'sources', f'--branch={branch}'])
 
 
 def upload_translations_crowdin(branch, config):
     if config:
         print('\nUploading translations to Crowdin (custom config)')
         check_run(['crowdin',
-                   '--config=%s/config/%s' % (_DIR, config),
-                   'upload', 'translations', '--branch=%s' % branch,
+                   f'--config={_DIR}/config/{config}',
+                   'upload', 'translations', f'--branch={branch}',
                    '--no-import-duplicates', '--import-eq-suggestions',
                    '--auto-approve-imported'])
     else:
         print('\nUploading translations to Crowdin '
               '(AOSP supported languages)')
         check_run(['crowdin',
-                   '--config=%s/config/%s.yaml' % (_DIR, branch),
-                   'upload', 'translations', '--branch=%s' % branch,
+                   f'--config={_DIR}/config/{branch}.yaml',
+                   'upload', 'translations', f'--branch={branch}',
                    '--no-import-duplicates', '--import-eq-suggestions',
                    '--auto-approve-imported'])
 
         print('\nUploading translations to Crowdin '
               '(non-AOSP supported languages)')
         check_run(['crowdin',
-                   '--config=%s/config/%s_aosp.yaml' % (_DIR, branch),
-                   'upload', 'translations', '--branch=%s' % branch,
+                   f'--config={_DIR}/config/{branch}_aosp.yaml',
+                   'upload', 'translations', f'--branch={branch}',
                    '--no-import-duplicates', '--import-eq-suggestions',
                    '--auto-approve-imported'])
 
@@ -448,37 +447,37 @@ def download_crowdin(base_path, branch, xml, username, config):
     if config:
         print('\nDownloading translations from Crowdin (custom config)')
         check_run(['crowdin',
-                   '--config=%s/config/%s' % (_DIR, config),
+                   f'--config={_DIR}/config/{config}',
                    'download', '--branch=%s' % branch])
     else:
         print('\nDownloading translations from Crowdin '
               '(AOSP supported languages)')
         check_run(['crowdin',
-                   '--config=%s/config/%s.yaml' % (_DIR, branch),
-                   'download', '--branch=%s' % branch])
+                   f'--config={_DIR}/config/{branch}.yaml',
+                   'download', f'--branch={branch}'])
 
         print('\nDownloading translations from Crowdin '
               '(non-AOSP supported languages)')
         check_run(['crowdin',
-                   '--config=%s/config/%s_aosp.yaml' % (_DIR, branch),
-                   'download', '--branch=%s' % branch])
+                   f'--config={_DIR}/config/{branch}_aosp.yaml',
+                   'download', f'--branch={branch}'])
 
     print('\nCreating a list of pushable translations')
     # Get all files that Crowdin pushed
     paths = []
     if config:
-        files = ['%s/config/%s' % (_DIR, config)]
+        files = [f'{_DIR}/config/{config}']
     else:
-        files = ['%s/config/%s.yaml' % (_DIR, branch),
-                 '%s/config/%s_aosp.yaml' % (_DIR, branch)]
+        files = [f'{_DIR}/config/{branch}.yaml',
+                 f'{_DIR}/config/{branch}_aosp.yaml']
     for c in files:
-        cmd = ['crowdin', '--config=%s' % c, 'list', 'project',
-               '--branch=%s' % branch]
+        cmd = ['crowdin', f'--config={c}', 'list', 'project',
+               f'--branch={branch}']
         comm, ret = run_subprocess(cmd)
         if ret != 0:
             sys.exit(ret)
         for p in str(comm[0]).split("\n"):
-            paths.append(p.replace('/%s' % branch, ''))
+            paths.append(p.replace(f'/{branch}', ''))
 
     print('\nUploading translations to Gerrit')
     items = [x for xmlfile in xml for x in xmlfile.findall("//project")]
@@ -490,8 +489,7 @@ def download_crowdin(base_path, branch, xml, username, config):
             continue
 
         if "/res" not in path:
-            print('WARNING: Cannot determine project root dir of '
-                  '[%s], skipping.' % path)
+            print(f'WARNING: Cannot determine project root dir of [{path}], skipping.')
             continue
 
         # Usually the project root is everything before /res
@@ -502,13 +500,12 @@ def download_crowdin(base_path, branch, xml, username, config):
         elif len(parts) == 3:
             result = parts[0] + '/res' + parts[1]
         else:
-            print('WARNING: Splitting the path not successful for [%s], skipping' % path)
+            print(f'WARNING: Splitting the path not successful for [{path}], skipping')
             continue
 
         result = result.strip('/')
         if result == path.strip('/'):
-            print('WARNING: Cannot determine project root dir of '
-                  '[%s], skipping.' % path)
+            print(f'WARNING: Cannot determine project root dir of [{path}], skipping.')
             continue
 
         if result in all_projects:
@@ -569,43 +566,42 @@ def main():
         sys.exit(0)
 
     base_path_branch_suffix = default_branch.replace('-', '_').replace('.', '_').upper()
-    base_path_env = 'LINEAGE_CROWDIN_BASE_PATH_%s' % base_path_branch_suffix
+    base_path_env = f'LINEAGE_CROWDIN_BASE_PATH_{base_path_branch_suffix}'
     base_path = os.getenv(base_path_env)
     if base_path is None:
         cwd = os.getcwd()
-        print('You have not set %s. Defaulting to %s' % (base_path_env, cwd))
+        print(f'You have not set {base_path_env}. Defaulting to {cwd}')
         base_path = cwd
     if not os.path.isdir(base_path):
-        print('%s is not a real directory: %s' % (base_path_env, base_path))
+        print(f'{base_path_env} is not a real directory: {base_path}')
         sys.exit(1)
 
     if not check_dependencies():
         sys.exit(1)
 
-    xml_android = load_xml(x='%s/android/default.xml' % base_path)
+    xml_android = load_xml(x=f'{base_path}/android/default.xml')
     if xml_android is None:
         sys.exit(1)
 
-    xml_extra = load_xml(x='%s/config/%s_extra_packages.xml'
-                           % (_DIR, default_branch))
+    xml_extra = load_xml(x=f'{_DIR}/config/{default_branch}_extra_packages.xml')
     if xml_extra is None:
         sys.exit(1)
 
-    xml_snippet = load_xml(x='%s/android/snippets/lineage.xml' % base_path)
+    xml_snippet = load_xml(x=f'{base_path}/android/snippets/lineage.xml')
     if xml_snippet is None:
-        xml_snippet = load_xml(x='%s/android/snippets/cm.xml' % base_path)
+        xml_snippet = load_xml(x=f'{base_path}/android/snippets/cm.xml')
     if xml_snippet is None:
-        xml_snippet = load_xml(x='%s/android/snippets/hal_cm_all.xml' % base_path)
+        xml_snippet = load_xml(x=f'{base_path}/android/snippets/hal_cm_all.xml')
     if xml_snippet is not None:
         xml_files = (xml_android, xml_snippet, xml_extra)
     else:
         xml_files = (xml_android, xml_extra)
 
     if args.config:
-        files = ['%s/config/%s' % (_DIR, args.config)]
+        files = [f'{_DIR}/config/{args.config}']
     else:
-        files = ['%s/config/%s.yaml' % (_DIR, default_branch),
-                 '%s/config/%s_aosp.yaml' % (_DIR, default_branch)]
+        files = [f'{_DIR}/config/{default_branch}.yaml',
+                 f'{_DIR}/config/{default_branch}_aosp.yaml']
     if not check_files(files):
         sys.exit(1)
 
