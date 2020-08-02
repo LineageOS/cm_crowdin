@@ -141,6 +141,14 @@ def clean_xml_file(base_path, project_path, filename, repo):
         return
 
     XML = fh.read()
+    content = ''
+
+    # Take the original xml declaration and prepend it
+    declaration = XML.split('\n')[0]
+    if '<?' in declaration:
+        content = declaration + '\n'
+        XML = XML[XML.find('\n')+1:]
+
     try:
         tree = etree.fromstring(XML)
     except etree.XMLSyntaxError as err:
@@ -189,14 +197,12 @@ def clean_xml_file(base_path, project_path, filename, repo):
             continue
         p.remove(c)
 
-    content = ''
-
     # Take the original xml declaration and prepend it
     declaration = XML.split('\n')[0]
     if '<?' in declaration:
         content = declaration + '\n'
 
-    content += etree.tostring(tree, pretty_print=True, encoding="utf-8", xml_declaration=False)
+    content += etree.tostring(tree, pretty_print=True, encoding="unicode", xml_declaration=False)
 
     if header != '':
         content = content.replace('?>\n', '?>\n' + header)
