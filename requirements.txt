@@ -1,0 +1,4 @@
+lxml==4.5.2
+python-git==2018.2.1
+PyYAML==5.3.1
+Send2Trash==1.5.0
