@@ -365,6 +365,7 @@ def parse_args():
                         help='Download translations from Crowdin')
     parser.add_argument('-s', '--submit', action='store_true',
                         help='Merge open translation commits')
+    parser.add_argument('-p', '--path-to-crowdin', help='Path to crowdin executable (will look in PATH by default)', default='crowdin')
     return parser.parse_args()
 
 # ################################# PREPARE ################################## #
@@ -372,7 +373,7 @@ def parse_args():
 
 def check_dependencies():
     # Check for Java version of crowdin
-    cmd = ['dpkg-query', '-W', 'crowdin']
+    cmd = ['which', 'crowdin']
     if run_subprocess(cmd, silent=True)[1] != 0:
         print('You have not installed crowdin.', file=sys.stderr)
         return False
@@ -400,28 +401,28 @@ def check_files(files):
 # ################################### MAIN ################################### #
 
 
-def upload_sources_crowdin(branch, config):
+def upload_sources_crowdin(branch, config, crowdin_path):
     if config:
         print('\nUploading sources to Crowdin (custom config)')
-        check_run(['crowdin',
+        check_run([crowdin_path,
                    f'--config={_DIR}/config/{config}',
                    'upload', 'sources', f'--branch={branch}'])
     else:
         print('\nUploading sources to Crowdin (AOSP supported languages)')
-        check_run(['crowdin',
+        check_run([crowdin_path,
                    f'--config={_DIR}/config/{branch}.yaml',
                    'upload', 'sources', f'--branch={branch}'])
 
         print('\nUploading sources to Crowdin (non-AOSP supported languages)')
-        check_run(['crowdin',
+        check_run([crowdin_path,
                    f'--config={_DIR}/config/{branch}_aosp.yaml',
                    'upload', 'sources', f'--branch={branch}'])
 
 
-def upload_translations_crowdin(branch, config):
+def upload_translations_crowdin(branch, config, crowdin_path):
     if config:
         print('\nUploading translations to Crowdin (custom config)')
-        check_run(['crowdin',
+        check_run([crowdin_path,
                    f'--config={_DIR}/config/{config}',
                    'upload', 'translations', f'--branch={branch}',
                    '--no-import-duplicates', '--import-eq-suggestions',
@@ -429,7 +430,7 @@ def upload_translations_crowdin(branch, config):
     else:
         print('\nUploading translations to Crowdin '
               '(AOSP supported languages)')
-        check_run(['crowdin',
+        check_run([crowdin_path,
                    f'--config={_DIR}/config/{branch}.yaml',
                    'upload', 'translations', f'--branch={branch}',
                    '--no-import-duplicates', '--import-eq-suggestions',
@@ -437,29 +438,29 @@ def upload_translations_crowdin(branch, config):
 
         print('\nUploading translations to Crowdin '
               '(non-AOSP supported languages)')
-        check_run(['crowdin',
+        check_run([crowdin_path,
                    f'--config={_DIR}/config/{branch}_aosp.yaml',
                    'upload', 'translations', f'--branch={branch}',
                    '--no-import-duplicates', '--import-eq-suggestions',
                    '--auto-approve-imported'])
 
 
-def download_crowdin(base_path, branch, xml, username, config):
+def download_crowdin(base_path, branch, xml, username, config, crowdin_path):
     if config:
         print('\nDownloading translations from Crowdin (custom config)')
-        check_run(['crowdin',
+        check_run([crowdin_path,
                    f'--config={_DIR}/config/{config}',
                    'download', '--branch=%s' % branch])
     else:
         print('\nDownloading translations from Crowdin '
               '(AOSP supported languages)')
-        check_run(['crowdin',
+        check_run([crowdin_path,
                    f'--config={_DIR}/config/{branch}.yaml',
                    'download', f'--branch={branch}'])
 
         print('\nDownloading translations from Crowdin '
               '(non-AOSP supported languages)')
-        check_run(['crowdin',
+        check_run([crowdin_path,
                    f'--config={_DIR}/config/{branch}_aosp.yaml',
                    'download', f'--branch={branch}'])
 
@@ -472,7 +473,7 @@ def download_crowdin(base_path, branch, xml, username, config):
         files = [f'{_DIR}/config/{branch}.yaml',
                  f'{_DIR}/config/{branch}_aosp.yaml']
     for c in files:
-        cmd = ['crowdin', f'--config={c}', 'list', 'project',
+        cmd = [crowdin_path, f'--config={c}', 'list', 'project',
                f'--branch={branch}']
         comm, ret = run_subprocess(cmd)
         if ret != 0:
@@ -577,7 +578,7 @@ def main():
         print(f'{base_path_env} is not a real directory: {base_path}')
         sys.exit(1)
 
-    if not check_dependencies():
+    if args.path_to_crowdin == 'crowdin' and not check_dependencies():
         sys.exit(1)
 
     xml_android = load_xml(x=f'{base_path}/android/default.xml')
@@ -611,12 +612,12 @@ def main():
         sys.exit(1)
 
     if args.upload_sources:
-        upload_sources_crowdin(default_branch, args.config)
+        upload_sources_crowdin(default_branch, args.config, args.path_to_crowdin)
     if args.upload_translations:
-        upload_translations_crowdin(default_branch, args.config)
+        upload_translations_crowdin(default_branch, args.config, args.path_to_crowdin)
     if args.download:
         download_crowdin(base_path, default_branch, xml_files,
-                         args.username, args.config)
+                         args.username, args.config, args.path_to_crowdin)
 
     if _COMMITS_CREATED:
         print('\nDone!')
