@@ -405,42 +405,42 @@ def upload_sources_crowdin(branch, config, crowdin_path):
     if config:
         print('\nUploading sources to Crowdin (custom config)')
         check_run([crowdin_path,
-                   f'--config={_DIR}/config/{config}',
-                   'upload', 'sources', f'--branch={branch}'])
+                   'upload', 'sources', f'--branch={branch}',
+                   f'--config={_DIR}/config/{config}'])
     else:
         print('\nUploading sources to Crowdin (AOSP supported languages)')
         check_run([crowdin_path,
-                   f'--config={_DIR}/config/{branch}.yaml',
-                   'upload', 'sources', f'--branch={branch}'])
+                   'upload', 'sources', f'--branch={branch}',
+                   f'--config={_DIR}/config/{branch}.yaml'])
 
         print('\nUploading sources to Crowdin (non-AOSP supported languages)')
         check_run([crowdin_path,
-                   f'--config={_DIR}/config/{branch}_aosp.yaml',
-                   'upload', 'sources', f'--branch={branch}'])
+                   'upload', 'sources', f'--branch={branch}',
+                   f'--config={_DIR}/config/{branch}_aosp.yaml'])
 
 
 def upload_translations_crowdin(branch, config, crowdin_path):
     if config:
         print('\nUploading translations to Crowdin (custom config)')
         check_run([crowdin_path,
-                   f'--config={_DIR}/config/{config}',
                    'upload', 'translations', f'--branch={branch}',
+                   f'--config={_DIR}/config/{config}',
                    '--no-import-duplicates', '--import-eq-suggestions',
                    '--auto-approve-imported'])
     else:
         print('\nUploading translations to Crowdin '
               '(AOSP supported languages)')
         check_run([crowdin_path,
-                   f'--config={_DIR}/config/{branch}.yaml',
                    'upload', 'translations', f'--branch={branch}',
+                   f'--config={_DIR}/config/{branch}.yaml',
                    '--no-import-duplicates', '--import-eq-suggestions',
                    '--auto-approve-imported'])
 
         print('\nUploading translations to Crowdin '
               '(non-AOSP supported languages)')
         check_run([crowdin_path,
-                   f'--config={_DIR}/config/{branch}_aosp.yaml',
                    'upload', 'translations', f'--branch={branch}',
+                   f'--config={_DIR}/config/{branch}_aosp.yaml',
                    '--no-import-duplicates', '--import-eq-suggestions',
                    '--auto-approve-imported'])
 
@@ -449,20 +449,20 @@ def download_crowdin(base_path, branch, xml, username, config, crowdin_path):
     if config:
         print('\nDownloading translations from Crowdin (custom config)')
         check_run([crowdin_path,
-                   f'--config={_DIR}/config/{config}',
-                   'download', '--branch=%s' % branch])
+                   'download', '--branch=%s' % branch,
+                   f'--config={_DIR}/config/{config}'])
     else:
         print('\nDownloading translations from Crowdin '
               '(AOSP supported languages)')
         check_run([crowdin_path,
-                   f'--config={_DIR}/config/{branch}.yaml',
-                   'download', f'--branch={branch}'])
+                   'download', f'--branch={branch}',
+                   f'--config={_DIR}/config/{branch}.yaml'])
 
         print('\nDownloading translations from Crowdin '
               '(non-AOSP supported languages)')
         check_run([crowdin_path,
-                   f'--config={_DIR}/config/{branch}_aosp.yaml',
-                   'download', f'--branch={branch}'])
+                   'download', f'--branch={branch}',
+                   f'--config={_DIR}/config/{branch}_aosp.yaml'])
 
     print('\nCreating a list of pushable translations')
     # Get all files that Crowdin pushed
@@ -473,7 +473,7 @@ def download_crowdin(base_path, branch, xml, username, config, crowdin_path):
         files = [f'{_DIR}/config/{branch}.yaml',
                  f'{_DIR}/config/{branch}_aosp.yaml']
     for c in files:
-        cmd = [crowdin_path, f'--config={c}', 'list', 'project',
+        cmd = [crowdin_path, 'list', 'project', f'--config={c}',
                f'--branch={branch}']
         comm, ret = run_subprocess(cmd)
         if ret != 0:
