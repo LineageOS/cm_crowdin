@@ -250,6 +250,7 @@ def reset_file(filepath, repo):
 
 
 def push_as_commit(config_files, base_path, path, name, branch, username):
+    global _COMMITS_CREATED
     print(f'\nCommitting {name} on branch {branch}: ', end='')
 
     # Get path
@@ -556,6 +557,7 @@ def sig_handler(signal_received, frame):
 
 
 def main():
+    global _COMMITS_CREATED
     signal(SIGINT, sig_handler)
     args = parse_args()
     default_branch = args.branch
@@ -624,7 +626,7 @@ def main():
         sys.exit(0)
     else:
         print('\nNothing to commit')
-        sys.exit(-1)
+        sys.exit(2)
 
 if __name__ == '__main__':
     main()
