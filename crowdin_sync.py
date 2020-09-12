@@ -39,6 +39,7 @@ from signal import signal, SIGINT
 
 _DIR = os.path.dirname(os.path.realpath(__file__))
 _COMMITS_CREATED = False
+DIRTY_REPOS = []
 
 # ################################ FUNCTIONS ################################# #
 
@@ -286,6 +287,7 @@ def push_as_commit(config_files, base_path, path, name, branch, username):
         return
 
     _COMMITS_CREATED = True
+    DIRTY_REPOS.append(f'{path}={name}')
 
 
 def submit_gerrit(branch, username):
@@ -367,6 +369,7 @@ def parse_args():
     parser.add_argument('-s', '--submit', action='store_true',
                         help='Merge open translation commits')
     parser.add_argument('-p', '--path-to-crowdin', help='Path to crowdin executable (will look in PATH by default)', default='crowdin')
+    parser.add_argument('-d', '--dirty', help='Output list of projects with new commits to given file')
     return parser.parse_args()
 
 # ################################# PREPARE ################################## #
@@ -622,6 +625,9 @@ def main():
                          args.username, args.config, args.path_to_crowdin)
 
     if _COMMITS_CREATED:
+        if args.dirty:
+            file = open(args.dirty, mode='w')
+            print('{}'.format('\n'.join(DIRTY_REPOS)), file=file)
         print('\nDone!')
         sys.exit(0)
     else:
