@@ -288,13 +288,19 @@ def push_as_commit(config_files, base_path, path, name, branch, username):
     _COMMITS_CREATED = True
 
 
-def submit_gerrit(branch, username):
+def submit_gerrit(branch, username, owner):
+    # If an owner is specified, modify the query so we only get the ones wanted
+    ownerArg = ''
+    if owner is not None:
+        ownerArg = f'owner:{owner}'
+
     # Find all open translation changes
     cmd = ['ssh', '-p', '29418',
         f'{username}@review.lineageos.org',
         'gerrit', 'query',
         'status:open',
         f'branch:{branch}',
+        ownerArg
         'message:"Automatic translation import"',
         'topic:translation',
         '--current-patch-set',
@@ -366,7 +372,11 @@ def parse_args():
                         help='Download translations from Crowdin')
     parser.add_argument('-s', '--submit', action='store_true',
                         help='Merge open translation commits')
-    parser.add_argument('-p', '--path-to-crowdin', help='Path to crowdin executable (will look in PATH by default)', default='crowdin')
+    parser.add_argument('-o', '--owner',
+                        help='Specify the owner of the commits to submit')
+    parser.add_argument('-p', '--path-to-crowdin',
+                        help='Path to crowdin executable (will look in PATH by default)',
+                        default='crowdin')
     return parser.parse_args()
 
 # ################################# PREPARE ################################## #
@@ -566,7 +576,7 @@ def main():
         if args.username is None:
             print('Argument -u/--username is required for submitting!')
             sys.exit(1)
-        submit_gerrit(default_branch, args.username)
+        submit_gerrit(default_branch, args.username, args.owner)
         sys.exit(0)
 
     base_path_branch_suffix = default_branch.replace('-', '_').replace('.', '_').upper()
