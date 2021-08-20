@@ -536,6 +536,12 @@ files:
     translation: '/%original_path%-%android_code%/%original_file_name%'
     languages_mapping: *anchor
 
+  # ElmyraService
+  -
+    source:      '/packages/apps/ElmyraService/res/values/strings.xml'
+    translation: '/%original_path%-%android_code%/%original_file_name%'
+    languages_mapping: *anchor
+
   # resources devicesettings
   -
     source:      '/packages/resources/devicesettings/res/values/strings.xml'

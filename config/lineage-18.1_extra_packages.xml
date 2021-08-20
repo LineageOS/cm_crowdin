@@ -8,4 +8,6 @@
 
   <project path="hardware/samsung" name="LineageOS/android_hardware_samsung" />
   <project path="hardware/sony/SonyOpenTelephony" name="LineageOS/android_hardware_sony_SonyOpenTelephony" />
+
+  <project path="packages/apps/ElmyraService" name="LineageOS/android_packages_apps_ElmyraService" />
 </manifest>
