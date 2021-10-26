@@ -1,5 +1,2 @@
-gitdb==4.0.5
-GitPython==3.1.8
-lxml==4.5.2
-PyYAML==5.3.1
-smmap==3.0.4
+GitPython==3.1.24
+lxml==4.5.0
