@@ -3,7 +3,7 @@
 # Crowdin configuration file for LineageOS
 #
 # Copyright (C) 2014-2016 The CyanogenMod Project
-# Copyright (C) 2017-2018 The LineageOS Project
+# Copyright (C) 2017-2021 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,607 +17,370 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-api_key_env: LINEAGE_CROWDIN_API_KEY
-base_path_env: LINEAGE_CROWDIN_BASE_PATH_CM_13_0
-project_identifier: lineageos
-preserve_hierarchy: true
-
-files:
-# Frameworks
-
-  # framework-res
-  -
-    source:      '/frameworks/base/core/res/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: &anchor
-      android_code:
-        af: af
-        am: am
-        ar: ar
-        as: as-rIN
-        ast: ast-rES
-        az: az-rAZ
-        be: be
-        bg: bg
-        bn: bn-rBD
-        ca: ca
-        cs: cs
-        cy: cy
-        da: da
-        de: de
-        el: el
-        en-AU: en-rAU
-        en-GB: en-rGB
-        en-IN: en-rIN
-        en-PT: en-rPT
-        eo: eo
-        es-ES: es
-        es-MX: es-rMX
-        es-US: es-rUS
-        et: et-rEE
-        eu: eu-rES
-        fa: fa
-        fi: fi
-        fr: fr
-        fr-CA: fr-rCA
-        fy-NL: fy-rNL
-        gl: gl-rES
-        gu-IN: gu-rIN
-        he: iw
-        hi: hi
-        hr: hr
-        hu: hu
-        hy-AM: hy-rAM
-        id: in
-        is: is-rIS
-        it: it
-        ja: ja
-        ka: ka-rGE
-        kab: kab-rDZ
-        kk: kk-rKZ
-        km: km-rKH
-        kn: kn-rIN
-        ko: ko
-        ku: ku
-        ky: ky-rKG
-        lb: lb
-        lo: lo-rLA
-        lt: lt
-        lv: lv
-        mk: mk-rMK
-        ml-IN: ml-rIN
-        mn: mn-rMN
-        mr: mr-rIN
-        ms: ms-rMY
-        my: my-rMM
-        nb: nb
-        ne-NP: ne-rNP
-        nl: nl
-        or: or-rIN
-        pa-IN: pa-rIN
-        pl: pl
-        pt-PT: pt-rPT
-        pt-BR: pt-rBR
-        rm-CH: rm
-        ro: ro
-        ru: ru
-        sc: sc-rIT
-        si-LK: si-rLK
-        sk: sk
-        sl: sl
-        sq: sq-rAL
-        sr: sr
-        sv-SE: sv
-        sw: sw
-        ta: ta-rIN
-        te: te-rIN
-        th: th
-        tl: tl
-        tr: tr
-        ug: ug
-        uk: uk
-        ur-PK: ur-rPK
-        uz: uz-rUZ
-        vi: vi
-        zh-CN: zh-rCN
-        zh-HK: zh-rHK
-        zh-TW: zh-rTW
-        zu: zu
-
-  # Keyguard
-  -
-    source:      '/frameworks/base/packages/Keyguard/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # SettingsLib
-  -
-    source:      '/frameworks/base/packages/SettingsLib/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # SystemUI
-  -
-    source:      '/frameworks/base/packages/SystemUI/res/values/cm_arrays.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/frameworks/base/packages/SystemUI/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-# Packages
-
-  # AudioFX
-  -
-    source:      '/packages/apps/AudioFX/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Bluetooth
-  -
-    source:      '/packages/apps/Bluetooth/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # BluetoothExt
-  -
-    source:      '/packages/apps/BluetoothExt/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/BluetoothExt/res/values/strings_dun.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/BluetoothExt/res/values/strings_ftp.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/BluetoothExt/res/values/strings_map.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/BluetoothExt/res/values/strings_sap.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Browser
-  -
-    source:      '/packages/apps/Browser/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Calculator
-  -
-    source:      '/packages/apps/Calculator/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Calendar
-  -
-    source:      '/packages/apps/Calendar/res/values/cm_plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Calendar/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Camera2
-  -
-    source:      '/packages/apps/Camera2/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CellBroadcastReceiver
-  -
-    source:      '/packages/apps/CellBroadcastReceiver/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CMBugReport
-  -
-    source:      '/packages/apps/CMBugReport/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CMFileManager
-  -
-    source:      '/packages/apps/CMFileManager/res/values/plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/CMFileManager/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CMUpdater
-  -
-    source:      '/packages/apps/CMUpdater/res/values/plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/CMUpdater/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CMWallpapers
-  -
-    source:      '/packages/apps/CMWallpapers/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Contacts
-  -
-    source:      '/packages/apps/Contacts/res/values/cm_plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Contacts/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # ContactsCommon
-  -
-    source:      '/packages/apps/ContactsCommon/res/values/cm_plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/ContactsCommon/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # DeskClock
-  -
-    source:      '/packages/apps/DeskClock/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Dialer
-  -
-    source:      '/packages/apps/Dialer/res/values/cm_arrays.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Dialer/res/values/cm_plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Dialer/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Eleven
-  -
-    source:      '/packages/apps/Eleven/res/values/plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Eleven/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Email
-  -
-    source:      '/packages/apps/Email/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Gallery2
-  -
-    source:      '/packages/apps/Gallery2/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Gallery2/res/values/codeaurora_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Gello
-  -
-    source:      '/packages/apps/Gello/res/raw/incognito_mode_start_page.html'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Gello/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # InCallUI
-  -
-    source:      '/packages/apps/InCallUI/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/InCallUI/res/values/qtistrings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # LockClock
-  -
-    source:      '/packages/apps/LockClock/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Messaging
-  -
-    source:      '/packages/apps/Messaging/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # PhoneCommon
-  -
-    source:      '/packages/apps/PhoneCommon/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Profiles
-  -
-    source:      '/packages/apps/Profiles/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Screencast
-  -
-    source:      '/packages/apps/Screencast/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Settings
-  -
-    source:      '/packages/apps/Settings/res/values/cm_plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Settings/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # SetupWizard
-  -
-    source:      '/packages/apps/SetupWizard/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Snap
-  -
-    source:      '/packages/apps/Snap/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Snap/res/values/qcomstrings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Snap/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # SoundRecorder
-  -
-    source:      '/packages/apps/SoundRecorder/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Stk
-  -
-    source:      '/packages/apps/Stk/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Terminal
-  -
-    source:      '/packages/apps/Terminal/res/values/arrays.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Terminal/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # ThemeChooser
-  -
-    source:      '/packages/apps/ThemeChooser/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Trebuchet
-  -
-    source:      '/packages/apps/Trebuchet/res/values/cm_arrays.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/apps/Trebuchet/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # TvSettings
-  -
-    source:      '/packages/apps/TvSettings/Settings/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # UnifiedEmail
-  -
-    source:      '/packages/apps/UnifiedEmail/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-# Input methods
-
-  # LatinIME
-  -
-    source:      '/packages/inputmethods/LatinIME/java/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-# Providers
-
-  # DataUsageProvider
-  -
-    source:      '/packages/providers/DataUsageProvider/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # DownloadProvider
-  -
-    source:      '/packages/providers/DownloadProvider/res/values/cm_plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/providers/DownloadProvider/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # ThemesProvider
-  -
-    source:      '/packages/providers/ThemesProvider/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # WeatherProvider
-  -
-    source:      '/packages/providers/WeatherProvider/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-# Screensavers
-
-  # PhotoTable
-  -
-    source:      '/packages/screensavers/PhotoTable/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-# Services
-
-  # CMAudioService
-  -
-    source:      '/packages/services/CMAudioService/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # LiveLockScreenService
-  -
-    source:      '/packages/services/LiveLockScreenService/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Mms
-  -
-    source:      '/packages/services/Mms/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Telecomm
-  -
-    source:      '/packages/services/Telecomm/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # Telephony
-  -
-    source:      '/packages/services/Telephony/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/services/Telephony/res/values/qtistrings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # ThemeManagerService
-  -
-    source:      '/packages/services/ThemeManagerService/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # WeatherService
-  -
-    source:      '/packages/services/WeatherService/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-# Wallpapers
-
-  # Galaxy4
-  -
-    source:      '/packages/wallpapers/Galaxy4/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # PhaseBeam
-  -
-    source:      '/packages/wallpapers/PhaseBeam/res/values/cm_strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # PhotoPhase
-  -
-    source:      '/packages/wallpapers/PhotoPhase/res/values/plurals.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/packages/wallpapers/PhotoPhase/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-# Vendor
-
-  # CM SDK
-  -
-    source:      '/vendor/cmsdk/cm/res/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # CMSettingsProvider
-  -
-    source:      '/vendor/cmsdk/packages/CMSettingsProvider/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # OpenWeatherMapProvider
-  -
-    source:      '/vendor/cmsdk/samples/weatherproviderservice/OpenWeatherMapProvider/app/src/main/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-# Device specific
-
-  # fmapp2
-  -
-    source:      '/hardware/qcom/fm/fmapp2/res/values/arrays.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/hardware/qcom/fm/fmapp2/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # FMRecord
-  -
-    source:      '/hardware/qcom/fm/FMRecord/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # SamsungServiceMode
-  -
-    source:      '/packages/apps/SamsungServiceMode/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # samsung qcom-common doze
-  -
-    source:      '/device/samsung/qcom-common/doze/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-
-  # samsung AdvancedDisplay
-  -
-    source:      '/hardware/samsung/AdvancedDisplay/res/values/arrays.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
-  -
-    source:      '/hardware/samsung/AdvancedDisplay/res/values/strings.xml'
-    translation: '/%original_path%-%android_code%/%original_file_name%'
-    languages_mapping: *anchor
+"api_token_env": LINEAGE_CROWDIN_API_TOKEN
+"base_path_env": LINEAGE_CROWDIN_BASE_PATH_CM_13_0
+"project_id": 237414
+"preserve_hierarchy": true
+
+"files": [
+    {
+        "source":      "/frameworks/base/core/res/res/values/cm_strings.xml",
+        "translation": "/frameworks/base/core/res/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/frameworks/base/packages/Keyguard/res/values/cm_strings.xml",
+        "translation": "/frameworks/base/packages/Keyguard/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/frameworks/base/packages/SettingsLib/res/values/cm_strings.xml",
+        "translation": "/frameworks/base/packages/SettingsLib/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/frameworks/base/packages/SystemUI/res/values/cm_arrays.xml",
+        "translation": "/frameworks/base/packages/SystemUI/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/frameworks/base/packages/SystemUI/res/values/cm_strings.xml",
+        "translation": "/frameworks/base/packages/SystemUI/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/AudioFX/res/values/cm_strings.xml",
+        "translation": "/packages/apps/AudioFX/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Bluetooth/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Bluetooth/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/BluetoothExt/res/values/strings.xml",
+        "translation": "/packages/apps/BluetoothExt/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/BluetoothExt/res/values/strings_dun.xml",
+        "translation": "/packages/apps/BluetoothExt/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/BluetoothExt/res/values/strings_ftp.xml",
+        "translation": "/packages/apps/BluetoothExt/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/BluetoothExt/res/values/strings_map.xml",
+        "translation": "/packages/apps/BluetoothExt/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/BluetoothExt/res/values/strings_sap.xml",
+        "translation": "/packages/apps/BluetoothExt/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Browser/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Browser/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Calculator/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Calculator/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Calendar/res/values/cm_plurals.xml",
+        "translation": "/packages/apps/Calendar/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Calendar/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Calendar/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Camera2/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Camera2/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/CellBroadcastReceiver/res/values/cm_strings.xml",
+        "translation": "/packages/apps/CellBroadcastReceiver/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/CMBugReport/res/values/strings.xml",
+        "translation": "/packages/apps/CMBugReport/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/CMFileManager/res/values/plurals.xml",
+        "translation": "/packages/apps/CMFileManager/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/CMFileManager/res/values/strings.xml",
+        "translation": "/packages/apps/CMFileManager/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/CMUpdater/res/values/plurals.xml",
+        "translation": "/packages/apps/CMUpdater/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/CMUpdater/res/values/strings.xml",
+        "translation": "/packages/apps/CMUpdater/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/CMWallpapers/res/values/strings.xml",
+        "translation": "/packages/apps/CMWallpapers/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Contacts/res/values/cm_plurals.xml",
+        "translation": "/packages/apps/Contacts/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Contacts/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Contacts/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/ContactsCommon/res/values/cm_plurals.xml",
+        "translation": "/packages/apps/ContactsCommon/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/ContactsCommon/res/values/cm_strings.xml",
+        "translation": "/packages/apps/ContactsCommon/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/DeskClock/res/values/cm_strings.xml",
+        "translation": "/packages/apps/DeskClock/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/res/values/cm_arrays.xml",
+        "translation": "/packages/apps/Dialer/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/res/values/cm_plurals.xml",
+        "translation": "/packages/apps/Dialer/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Dialer/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Eleven/res/values/plurals.xml",
+        "translation": "/packages/apps/Eleven/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Eleven/res/values/strings.xml",
+        "translation": "/packages/apps/Eleven/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Email/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Email/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Gallery2/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Gallery2/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Gallery2/res/values/codeaurora_strings.xml",
+        "translation": "/packages/apps/Gallery2/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Gello/res/raw/incognito_mode_start_page.html",
+        "translation": "/packages/apps/Gello/res/raw-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Gello/res/values/strings.xml",
+        "translation": "/packages/apps/Gello/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/InCallUI/res/values/cm_strings.xml",
+        "translation": "/packages/apps/InCallUI/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/InCallUI/res/values/qtistrings.xml",
+        "translation": "/packages/apps/InCallUI/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/LockClock/res/values/strings.xml",
+        "translation": "/packages/apps/LockClock/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Messaging/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Messaging/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/PhoneCommon/res/values/cm_strings.xml",
+        "translation": "/packages/apps/PhoneCommon/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Profiles/res/values/strings.xml",
+        "translation": "/packages/apps/Profiles/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Screencast/res/values/strings.xml",
+        "translation": "/packages/apps/Screencast/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Settings/res/values/cm_plurals.xml",
+        "translation": "/packages/apps/Settings/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Settings/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Settings/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/SetupWizard/res/values/strings.xml",
+        "translation": "/packages/apps/SetupWizard/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Snap/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Snap/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Snap/res/values/qcomstrings.xml",
+        "translation": "/packages/apps/Snap/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Snap/res/values/strings.xml",
+        "translation": "/packages/apps/Snap/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/SoundRecorder/res/values/cm_strings.xml",
+        "translation": "/packages/apps/SoundRecorder/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Stk/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Stk/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Terminal/res/values/arrays.xml",
+        "translation": "/packages/apps/Terminal/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Terminal/res/values/strings.xml",
+        "translation": "/packages/apps/Terminal/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/ThemeChooser/res/values/strings.xml",
+        "translation": "/packages/apps/ThemeChooser/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Trebuchet/res/values/cm_arrays.xml",
+        "translation": "/packages/apps/Trebuchet/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Trebuchet/res/values/cm_strings.xml",
+        "translation": "/packages/apps/Trebuchet/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/TvSettings/Settings/res/values/cm_strings.xml",
+        "translation": "/packages/apps/TvSettings/Settings/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/UnifiedEmail/res/values/cm_strings.xml",
+        "translation": "/packages/apps/UnifiedEmail/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/inputmethods/LatinIME/java/res/values/cm_strings.xml",
+        "translation": "/packages/inputmethods/LatinIME/java/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/providers/DataUsageProvider/res/values/strings.xml",
+        "translation": "/packages/providers/DataUsageProvider/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/providers/DownloadProvider/res/values/cm_plurals.xml",
+        "translation": "/packages/providers/DownloadProvider/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/providers/DownloadProvider/res/values/cm_strings.xml",
+        "translation": "/packages/providers/DownloadProvider/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/providers/ThemesProvider/res/values/strings.xml",
+        "translation": "/packages/providers/ThemesProvider/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/providers/WeatherProvider/res/values/strings.xml",
+        "translation": "/packages/providers/WeatherProvider/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/screensavers/PhotoTable/res/values/cm_strings.xml",
+        "translation": "/packages/screensavers/PhotoTable/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/CMAudioService/res/values/strings.xml",
+        "translation": "/packages/services/CMAudioService/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/LiveLockScreenService/res/values/strings.xml",
+        "translation": "/packages/services/LiveLockScreenService/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/Mms/res/values/cm_strings.xml",
+        "translation": "/packages/services/Mms/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/Telecomm/res/values/cm_strings.xml",
+        "translation": "/packages/services/Telecomm/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/Telephony/res/values/cm_strings.xml",
+        "translation": "/packages/services/Telephony/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/Telephony/res/values/qtistrings.xml",
+        "translation": "/packages/services/Telephony/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/ThemeManagerService/res/values/strings.xml",
+        "translation": "/packages/services/ThemeManagerService/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/WeatherService/res/values/strings.xml",
+        "translation": "/packages/services/WeatherService/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/wallpapers/Galaxy4/res/values/strings.xml",
+        "translation": "/packages/wallpapers/Galaxy4/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/wallpapers/PhaseBeam/res/values/cm_strings.xml",
+        "translation": "/packages/wallpapers/PhaseBeam/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/wallpapers/PhotoPhase/res/values/plurals.xml",
+        "translation": "/packages/wallpapers/PhotoPhase/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/wallpapers/PhotoPhase/res/values/strings.xml",
+        "translation": "/packages/wallpapers/PhotoPhase/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/vendor/cmsdk/cm/res/res/values/strings.xml",
+        "translation": "/vendor/cmsdk/cm/res/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/vendor/cmsdk/packages/CMSettingsProvider/res/values/strings.xml",
+        "translation": "/vendor/cmsdk/packages/CMSettingsProvider/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/vendor/cmsdk/samples/weatherproviderservice/OpenWeatherMapProvider/app/src/main/res/values/strings.xml",
+        "translation": "/vendor/cmsdk/samples/weatherproviderservice/OpenWeatherMapProvider/app/src/main/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/hardware/qcom/fm/fmapp2/res/values/arrays.xml",
+        "translation": "/hardware/qcom/fm/fmapp2/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/hardware/qcom/fm/fmapp2/res/values/strings.xml",
+        "translation": "/hardware/qcom/fm/fmapp2/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/hardware/qcom/fm/FMRecord/res/values/strings.xml",
+        "translation": "/hardware/qcom/fm/FMRecord/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/SamsungServiceMode/res/values/strings.xml",
+        "translation": "/packages/apps/SamsungServiceMode/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/device/samsung/qcom-common/doze/res/values/strings.xml",
+        "translation": "/device/samsung/qcom-common/doze/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/hardware/samsung/AdvancedDisplay/res/values/arrays.xml",
+        "translation": "/hardware/samsung/AdvancedDisplay/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/hardware/samsung/AdvancedDisplay/res/values/strings.xml",
+        "translation": "/hardware/samsung/AdvancedDisplay/res/values-%android_code%/%original_file_name%"
+    }
+]
