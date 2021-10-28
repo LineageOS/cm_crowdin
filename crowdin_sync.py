@@ -32,6 +32,7 @@ import sys
 import time
 import threading
 
+from distutils.util import strtobool
 from lxml import etree
 from signal import signal, SIGINT
 
@@ -372,6 +373,38 @@ def find_xml(base_path):
                 yield os.path.join(dp, f)
 
 
+def get_username(args):
+    username = args.username
+    if (args.submit or args.download) and username is None:
+        # try getting the username from git
+        msg, code = run_subprocess(
+            ["git", "config", "--get", "review.review.lineageos.org.username"],
+            silent=True,
+        )
+        has_username = False
+        if code == 0:
+            username = msg[0].strip("\n")
+            if username != "":
+                has_username = user_prompt(
+                    f"Argument -u/--username was not specified but found '{username}', "
+                    f"continue?"
+                )
+            else:
+                print("Argument -u/--username is required!")
+        if not has_username:
+            sys.exit(1)
+    return username
+
+
+def user_prompt(question):
+    while True:
+        user_input = input(question + " [y/n]: ")
+        try:
+            return bool(strtobool(user_input))
+        except ValueError:
+            print("Please use y/n or yes/no.\n")
+
+
 # ############################################################################ #
 
 
@@ -646,21 +679,15 @@ def main():
     args = parse_args()
     default_branch = args.branch
 
+    username = get_username(args)
     if args.submit:
-        if args.username is None:
-            print("Argument -u/--username is required for submitting!")
-            sys.exit(1)
-        submit_gerrit(default_branch, args.username, args.owner)
+        submit_gerrit(default_branch, username, args.owner)
         sys.exit(0)
 
     base_path = get_base_path(default_branch)
     config_dict = get_config_dict(args.config, default_branch)
 
     if args.path_to_crowdin == "crowdin" and not check_dependencies():
-        sys.exit(1)
-
-    if args.download and args.username is None:
-        print("Argument -u/--username is required for translations download")
         sys.exit(1)
 
     if args.upload_sources:
@@ -673,7 +700,7 @@ def main():
             base_path,
             default_branch,
             xml_files,
-            args.username,
+            username,
             config_dict,
             args.path_to_crowdin,
         )
