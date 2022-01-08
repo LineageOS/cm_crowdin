@@ -161,10 +161,6 @@
         "translation": "/packages/apps/Dialer/java/com/android/dialer/app/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Dialer/java/com/android/dialer/app/voicemail/error/res/values/strings.xml",
-        "translation": "/packages/apps/Dialer/java/com/android/dialer/app/voicemail/error/res/values-%android_code%/%original_file_name%"
-    },
-    {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/blocking/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/blocking/res/values-%android_code%/%original_file_name%"
     },
@@ -235,6 +231,10 @@
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/util/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/util/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/voicemail/listui/error/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/voicemail/listui/error/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/voicemailstatus/res/values/strings.xml",
