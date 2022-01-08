@@ -40,8 +40,8 @@
         "translation": "/packages/apps/AudioFX/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Backgrounds/app/src/main/res/values/strings.xml",
-        "translation": "/packages/apps/Backgrounds/app/src/main/res/values-%android_code%/%original_file_name%"
+        "source":      "/packages/apps/Backgrounds/res/values/strings.xml",
+        "translation": "/packages/apps/Backgrounds/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Camera2/res/values/cm_strings.xml",
@@ -150,10 +150,6 @@
     {
         "source":      "/packages/apps/Recorder/app/src/main/res/values/strings.xml",
         "translation": "/packages/apps/Recorder/app/src/main/res/values-%android_code%/%original_file_name%"
-    },
-    {
-        "source":      "/packages/apps/Settings/res/values/cm_plurals.xml",
-        "translation": "/packages/apps/Settings/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Settings/res/values/cm_strings.xml",
