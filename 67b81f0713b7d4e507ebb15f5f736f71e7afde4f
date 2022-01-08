@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e14de58a_52fb6a4d",
+        "filename": "crowdin_sync.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2022-01-08T13:52:53Z",
+      "side": 1,
+      "message": "sources",
+      "range": {
+        "startLine": 400,
+        "startChar": 28,
+        "endLine": 400,
+        "endChar": 40
+      },
+      "revId": "67b81f0713b7d4e507ebb15f5f736f71e7afde4f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
