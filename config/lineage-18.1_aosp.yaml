@@ -37,10 +37,6 @@
         "translation": "/frameworks/base/packages/CompanionDeviceManager/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/frameworks/base/packages/DefaultContainerService/res/values/strings.xml",
-        "translation": "/frameworks/base/packages/DefaultContainerService/res/values-%android_code%/%original_file_name%"
-    },
-    {
         "source":      "/frameworks/base/packages/ExternalStorageProvider/res/values/strings.xml",
         "translation": "/frameworks/base/packages/ExternalStorageProvider/res/values-%android_code%/%original_file_name%"
     },
@@ -51,10 +47,6 @@
     {
         "source":      "/frameworks/base/packages/InputDevices/res/values/strings.xml",
         "translation": "/frameworks/base/packages/InputDevices/res/values-%android_code%/%original_file_name%"
-    },
-    {
-        "source":      "/frameworks/base/packages/MtpDocumentsProvider/res/values/strings.xml",
-        "translation": "/frameworks/base/packages/MtpDocumentsProvider/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/frameworks/base/packages/PrintSpooler/res/values/strings.xml",
@@ -141,20 +133,12 @@
         "translation": "/packages/apps/DeskClock/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Dialer/java/com/android/contacts/common/res/values/strings.xml",
-        "translation": "/packages/apps/Dialer/java/com/android/contacts/common/res/values-%android_code%/%original_file_name%"
-    },
-    {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/about/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/about/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/app/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/app/res/values-%android_code%/%original_file_name%"
-    },
-    {
-        "source":      "/packages/apps/Dialer/java/com/android/dialer/app/voicemail/error/res/values/strings.xml",
-        "translation": "/packages/apps/Dialer/java/com/android/dialer/app/voicemail/error/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/blocking/res/values/strings.xml",
@@ -179,6 +163,10 @@
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/common/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/common/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/contacts/resources/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/contacts/resources/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/dialpadview/res/values/strings.xml",
@@ -221,16 +209,16 @@
         "translation": "/packages/apps/Dialer/java/com/android/dialer/speeddial/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Dialer/java/com/android/dialer/theme/res/values/strings.xml",
-        "translation": "/packages/apps/Dialer/java/com/android/dialer/theme/res/values-%android_code%/%original_file_name%"
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/theme/common/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/theme/common/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/util/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/util/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Dialer/java/com/android/dialer/voicemailstatus/res/values/strings.xml",
-        "translation": "/packages/apps/Dialer/java/com/android/dialer/voicemailstatus/res/values-%android_code%/%original_file_name%"
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/voicemail/listui/error/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/voicemail/listui/error/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/widget/res/values/strings.xml",
