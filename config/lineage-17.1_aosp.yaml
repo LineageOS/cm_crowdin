@@ -33,8 +33,16 @@
         "translation": "/frameworks/base/packages/BackupRestoreConfirmation/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/frameworks/base/packages/CarrierDefaultApp/res/values/strings.xml",
+        "translation": "/frameworks/base/packages/CarrierDefaultApp/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/frameworks/base/packages/CompanionDeviceManager/res/values/strings.xml",
         "translation": "/frameworks/base/packages/CompanionDeviceManager/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/frameworks/base/packages/DynamicSystemInstallationService/res/values/strings.xml",
+        "translation": "/frameworks/base/packages/DynamicSystemInstallationService/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/frameworks/base/packages/ExternalStorageProvider/res/values/strings.xml",
@@ -51,6 +59,14 @@
     {
         "source":      "/frameworks/base/packages/MtpDocumentsProvider/res/values/strings.xml",
         "translation": "/frameworks/base/packages/MtpDocumentsProvider/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/frameworks/base/packages/OsuLogin/res/values/strings.xml",
+        "translation": "/frameworks/base/packages/OsuLogin/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/frameworks/base/packages/PackageInstaller/res/values/strings.xml",
+        "translation": "/frameworks/base/packages/PackageInstaller/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/frameworks/base/packages/PrintSpooler/res/values/strings.xml",
@@ -145,6 +161,14 @@
         "translation": "/packages/apps/Dialer/java/com/android/dialer/app/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/assisteddialing/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/assisteddialing/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/assisteddialing/ui/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/assisteddialing/ui/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/blocking/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/blocking/res/values-%android_code%/%original_file_name%"
     },
@@ -161,12 +185,28 @@
         "translation": "/packages/apps/Dialer/java/com/android/dialer/calldetails/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/calllog/ui/menu/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/calllog/ui/menu/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/calllog/ui/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/calllog/ui/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/calllogutils/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/calllogutils/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/clipboard/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/clipboard/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/common/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/common/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/contactphoto/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/contactphoto/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/contacts/resources/res/values/strings.xml",
@@ -181,12 +221,24 @@
         "translation": "/packages/apps/Dialer/java/com/android/dialer/enrichedcall/simulator/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/glidephotomanager/impl/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/glidephotomanager/impl/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/interactions/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/interactions/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/main/impl/bottomnav/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/main/impl/bottomnav/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/main/impl/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/main/impl/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/main/impl/toolbar/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/main/impl/toolbar/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/notification/res/values/strings.xml",
@@ -201,12 +253,48 @@
         "translation": "/packages/apps/Dialer/java/com/android/dialer/postcall/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/precall/impl/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/precall/impl//res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/preferredsim/impl/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/preferredsim/impl/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/preferredsim/suggestion/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/preferredsim/suggestion/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/promotion/impl/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/promotion/impl/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/searchfragment/cp2/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/searchfragment/cp2/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/searchfragment/directories/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/searchfragment/directories/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/searchfragment/list/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/searchfragment/list/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/searchfragment/nearbyplaces/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/searchfragment/nearbyplaces/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/shortcuts/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/shortcuts/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/spam/promo/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/spam/promo/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/spannable/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/spannable/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/speeddial/res/values/strings.xml",
@@ -223,6 +311,10 @@
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/voicemail/listui/error/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/dialer/voicemail/listui/error/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/dialer/voicemail/listui/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/dialer/voicemail/listui/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/widget/res/values/strings.xml",
@@ -243,6 +335,10 @@
     {
         "source":      "/packages/apps/Dialer/java/com/android/incallui/audioroute/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/incallui/audioroute/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/incallui/calllocation/impl/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/incallui/calllocation/impl/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/incallui/commontheme/res/values/strings.xml",
@@ -269,12 +365,24 @@
         "translation": "/packages/apps/Dialer/java/com/android/incallui/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/Dialer/java/com/android/incallui/rtt/impl/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/incallui/rtt/impl/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Dialer/java/com/android/incallui/sessiondata/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/incallui/sessiondata/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/Dialer/java/com/android/incallui/spam/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/incallui/spam/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Dialer/java/com/android/incallui/telecomeventui/res/values/strings.xml",
         "translation": "/packages/apps/Dialer/java/com/android/incallui/telecomeventui/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Dialer/java/com/android/incallui/theme/res/values/strings.xml",
+        "translation": "/packages/apps/Dialer/java/com/android/incallui/theme/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/incallui/video/impl/res/values/strings.xml",
@@ -293,6 +401,10 @@
         "translation": "/packages/apps/DocumentsUI/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/Email/emailcommon/res/values/strings.xml",
+        "translation": "/packages/apps/Email/emailcommon/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Email/res/values/strings.xml",
         "translation": "/packages/apps/Email/res/values-%android_code%/%original_file_name%"
     },
@@ -303,6 +415,10 @@
     {
         "source":      "/packages/apps/ExactCalculator/res/values/strings.xml",
         "translation": "/packages/apps/ExactCalculator/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Exchange/res/values/strings.xml",
+        "translation": "/packages/apps/Exchange/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Gallery2/res/values/filtershow_strings.xml",
@@ -349,6 +465,10 @@
         "translation": "/packages/apps/SafetyRegulatoryInfo/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/SettingsIntelligence/res/values/strings.xml",
+        "translation": "/packages/apps/SettingsIntelligence/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Settings/res/values/arrays.xml",
         "translation": "/packages/apps/Settings/res/values-%android_code%/%original_file_name%"
     },
@@ -379,6 +499,10 @@
     {
         "source":      "/packages/apps/Trebuchet/res/values/strings.xml",
         "translation": "/packages/apps/Trebuchet/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Trebuchet/SecondaryDisplayLauncher/res/values/strings.xml",
+        "translation": "/packages/apps/Trebuchet/SecondaryDisplayLauncher/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/TvSettings/Settings/res/values/arrays.xml",
