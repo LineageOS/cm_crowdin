@@ -186,10 +186,6 @@ def get_xml_files(base_path, default_branch):
         sys.exit(1)
 
     xml_snippet = load_xml(x=f"{base_path}/android/snippets/lineage.xml")
-    if xml_snippet is None:
-        xml_snippet = load_xml(x=f"{base_path}/android/snippets/cm.xml")
-    if xml_snippet is None:
-        xml_snippet = load_xml(x=f"{base_path}/android/snippets/hal_cm_all.xml")
     if xml_snippet is not None:
         xml_files = (xml_android, xml_snippet, xml_extra)
     else:
