@@ -137,7 +137,8 @@ def clean_xml_file(path, repo):
         XML = XML[XML.find('\n')+1:]
 
     try:
-        tree = etree.fromstring(XML)
+        parser = etree.XMLParser(strip_cdata=False)
+        tree = etree.parse(path, parser=parser).getroot()
     except etree.XMLSyntaxError as err:
         print(f'{path}: XML Error: {err.error_log}')
         filename, ext = os.path.splitext(path)
