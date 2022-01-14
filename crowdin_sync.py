@@ -58,7 +58,10 @@ def parse_args():
         "--download", action="store_true", help="Download translations from Crowdin"
     )
     parser.add_argument(
-        "-s", "--submit", action="store_true", help="Merge open translation commits"
+        "-g",
+        "--gerrit",
+        choices=["vote", "submit"],
+        help="Vote (CR+1/V+1) on or submit (incl. CR+2/V+1) open translation commits",
     )
     parser.add_argument(
         "-o", "--owner", help="Specify the owner of the commits to submit"
@@ -89,8 +92,11 @@ def main():
     default_branch = args.branch
 
     username = utils.get_username(args)
-    if args.submit:
+    if args.gerrit == "submit":
         gerrit.submit(default_branch, username, args.owner)
+        sys.exit(0)
+    elif args.gerrit == "vote":
+        gerrit.vote(default_branch, username, args.owner)
         sys.exit(0)
 
     base_path = utils.get_base_path(default_branch)

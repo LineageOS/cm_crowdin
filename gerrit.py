@@ -52,6 +52,31 @@ def submit(branch, username, owner):
         print("Nothing to submit!")
 
 
+def vote(branch, username, owner):
+    commits = 0
+    changes = get_open_changes(branch, username, owner)
+    for change in changes:
+        print(f"Voting on commit {changes[change]}: ", end="")
+        # Add Code-Review +1 and Verified+1 labels
+        cmd = utils.get_gerrit_base_cmd(username) + [
+            "review",
+            "--verified +1",
+            "--code-review +1",  # we often can't self-CR+2 (limited by admin), submitter needs to do that
+            change,
+        ]
+        msg, code = utils.run_subprocess(cmd, True)
+        if code != 0:
+            error_text = msg[1].replace("\n\n", "; ").replace("\n", "")
+            print(f"Failed! -- {error_text}")
+        else:
+            print("Success")
+
+        commits += 1
+
+    if commits == 0:
+        print("Nothing to vote on!")
+
+
 def get_open_changes(branch, username, owner):
     print("Fetching open changes on gerrit")
 
