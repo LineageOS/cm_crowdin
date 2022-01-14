@@ -99,7 +99,7 @@ def find_xml(base_path):
 
 def get_username(args):
     username = args.username
-    if (args.submit or args.download) and username is None:
+    if (args.gerrit or args.download) and username is None:
         # try getting the username from git
         msg, code = run_subprocess(
             ["git", "config", "--get", "review.review.lineageos.org.username"],
