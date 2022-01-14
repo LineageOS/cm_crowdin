@@ -20,23 +20,45 @@
 # limitations under the License.
 
 import json
+import sys
 
 import utils
 
 
 def submit(branch, username, owner):
+    commits = 0
+    changes = get_open_changes(branch, username, owner)
+    for change in changes:
+        print(f"Submitting commit {changes[change]}: ", end="")
+        # Add Code-Review +2 and Verified+1 labels and submit
+        cmd = utils.get_gerrit_base_cmd(username) + [
+            "review",
+            "--verified +1",
+            "--code-review +2",
+            "--submit",
+            change,
+        ]
+        msg, code = utils.run_subprocess(cmd, True)
+        if code != 0:
+            error_text = msg[1].replace("\n\n", "; ").replace("\n", "")
+            print(f"Failed! -- {error_text}")
+        else:
+            print("Success")
+
+        commits += 1
+
+    if commits == 0:
+        print("Nothing to submit!")
+
+
+def get_open_changes(branch, username, owner):
+    print("Fetching open changes on gerrit")
+
     # If an owner is specified, modify the query, so we only get the ones wanted
-    owner_arg = ""
-    if owner is not None:
-        owner_arg = f"owner:{owner}"
+    owner_arg = "" if owner is None else f"owner:{owner}"
 
     # Find all open translation changes
-    cmd = [
-        "ssh",
-        "-p",
-        "29418",
-        f"{username}@review.lineageos.org",
-        "gerrit",
+    cmd = utils.get_gerrit_base_cmd(username) + [
         "query",
         "status:open",
         f"branch:{branch}",
@@ -46,41 +68,25 @@ def submit(branch, username, owner):
         "--current-patch-set",
         "--format=JSON",
     ]
-    commits = 0
     msg, code = utils.run_subprocess(cmd)
     if code != 0:
-        print(f"Failed: {msg[1]}")
-        return
+        print(f"Failed: {msg[1]}", file=sys.stderr)
+        sys.exit(1)
 
+    changes = {}
     # Each line is one valid JSON object, except the last one, which is empty
     for line in msg[0].strip("\n").split("\n"):
-        js = json.loads(line)
-        # We get valid JSON, but not every result line is one we want
-        if "currentPatchSet" not in js or "revision" not in js["currentPatchSet"]:
+        try:
+            js = json.loads(line)
+            revision = js["currentPatchSet"]["revision"]
+            changes[revision] = js["url"]
+        except KeyError:
             continue
-        # Add Code-Review +2 and Verified+1 labels and submit
-        cmd = [
-            "ssh",
-            "-p",
-            "29418",
-            f"{username}@review.lineageos.org",
-            "gerrit",
-            "review",
-            "--verified +1",
-            "--code-review +2",
-            "--submit",
-            js["currentPatchSet"]["revision"],
-        ]
-        msg, code = utils.run_subprocess(cmd, True)
-        print("Submitting commit %s: " % js["url"], end="")
-        if code != 0:
-            error_text = msg[1].replace("\n\n", "; ").replace("\n", "")
-            print(f"Failed: {error_text}")
-        else:
-            print("Success")
+        except Exception as e:
+            print(
+                e,
+                f"Failed to read revision from fetched dataset:\n{line}",
+                file=sys.stderr,
+            )
 
-        commits += 1
-
-    if commits == 0:
-        print("Nothing to submit!")
-        return
+    return changes
