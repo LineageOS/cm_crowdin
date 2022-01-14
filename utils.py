@@ -211,3 +211,8 @@ def get_config_dict(config, default_branch):
     if not check_files(config_dict["files"]):
         sys.exit(1)
     return config_dict
+
+
+def get_gerrit_base_cmd(username):
+    cmd = ["ssh", "-p", "29418", f"{username}@review.lineageos.org", "gerrit"]
+    return cmd
