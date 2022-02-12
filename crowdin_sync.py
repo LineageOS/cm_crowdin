@@ -27,6 +27,7 @@ import sys
 from signal import signal, SIGINT
 
 import download
+import from_zip
 import gerrit
 import upload
 import utils
@@ -71,6 +72,9 @@ def parse_args():
         "--path-to-crowdin",
         help="Path to crowdin executable (will look in PATH by default)",
         default="crowdin",
+    )
+    parser.add_argument(
+        "--unzip", nargs="+", help="Specify a translation zip to treat like a download"
     )
     return parser.parse_args()
 
@@ -121,6 +125,9 @@ def main():
             config_dict,
             args.path_to_crowdin,
         )
+    elif args.unzip:
+        xml_files = utils.get_xml_files(base_path, default_branch)
+        from_zip.unzip(args.unzip, base_path, default_branch, xml_files, username)
 
     if download.has_created_commits() or upload.has_uploaded():
         print("\nDone!")
