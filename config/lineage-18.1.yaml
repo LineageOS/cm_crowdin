@@ -128,10 +128,6 @@
         "translation": "/packages/apps/Jelly/app/src/main/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/LineageCustomizer/res/values/strings.xml",
-        "translation": "/packages/apps/LineageCustomizer/res/values-%android_code%/%original_file_name%"
-    },
-    {
         "source":      "/packages/apps/LineageParts/res/values/plurals.xml",
         "translation": "/packages/apps/LineageParts/res/values-%android_code%/%original_file_name%"
     },
