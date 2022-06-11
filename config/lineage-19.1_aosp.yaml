@@ -153,14 +153,6 @@
         "translation": "/vendor/crowdin/overlay/packages/apps/Car/libs/car-apps-common/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Car/libs/car-assist-client-lib/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/apps/Car/libs/car-assist-client-lib/res/values-%android_code%/%original_file_name%"
-    },
-    {
-        "source":      "/packages/apps/Car/libs/car-broadcastradio-support/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/apps/Car/libs/car-broadcastradio-support/res/values-%android_code%/%original_file_name%"
-    },
-    {
         "source":      "/packages/apps/Car/libs/car-media-common/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Car/libs/car-media-common/res/values-%android_code%/%original_file_name%"
     },
@@ -187,6 +179,14 @@
     {
         "source":      "/packages/apps/Car/Settings/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Car/Settings/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Car/systemlibs/car-assist-client-lib/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/libs/car-assist-client-lib/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Car/systemlibs/car-broadcastradio-support/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/libs/car-broadcastradio-support/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/SystemUI/res/values/strings.xml",
