@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f35274e9_9535e785",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 30091
+      },
+      "writtenOn": "2022-09-30T22:43:09Z",
+      "side": 1,
+      "message": "Avoid errors at compilation if following README.mkdn guide:\nCopy \u003clineage_version\u003e_extra_packages.xml to .repo/local_manifests",
+      "revId": "ed5b7e61d0e0ba74c1446d5e5cc2133387cacefb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
