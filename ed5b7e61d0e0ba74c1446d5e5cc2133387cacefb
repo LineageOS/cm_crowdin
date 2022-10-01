@@ -16,6 +16,23 @@
       "message": "Avoid errors at compilation if following README.mkdn guide:\nCopy \u003clineage_version\u003e_extra_packages.xml to .repo/local_manifests",
       "revId": "ed5b7e61d0e0ba74c1446d5e5cc2133387cacefb",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1684b8e5_1465df9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-10-01T11:49:50Z",
+      "side": 1,
+      "message": "I don\u0027t get why you would need to follow the readme on the crowdin project if you weren\u0027t to do the translation upload or download. These projects are indeed required for 18.1.",
+      "revId": "ed5b7e61d0e0ba74c1446d5e5cc2133387cacefb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
