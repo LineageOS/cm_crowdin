@@ -27,10 +27,10 @@
         "source":      "/frameworks/base/packages/SettingsLib/res/values/cm_strings.xml",
         "translation": "/frameworks/base/packages/SettingsLib/res/values-%android_code%/%original_file_name%"
     },
-#    {
-#        "source":      "/frameworks/base/packages/SystemUI/res/values/cm_strings.xml",
-#        "translation": "/frameworks/base/packages/SystemUI/res/values-%android_code%/%original_file_name%"
-#    },
+    {
+        "source":      "/frameworks/base/packages/SystemUI/res/values/cm_strings.xml",
+        "translation": "/frameworks/base/packages/SystemUI/res/values-%android_code%/%original_file_name%"
+    },
     {
         "source":      "/packages/apps/AudioFX/res/values/cm_strings.xml",
         "translation": "/packages/apps/AudioFX/res/values-%android_code%/%original_file_name%"
@@ -151,14 +151,14 @@
         "source":      "/packages/inputmethods/LatinIME/java/res/values/cm_strings.xml",
         "translation": "/packages/inputmethods/LatinIME/java/res/values-%android_code%/%original_file_name%"
     },
-#    {
-#        "source":      "/packages/providers/DownloadProvider/res/values/cm_plurals.xml",
-#        "translation": "/packages/providers/DownloadProvider/res/values-%android_code%/%original_file_name%"
-#    },
-#    {
-#        "source":      "/packages/providers/DownloadProvider/res/values/cm_strings.xml",
-#        "translation": "/packages/providers/DownloadProvider/res/values-%android_code%/%original_file_name%"
-#    },
+    {
+        "source":      "/packages/providers/DownloadProvider/res/values/cm_plurals.xml",
+        "translation": "/packages/providers/DownloadProvider/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/providers/DownloadProvider/res/values/cm_strings.xml",
+        "translation": "/packages/providers/DownloadProvider/res/values-%android_code%/%original_file_name%"
+    },
     {
         "source":      "/packages/services/Mms/res/values/cm_strings.xml",
         "translation": "/packages/services/Mms/res/values-%android_code%/%original_file_name%"
