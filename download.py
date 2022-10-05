@@ -122,11 +122,11 @@ def upload_translations_gerrit(extracted, xml, base_path, branch, username):
             project_path = result_path
             all_projects.append(project_path)
 
-        branch = result_project.get("revision") or branch
+        project_branch = result_project.get("revision") or branch
         project_name = result_project.get("name")
 
         push_as_commit(
-            extracted, base_path, project_path, project_name, branch, username
+            extracted, base_path, project_path, project_name, project_branch, username
         )
 
 
