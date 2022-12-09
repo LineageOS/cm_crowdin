@@ -32,6 +32,10 @@
         "translation": "/frameworks/base/packages/SystemUI/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/Aperture/app/src/main/res/values/strings.xml",
+        "translation": "/packages/apps/Aperture/app/src/main/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/AudioFX/res/values/cm_strings.xml",
         "translation": "/packages/apps/AudioFX/res/values-%android_code%/%original_file_name%"
     },
