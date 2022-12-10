@@ -31,6 +31,7 @@ import from_zip
 import gerrit
 import upload
 import utils
+import wiki
 
 _DIR = os.path.dirname(os.path.realpath(__file__))
 _COMMITS_CREATED = False
@@ -75,6 +76,12 @@ def parse_args():
     )
     parser.add_argument(
         "--unzip", nargs="+", help="Specify a translation zip to treat like a download"
+    )
+    parser.add_argument(
+        "-w",
+        "--generate_wiki_list",
+        action="store_true",
+        help="Get the proofreader list for the wiki"
     )
     return parser.parse_args()
 
@@ -128,6 +135,8 @@ def main():
     elif args.unzip:
         xml_files = utils.get_xml_files(base_path, default_branch)
         from_zip.unzip(args.unzip, base_path, default_branch, xml_files, username)
+    elif args.generate_wiki_list:
+        wiki.generate_wiki_list(config_dict["files"])
 
     if download.has_created_commits() or upload.has_uploaded():
         print("\nDone!")
