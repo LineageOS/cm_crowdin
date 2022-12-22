@@ -96,6 +96,10 @@
         "translation": "/packages/apps/Dialer/java/com/android/incallui/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/DocumentsUI/res/values/lineage_strings.xml",
+        "translation": "/packages/apps/DocumentsUI/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Eleven/res/values/plurals.xml",
         "translation": "/packages/apps/Eleven/res/values-%android_code%/%original_file_name%"
     },
