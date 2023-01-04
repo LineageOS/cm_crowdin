@@ -697,8 +697,8 @@
         "translation": "/vendor/crowdin/overlay/packages/services/Car/FrameworkPackageStubs/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/services/Car/service/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/services/Car/service/res/values-%android_code%/%original_file_name%"
+        "source":      "/packages/services/Car/service-builtin/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/services/Car/service-builtin/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/services/Mtp/res/values/strings.xml",
