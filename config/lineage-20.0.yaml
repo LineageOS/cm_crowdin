@@ -184,6 +184,10 @@
         "translation": "/device/oneplus/sm8150-common/camera_helper/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/hardware/mediatek/BesLoudness/res/values/strings.xml",
+        "translation": "/hardware/mediatek/BesLoudness/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/hardware/oneplus/KeyHandler/res/values/strings.xml",
         "translation": "/hardware/oneplus/KeyHandler/res/values-%android_code%/%original_file_name%"
     },
