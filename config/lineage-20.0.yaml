@@ -148,6 +148,10 @@
         "translation": "/packages/apps/SetupWizard/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/ThemePicker/themes/res/values/lineage_strings.xml",
+        "translation": "/packages/apps/ThemePicker/themes/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Trebuchet/res/values/lineage_strings.xml",
         "translation": "/packages/apps/Trebuchet/res/values-%android_code%/%original_file_name%"
     },
