@@ -248,6 +248,11 @@ def clean_xml_file(path, repo):
         # remove the other comments
         p.remove(c)
 
+    # Remove string(-array)s that are marked as non-translatable
+    non_translatable = tree.xpath('//*[@translatable="false"]')
+    for n in non_translatable:
+        tree.remove(n)
+
     # Take the original xml declaration and prepend it
     declaration = xml.split("\n")[0]
     if "<?" in declaration:
