@@ -250,7 +250,7 @@ def clean_xml_file(path, repo):
         p.remove(c)
 
     # Remove string(-array)s that are marked as non-translatable
-    non_translatable = tree.xpath('//*[@translatable="false"]')
+    non_translatable = [x for x in tree.xpath('//*[@translatable="false"]') if x.getparent() is tree]
     for n in non_translatable:
         tree.remove(n)
 
