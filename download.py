@@ -181,6 +181,7 @@ def clean_xml_file(path, repo):
     if not os.path.isfile(path):
         print(f"Called clean_xml_file, but not a file: {path}")
         return
+    print(f"Cleaning file {path}")
 
     try:
         fh = open(path, "r+")
