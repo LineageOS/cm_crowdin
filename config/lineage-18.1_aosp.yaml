@@ -150,51 +150,51 @@
     },
     {
         "source":      "/packages/apps/Car/Calendar/res/values/strings.xml",
-        "translation": "/packages/apps/Car/Calendar/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/Calendar/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/Dialer/res/values/strings.xml",
-        "translation": "/packages/apps/Car/Dialer/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/Dialer/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/Launcher/res/values/strings.xml",
-        "translation": "/packages/apps/Car/Launcher/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/Launcher/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/libs/car-apps-common/res/values/strings.xml",
-        "translation": "/packages/apps/Car/libs/car-apps-common/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/libs/car-apps-common/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/libs/car-assist-client-lib/res/values/strings.xml",
-        "translation": "/packages/apps/Car/libs/car-assist-client-lib/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/libs/car-assist-client-lib/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/libs/car-broadcastradio-support/res/values/strings.xml",
-        "translation": "/packages/apps/Car/libs/car-broadcastradio-support/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/libs/car-broadcastradio-support/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/libs/car-media-common/res/values/strings.xml",
-        "translation": "/packages/apps/Car/libs/car-media-common/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/libs/car-media-common/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/libs/car-messenger-common/res/values/strings.xml",
-        "translation": "/packages/apps/Car/libs/car-messenger-common/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/libs/car-messenger-common/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/libs/car-telephony-common/res/values/strings.xml",
-        "translation": "/packages/apps/Car/libs/car-telephony-common/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/libs/car-telephony-common/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/LinkViewer/res/values/strings.xml",
-        "translation": "/packages/apps/Car/LinkViewer/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/LinkViewer/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/Media/res/values/strings.xml",
-        "translation": "/packages/apps/Car/Media/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/Media/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/Notification/res/values/strings.xml",
-        "translation": "/packages/apps/Car/Notification/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/Notification/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/Settings/res/values/arrays.xml",
@@ -206,7 +206,7 @@
     },
     {
         "source":      "/packages/apps/Car/SystemUpdater/res/values/strings.xml",
-        "translation": "/packages/apps/Car/SystemUpdater/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/SystemUpdater/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/CellBroadcastReceiver/res/values/strings.xml",
@@ -542,7 +542,7 @@
     },
     {
         "source":      "/packages/apps/QuickAccessWallet/res/values/strings.xml",
-        "translation": "/packages/apps/QuickAccessWallet/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/QuickAccessWallet/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/SafetyRegulatoryInfo/res/values/strings.xml",
@@ -582,11 +582,11 @@
     },
     {
         "source":      "/packages/apps/TV/res/values/arrays.xml",
-        "translation": "/packages/apps/TV/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/TV/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/TV/res/values/strings.xml",
-        "translation": "/packages/apps/TV/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/apps/TV/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/TvSettings/Settings/res/values/arrays.xml",
@@ -630,7 +630,7 @@
     },
     {
         "source":      "/packages/inputmethods/LeanbackIME/res/values/strings.xml",
-        "translation": "/packages/inputmethods/LeanbackIME/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/inputmethods/LeanbackIME/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/modules/CaptivePortalLogin/res/values/strings.xml",
@@ -638,15 +638,15 @@
     },
     {
         "source":      "/packages/modules/CellBroadcastService/res/values/strings.xml",
-        "translation": "/packages/modules/CellBroadcastService/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/modules/CellBroadcastService/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/modules/ExtServices/res/values/strings.xml",
-        "translation": "/packages/modules/ExtServices/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/modules/ExtServices/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/modules/NetworkStack/res/values/strings.xml",
-        "translation": "/packages/modules/NetworkStack/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/modules/NetworkStack/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/providers/BlockedNumberProvider/res/values/strings.xml",
@@ -686,7 +686,7 @@
     },
     {
         "source":      "/packages/providers/TvProvider/res/values/strings.xml",
-        "translation": "/packages/providers/TvProvider/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/providers/TvProvider/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/providers/UserDictionaryProvider/res/values/strings.xml",
@@ -726,7 +726,7 @@
     },
     {
         "source":      "/packages/services/Mtp/res/values/strings.xml",
-        "translation": "/packages/services/Mtp/res/values-%android_code%/%original_file_name%"
+        "translation": "/vendor/crowdin/overlay/packages/services/Mtp/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/services/Telecomm/res/values/strings.xml",
