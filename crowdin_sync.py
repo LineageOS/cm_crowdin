@@ -62,8 +62,8 @@ def parse_args():
     parser.add_argument(
         "-g",
         "--gerrit",
-        choices=["vote", "submit"],
-        help="Vote (CR+1/V+1) on or submit (incl. CR+2/V+1) open translation commits",
+        choices=["abandon", "vote", "submit"],
+        help="Abandon, Vote (CR+1/V+1) on or submit (incl. CR+2/V+1) open translation commits",
     )
     parser.add_argument(
         "-o", "--owner", help="Specify the owner of the commits to submit"
@@ -103,7 +103,10 @@ def main():
     default_branch = args.branch
 
     username = utils.get_username(args)
-    if args.gerrit == "submit":
+    if args.gerrit == "abandon":
+        gerrit.abandon(default_branch, username, args.owner)
+        sys.exit(0)
+    elif args.gerrit == "submit":
         gerrit.submit(default_branch, username, args.owner)
         sys.exit(0)
     elif args.gerrit == "vote":

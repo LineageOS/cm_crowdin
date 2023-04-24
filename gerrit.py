@@ -25,6 +25,30 @@ import sys
 import utils
 
 
+def abandon(branch, username, owner):
+    commits = 0
+    changes = get_open_changes(branch, username, owner)
+    for change in changes:
+        print(f"Abandoning commit {changes[change]}: ", end="")
+        # Abandon
+        cmd = utils.get_gerrit_base_cmd(username) + [
+            "review",
+            "--abandon",
+            change,
+        ]
+        msg, code = utils.run_subprocess(cmd, True)
+        if code != 0:
+            error_text = msg[1].replace("\n\n", "; ").replace("\n", "")
+            print(f"Failed! -- {error_text}")
+        else:
+            print("Success")
+
+        commits += 1
+
+    if commits == 0:
+        print("Nothing to abandon!")
+
+
 def submit(branch, username, owner):
     commits = 0
     changes = get_open_changes(branch, username, owner)
