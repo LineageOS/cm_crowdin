@@ -66,6 +66,9 @@ def parse_args():
         help="Abandon, Vote (CR+1/V+1) on or submit (incl. CR+2/V+1) open translation commits",
     )
     parser.add_argument(
+        "-m", "--message", help="Specify the gerrit abandon/vote message"
+    )
+    parser.add_argument(
         "-o", "--owner", help="Specify the owner of the commits to submit"
     )
     parser.add_argument(
@@ -104,13 +107,13 @@ def main():
 
     username = utils.get_username(args)
     if args.gerrit == "abandon":
-        gerrit.abandon(default_branch, username, args.owner)
+        gerrit.abandon(default_branch, username, args.owner, args.message)
         sys.exit(0)
     elif args.gerrit == "submit":
         gerrit.submit(default_branch, username, args.owner)
         sys.exit(0)
     elif args.gerrit == "vote":
-        gerrit.vote(default_branch, username, args.owner)
+        gerrit.vote(default_branch, username, args.owner, args.message)
         sys.exit(0)
 
     base_path = utils.get_base_path(default_branch)
