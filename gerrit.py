@@ -26,7 +26,7 @@ import sys
 import utils
 
 
-def abandon(branch, username, owner):
+def abandon(branch, username, owner, message):
     commits = 0
     changes = get_open_changes(branch, username, owner)
     for change in changes:
@@ -37,6 +37,8 @@ def abandon(branch, username, owner):
             "--abandon",
             change,
         ]
+        if message:
+            cmd += ["--message", f"'{message}'"]
         msg, code = utils.run_subprocess(cmd, True)
         if code != 0:
             error_text = msg[1].replace("\n\n", "; ").replace("\n", "")
@@ -76,7 +78,7 @@ def submit(branch, username, owner):
         print("Nothing to submit!")
 
 
-def vote(branch, username, owner):
+def vote(branch, username, owner, message):
     commits = 0
     changes = get_open_changes(branch, username, owner)
     for change in changes:
@@ -88,6 +90,8 @@ def vote(branch, username, owner):
             "--code-review +1",  # we often can't self-CR+2 (limited by admin), submitter needs to do that
             change,
         ]
+        if message:
+            cmd += ["--message", f"'{message}'"]
         msg, code = utils.run_subprocess(cmd, True)
         if code != 0:
             error_text = msg[1].replace("\n\n", "; ").replace("\n", "")
