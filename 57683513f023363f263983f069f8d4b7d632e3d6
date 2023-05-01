@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5855e48_57a9cfe9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2023-05-01T15:09:06Z",
+      "side": 1,
+      "message": "I want to add abandon msg with link to failed buildkite job ^^",
+      "revId": "57683513f023363f263983f069f8d4b7d632e3d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
