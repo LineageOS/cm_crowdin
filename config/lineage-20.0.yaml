@@ -156,8 +156,8 @@
         "translation": "/packages/apps/Trebuchet/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Updater/res/values/strings.xml",
-        "translation": "/packages/apps/Updater/res/values-%android_code%/%original_file_name%"
+        "source":      "/packages/apps/Updater/app/src/main/res/values/strings.xml",
+        "translation": "/packages/apps/Updater/app/src/main/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/inputmethods/LatinIME/java/res/values/cm_strings.xml",
