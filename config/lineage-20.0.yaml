@@ -192,6 +192,10 @@
         "translation": "/hardware/mediatek/BesLoudness/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/hardware/mediatek/PowerOffAlarm/res/values/strings.xml",
+        "translation": "/hardware/mediatek/PowerOffAlarm/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/hardware/oneplus/KeyHandler/res/values/strings.xml",
         "translation": "/hardware/oneplus/KeyHandler/res/values-%android_code%/%original_file_name%"
     },
