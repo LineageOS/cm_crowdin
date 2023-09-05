@@ -185,10 +185,6 @@
         "translation": "/vendor/crowdin/overlay/packages/apps/DeskClock/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Dialer/java/com/android/dialer/about/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/about/res/values-%android_code%/%original_file_name%"
-    },
-    {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/app/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/app/res/values-%android_code%/%original_file_name%"
     },
@@ -201,20 +197,8 @@
         "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/assisteddialing/ui/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Dialer/java/com/android/dialer/blocking/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/blocking/res/values-%android_code%/%original_file_name%"
-    },
-    {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/blockreportspam/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/blockreportspam/res/values-%android_code%/%original_file_name%"
-    },
-    {
-        "source":      "/packages/apps/Dialer/java/com/android/dialer/callcomposer/cameraui/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/callcomposer/cameraui/res/values-%android_code%/%original_file_name%"
-    },
-    {
-        "source":      "/packages/apps/Dialer/java/com/android/dialer/callcomposer/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/callcomposer/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/calldetails/res/values/strings.xml",
@@ -223,10 +207,6 @@
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/calllog/ui/menu/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/calllog/ui/menu/res/values-%android_code%/%original_file_name%"
-    },
-    {
-        "source":      "/packages/apps/Dialer/java/com/android/dialer/calllog/ui/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/calllog/ui/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/calllogutils/res/values/strings.xml",
@@ -255,10 +235,6 @@
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/dialpadview/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/dialpadview/res/values-%android_code%/%original_file_name%"
-    },
-    {
-        "source":      "/packages/apps/Dialer/java/com/android/dialer/enrichedcall/simulator/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/enrichedcall/simulator/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/glidephotomanager/impl/res/values/strings.xml",
@@ -333,10 +309,6 @@
         "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/shortcuts/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Dialer/java/com/android/dialer/spam/promo/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/spam/promo/res/values-%android_code%/%original_file_name%"
-    },
-    {
         "source":      "/packages/apps/Dialer/java/com/android/dialer/spannable/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/dialer/spannable/res/values-%android_code%/%original_file_name%"
     },
@@ -373,20 +345,12 @@
         "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/incallui/answer/impl/answermethod/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Dialer/java/com/android/incallui/answer/impl/hint/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/incallui/answer/impl/hint/res/values-%android_code%/%original_file_name%"
-    },
-    {
         "source":      "/packages/apps/Dialer/java/com/android/incallui/answer/impl/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/incallui/answer/impl/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/incallui/audioroute/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/incallui/audioroute/res/values-%android_code%/%original_file_name%"
-    },
-    {
-        "source":      "/packages/apps/Dialer/java/com/android/incallui/calllocation/impl/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/apps/Dialer/java/com/android/incallui/calllocation/impl/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Dialer/java/com/android/incallui/commontheme/res/values/strings.xml",
