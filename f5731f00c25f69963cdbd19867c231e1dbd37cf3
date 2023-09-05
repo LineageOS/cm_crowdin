@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b9ad16d_1456eed0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2023-09-05T19:15:35Z",
+      "side": 1,
+      "message": "grep packages/apps/Dialer lineage/crowdin/config/lineage-20.0.yaml | grep source | awk \u0027{ print $2 }\u0027 | cut -b3- | sed \u0027s/\",//g\u0027 | xargs ls\n\nresults in\npackages/apps/Dialer/java/com/android/dialer/app/res/values/cm_strings.xml         packages/apps/Dialer/java/com/android/dialer/callstats/res/values/cm_strings.xml\npackages/apps/Dialer/java/com/android/dialer/calldetails/res/values/cm_strings.xml   packages/apps/Dialer/java/com/android/dialer/helplines/res/values/helpline_categories.xml\npackages/apps/Dialer/java/com/android/dialer/calllogutils/res/values/cm_strings.xml  packages/apps/Dialer/java/com/android/dialer/helplines/res/values/strings.xml\npackages/apps/Dialer/java/com/android/dialer/callstats/res/values/cm_arrays.xml      packages/apps/Dialer/java/com/android/dialer/lookup/res/values/cm_strings.xml\npackages/apps/Dialer/java/com/android/dialer/callstats/res/values/cm_plurals.xml     packages/apps/Dialer/java/com/android/incallui/res/values/cm_strings.xml\n\nShould therefore be fine",
+      "revId": "f5731f00c25f69963cdbd19867c231e1dbd37cf3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
