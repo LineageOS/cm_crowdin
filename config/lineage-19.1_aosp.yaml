@@ -97,6 +97,10 @@
         "translation": "/vendor/crowdin/overlay/frameworks/base/packages/SystemUI/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/frameworks/base/packages/SystemUI/res/values/tiles_states_strings.xml",
+        "translation": "/vendor/crowdin/overlay/frameworks/base/packages/SystemUI/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/frameworks/base/packages/SystemUI/res-keyguard/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/frameworks/base/packages/SystemUI/res-keyguard/values-%android_code%/%original_file_name%"
     },
