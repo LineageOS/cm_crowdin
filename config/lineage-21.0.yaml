@@ -224,11 +224,11 @@
         "translation": "/packages/apps/FlipFlap/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/vendor/qcom/opensource/fm-commonsys/fmapp2/res/values/arrays.xml",
-        "translation": "/vendor/qcom/opensource/fm-commonsys/fmapp2/res/values-%android_code%/%original_file_name%"
+        "source":      "/vendor/qcom/opensource/commonsys/fm/fmapp2/res/values/arrays.xml",
+        "translation": "/vendor/qcom/opensource/commonsys/fm/fmapp2/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/vendor/qcom/opensource/fm-commonsys/fmapp2/res/values/strings.xml",
-        "translation": "/vendor/qcom/opensource/fm-commonsys/fmapp2/res/values-%android_code%/%original_file_name%"
+        "source":      "/vendor/qcom/opensource/commonsys/fm/fmapp2/res/values/strings.xml",
+        "translation": "/vendor/qcom/opensource/commonsys/fm/fmapp2/res/values-%android_code%/%original_file_name%"
     }
 ]
