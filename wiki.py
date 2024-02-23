@@ -36,7 +36,7 @@ users_to_append = {
     ],
     "el": [{"username": "mikeioannina", "fullName": "Michael Bestas"}],
     "en-AU": [{"username": "forkbomb", "fullName": "Simon Shields"}],
-    "en-PT": [{"username": "javelinanddart", "fullName": "Paul Keith"}],
+    "en-PT": [{"username": "javelinanddart", "fullName": "Joseph Annareddy"}],
     "it": [{"username": "linuxx", "fullName": "Joey Rizzoli"}],
     "nl": [{"username": "eddywitkamp", "fullName": "Eddy Witkamp"}],
 }
