@@ -121,8 +121,8 @@
         "translation": "/vendor/crowdin/overlay/packages/apps/AudioFX/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Car/Launcher/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/apps/Car/Launcher/res/values-%android_code%/%original_file_name%"
+        "source":      "/packages/apps/Car/Launcher/app/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/Launcher/app/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/LinkViewer/res/values/strings.xml",
