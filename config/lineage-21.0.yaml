@@ -44,6 +44,10 @@
         "translation": "/packages/apps/Backgrounds/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/Car/Settings/res/values/lineage_strings.xml",
+        "translation": "/packages/apps/Car/Settings/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Contacts/res/values/lineage_strings.xml",
         "translation": "/packages/apps/Contacts/res/values-%android_code%/%original_file_name%"
     },
@@ -154,6 +158,10 @@
     {
         "source":      "/packages/apps/Trebuchet/res/values/lineage_strings.xml",
         "translation": "/packages/apps/Trebuchet/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/TvSettings/Settings/res/values/lineage_strings.xml",
+        "translation": "/packages/apps/TvSettings/Settings/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Updater/app/src/main/res/values/strings.xml",
