@@ -36,6 +36,7 @@ Each LineageOS version requires a different environment variable set for the bas
     export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_19_1=your_19.1_base_path
     export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_20_0=your_20.0_base_path
     export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_21.0=your_21.0_base_path
+    export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_22.0=your_22.0_base_path
 
 Example:
 
@@ -43,6 +44,7 @@ Example:
     export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_19_1=/mnt/android/lineageos/lineage-19.1
     export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_20_0=/mnt/android/lineageos/lineage-20.0
     export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_21_0=/mnt/android/lineageos/lineage-21.0
+    export LINEAGE_CROWDIN_BASE_PATH_LINEAGE_22_0=/mnt/android/lineageos/lineage-22.0
 
 Execute:
 
