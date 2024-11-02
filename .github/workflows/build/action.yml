@@ -6,7 +6,9 @@ runs:
     steps:
     - name: Install dependencies
       shell: bash
-      run: sudo apt -y install libxml2-utils yq
+      run: |
+        sudo apt -y install libxml2-utils
+        sudo snap install yq
 
     - name: Validate config/*.xml
       shell: bash
