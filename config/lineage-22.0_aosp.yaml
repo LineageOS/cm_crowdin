@@ -161,10 +161,6 @@
         "translation": "/vendor/crowdin/overlay/packages/apps/Car/systemlibs/car-assist-client-lib/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Car/systemlibs/car-broadcastradio-support/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/apps/Car/systemlibs/car-broadcastradio-support/res/values-%android_code%/%original_file_name%"
-    },
-    {
         "source":      "/packages/apps/Car/SystemUI/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Car/SystemUI/res/values-%android_code%/%original_file_name%"
     },
