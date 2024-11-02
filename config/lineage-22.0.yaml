@@ -176,6 +176,10 @@
         "translation": "/packages/apps/Updater/app/src/main/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/Twelve/app/src/main/res/values/strings.xml",
+        "translation": "/packages/apps/Twelve/app/src/main/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/inputmethods/LatinIME/java/res/values/cm_strings.xml",
         "translation": "/packages/inputmethods/LatinIME/java/res/values-%android_code%/%original_file_name%"
     },
