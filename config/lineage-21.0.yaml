@@ -120,6 +120,18 @@
         "translation": "/packages/apps/Etar/app/src/main/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/FMRadio/provider/res/values/strings.xml",
+        "translation": "/packages/apps/FMRadio/provider/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/FMRadio/res/values/cm_strings.xml",
+        "translation": "/packages/apps/FMRadio/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/FMRadio/res/values/strings.xml",
+        "translation": "/packages/apps/FMRadio/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Glimpse/app/src/main/res/values/strings.xml",
         "translation": "/packages/apps/Glimpse/app/src/main/res/values-%android_code%/%original_file_name%"
     },

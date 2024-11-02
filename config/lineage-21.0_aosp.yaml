@@ -25,6 +25,10 @@
 
 "files": [
     {
+        "source":      "/bootable/recovery/tools/recovery_l10n/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/bootable/recovery/tools/recovery_l10n/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/frameworks/base/core/res/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/frameworks/base/core/res/res/values-%android_code%/%original_file_name%"
     },
@@ -123,6 +127,18 @@
     {
         "source":      "/packages/apps/Car/Launcher/app/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Car/Launcher/app/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Car/Launcher/docklib/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/Launcher/docklib/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Car/Launcher/libs/appgrid/lib/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/Launcher/libs/appgrid/lib/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Car/Launcher/libs/car-launcher-common/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/Car/Launcher/libs/car-launcher-common/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/Car/LinkViewer/res/values/strings.xml",
@@ -405,6 +421,10 @@
         "translation": "/vendor/crowdin/overlay/packages/apps/DocumentsUI/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/EmergencyInfo/EmergencyGestureAction/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/EmergencyInfo/EmergencyGestureAction/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/EmergencyInfo/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/EmergencyInfo/res/values-%android_code%/%original_file_name%"
     },
@@ -415,6 +435,10 @@
     {
         "source":      "/packages/apps/HTMLViewer/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/HTMLViewer/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/ImsServiceEntitlement/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/ImsServiceEntitlement/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/KeyChain/res/values/strings.xml",
@@ -457,6 +481,10 @@
         "translation": "/vendor/crowdin/overlay/packages/apps/Settings/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/SettingsIntelligence/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/SettingsIntelligence/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Stk/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Stk/res/values-%android_code%/%original_file_name%"
     },
@@ -477,6 +505,18 @@
         "translation": "/vendor/crowdin/overlay/packages/apps/ThemePicker/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/ThemePicker/themes/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/ThemePicker/themes/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Trebuchet/go/quickstep/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/Trebuchet/go/quickstep/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/Trebuchet/quickstep/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/Trebuchet/quickstep/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Trebuchet/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Trebuchet/res/values-%android_code%/%original_file_name%"
     },
@@ -485,8 +525,16 @@
         "translation": "/vendor/crowdin/overlay/packages/apps/TV/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/TV/common/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/TV/common/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/TV/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/TV/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/TvFeedbackConsent/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/TvFeedbackConsent/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/TvSettings/Settings/res/values/arrays.xml",
@@ -495,6 +543,14 @@
     {
         "source":      "/packages/apps/TvSettings/Settings/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/TvSettings/Settings/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/TvSettings/TwoPanelSettingsLib/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/TvSettings/TwoPanelSettingsLib/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/apps/TvSystemUI/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/TvSystemUI/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/WallpaperPicker2/res/values/strings.xml",
@@ -533,6 +589,10 @@
         "translation": "/vendor/crowdin/overlay/packages/inputmethods/LeanbackIME/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/modules/AdServices/adservices/apk/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/modules/AdServices/adservices/apk/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/modules/Bluetooth/android/app/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/modules/Bluetooth/android/app/res/values-%android_code%/%original_file_name%"
     },
@@ -565,8 +625,20 @@
         "translation": "/vendor/crowdin/overlay/packages/modules/DeviceLock/DeviceLockController/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/modules/ExtServices/java/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/modules/ExtServices/java/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/modules/HealthFitness/apk/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/modules/HealthFitness/apk/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/modules/IntentResolver/java/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/modules/IntentResolver/java/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/modules/ModuleMetadata/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/modules/ModuleMetadata/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/modules/NetworkStack/res/values/strings.xml",
@@ -575,6 +647,14 @@
     {
         "source":      "/packages/modules/Permission/PermissionController/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/modules/Permission/PermissionController/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/modules/Permission/SafetyCenter/Resources/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/modules/Permission/SafetyCenter/Resources/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/modules/Permission/SafetyCenter/Resources/shared_res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/modules/Permission/SafetyCenter/Resources/shared_res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/modules/Wifi/OsuLogin/res/values/strings.xml",
@@ -641,16 +721,44 @@
         "translation": "/vendor/crowdin/overlay/packages/services/BuiltInPrintService/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/services/Car/car-admin-ui-lib/src/main/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/services/Car/car-admin-ui-lib/src/main/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/Car/car-lib/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/services/Car/car-lib/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/services/Car/car-maps-placeholder/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/services/Car/car-maps-placeholder/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/Car/car_product/car_ui_portrait/apps/CarUiPortraitSystemUI/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/services/Car/car_product/car_ui_portrait/apps/CarUiPortraitSystemUI/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/services/Car/car-usb-handler/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/services/Car/car-usb-handler/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/services/Car/experimental/service/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/services/Car/experimental/service/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/services/Car/FrameworkPackageStubs/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/services/Car/FrameworkPackageStubs/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/Car/packages/CarDeveloperOptions/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/services/Car/packages/CarDeveloperOptions/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/Car/packages/CarManagedProvisioning/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/services/Car/packages/CarManagedProvisioning/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/Car/service/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/services/Car/service/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/services/Car/service-builtin/res/values/strings.xml",
