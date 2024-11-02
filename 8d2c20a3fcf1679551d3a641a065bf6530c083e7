@@ -69,6 +69,24 @@
       "message": "Sort",
       "revId": "8d2c20a3fcf1679551d3a641a065bf6530c083e7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab210e38_ce9bbadd",
+        "filename": "config/lineage-22.0.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2024-11-02T13:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65562e6d_a19395d1",
+      "revId": "8d2c20a3fcf1679551d3a641a065bf6530c083e7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
