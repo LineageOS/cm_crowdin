@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "515099ec_01c3eafa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2024-11-02T10:54:23Z",
+      "side": 1,
+      "message": "Shall we add Twelve as is for now? I prefer to have translations",
+      "revId": "8d2c20a3fcf1679551d3a641a065bf6530c083e7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
