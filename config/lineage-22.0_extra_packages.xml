@@ -10,4 +10,5 @@
   <project path="hardware/sony/SonyOpenTelephony" name="LineageOS/android_hardware_sony_SonyOpenTelephony" />
 
   <project path="packages/apps/ElmyraService" name="LineageOS/android_packages_apps_ElmyraService" />
+  <project path="packages/apps/Twelve" name="LineageOS/android_packages_apps_Twelve" />
 </manifest>
