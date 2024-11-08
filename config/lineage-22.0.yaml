@@ -100,14 +100,6 @@
         "translation": "/packages/apps/DocumentsUI/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/apps/Eleven/res/values/plurals.xml",
-        "translation": "/packages/apps/Eleven/res/values-%android_code%/%original_file_name%"
-    },
-    {
-        "source":      "/packages/apps/Eleven/res/values/strings.xml",
-        "translation": "/packages/apps/Eleven/res/values-%android_code%/%original_file_name%"
-    },
-    {
         "source":      "/packages/apps/Etar/app/src/main/res/values/arrays.xml",
         "translation": "/packages/apps/Etar/app/src/main/res/values-%android_code%/%original_file_name%"
     },
