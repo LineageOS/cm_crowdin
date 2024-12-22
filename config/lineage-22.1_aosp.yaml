@@ -1,4 +1,4 @@
-# lineage-22.0_aosp.yaml
+# lineage-22.1_aosp.yaml
 #
 # Crowdin configuration file for LineageOS'
 # additional languages not supported by AOSP
@@ -19,7 +19,7 @@
 # limitations under the License.
 
 "api_token_env": LINEAGE_CROWDIN_API_TOKEN
-"base_path_env": LINEAGE_CROWDIN_BASE_PATH_LINEAGE_22_0
+"base_path_env": LINEAGE_CROWDIN_BASE_PATH_LINEAGE_22_1
 "project_id": 238011
 "preserve_hierarchy": true
 
@@ -761,8 +761,12 @@
         "translation": "/vendor/crowdin/overlay/packages/services/Car/service-builtin/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/packages/services/DeviceAsWebcam/res/values/strings.xml",
-        "translation": "/vendor/crowdin/overlay/packages/services/DeviceAsWebcam/res/values-%android_code%/%original_file_name%"
+        "source":      "/packages/services/DeviceAsWebcam/impl/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/services/DeviceAsWebcam/impl/res/values-%android_code%/%original_file_name%"
+    },
+    {
+        "source":      "/packages/services/DeviceAsWebcam/interface/res/values/strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/services/DeviceAsWebcam/interface/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/services/Mtp/res/values/strings.xml",
