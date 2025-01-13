@@ -7,6 +7,7 @@
   <project path="hardware/oneplus" name="LineageOS/android_hardware_oneplus" />
   <project path="hardware/oplus" name="LineageOS/android_hardware_oplus" />
   <project path="hardware/samsung" name="LineageOS/android_hardware_samsung" />
+  <project path="hardware/sony" name="LineageOS/android_hardware_sony" />
   <project path="hardware/sony/SonyOpenTelephony" name="LineageOS/android_hardware_sony_SonyOpenTelephony" />
 
   <project path="packages/apps/ElmyraService" name="LineageOS/android_packages_apps_ElmyraService" />
