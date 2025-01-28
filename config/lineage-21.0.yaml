@@ -216,6 +216,10 @@
         "translation": "/hardware/lge/dac_panel/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/hardware/nothing/ParanoidGlyph/res/values/strings.xml",
+        "translation": "/hardware/nothing/ParanoidGlyph/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/hardware/oneplus/KeyHandler/res/values/strings.xml",
         "translation": "/hardware/oneplus/KeyHandler/res/values-%android_code%/%original_file_name%"
     },
