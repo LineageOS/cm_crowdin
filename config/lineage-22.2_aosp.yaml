@@ -1,4 +1,4 @@
-# lineage-22.1_aosp.yaml
+# lineage-22.2_aosp.yaml
 #
 # Crowdin configuration file for LineageOS'
 # additional languages not supported by AOSP
@@ -19,7 +19,7 @@
 # limitations under the License.
 
 "api_token_env": LINEAGE_CROWDIN_API_TOKEN
-"base_path_env": LINEAGE_CROWDIN_BASE_PATH_LINEAGE_22_1
+"base_path_env": LINEAGE_CROWDIN_BASE_PATH_LINEAGE_22_2
 "project_id": 238011
 "preserve_hierarchy": true
 

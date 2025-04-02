@@ -1,4 +1,4 @@
-# lineage-22.1.yaml
+# lineage-22.2.yaml
 #
 # Crowdin configuration file for LineageOS
 #
@@ -18,7 +18,7 @@
 # limitations under the License.
 
 "api_token_env": LINEAGE_CROWDIN_API_TOKEN
-"base_path_env": LINEAGE_CROWDIN_BASE_PATH_LINEAGE_22_1
+"base_path_env": LINEAGE_CROWDIN_BASE_PATH_LINEAGE_22_2
 "project_id": 237414
 "preserve_hierarchy": true
 
