@@ -191,6 +191,12 @@ def clean_xml_file(path, repo):
     for element in non_translatable:
         root.remove(element)
 
+    # Remove strings with no content
+    empty_strings = root.xpath("//string[not(text())]")
+    for element in empty_strings:
+        print(f"Found an empty string in {path}")
+        root.remove(element)
+
     # Generate the XML content
     xml_declaration = (
         '<?xml version="1.0" encoding="utf-8"?>\n'
