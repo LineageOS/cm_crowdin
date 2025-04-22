@@ -163,111 +163,90 @@ def clean_xml_file(path, repo):
     if not os.path.isfile(path):
         print(f"Called clean_xml_file, but not a file: {path}")
         return
+
     print(f"Cleaning file {path}")
 
     try:
-        fh = open(path, "r+")
-    except OSError:
-        print(f"Something went wrong while opening file {path}")
-        return
-
-    xml = fh.read()
-    content = ""
-
-    # Take the original xml declaration and prepend it
-    declaration = xml.split("\n")[0]
-    if "<?" in declaration:
-        content = declaration + "\n"
-        start_pos = xml.find("\n") + 1
-        xml = xml[start_pos:]
-
-    try:
         parser = etree.XMLParser(strip_cdata=False)
-        tree = etree.parse(path, parser=parser).getroot()
+        tree = etree.parse(path, parser=parser)
+        root = tree.getroot()
     except etree.XMLSyntaxError as err:
         print(f"{path}: XML Error: {err}")
         filename, ext = os.path.splitext(path)
         if ext == ".xml":
             reset_file(path, repo)
         return
+    except OSError as err:
+        print(f"Something went wrong while opening/parsing file {path}: {err}")
+        return
 
-    # Remove strings with 'product=*' attribute but no 'product=default'
-    # This will ensure aapt2 will not throw an error when building these
-    already_removed = []
-    product_strings = tree.xpath("//string[@product]")
+    # Remove strings with 'product' attribute but no 'product=default' or without 'product'
+    already_removed = set()
+    product_strings = root.xpath("//string[@product]")
     for ps in product_strings:
-        # if we already removed the items, don't process them
         if ps in already_removed:
             continue
         string_name = ps.get("name")
-        strings_with_same_name = tree.xpath("//string[@name='{0}']".format(string_name))
-
-        # We want to find strings with product='default' or no product attribute at all
-        has_product_default = False
-        for string in strings_with_same_name:
-            product = string.get("product")
-            if product is None or product == "default":
-                has_product_default = True
-                break
-
-        # Every occurrence of the string has to be removed when no string with the same name and
-        # 'product=default' (or no product attribute) was found
-        if not has_product_default:
+        matching_strings = root.xpath(f"//string[@name='{string_name}']")
+        has_default = any(
+            s.get("product") in (None, "default") for s in matching_strings
+        )
+        if not has_default:
             print(
                 f"{path}: Found string '{string_name}' with missing 'product=default' attribute"
             )
-            for string in strings_with_same_name:
-                tree.remove(string)
-                already_removed.append(string)
+            for string in matching_strings:
+                root.remove(string)
+                already_removed.add(string)
 
-    header = ""
-    comments = tree.xpath("//comment()")
-    for c in comments:
-        p = c.getparent()
-        if p is None:
-            # Keep all comments in header
-            header += str(c).replace("\\n", "\n").replace("\\t", "\t") + "\n"
-            continue
-        # remove the other comments
-        p.remove(c)
+    # Extract header comments and remove all other comments
+    header_comment = root.xpath("/resources/preceding-sibling::comment()")
+    other_comments = root.xpath("/resources/comment()")
+    for comment in other_comments:
+        root.remove(comment)
 
-    # Remove string(-array)s that are marked as non-translatable
-    non_translatable = tree.xpath('/resources/*[@translatable="false"]')
-    for n in non_translatable:
-        tree.remove(n)
+    # Remove non-translatable string(-array)s
+    non_translatable = root.xpath('//*[@translatable="false"]')
+    for element in non_translatable:
+        root.remove(element)
 
-    # Take the original xml declaration and prepend it
-    declaration = xml.split("\n")[0]
-    if "<?" in declaration:
-        content = declaration + "\n"
-
+    # Generate the XML content
+    xml_declaration = (
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        if "<?xml" in open(path, "r").readline()
+        else ""
+    )
+    content = xml_declaration
+    header_str = "".join(
+        str(c).replace("\\n", "\n").replace("\\t", "\t") + "\n" for c in header_comment
+    )
+    content += header_str
     content += etree.tostring(
-        tree, pretty_print=True, encoding="unicode", xml_declaration=False
+        root, pretty_print=True, encoding="unicode", xml_declaration=False
     )
 
-    if header != "":
-        content = content.replace("?>\n", "?>\n" + header)
-
-    # Sometimes spaces are added, we don't want them
+    # Remove extra spaces before </resources>
     content = re.sub(r"[ ]*</resources>", r"</resources>", content)
 
-    # Overwrite file with content stripped by all comments
-    fh.seek(0)
-    fh.write(content)
-    fh.truncate()
-    fh.close()
+    # Overwrite the file
+    try:
+        with open(path, "w") as fh:
+            fh.write(content)
+    except OSError as err:
+        print(f"Something went wrong while writing to file {path}: {err}")
+        return
 
-    # Remove files which don't have any translated strings
-    content_list = list(tree)
-    if len(content_list) == 0:
-        print(f"Removing {path}")
+    # Remove empty files and their parent directories
+    if not list(root):
+        print(f"Removing empty content file: {path}")
         os.remove(path)
-        # If that was the last file in the folder, we need to remove the folder as well
         dir_name = os.path.dirname(path)
-        if os.path.isdir(dir_name):
-            if not os.listdir(dir_name):
-                print(f"Removing {dir_name}")
+        if os.path.isdir(dir_name) and not os.listdir(dir_name):
+            print(f"Removing empty directory: {dir_name}")
+            try:
                 os.rmdir(dir_name)
+            except OSError as e:
+                print(f"Error removing directory {dir_name}: {e}")
 
 
 def add_to_commit(extracted_files, repo, base_path, project_path):
