@@ -6,7 +6,7 @@
 # uploading it to LineageOS' gerrit
 #
 # Copyright (C) 2014-2016 The CyanogenMod Project
-# Copyright (C) 2017-2022 The LineageOS Project
+# Copyright (C) 2017-2025 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,26 +37,20 @@ def download_crowdin(base_path, branch, xml, username, config_dict, crowdin_path
     extracted = []
     for i, cfg in enumerate(config_dict["files"]):
         print(f"\nDownloading translations from Crowdin ({config_dict['headers'][i]})")
-        cmd = [crowdin_path, "download", f"--branch={branch}", f"--config={cfg}"]
+        cmd = [
+            crowdin_path,
+            "download",
+            f"--branch={branch}",
+            f"--config={cfg}",
+            "--plain",
+        ]
         comm, ret = utils.run_subprocess(cmd, show_spinner=True)
         if ret != 0:
             print(f"Failed to download:\n{comm[1]}", file=sys.stderr)
             sys.exit(1)
-        extracted += get_extracted_files(comm[0], branch)
+        extracted = comm[0].split()
 
     upload_translations_gerrit(extracted, xml, base_path, branch, username)
-
-
-def get_extracted_files(comm, branch):
-    # Get all files that Crowdin pushed
-    # We need to manually parse the shell output
-    extracted = []
-    for p in comm.split("\n"):
-        if "Extracted" in p:
-            path = re.sub(r".*Extracted:\s*", "", p)
-            path = path.replace("'", "").replace(f"/{branch}", "")
-            extracted.append(path)
-    return extracted
 
 
 def upload_translations_gerrit(extracted, xml, base_path, branch, username):
