@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "317caa92_ee0faa8a",
+        "filename": "download.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2025-04-22T19:30:46Z",
+      "side": 1,
+      "message": "how come you can remove stuff more than once?\nthe selector can give dups?",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 27
+      },
+      "revId": "413bf8943e84fba81dc8ef69bfdd4053b22db307",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
