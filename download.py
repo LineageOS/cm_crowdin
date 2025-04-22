@@ -26,6 +26,7 @@ import re
 import shutil
 import sys
 
+from collections import defaultdict
 from lxml import etree
 
 import utils
@@ -55,73 +56,62 @@ def download_crowdin(base_path, branch, xml, username, config_dict, crowdin_path
 
 def upload_translations_gerrit(extracted, xml, base_path, branch, username):
     print("\nUploading translations to Gerrit")
-    items = [x for xml_file in xml for x in xml_file.findall("//project")]
-    all_projects = []
 
-    for path in extracted:
-        path = path.strip()
-        if not path:
-            continue
+    projects_to_push, project_infos = get_project_info(extracted, xml, branch)
 
-        if "/res" not in path:
-            print(f"WARNING: Cannot determine project root dir of [{path}], skipping.")
-            continue
+    # We now push all found projects one by one
+    for project_path, files_in_project in projects_to_push.items():
+        project_info = project_infos[project_path]
+        project_name = project_info["name"]
+        project_branch = project_info["revision"]
 
-        # Usually the project root is everything before /res
-        # but there are special cases where /res is part of the repo name as well
-        parts = path.split("/res")
-        if len(parts) == 2:
-            project_path = parts[0]
-        elif len(parts) == 3:
-            project_path = parts[0] + "/res" + parts[1]
-        else:
-            print(f"WARNING: Splitting the path not successful for [{path}], skipping")
-            continue
-
-        project_path = project_path.strip("/")
-        if project_path == path.strip("/"):
-            print(f"WARNING: Cannot determine project root dir of [{path}], skipping.")
-            continue
-
-        if project_path in all_projects:
-            continue
-
-        # When a project has multiple translatable files, Crowdin will
-        # give duplicates.
-        # We don't want that (useless empty commits), so we save each
-        # project in all_projects and check if it's already in there.
-        all_projects.append(project_path)
-
-        # Search android/default.xml or config/%(branch)_extra_packages.xml
-        # for the project's name
-        result_path = None
-        result_project = None
-        for project in items:
-            path = project.get("path")
-            if not (project_path + "/").startswith(path + "/"):
-                continue
-            # We want the longest match, so projects in subfolders of other projects are also
-            # taken into account
-            if result_path is None or len(path) > len(result_path):
-                result_path = path
-                result_project = project
-
-        # Just in case no project was found
-        if result_path is None:
-            continue
-
-        if project_path != result_path:
-            if result_path in all_projects:
-                continue
-            project_path = result_path
-            all_projects.append(project_path)
-
-        project_branch = result_project.get("revision") or branch
-        project_name = result_project.get("name")
-
-        push_as_commit(
-            extracted, base_path, project_path, project_name, project_branch, username
+        print(
+            f"Processing project: {project_name} (path: {project_path}) with {len(files_in_project)} files."
         )
+        push_as_commit(
+            files_in_project,
+            base_path,
+            project_path,
+            project_name,
+            project_branch,
+            username,
+        )
+
+
+def get_project_info(extracted, xml, branch):
+    projects = [x for xml_file in xml for x in xml_file.findall("//project")]
+    projects_to_push = defaultdict(list)
+    project_infos = {}
+
+    for project in projects:
+        path = project.get("path")
+        name = project.get("name")
+        if path and name:
+            project_infos[path.strip("/")] = {
+                "name": name,
+                "revision": project.get("revision") or branch,
+            }
+
+    for file_path in extracted:
+        file_path = file_path.strip()
+        if not file_path:
+            continue
+
+        best_match_path = None
+
+        for xml_path in project_infos:
+            if (file_path.strip("/") + "/").startswith(xml_path + "/"):
+                if best_match_path is None or len(xml_path) > len(best_match_path):
+                    best_match_path = xml_path
+
+        if best_match_path:
+            projects_to_push[best_match_path].append(file_path)
+        else:
+            print(
+                f"WARNING: Could not find a matching project in XML for file: [{file_path}], skipping."
+            )
+
+    return projects_to_push, project_infos
 
 
 def push_as_commit(
@@ -133,15 +123,14 @@ def push_as_commit(
     # Get path
     path = os.path.join(base_path, project_path)
     if not path.endswith(".git"):
-        path = os.path.join(path, ".git")
+        path = os.path.join(str(path), ".git")
 
     # Create repo object
-    repo = git.Repo(path)
+    repo = git.Repo(str(path))
 
     # Strip all comments, find incomplete product strings and remove empty files
     for f in extracted_files:
-        if f.startswith(project_path):
-            clean_xml_file(os.path.join(base_path, f), repo)
+        clean_xml_file(os.path.join(base_path, f), repo)
 
     # Add all files to commit
     count = add_to_commit(extracted_files, repo, project_path)
