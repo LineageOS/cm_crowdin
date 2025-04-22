@@ -211,6 +211,12 @@ def clean_xml_file(path, repo):
         )
         root.remove(element)
 
+    # Remove strings with no content
+    empty_strings = root.xpath("//string[not(node())]")
+    for element in empty_strings:
+        print(f"{path}: Found an empty string: {element.attrib.get('name') or ''}")
+        root.remove(element)
+
     # Generate the XML content
     xml_declaration = (
         '<?xml version="1.0" encoding="utf-8"?>\n'
