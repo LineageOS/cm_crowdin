@@ -33,7 +33,7 @@ import utils
 _COMMITS_CREATED = False
 
 
-def download_crowdin(base_path, branch, xml, username, config_dict, crowdin_path):
+def download_crowdin(base_path, branch, username, config_dict, crowdin_path):
     extracted = []
     for i, cfg in enumerate(config_dict["files"]):
         print(f"\nDownloading translations from Crowdin ({config_dict['headers'][i]})")
@@ -50,78 +50,65 @@ def download_crowdin(base_path, branch, xml, username, config_dict, crowdin_path
             sys.exit(1)
         extracted = comm[0].split()
 
-    upload_translations_gerrit(extracted, xml, base_path, branch, username)
+    upload_translations_gerrit(extracted, base_path, username)
 
 
-def upload_translations_gerrit(extracted, xml, base_path, branch, username):
+def upload_translations_gerrit(extracted, base_path, username):
     print("\nUploading translations to Gerrit")
-    items = [x for xml_file in xml for x in xml_file.findall("//project")]
-    all_projects = []
+    project_infos = {}
 
     for path in extracted:
         path = path.strip()
         if not path:
             continue
 
-        if "/res" not in path:
-            print(f"WARNING: Cannot determine project root dir of [{path}], skipping.")
+        full_path = os.path.join(base_path, path)
+        if not os.path.exists(full_path):
             continue
 
-        # Usually the project root is everything before /res
-        # but there are special cases where /res is part of the repo name as well
-        parts = path.split("/res")
-        if len(parts) == 2:
-            project_path = parts[0]
-        elif len(parts) == 3:
-            project_path = parts[0] + "/res" + parts[1]
-        else:
-            print(f"WARNING: Splitting the path not successful for [{path}], skipping")
-            continue
+        project_info = get_project_info(full_path)
+        if project_info:
+            project_name = project_info["project_name"]
+            if project_name not in project_infos:
+                project_infos[project_name] = project_info
 
-        project_path = project_path.strip("/")
-        if project_path == path.strip("/"):
-            print(f"WARNING: Cannot determine project root dir of [{path}], skipping.")
-            continue
-
-        if project_path in all_projects:
-            continue
-
-        # When a project has multiple translatable files, Crowdin will
-        # give duplicates.
-        # We don't want that (useless empty commits), so we save each
-        # project in all_projects and check if it's already in there.
-        all_projects.append(project_path)
-
-        # Search android/default.xml or config/%(branch)_extra_packages.xml
-        # for the project's name
-        result_path = None
-        result_project = None
-        for project in items:
-            path = project.get("path")
-            if not (project_path + "/").startswith(path + "/"):
-                continue
-            # We want the longest match, so projects in subfolders of other projects are also
-            # taken into account
-            if result_path is None or len(path) > len(result_path):
-                result_path = path
-                result_project = project
-
-        # Just in case no project was found
-        if result_path is None:
-            continue
-
-        if project_path != result_path:
-            if result_path in all_projects:
-                continue
-            project_path = result_path
-            all_projects.append(project_path)
-
-        project_branch = result_project.get("revision") or branch
-        project_name = result_project.get("name")
-
+    for project_name, info in project_infos.items():
         push_as_commit(
-            extracted, base_path, project_path, project_name, project_branch, username
+            extracted,
+            base_path,
+            info["project_path"],
+            project_name,
+            info["project_branch"],
+            username,
         )
+
+
+def get_project_info(full_path):
+    cmd = ["repo", "info", full_path]
+    comm, ret = utils.run_subprocess(cmd, show_spinner=False)
+    if ret != 0:
+        print(
+            f"Failed to determine project root dir of [{full_path}]:\n{comm[1]}",
+            file=sys.stderr,
+        )
+        return None
+
+    data = {}
+    for line in comm[0].splitlines():
+        if ":" in line:
+            key, value = line.split(":", 1)
+            data[key.strip()] = value.strip()
+
+    required_keys = ["Project", "Manifest revision", "Mount path"]
+    if not all(key in data for key in required_keys):
+        print(f"WARNING: Cannot determine project root dir of [{full_path}], skipping.")
+        return None
+
+    return {
+        "project_name": data["Project"],
+        "project_branch": data["Manifest revision"].replace("refs/heads/", ""),
+        "project_path": data["Mount path"],
+    }
 
 
 def push_as_commit(
@@ -131,20 +118,21 @@ def push_as_commit(
     print(f"\nCommitting {project_name} on branch {branch}: ")
 
     # Get path
-    path = os.path.join(base_path, project_path)
+    path = project_path
     if not path.endswith(".git"):
         path = os.path.join(path, ".git")
 
     # Create repo object
     repo = git.Repo(path)
 
+    project_path_relative = os.path.relpath(project_path, base_path)
     # Strip all comments, find incomplete product strings and remove empty files
     for f in extracted_files:
-        if f.startswith(project_path):
+        if f.startswith(project_path_relative):
             clean_xml_file(os.path.join(base_path, f), repo)
 
     # Add all files to commit
-    count = add_to_commit(extracted_files, repo, project_path)
+    count = add_to_commit(extracted_files, repo, base_path, project_path)
     if count == 0:
         print("Nothing to commit")
         return
@@ -282,7 +270,7 @@ def clean_xml_file(path, repo):
                 os.rmdir(dir_name)
 
 
-def add_to_commit(extracted_files, repo, project_path):
+def add_to_commit(extracted_files, repo, base_path, project_path):
     # Add or remove the files extracted by the download command to the commit
     count = 0
 
@@ -290,6 +278,7 @@ def add_to_commit(extracted_files, repo, project_path):
     modified = repo.git.ls_files(m=True, o=True)
     for m in modified.split("\n"):
         path = os.path.join(project_path, m)
+        path = os.path.relpath(str(path), base_path)
         if path in extracted_files:
             repo.git.add(m)
             count += 1

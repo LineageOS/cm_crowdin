@@ -6,7 +6,7 @@
 # directly to LineageOS' Gerrit.
 #
 # Copyright (C) 2014-2016 The CyanogenMod Project
-# Copyright (C) 2017-2022 The LineageOS Project
+# Copyright (C) 2017-2025 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -129,11 +129,9 @@ def main():
             default_branch, config_dict, args.path_to_crowdin
         )
     elif args.download:
-        xml_files = utils.get_xml_files(base_path, default_branch)
         download.download_crowdin(
             base_path,
             default_branch,
-            xml_files,
             username,
             config_dict,
             args.path_to_crowdin,
