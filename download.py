@@ -27,6 +27,7 @@ import shutil
 import sys
 
 from collections import defaultdict
+from datetime import datetime
 from lxml import etree
 
 import utils
@@ -286,29 +287,34 @@ def add_to_commit(extracted_files, repo, project_path):
 # For files which we can't process due to errors, create a backup
 # and checkout the file to get it back to the previous state
 def reset_file(filepath, repo):
-    backup_file = None
-    parts = filepath.split("/")
+    parts = filepath.split(os.sep)
+    backup_parts = []
     found = False
-    for s in parts:
-        current_part = s
-        if not found and s.startswith("res"):
-            current_part = s + "_backup"
+    for part in parts:
+        if not found and part == "res":
+            backup_parts.append("res_backup")
             found = True
-        if backup_file is None:
-            backup_file = current_part
         else:
-            backup_file = backup_file + "/" + current_part
+            backup_parts.append(part)
 
-    path, filename = os.path.split(backup_file)
-    if not os.path.exists(path):
-        os.makedirs(path)
-    if os.path.exists(backup_file):
-        i = 1
-        while os.path.exists(backup_file + str(i)):
-            i += 1
-        backup_file = backup_file + str(i)
-    shutil.copy(filepath, backup_file)
-    repo.git.checkout(filepath)
+    backup_dir = ""
+    if filepath.startswith(os.sep):
+        backup_dir = os.sep
+    # Join all parts except the filename
+    backup_dir = os.path.join(backup_dir, *backup_parts[:-1])
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    backup_filename = f"{parts[-1]}_{timestamp}"
+    backup_filepath = os.path.join(backup_dir, backup_filename)
+
+    os.makedirs(backup_dir, exist_ok=True)
+
+    try:
+        shutil.copy2(filepath, backup_filepath)
+        repo.git.checkout(filepath)
+    except OSError as e:
+        print(f"Error during backup or checkout: {e}")
+        exit(-1)
 
 
 def has_created_commits():
