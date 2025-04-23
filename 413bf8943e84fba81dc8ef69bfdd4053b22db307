@@ -22,6 +22,30 @@
       },
       "revId": "413bf8943e84fba81dc8ef69bfdd4053b22db307",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6607f06b_e096620b",
+        "filename": "download.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2025-04-23T12:12:12Z",
+      "side": 1,
+      "message": "We get the selector once, so it contains all strings with a product attribute and within there, all that share the same name. We remove those from the root node directly, but that doesn\u0027t modify the already existing \"product_strings\", which would make us remove non-existing strings again",
+      "parentUuid": "317caa92_ee0faa8a",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 27
+      },
+      "revId": "413bf8943e84fba81dc8ef69bfdd4053b22db307",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
