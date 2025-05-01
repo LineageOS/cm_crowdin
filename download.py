@@ -218,6 +218,20 @@ def clean_xml_file(path, repo):
         print(f"{path}: Found an empty string: {element.attrib.get('name') or ''}")
         root.remove(element)
 
+    # Find strings with '%' but without formatted="false"
+    format_strings = root.xpath(
+        "//string[contains(text(), '%') and not(@formatted='false')]"
+    )
+    for element in format_strings:
+        text = element.text
+        if text:
+            # Regex to find if the string contains a positional argument AND '%%'
+            if re.search(r"%\d\$\w%[^%]|%%\d\$\w|%\w%[^%]|\s%(\s|$)", text):
+                parent = element.getparent()
+                if parent is not None:
+                    print(f"{path}: Invalid string '{element.get('name')}': {text}")
+                    parent.remove(element)
+
     # Generate the XML content
     xml_declaration = (
         '<?xml version="1.0" encoding="utf-8"?>\n'
