@@ -26,9 +26,10 @@ import zipfile
 from pathlib import Path
 
 import download
+from CrowdinParams import CrowdinParams
 
 
-def unzip(zip_files, base_path, branch, xml, username):
+def unzip(zip_files, crowdin_config: CrowdinParams):
     logging.info("Unzipping files")
     extracted = []
     number = 1
@@ -44,17 +45,19 @@ def unzip(zip_files, base_path, branch, xml, username):
         with zipfile.ZipFile(zip_file, "r") as my_zip:
             for zip_info in my_zip.infolist():
                 filename = zip_info.filename
-                if filename.startswith(branch) and filename.endswith(".xml"):
+                if filename.startswith(crowdin_config.branch) and filename.endswith(
+                    ".xml"
+                ):
                     p = Path(filename)
                     # get rid of the parent folder
                     filename = os.path.join(*list(p.parts[1:]))
                     zip_info.filename = filename
                     if filename not in extracted:
                         extracted.append(filename)
-                    my_zip.extract(zip_info, path=base_path)
+                    my_zip.extract(zip_info, path=crowdin_config.base_path)
         number += 1
 
     if len(extracted) > 0:
-        download.upload_translations_gerrit(extracted, xml, base_path, branch, username)
+        download.upload_translations_gerrit(extracted, crowdin_config)
     else:
         logging.info("Nothing extracted or no new files found!")
