@@ -5,7 +5,7 @@
 # Helper script for processing translation patches on
 # LineageOS' gerrit
 #
-# Copyright (C) 2019-2022 The LineageOS Project
+# Copyright (C) 2019-2025 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@
 # limitations under the License.
 
 import json
+import logging
 import re
 import sys
 
@@ -30,7 +31,7 @@ def abandon(branch, username, owner, message):
     commits = 0
     changes = get_open_changes(branch, username, owner)
     for change in changes:
-        print(f"Abandoning commit {changes[change]}: ", end="")
+        logging.info(f"Abandoning commit {changes[change]}: ")
         # Abandon
         cmd = utils.get_gerrit_base_cmd(username) + [
             "review",
@@ -42,21 +43,21 @@ def abandon(branch, username, owner, message):
         msg, code = utils.run_subprocess(cmd, True)
         if code != 0:
             error_text = msg[1].replace("\n\n", "; ").replace("\n", "")
-            print(f"Failed! -- {error_text}")
+            logging.warning(f"Failed! -- {error_text}")
         else:
-            print("Success")
+            logging.info("Success")
 
         commits += 1
 
     if commits == 0:
-        print("Nothing to abandon!")
+        logging.info("Nothing to abandon!")
 
 
 def submit(branch, username, owner):
     commits = 0
     changes = get_open_changes(branch, username, owner)
     for change in changes:
-        print(f"Submitting commit {changes[change]}: ", end="")
+        logging.info(f"Submitting commit {changes[change]}")
         # Add Code-Review +2 and Verified+1 labels and submit
         cmd = utils.get_gerrit_base_cmd(username) + [
             "review",
@@ -68,21 +69,21 @@ def submit(branch, username, owner):
         msg, code = utils.run_subprocess(cmd, True)
         if code != 0:
             error_text = msg[1].replace("\n\n", "; ").replace("\n", "")
-            print(f"Failed! -- {error_text}")
+            logging.error(f"Failed! -- {error_text}")
         else:
-            print("Success")
+            logging.info("Success")
 
         commits += 1
 
     if commits == 0:
-        print("Nothing to submit!")
+        logging.info("Nothing to submit!")
 
 
 def vote(branch, username, owner, message):
     commits = 0
     changes = get_open_changes(branch, username, owner)
     for change in changes:
-        print(f"Voting on commit {changes[change]}: ", end="")
+        logging.info(f"Voting on commit {changes[change]}: ")
         # Add Code-Review +1 and Verified+1 labels
         cmd = utils.get_gerrit_base_cmd(username) + [
             "review",
@@ -95,18 +96,18 @@ def vote(branch, username, owner, message):
         msg, code = utils.run_subprocess(cmd, True)
         if code != 0:
             error_text = msg[1].replace("\n\n", "; ").replace("\n", "")
-            print(f"Failed! -- {error_text}")
+            logging.warning(f"Failed! -- {error_text}")
         else:
-            print("Success")
+            logging.info("Success")
 
         commits += 1
 
     if commits == 0:
-        print("Nothing to vote on!")
+        logging.info("Nothing to vote on!")
 
 
 def get_open_changes(branch, username, owner):
-    print("Fetching open changes on gerrit")
+    logging.info("Fetching open changes on gerrit")
 
     # If an owner is specified, modify the query, so we only get the ones wanted
     owner_arg = "" if owner is None else f"owner:{owner}"
@@ -130,7 +131,7 @@ def get_open_changes(branch, username, owner):
     ]
     msg, code = utils.run_subprocess(cmd)
     if code != 0:
-        print(f"Failed: {msg[1]}", file=sys.stderr)
+        logging.warning(f"Failed: {msg[1]}")
         sys.exit(1)
 
     changes = {}
@@ -143,10 +144,8 @@ def get_open_changes(branch, username, owner):
         except KeyError:
             continue
         except Exception as e:
-            print(
-                e,
-                f"Failed to read revision from fetched dataset:\n{line}",
-                file=sys.stderr,
+            logging.exception(
+                f"Failed to read revision from fetched dataset:\n{line}\n{e}"
             )
 
     return changes

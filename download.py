@@ -19,6 +19,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import logging
 
 import git
 import os
@@ -38,7 +39,9 @@ _COMMITS_CREATED = False
 def download_crowdin(base_path, branch, xml, username, config_dict, crowdin_path):
     extracted = []
     for i, cfg in enumerate(config_dict["files"]):
-        print(f"\nDownloading translations from Crowdin ({config_dict['headers'][i]})")
+        logging.info(
+            f"Downloading translations from Crowdin ({config_dict['headers'][i]})"
+        )
         cmd = [
             crowdin_path,
             "download",
@@ -46,9 +49,9 @@ def download_crowdin(base_path, branch, xml, username, config_dict, crowdin_path
             f"--config={cfg}",
             "--plain",
         ]
-        comm, ret = utils.run_subprocess(cmd, show_spinner=True)
+        comm, ret = utils.run_subprocess(cmd, silent=True, show_spinner=True)
         if ret != 0:
-            print(f"Failed to download:\n{comm[1]}", file=sys.stderr)
+            logging.error(f"Failed to download:\n{comm[1]}")
             sys.exit(1)
         extracted.extend(comm[0].split())
 
@@ -56,7 +59,7 @@ def download_crowdin(base_path, branch, xml, username, config_dict, crowdin_path
 
 
 def upload_translations_gerrit(extracted, xml, base_path, branch, username):
-    print("\nUploading translations to Gerrit")
+    logging.info("Uploading translations to Gerrit")
 
     projects_to_push, project_infos = get_project_info(extracted, xml, branch)
 
@@ -66,7 +69,7 @@ def upload_translations_gerrit(extracted, xml, base_path, branch, username):
         project_name = project_info["name"]
         project_branch = project_info["revision"]
 
-        print(
+        logging.info(
             f"Processing project: {project_name} (path: {project_path}) with {len(files_in_project)} files."
         )
         push_as_commit(
@@ -108,8 +111,8 @@ def get_project_info(extracted, xml, branch):
         if best_match_path:
             projects_to_push[best_match_path].append(file_path)
         else:
-            print(
-                f"WARNING: Could not find a matching project in XML for file: [{file_path}], skipping."
+            logging.warning(
+                f"{file_path}: Could not find a matching project in XML for file, skipping."
             )
 
     return projects_to_push, project_infos
@@ -119,7 +122,7 @@ def push_as_commit(
     extracted_files, base_path, project_path, project_name, branch, username
 ):
     global _COMMITS_CREATED
-    print(f"\nCommitting {project_name} on branch {branch}: ")
+    logging.info(f"Committing {project_name} on branch {branch}: ")
 
     # Get path
     path = os.path.join(base_path, project_path)
@@ -136,14 +139,14 @@ def push_as_commit(
     # Add all files to commit
     count = add_to_commit(extracted_files, repo, project_path)
     if count == 0:
-        print("Nothing to commit")
+        logging.info("Nothing to commit")
         return
 
     # Create commit; if it fails, probably empty so skipping
     try:
         repo.git.commit(m="Automatic translation import")
     except Exception as e:
-        print(e, "Failed to commit, probably empty: skipping", file=sys.stderr)
+        logging.exception(e, "Failed to commit, probably empty: skipping")
         return
 
     # Push commit
@@ -152,9 +155,9 @@ def push_as_commit(
             f"ssh://{username}@review.lineageos.org:29418/{project_name}",
             f"HEAD:refs/for/{branch}%topic=translation",
         )
-        print("Successfully pushed!")
+        logging.info("Successfully pushed!")
     except Exception as e:
-        print(e, "Failed to push!", file=sys.stderr)
+        logging.exception(e, "Failed to push!")
         return
 
     _COMMITS_CREATED = True
@@ -163,23 +166,25 @@ def push_as_commit(
 def clean_xml_file(path, repo):
     # We don't want to create every file, just work with those already existing
     if not os.path.isfile(path):
-        print(f"Called clean_xml_file, but not a file: {path}")
+        logging.warning(f"Called clean_xml_file, but not a file: {path}")
         return
 
-    print(f"Cleaning file {path}")
+    logging.info(f"Cleaning file {path}")
 
     try:
         parser = etree.XMLParser(strip_cdata=False)
         tree = etree.parse(path, parser=parser)
         root = tree.getroot()
     except etree.XMLSyntaxError as err:
-        print(f"{path}: XML Error: {err}")
+        logging.exception(f"{path}: XML Error: {err}")
         filename, ext = os.path.splitext(path)
         if ext == ".xml":
             reset_file(path, repo)
         return
     except OSError as err:
-        print(f"Something went wrong while opening/parsing file {path}: {err}")
+        logging.exception(
+            f"{path}: Something went wrong while opening/parsing file: {err}"
+        )
         return
 
     # Remove strings with 'product' attribute but no 'product=default' or without 'product'
@@ -194,7 +199,7 @@ def clean_xml_file(path, repo):
             s.get("product") in (None, "default") for s in matching_strings
         )
         if not has_default:
-            print(
+            logging.warning(
                 f"{path}: Found string with missing 'product=default' attribute: {string_name}"
             )
             for string in matching_strings:
@@ -212,7 +217,7 @@ def clean_xml_file(path, repo):
     # Remove non-translatable string(-array)s
     non_translatable = root.xpath('/resources/*[@translatable="false"]')
     for element in non_translatable:
-        print(
+        logging.warning(
             f"{path}: Found a non translatable string : {element.attrib.get('name', '')}"
         )
         root.remove(element)
@@ -220,7 +225,9 @@ def clean_xml_file(path, repo):
     # Remove strings with no content
     empty_strings = root.xpath("//string[not(node())]")
     for element in empty_strings:
-        print(f"{path}: Found an empty string: {element.attrib.get('name', '')}")
+        logging.warning(
+            f"{path}: Found an empty string: {element.attrib.get('name', '')}"
+        )
         root.remove(element)
 
     # Find strings with '%' but without formatted="false"
@@ -234,7 +241,9 @@ def clean_xml_file(path, repo):
             if re.search(r"%\d\$\w%[^%]|%%\d\$\w|%\w%[^%]|\s%(\s|$)", text):
                 parent = element.getparent()
                 if parent is not None:
-                    print(f"{path}: Invalid string '{element.get('name')}': {text}")
+                    logging.warning(
+                        f"{path}: Invalid string '{element.get('name')}': {text}"
+                    )
                     parent.remove(element)
 
     # Generate the XML content
@@ -260,20 +269,20 @@ def clean_xml_file(path, repo):
         with open(path, "w") as fh:
             fh.write(content)
     except OSError as err:
-        print(f"Something went wrong while writing to file {path}: {err}")
+        logging.exception(f"{path}: Something went wrong while writing to file: {err}")
         return
 
     # Remove empty files and their parent directories
     if not list(root):
-        print(f"Removing empty content file: {path}")
+        logging.info(f"{path}: Removing empty content file")
         os.remove(path)
         dir_name = os.path.dirname(path)
         if os.path.isdir(dir_name) and not os.listdir(dir_name):
-            print(f"Removing empty directory: {dir_name}")
+            logging.info(f"{dir_name}: Removing empty directory")
             try:
                 os.rmdir(dir_name)
             except OSError as e:
-                print(f"Error removing directory {dir_name}: {e}")
+                logging.exception(f"{dir_name}: Error removing directory : {e}")
 
 
 def add_to_commit(extracted_files, repo, project_path):
@@ -327,7 +336,7 @@ def reset_file(filepath, repo):
         shutil.copy2(filepath, backup_filepath)
         repo.git.checkout(filepath)
     except OSError as e:
-        print(f"Error during backup or checkout: {e}")
+        logging.exception(f"Error during backup or checkout: {e}")
         exit(-1)
 
 
