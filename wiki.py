@@ -4,7 +4,7 @@
 #
 # Helper script to get crowdin information for the wiki
 #
-# Copyright (C) 2022 The LineageOS Project
+# Copyright (C) 2022-2025 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import logging
 import os
 import requests
 
@@ -43,7 +44,7 @@ users_to_append = {
 
 
 def generate_wiki_list(config_files):
-    print("\nGenerating proofreader list")
+    logging.info("Generating proofreader list")
     t = utils.start_spinner(True)
 
     project_ids = get_project_ids(config_files)
@@ -108,7 +109,7 @@ def get_project_ids(config_files):
 def get_from_api(url):
     resp = requests.get(url, headers=get_headers())
     if resp.status_code != 200:
-        print(f"Error retrieving data - {resp.json()}")
+        logging.error(f"Error retrieving data - {resp.json()}")
         exit(-1)
     return resp.json()
 
@@ -135,7 +136,7 @@ def get_access_token():
     global token
     token = os.getenv("LINEAGE_CROWDIN_API_TOKEN")
     if token is None:
-        print(
+        logging.warning(
             "Could not determine api token, please export LINEAGE_CROWDIN_API_TOKEN to the environment!"
         )
         exit(-1)
