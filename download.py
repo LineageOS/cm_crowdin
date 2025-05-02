@@ -32,20 +32,21 @@ from datetime import datetime
 from lxml import etree
 
 import utils
+from CrowdinParams import CrowdinParams
 
 _COMMITS_CREATED = False
 
 
-def download_crowdin(base_path, branch, xml, username, config_dict, crowdin_path):
+def download_crowdin(crowdin_config: CrowdinParams):
     extracted = []
-    for i, cfg in enumerate(config_dict["files"]):
+    for i, cfg in enumerate(crowdin_config.config_dict["files"]):
         logging.info(
-            f"Downloading translations from Crowdin ({config_dict['headers'][i]})"
+            f"Downloading translations from Crowdin ({crowdin_config.config_dict['headers'][i]})"
         )
         cmd = [
-            crowdin_path,
+            crowdin_config.crowdin_path,
             "download",
-            f"--branch={branch}",
+            f"--branch={crowdin_config.branch}",
             f"--config={cfg}",
             "--plain",
         ]
@@ -55,13 +56,13 @@ def download_crowdin(base_path, branch, xml, username, config_dict, crowdin_path
             sys.exit(1)
         extracted.extend(comm[0].split())
 
-    upload_translations_gerrit(extracted, xml, base_path, branch, username)
+    upload_translations_gerrit(extracted, crowdin_config)
 
 
-def upload_translations_gerrit(extracted, xml, base_path, branch, username):
+def upload_translations_gerrit(extracted, crowdin_config: CrowdinParams):
     logging.info("Uploading translations to Gerrit")
 
-    projects_to_push, project_infos = get_project_info(extracted, xml, branch)
+    projects_to_push, project_infos = get_project_info(extracted, crowdin_config)
 
     # We now push all found projects one by one
     for project_path, files_in_project in projects_to_push.items():
@@ -74,15 +75,15 @@ def upload_translations_gerrit(extracted, xml, base_path, branch, username):
         )
         push_as_commit(
             files_in_project,
-            base_path,
             project_path,
             project_name,
             project_branch,
-            username,
+            crowdin_config,
         )
 
 
-def get_project_info(extracted, xml, branch):
+def get_project_info(extracted, crowdin_config: CrowdinParams):
+    xml = utils.get_xml_files(crowdin_config.base_path, crowdin_config.branch)
     projects = [x for xml_file in xml for x in xml_file.findall("//project")]
     projects_to_push = defaultdict(list)
     project_infos = {}
@@ -93,7 +94,7 @@ def get_project_info(extracted, xml, branch):
         if path and name:
             project_infos[path.strip("/")] = {
                 "name": name,
-                "revision": project.get("revision") or branch,
+                "revision": project.get("revision") or crowdin_config.branch,
             }
 
     for file_path in extracted:
@@ -119,13 +120,13 @@ def get_project_info(extracted, xml, branch):
 
 
 def push_as_commit(
-    extracted_files, base_path, project_path, project_name, branch, username
+    extracted_files, project_path, project_name, branch, crowdin_config: CrowdinParams
 ):
     global _COMMITS_CREATED
     logging.info(f"Committing {project_name} on branch {branch}: ")
 
     # Get path
-    path = os.path.join(base_path, project_path)
+    path = os.path.join(crowdin_config.base_path, project_path)
     if not path.endswith(".git"):
         path = os.path.join(str(path), ".git")
 
@@ -134,7 +135,7 @@ def push_as_commit(
 
     # Strip all comments, find incomplete product strings and remove empty files
     for f in extracted_files:
-        clean_xml_file(os.path.join(base_path, f), repo)
+        clean_xml_file(os.path.join(crowdin_config.base_path, f), repo)
 
     # Add all files to commit
     count = add_to_commit(extracted_files, repo, project_path)
@@ -152,7 +153,7 @@ def push_as_commit(
     # Push commit
     try:
         repo.git.push(
-            f"ssh://{username}@review.lineageos.org:29418/{project_name}",
+            f"ssh://{crowdin_config.username}@review.lineageos.org:29418/{project_name}",
             f"HEAD:refs/for/{branch}%topic=translation",
         )
         logging.info("Successfully pushed!")

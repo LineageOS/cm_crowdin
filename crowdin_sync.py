@@ -34,6 +34,8 @@ import upload
 import utils
 import wiki
 
+from CrowdinParams import CrowdinParams
+
 _DIR = os.path.dirname(os.path.realpath(__file__))
 _COMMITS_CREATED = False
 _DONE = False
@@ -124,33 +126,27 @@ def main():
         gerrit.vote(default_branch, username, args.owner, args.message)
         sys.exit(0)
 
-    base_path = utils.get_base_path(default_branch)
-    config_dict = utils.get_config_dict(args.config, default_branch)
+    crowdin_config = CrowdinParams(
+        base_path=utils.get_base_path(default_branch),
+        branch=default_branch,
+        username=username,
+        config_dict=utils.get_config_dict(args.config, default_branch),
+        crowdin_path=args.path_to_crowdin,
+    )
 
     if args.path_to_crowdin == "crowdin" and not utils.check_dependencies():
         sys.exit(1)
 
     if args.upload_sources:
-        upload.upload_sources_crowdin(default_branch, config_dict, args.path_to_crowdin)
+        upload.upload_sources_crowdin(default_branch, crowdin_config)
     elif args.upload_translations:
-        upload.upload_translations_crowdin(
-            default_branch, config_dict, args.path_to_crowdin
-        )
+        upload.upload_translations_crowdin(default_branch, crowdin_config)
     elif args.download:
-        xml_files = utils.get_xml_files(base_path, default_branch)
-        download.download_crowdin(
-            base_path,
-            default_branch,
-            xml_files,
-            username,
-            config_dict,
-            args.path_to_crowdin,
-        )
+        download.download_crowdin(crowdin_config)
     elif args.unzip:
-        xml_files = utils.get_xml_files(base_path, default_branch)
-        from_zip.unzip(args.unzip, base_path, default_branch, xml_files, username)
+        from_zip.unzip(args.unzip, crowdin_config)
     elif args.generate_wiki_list:
-        wiki.generate_wiki_list(config_dict["files"])
+        wiki.generate_wiki_list(crowdin_config.config_dict["files"])
 
     if download.has_created_commits() or upload.has_uploaded():
         print("\nDone!")
