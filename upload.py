@@ -24,15 +24,19 @@ import logging
 import utils
 import sys
 
+from CrowdinParams import CrowdinParams
+
 _HAS_UPLOADED = False
 
 
-def upload_sources_crowdin(branch, config_dict, crowdin_path):
+def upload_sources_crowdin(branch, crowdin_config: CrowdinParams):
     global _HAS_UPLOADED
-    for i, cfg in enumerate(config_dict["files"]):
-        logging.info(f"Uploading sources to Crowdin ({config_dict['headers'][i]})")
+    for i, cfg in enumerate(crowdin_config.config_dict["files"]):
+        logging.info(
+            f"Uploading sources to Crowdin ({crowdin_config.config_dict['headers'][i]})"
+        )
         cmd = [
-            crowdin_path,
+            crowdin_config.crowdin_path,
             "upload",
             "sources",
             f"--branch={branch}",
@@ -45,12 +49,14 @@ def upload_sources_crowdin(branch, config_dict, crowdin_path):
     _HAS_UPLOADED = True
 
 
-def upload_translations_crowdin(branch, config_dict, crowdin_path):
+def upload_translations_crowdin(branch, crowdin_config: CrowdinParams):
     global _HAS_UPLOADED
-    for i, cfg in enumerate(config_dict["files"]):
-        logging.info(f"Uploading translations to Crowdin ({config_dict['headers'][i]})")
+    for i, cfg in enumerate(crowdin_config.config_dict["files"]):
+        logging.info(
+            f"Uploading translations to Crowdin ({crowdin_config.config_dict['headers'][i]})"
+        )
         cmd = [
-            crowdin_path,
+            crowdin_config.crowdin_path,
             "upload",
             "translations",
             f"--branch={branch}",
