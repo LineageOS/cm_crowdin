@@ -6,7 +6,7 @@
 # directly to LineageOS' Gerrit.
 #
 # Copyright (C) 2014-2016 The CyanogenMod Project
-# Copyright (C) 2017-2022 The LineageOS Project
+# Copyright (C) 2017-2025 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@
 # limitations under the License.
 
 import argparse
+import logging
 import os
 import sys
 
@@ -84,8 +85,9 @@ def parse_args():
         "-w",
         "--generate_wiki_list",
         action="store_true",
-        help="Get the proofreader list for the wiki"
+        help="Get the proofreader list for the wiki",
     )
+    parser.add_argument("--log", default="warning")
     return parser.parse_args()
 
 
@@ -104,6 +106,12 @@ def main():
     signal(SIGINT, sig_handler)
     args = parse_args()
     default_branch = args.branch
+
+    level = logging.WARN
+    numeric_level = getattr(logging, args.log.upper(), None)
+    if isinstance(numeric_level, int):
+        level = numeric_level
+    logging.basicConfig(level=level, format="%(message)s")
 
     username = utils.get_username(args)
     if args.gerrit == "abandon":

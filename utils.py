@@ -5,7 +5,7 @@
 # Utility functions for crowdin_sync.py and it's dependencies
 #
 # Copyright (C) 2014-2016 The CyanogenMod Project
-# Copyright (C) 2017-2022 The LineageOS Project
+# Copyright (C) 2017-2025 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@
 # limitations under the License.
 
 import itertools
+import logging
 import os
 import sys
 
@@ -39,13 +40,12 @@ def run_subprocess(cmd, silent=False, show_spinner=False):
     comm = p.communicate()
     exit_code = p.returncode
     if exit_code != 0 and not silent:
-        print(
+        logging.error(
             "There was an error running the subprocess.\n"
             "cmd: %s\n"
             "exit code: %d\n"
             "stdout: %s\n"
             "stderr: %s" % (cmd, exit_code, comm[0], comm[1]),
-            file=sys.stderr,
         )
     stop_spinner(t)
     return comm, exit_code
@@ -86,7 +86,7 @@ def check_run(cmd):
     ret = p.wait()
     if ret != 0:
         joined = " ".join(cmd)
-        print(f"Failed to run cmd: {joined}", file=sys.stderr)
+        logging.error(f"Failed to run cmd: {joined}")
         sys.exit(ret)
 
 
@@ -114,7 +114,7 @@ def get_username(args):
                     f"continue?"
                 )
             else:
-                print("Argument -u/--username is required!")
+                logging.warning("Argument -u/--username is required!")
         if not has_username:
             sys.exit(1)
     return username
@@ -126,7 +126,7 @@ def user_prompt(question):
         try:
             return bool(strtobool(user_input))
         except ValueError:
-            print("Please use y/n or yes/no.\n")
+            logging.error("Please use y/n or yes/no.\n")
 
 
 # ################################# PREPARE ################################## #
@@ -137,7 +137,7 @@ def check_dependencies():
     cmd = ["which", "crowdin"]
     msg, code = run_subprocess(cmd, silent=True)
     if code != 0:
-        print("You have not installed crowdin.", file=sys.stderr)
+        logging.error("You have not installed crowdin.")
         return False
     return True
 
@@ -146,10 +146,10 @@ def load_xml(x):
     try:
         return etree.parse(x)
     except etree.XMLSyntaxError:
-        print(f"Malformed {x}", file=sys.stderr)
+        logging.error(f"Malformed {x}")
         return None
     except Exception:
-        print(f"You have no {x}", file=sys.stderr)
+        logging.exception(f"You have no {x}")
         return None
 
 

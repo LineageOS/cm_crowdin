@@ -6,7 +6,7 @@
 # to crowdin
 #
 # Copyright (C) 2014-2016 The CyanogenMod Project
-# Copyright (C) 2017-2022 The LineageOS Project
+# Copyright (C) 2017-2025 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import logging
 import utils
 import sys
 
@@ -29,7 +30,7 @@ _HAS_UPLOADED = False
 def upload_sources_crowdin(branch, config_dict, crowdin_path):
     global _HAS_UPLOADED
     for i, cfg in enumerate(config_dict["files"]):
-        print(f"\nUploading sources to Crowdin ({config_dict['headers'][i]})")
+        logging.info(f"Uploading sources to Crowdin ({config_dict['headers'][i]})")
         cmd = [
             crowdin_path,
             "upload",
@@ -37,9 +38,9 @@ def upload_sources_crowdin(branch, config_dict, crowdin_path):
             f"--branch={branch}",
             f"--config={cfg}",
         ]
-        comm, ret = utils.run_subprocess(cmd, show_spinner=True)
+        comm, ret = utils.run_subprocess(cmd, silent=True, show_spinner=True)
         if ret != 0:
-            print(f"Failed to upload:\n{comm[1]}", file=sys.stderr)
+            logging.error(f"Failed to upload:\n{comm[1]}")
             sys.exit(1)
     _HAS_UPLOADED = True
 
@@ -47,7 +48,7 @@ def upload_sources_crowdin(branch, config_dict, crowdin_path):
 def upload_translations_crowdin(branch, config_dict, crowdin_path):
     global _HAS_UPLOADED
     for i, cfg in enumerate(config_dict["files"]):
-        print(f"\nUploading translations to Crowdin ({config_dict['headers'][i]})")
+        logging.info(f"Uploading translations to Crowdin ({config_dict['headers'][i]})")
         cmd = [
             crowdin_path,
             "upload",
@@ -58,9 +59,9 @@ def upload_translations_crowdin(branch, config_dict, crowdin_path):
             "--auto-approve-imported",
             f"--config={cfg}",
         ]
-        comm, ret = utils.run_subprocess(cmd, show_spinner=True)
+        comm, ret = utils.run_subprocess(cmd, silent=True, show_spinner=True)
         if ret != 0:
-            print(f"Failed to upload:\n{comm[1]}", file=sys.stderr)
+            logging.error(f"Failed to upload:\n{comm[1]}")
             sys.exit(1)
     _HAS_UPLOADED = True
 

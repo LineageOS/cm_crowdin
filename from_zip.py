@@ -5,7 +5,7 @@
 # Helper script for extracting translations from one or more zips and
 # uploading them to LineageOS' gerrit
 #
-# Copyright (C) 2022 The LineageOS Project
+# Copyright (C) 2022-2025 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import logging
 import os
 import zipfile
 
@@ -28,18 +29,18 @@ import download
 
 
 def unzip(zip_files, base_path, branch, xml, username):
-    print("\nUnzipping files")
+    logging.info("Unzipping files")
     extracted = []
     number = 1
 
     for zip_file in zip_files:
         if not zipfile.is_zipfile(zip_file):
-            print(
-                f"WARNING: Specified file is not a valid zip file, skipping '{zip_file}'"
+            logging.warning(
+                f"Specified file is not a valid zip file, skipping '{zip_file}'"
             )
             continue
 
-        print(f"File {number}/{len(zip_files)}")
+        logging.info(f"File {number}/{len(zip_files)}")
         with zipfile.ZipFile(zip_file, "r") as my_zip:
             for zip_info in my_zip.infolist():
                 filename = zip_info.filename
@@ -56,4 +57,4 @@ def unzip(zip_files, base_path, branch, xml, username):
     if len(extracted) > 0:
         download.upload_translations_gerrit(extracted, xml, base_path, branch, username)
     else:
-        print("Nothing extracted or no new files found!")
+        logging.info("Nothing extracted or no new files found!")
