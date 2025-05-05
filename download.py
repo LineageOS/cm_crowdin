@@ -173,7 +173,9 @@ def clean_xml_file(path, repo):
     # We don't want to create every file, just work with those already existing
     if not os.path.isfile(path):
         logging.warning(f"Called clean_xml_file, but not a file: {path}")
-        return
+        return None
+
+    wrong_strings = 0
 
     logging.info(f"Cleaning file {path}")
 
@@ -186,12 +188,12 @@ def clean_xml_file(path, repo):
         filename, ext = os.path.splitext(path)
         if ext == ".xml":
             reset_file(path, repo)
-        return
+        return None
     except OSError as err:
         logging.exception(
             f"{path}: Something went wrong while opening/parsing file: {err}"
         )
-        return
+        return None
 
     # Remove strings with 'product' attribute but no 'product=default' or without 'product'
     already_removed = set()
@@ -227,6 +229,7 @@ def clean_xml_file(path, repo):
             f"{path}: Found a non translatable string : {element.attrib.get('name') or ''}"
         )
         root.remove(element)
+        wrong_strings += 1
 
     # Remove strings with no content
     empty_strings = root.xpath("//string[not(node())]")
@@ -235,6 +238,7 @@ def clean_xml_file(path, repo):
             f"{path}: Found an empty string: {element.attrib.get('name') or ''}"
         )
         root.remove(element)
+        wrong_strings += 1
 
     # Find strings with '%' but without formatted="false"
     format_strings = root.xpath(
@@ -251,6 +255,7 @@ def clean_xml_file(path, repo):
                         f"{path}: Invalid string '{element.get('name')}': {text}"
                     )
                     parent.remove(element)
+                    wrong_strings += 1
 
     # Generate the XML content
     xml_declaration = (
@@ -276,7 +281,7 @@ def clean_xml_file(path, repo):
             fh.write(content)
     except OSError as err:
         logging.exception(f"{path}: Something went wrong while writing to file: {err}")
-        return
+        return None
 
     # Remove empty files and their parent directories
     if not list(root):
@@ -289,6 +294,8 @@ def clean_xml_file(path, repo):
                 os.rmdir(dir_name)
             except OSError as e:
                 logging.exception(f"{dir_name}: Error removing directory : {e}")
+
+    return wrong_strings
 
 
 def add_to_commit(extracted_files, repo, project_path):
