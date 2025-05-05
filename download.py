@@ -38,6 +38,11 @@ _COMMITS_CREATED = False
 
 
 def download_crowdin(crowdin_config: CrowdinParams):
+    extracted = perform_download(crowdin_config)
+    upload_translations_gerrit(extracted, crowdin_config)
+
+
+def perform_download(crowdin_config: CrowdinParams):
     extracted = []
     for i, cfg in enumerate(crowdin_config.config_dict["files"]):
         logging.info(
@@ -56,7 +61,7 @@ def download_crowdin(crowdin_config: CrowdinParams):
             sys.exit(1)
         extracted.extend(comm[0].split())
 
-    upload_translations_gerrit(extracted, crowdin_config)
+    return extracted
 
 
 def upload_translations_gerrit(extracted, crowdin_config: CrowdinParams):
