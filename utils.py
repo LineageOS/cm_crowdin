@@ -78,7 +78,7 @@ def spin_cursor():
         sys.stdout.write(output)
         sys.stdout.flush()
         sleep(0.5)
-    sys.stdout.write("\x1b[1K\r     ")
+    sys.stdout.write("\x1b[1K\r     \r")
 
 
 def check_run(cmd):
