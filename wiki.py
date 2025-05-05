@@ -19,12 +19,13 @@
 # limitations under the License.
 
 import logging
-import os
 import requests
 
 from html import escape
 
 import utils
+
+from utils import get_access_token, get_project_ids
 
 crowdin_url = "https://api.crowdin.com/api/v2/projects"
 token = None
@@ -96,16 +97,6 @@ def print_user(user):
     print(f"      nick: {username}")
 
 
-def get_project_ids(config_files):
-    ids = []
-    for f in config_files:
-        with open(f, "r") as fh:
-            for line in fh.readlines():
-                if "project_id" in line:
-                    ids.append(int(line.strip("\n").split(": ")[1]))
-    return ids
-
-
 def get_from_api(url):
     resp = requests.get(url, headers=get_headers())
     if resp.status_code != 200:
@@ -127,19 +118,9 @@ def get_languages(project_ids):
 def get_headers():
     global token
     if token is None:
-        get_access_token()
+        token = get_access_token()
     headers = {"Content-Type": "application/json", "Authorization": f"Bearer {token}"}
     return headers
-
-
-def get_access_token():
-    global token
-    token = os.getenv("LINEAGE_CROWDIN_API_TOKEN")
-    if token is None:
-        logging.warning(
-            "Could not determine api token, please export LINEAGE_CROWDIN_API_TOKEN to the environment!"
-        )
-        exit(-1)
 
 
 def get_managers(project_ids):
