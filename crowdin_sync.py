@@ -32,6 +32,7 @@ import from_zip
 import gerrit
 import upload
 import utils
+import verify
 import wiki
 
 from CrowdinParams import CrowdinParams
@@ -90,6 +91,12 @@ def parse_args():
         help="Get the proofreader list for the wiki",
     )
     parser.add_argument("--log", default="warning")
+    parser.add_argument(
+        "-v",
+        "--verify-translations",
+        action="store_true",
+        help="Verify the approved translations",
+    )
     return parser.parse_args()
 
 
@@ -147,6 +154,9 @@ def main():
         from_zip.unzip(args.unzip, crowdin_config)
     elif args.generate_wiki_list:
         wiki.generate_wiki_list(crowdin_config.config_dict["files"])
+    elif args.verify_translations:
+        verify.verify_translations(crowdin_config)
+        sys.exit(0)
 
     if download.has_created_commits() or upload.has_uploaded():
         print("\nDone!")

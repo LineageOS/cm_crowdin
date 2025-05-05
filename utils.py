@@ -216,3 +216,23 @@ def get_config_dict(config, default_branch):
 def get_gerrit_base_cmd(username):
     cmd = ["ssh", "-p", "29418", f"{username}@review.lineageos.org", "gerrit"]
     return cmd
+
+
+def get_access_token():
+    token = os.getenv("LINEAGE_CROWDIN_API_TOKEN")
+    if token is None:
+        logging.warning(
+            "Could not determine api token, please export LINEAGE_CROWDIN_API_TOKEN to the environment!"
+        )
+        exit(-1)
+    return token
+
+
+def get_project_ids(config_files):
+    ids = []
+    for f in config_files:
+        with open(f, "r") as fh:
+            for line in fh.readlines():
+                if "project_id" in line:
+                    ids.append(int(line.strip("\n").split(": ")[1]))
+    return ids
