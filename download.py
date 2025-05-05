@@ -169,7 +169,7 @@ def push_as_commit(
     _COMMITS_CREATED = True
 
 
-def clean_xml_file(path, repo):
+def clean_xml_file(path, repo=None):
     # We don't want to create every file, just work with those already existing
     if not os.path.isfile(path):
         logging.warning(f"Called clean_xml_file, but not a file: {path}")
@@ -186,7 +186,7 @@ def clean_xml_file(path, repo):
     except etree.XMLSyntaxError as err:
         logging.exception(f"{path}: XML Error: {err}")
         filename, ext = os.path.splitext(path)
-        if ext == ".xml":
+        if ext == ".xml" and repo:
             reset_file(path, repo)
         return None
     except OSError as err:
