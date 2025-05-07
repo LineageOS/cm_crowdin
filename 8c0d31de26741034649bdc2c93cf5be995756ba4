@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e62d91_df8f5da5",
+        "filename": "download.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-05-07T09:32:16Z",
+      "side": 1,
+      "message": "`element.attrib.get(\u0027name\u0027, \u0027\u0027)`?\n\nor is that not a dict?",
+      "revId": "8c0d31de26741034649bdc2c93cf5be995756ba4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
