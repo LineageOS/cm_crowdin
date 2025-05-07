@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c9604ee_40fc16dc",
+        "filename": "download.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-05-07T09:30:45Z",
+      "side": 1,
+      "message": "`project.get(\"revision\", branch)`?",
+      "revId": "1dcbe0570098f084ed2e09ed77ee448d331aa670",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c6b7d0_02dc2ed7",
+        "filename": "download.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-05-07T09:30:45Z",
+      "side": 1,
+      "message": "isn\u0027t that .strip() redundant?",
+      "revId": "1dcbe0570098f084ed2e09ed77ee448d331aa670",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65aa5064_5a7206ef",
+        "filename": "download.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-05-07T09:30:45Z",
+      "side": 1,
+      "message": "cast required? why?\n\n```\n\u003e\u003e\u003e type(os.path.join(\"AA\", \"BB\"))\n\u003cclass \u0027str\u0027\u003e\n```",
+      "revId": "1dcbe0570098f084ed2e09ed77ee448d331aa670",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
