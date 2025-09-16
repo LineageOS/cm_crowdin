@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33c43e30_bb7c4b03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-09-16T16:56:26Z",
+      "side": 1,
+      "message": "(hardware/lge, hardware/nothing don\u0027t have 23.0 branches)",
+      "revId": "9690c0dedad27cd35bf14c1515340c3b7b236595",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
