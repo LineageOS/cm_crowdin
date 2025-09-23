@@ -112,6 +112,10 @@
         "translation": "/vendor/crowdin/overlay/packages/apps/Etar/app/src/main/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/packages/apps/Etar/app/src/main/res/values/lineage_strings.xml",
+        "translation": "/vendor/crowdin/overlay/packages/apps/Etar/app/src/main/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/Etar/app/src/main/res/values/strings.xml",
         "translation": "/vendor/crowdin/overlay/packages/apps/Etar/app/src/main/res/values-%android_code%/%original_file_name%"
     },
