@@ -224,8 +224,8 @@
         "translation": "/hardware/oplus/KeyHandler/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/hardware/oplus/Pen/res/values/strings.xml",
-        "translation": "/hardware/oplus/Pen/res/values-%android_code%/%original_file_name%"
+        "source":      "/hardware/oplus/OplusAccessories/res/values/strings.xml",
+        "translation": "/hardware/oplus/OplusAccessories/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/hardware/samsung/AdvancedDisplay/res/values/arrays.xml",
