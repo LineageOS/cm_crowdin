@@ -228,6 +228,10 @@
         "translation": "/hardware/oplus/Pen/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/hardware/oplus/eSimSwitcher/res/values/strings.xml",
+        "translation": "/hardware/oplus/eSimSwitcher/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/hardware/samsung/AdvancedDisplay/res/values/arrays.xml",
         "translation": "/hardware/samsung/AdvancedDisplay/res/values-%android_code%/%original_file_name%"
     },
