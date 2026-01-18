@@ -248,8 +248,8 @@
         "translation": "/hardware/sony/SonyOpenTelephony/ModemConfig/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/hardware/sony/XperiaParts/res/values/strings.xml",
-        "translation": "/hardware/sony/XperiaParts/res/values-%android_code%/%original_file_name%"
+        "source":      "/hardware/sony/packages/XperiaParts/res/values/strings.xml",
+        "translation": "/hardware/sony/packages/XperiaParts/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/packages/apps/ElmyraService/res/values/strings.xml",
