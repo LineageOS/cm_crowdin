@@ -220,16 +220,16 @@
         "translation": "/hardware/oneplus/KeyHandler/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/hardware/oplus/KeyHandler/res/values/strings.xml",
-        "translation": "/hardware/oplus/KeyHandler/res/values-%android_code%/%original_file_name%"
+        "source":      "/hardware/oplus/packages/KeyHandler/res/values/strings.xml",
+        "translation": "/hardware/oplus/packages/KeyHandler/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/hardware/oplus/Pen/res/values/strings.xml",
-        "translation": "/hardware/oplus/Pen/res/values-%android_code%/%original_file_name%"
+        "source":      "/hardware/oplus/packages/Pen/res/values/strings.xml",
+        "translation": "/hardware/oplus/packages/Pen/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/hardware/oplus/eSimSwitcher/res/values/strings.xml",
-        "translation": "/hardware/oplus/eSimSwitcher/res/values-%android_code%/%original_file_name%"
+        "source":      "/hardware/oplus/packages/eSimSwitcher/res/values/strings.xml",
+        "translation": "/hardware/oplus/packages/eSimSwitcher/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/hardware/samsung/packages/AdvancedDisplay/res/values/arrays.xml",
