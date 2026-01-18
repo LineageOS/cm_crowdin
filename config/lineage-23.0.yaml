@@ -3,7 +3,7 @@
 # Crowdin configuration file for LineageOS
 #
 # Copyright (C) 2014-2016 The CyanogenMod Project
-# Copyright (C) 2017-2025 The LineageOS Project
+# Copyright (C) 2017-2026 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -232,16 +232,16 @@
         "translation": "/hardware/oplus/eSimSwitcher/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/hardware/samsung/AdvancedDisplay/res/values/arrays.xml",
-        "translation": "/hardware/samsung/AdvancedDisplay/res/values-%android_code%/%original_file_name%"
+        "source":      "/hardware/samsung/packages/AdvancedDisplay/res/values/arrays.xml",
+        "translation": "/hardware/samsung/packages/AdvancedDisplay/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/hardware/samsung/AdvancedDisplay/res/values/strings.xml",
-        "translation": "/hardware/samsung/AdvancedDisplay/res/values-%android_code%/%original_file_name%"
+        "source":      "/hardware/samsung/packages/AdvancedDisplay/res/values/strings.xml",
+        "translation": "/hardware/samsung/packages/AdvancedDisplay/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/hardware/samsung/dap/res/values/strings.xml",
-        "translation": "/hardware/samsung/dap/res/values-%android_code%/%original_file_name%"
+        "source":      "/hardware/samsung/packages/Dap/res/values/strings.xml",
+        "translation": "/hardware/samsung/packages/Dap/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/hardware/sony/SonyOpenTelephony/ModemConfig/res/values/strings.xml",
