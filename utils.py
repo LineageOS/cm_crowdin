@@ -166,9 +166,8 @@ def get_base_path(default_branch):
     base_path_env = f"LINEAGE_CROWDIN_BASE_PATH_{base_path_branch_suffix}"
     base_path = os.getenv(base_path_env)
     if base_path is None:
-        cwd = os.getcwd()
-        print(f"You have not set {base_path_env}. Defaulting to {cwd}")
-        base_path = cwd
+        print(f"You have not set {base_path_env}")
+        sys.exit(1)
     if not os.path.isdir(base_path):
         print(f"{base_path_env} is not a real directory: {base_path}")
         sys.exit(1)
