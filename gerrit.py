@@ -112,7 +112,7 @@ def get_open_changes(branch, username, owner):
     owner_arg = "" if owner is None else f"owner:{owner}"
 
     # If branch is >= lineage-20.0, we want to also get lineage-20 changes
-    if re.match("^lineage-[2-9]\d\.\d$", branch):
+    if re.match(r"^lineage-[2-9]\d\.\d$", branch):
         branch_arg = f"(branch:{branch} or branch:{branch[:-2]})"
     else:
         branch_arg = f"branch:{branch}"
