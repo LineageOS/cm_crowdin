@@ -212,14 +212,6 @@
         "translation": "/hardware/nothing/ParanoidGlyph/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/hardware/oneplus/packages/KeyHandler/res/values/strings.xml",
-        "translation": "/hardware/oneplus/packages/KeyHandler/res/values-%android_code%/%original_file_name%"
-    },
-    {
-        "source":      "/hardware/oplus/packages/KeyHandler/res/values/strings.xml",
-        "translation": "/hardware/oplus/packages/KeyHandler/res/values-%android_code%/%original_file_name%"
-    },
-    {
         "source":      "/hardware/oplus/packages/Pen/res/values/strings.xml",
         "translation": "/hardware/oplus/packages/Pen/res/values-%android_code%/%original_file_name%"
     },
