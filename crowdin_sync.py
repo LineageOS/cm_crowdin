@@ -72,6 +72,9 @@ def parse_args():
         "-o", "--owner", help="Specify the owner of the commits to submit"
     )
     parser.add_argument(
+        "-U", "--uploader", help="Specify the uploader of the commits to submit"
+    )
+    parser.add_argument(
         "-p",
         "--path-to-crowdin",
         help="Path to crowdin executable (will look in PATH by default)",
@@ -107,13 +110,13 @@ def main():
 
     username = utils.get_username(args)
     if args.gerrit == "abandon":
-        gerrit.abandon(default_branch, username, args.owner, args.message)
+        gerrit.abandon(default_branch, username, args.owner, args.uploader, args.message)
         sys.exit(0)
     elif args.gerrit == "submit":
-        gerrit.submit(default_branch, username, args.owner)
+        gerrit.submit(default_branch, username, args.owner, args.uploader)
         sys.exit(0)
     elif args.gerrit == "vote":
-        gerrit.vote(default_branch, username, args.owner, args.message)
+        gerrit.vote(default_branch, username, args.owner, args.uploader, args.message)
         sys.exit(0)
 
     base_path = utils.get_base_path(default_branch)

@@ -26,9 +26,9 @@ import sys
 import utils
 
 
-def abandon(branch, username, owner, message):
+def abandon(branch, username, owner, uploader, message):
     commits = 0
-    changes = get_open_changes(branch, username, owner)
+    changes = get_open_changes(branch, username, owner, uploader)
     for change in changes:
         print(f"Abandoning commit {changes[change]}: ", end="")
         # Abandon
@@ -52,9 +52,9 @@ def abandon(branch, username, owner, message):
         print("Nothing to abandon!")
 
 
-def submit(branch, username, owner):
+def submit(branch, username, owner, uploader):
     commits = 0
-    changes = get_open_changes(branch, username, owner)
+    changes = get_open_changes(branch, username, owner, uploader)
     for change in changes:
         print(f"Submitting commit {changes[change]}: ", end="")
         # Add Code-Review +2 and Verified+1 labels and submit
@@ -78,9 +78,9 @@ def submit(branch, username, owner):
         print("Nothing to submit!")
 
 
-def vote(branch, username, owner, message):
+def vote(branch, username, owner, uploader, message):
     commits = 0
-    changes = get_open_changes(branch, username, owner)
+    changes = get_open_changes(branch, username, owner, uploader)
     for change in changes:
         print(f"Voting on commit {changes[change]}: ", end="")
         # Add Code-Review +1 and Verified+1 labels
@@ -105,11 +105,12 @@ def vote(branch, username, owner, message):
         print("Nothing to vote on!")
 
 
-def get_open_changes(branch, username, owner):
+def get_open_changes(branch, username, owner, uploader):
     print("Fetching open changes on gerrit")
 
-    # If an owner is specified, modify the query, so we only get the ones wanted
+    # If an owner/uploader is specified, modify the query, so we only get the ones wanted
     owner_arg = "" if owner is None else f"owner:{owner}"
+    uploader_arg = "" if uploader is None else f"uploader:{uploader}"
 
     # If branch is >= lineage-20.0, we want to also get lineage-20 changes
     if re.match(r"^lineage-[2-9]\d\.\d$", branch):
@@ -123,6 +124,7 @@ def get_open_changes(branch, username, owner):
         "status:open",
         branch_arg,
         owner_arg,
+        uploader_arg,
         'message:"Automatic translation import"',
         "topic:translation",
         "--current-patch-set",
