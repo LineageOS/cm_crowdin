@@ -240,6 +240,10 @@
         "translation": "/hardware/sony/packages/XperiaParts/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/hardware/xiaomi/packages/EsimSwitcher/res/values/strings.xml",
+        "translation": "/hardware/xiaomi/packages/EsimSwitcher/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/packages/apps/ElmyraService/res/values/strings.xml",
         "translation": "/packages/apps/ElmyraService/res/values-%android_code%/%original_file_name%"
     },
