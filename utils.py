@@ -23,7 +23,6 @@ import itertools
 import os
 import sys
 
-from distutils.util import strtobool
 from lxml import etree
 from threading import Thread
 from time import sleep
@@ -122,11 +121,12 @@ def get_username(args):
 
 def user_prompt(question):
     while True:
-        user_input = input(question + " [y/n]: ")
-        try:
-            return bool(strtobool(user_input))
-        except ValueError:
-            print("Please use y/n or yes/no.\n")
+        user_input = input(question + " [y/n]: ").lower()
+        if user_input == "y" or user_input == "yes":
+            return True
+        if user_input == "n" or user_input == "no":
+            return False
+        print("Please use y/n or yes/no.\n")
 
 
 # ################################# PREPARE ################################## #
