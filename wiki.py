@@ -59,9 +59,6 @@ def generate_wiki_list(config_files):
 def generate_output(managers, global_proofreaders, proofreaders):
     # Generate actual output
     print("\n")
-    print("managers:")
-    for m in managers:
-        print_user(m)
     print("global_proofreaders:")
     for p in global_proofreaders:
         print_user(p)
@@ -79,8 +76,11 @@ def generate_output(managers, global_proofreaders, proofreaders):
                 name = f"{u['username']}"
             name = name.replace("_", "\\_")  # We don't want to risk bold or italic text
             names.append(f"'{escape(name)}'")
-        print(f"    - name: {language}")
-        print(f"      proofreaders: [{', '.join(sorted(names, key=str.casefold))}]")
+        print(f"  - name: {language}")
+        print(f"    proofreaders: [{', '.join(sorted(names, key=str.casefold))}]")
+    print("managers:")
+    for m in managers:
+        print_user(m)
     exit()
 
 
@@ -91,8 +91,8 @@ def print_user(user):
         username = full_name
     elif full_name is None or full_name == "":
         full_name = username
-    print(f"    - name: {full_name}")
-    print(f"      nick: {username}")
+    print(f"  - name: {full_name}")
+    print(f"    nick: {username}")
 
 
 def get_project_ids(config_files):
