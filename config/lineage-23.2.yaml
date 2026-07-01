@@ -208,6 +208,10 @@
         "translation": "/device/oneplus/sm8150-common/camera_helper/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/hardware/ayn/packages/AynParts/res/values/strings.xml",
+        "translation": "/hardware/ayn/packages/AynParts/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/hardware/nothing/ParanoidGlyph/res/values/strings.xml",
         "translation": "/hardware/nothing/ParanoidGlyph/res/values-%android_code%/%original_file_name%"
     },
