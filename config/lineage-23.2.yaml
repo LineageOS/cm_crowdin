@@ -212,8 +212,8 @@
         "translation": "/hardware/ayn/packages/AynParts/res/values-%android_code%/%original_file_name%"
     },
     {
-        "source":      "/hardware/nothing/ParanoidGlyph/res/values/strings.xml",
-        "translation": "/hardware/nothing/ParanoidGlyph/res/values-%android_code%/%original_file_name%"
+        "source":      "/hardware/nothing/packages/ParanoidGlyph/res/values/strings.xml",
+        "translation": "/hardware/nothing/packages/ParanoidGlyph/res/values-%android_code%/%original_file_name%"
     },
     {
         "source":      "/hardware/oplus/packages/Pen/res/values/strings.xml",
