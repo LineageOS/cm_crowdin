@@ -264,6 +264,10 @@
         "translation": "/hardware/samsung/packages/Dap/res/values-%android_code%/%original_file_name%"
     },
     {
+        "source":      "/hardware/samsung/packages/eSimSwitcher/res/values/strings.xml",
+        "translation": "/hardware/samsung/packages/eSimSwitcher/res/values-%android_code%/%original_file_name%"
+    },
+    {
         "source":      "/hardware/sony/SonyOpenTelephony/ModemConfig/res/values/strings.xml",
         "translation": "/hardware/sony/SonyOpenTelephony/ModemConfig/res/values-%android_code%/%original_file_name%"
     },
